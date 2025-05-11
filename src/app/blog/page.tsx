@@ -1,8 +1,6 @@
 import { Metadata } from "next";
-import PageContainer from "@/components/layout/PageContainer";
-import Hero from "@/components/sections/Hero";
-import BlogPostsList from "@/components/sections/BlogPostsList";
 import { SEO } from "@/constants/site";
+import BlogContent from './BlogContent';
 
 // הכנת ערכי מטה-דאטה
 const metadataTitle = "בלוג Indexland | מאמרים וחדשות";
@@ -19,31 +17,5 @@ export const metadata: Metadata = {
 };
 
 export default function Blog() {
-  // בשלב זה אין פוסטים בבלוג, בהמשך יתווספו
-  const posts = [];
-  
-  const heroTitle = {
-    he: "הבלוג שלנו",
-    en: "Our Blog"
-  };
-  
-  const heroSubtitle = {
-    he: "מאמרים, טיפים וחדשות על נדל\"ן, השקעות ומשרדים",
-    en: "Articles, tips, and news about real estate, investments, and offices"
-  };
-
-  return (
-    <PageContainer>
-      <Hero
-        title={heroTitle}
-        subtitle={heroSubtitle}
-        variant="centered"
-      />
-      
-      <BlogPostsList 
-        posts={posts} 
-        showViewAllLink={false}
-      />
-    </PageContainer>
-  );
+  return <BlogContent />;
 } 
