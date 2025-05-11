@@ -39,10 +39,33 @@
   .container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
+  .glass-card {
+    @apply bg-white/40 dark:bg-backgroundDark/40 backdrop-blur-lg border border-white/30 dark:border-white/10 shadow-2xl ring-1 ring-white/40 dark:ring-white/10;
+  }
+  .glass-btn {
+    @apply bg-white/30 dark:bg-backgroundDark/30 backdrop-blur-md border border-white/30 dark:border-white/10 shadow-lg ring-1 ring-white/30 dark:ring-white/10;
+  }
+  .shadow-glass {
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18), 0 1.5px 6px 0 rgba(255,255,255,0.12);
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: none; }
+  }
+  .animate-fade-in {
+    animation: fade-in 1s cubic-bezier(0.4,0,0.2,1) both;
+  }
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .animate-scale-in {
+    animation: scale-in 0.7s cubic-bezier(0.4,0,0.2,1) both;
   }
 } 

@@ -47,7 +47,8 @@ export default function Metrics({
   const subtitleText = getLocalizedText(subtitle) || t(defaultSubtitle);
 
   return (
-    <section className={`py-12 ${bgColor === 'gray' ? 'bg-gray-50 dark:bg-backgroundDark dark:bg-opacity-70' : 'bg-white dark:bg-backgroundDark dark:bg-opacity-90'} transition-colors duration-200`}>
+    <section className={`relative py-12 ${bgColor === 'gray' ? 'bg-gray-50' : bgColor === 'white' ? 'bg-white' : 'bg-backgroundLight dark:bg-backgroundDark'} transition-colors duration-200 overflow-hidden`}>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none" />
       <div className="container">
         {(titleText || subtitleText) && (
           <div className="text-center mb-12">
@@ -62,7 +63,7 @@ export default function Metrics({
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {metrics.map((metric, index) => (
-            <div key={index} className="bg-white dark:bg-backgroundDark dark:bg-opacity-90 p-6 rounded-lg shadow-md text-center">
+            <div key={index} className="glass-card p-6 rounded-2xl shadow-xl text-center animate-fade-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative overflow-hidden">
               <div className="text-4xl font-bold text-primary mb-2">
                 {metric.value}
               </div>
@@ -70,6 +71,7 @@ export default function Metrics({
               {metric.description && (
                 <p className="text-gray-600 dark:text-textSecondary">{getLocalizedText(metric.description)}</p>
               )}
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-30 rounded-2xl" />
             </div>
           ))}
         </div>

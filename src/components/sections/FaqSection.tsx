@@ -53,7 +53,8 @@ export default function FaqSection({
   };
 
   return (
-    <section className={`py-12 ${bgColor === 'light' ? 'bg-backgroundLight dark:bg-backgroundDark' : 'bg-white dark:bg-backgroundDark dark:bg-opacity-90'} transition-colors duration-200`}>
+    <section className={`relative py-12 ${bgColor === 'light' ? 'bg-backgroundLight dark:bg-backgroundDark' : 'bg-white dark:bg-backgroundDark dark:bg-opacity-90'} transition-colors duration-200 overflow-hidden`}>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none" />
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="mb-4">{titleText}</h2>
@@ -67,7 +68,8 @@ export default function FaqSection({
             {faqs.slice(0, columns === 2 ? Math.ceil(faqs.length / 2) : faqs.length).map((faq, index) => (
               <div 
                 key={index} 
-                className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
+                className="glass-card rounded-2xl shadow-xl animate-fade-in animate-scale-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative overflow-hidden"
+                style={{ animationDelay: `${index * 0.10}s` }}
               >
                 <button
                   onClick={() => toggleAccordion(index)}
@@ -86,13 +88,12 @@ export default function FaqSection({
                     )}
                   </span>
                 </button>
-                <div 
-                  className={`px-6 pb-4 ${openIndex === index ? 'block' : 'hidden'}`}
-                >
-                  <p className="text-gray-600 dark:text-textSecondary">
+                {openIndex === index && (
+                  <div className="px-6 pb-4 text-gray-600 dark:text-textSecondary animate-fade-in animate-scale-in">
                     {getLocalizedText(faq.answer)}
-                  </p>
-                </div>
+                  </div>
+                )}
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-30 rounded-2xl" />
               </div>
             ))}
           </div>
@@ -104,7 +105,8 @@ export default function FaqSection({
                 return (
                   <div 
                     key={actualIndex} 
-                    className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
+                    className="glass-card rounded-2xl shadow-xl animate-fade-in animate-scale-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative overflow-hidden"
+                    style={{ animationDelay: `${actualIndex * 0.10}s` }}
                   >
                     <button
                       onClick={() => toggleAccordion(actualIndex)}
@@ -123,13 +125,12 @@ export default function FaqSection({
                         )}
                       </span>
                     </button>
-                    <div 
-                      className={`px-6 pb-4 ${openIndex === actualIndex ? 'block' : 'hidden'}`}
-                    >
-                      <p className="text-gray-600 dark:text-textSecondary">
+                    {openIndex === actualIndex && (
+                      <div className="px-6 pb-4 text-gray-600 dark:text-textSecondary animate-fade-in animate-scale-in">
                         {getLocalizedText(faq.answer)}
-                      </p>
-                    </div>
+                      </div>
+                    )}
+                    <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-30 rounded-2xl" />
                   </div>
                 );
               })}

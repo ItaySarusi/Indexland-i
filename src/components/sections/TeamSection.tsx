@@ -56,7 +56,8 @@ export default function TeamSection({
   const subtitleText = getLocalizedText(subtitle) || t(defaultSubtitle);
 
   return (
-    <section className="py-12 bg-backgroundLight dark:bg-backgroundDark transition-colors duration-200">
+    <section className="relative py-12 bg-backgroundLight dark:bg-backgroundDark transition-colors duration-200 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none" />
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="mb-4">{titleText}</h2>
@@ -69,8 +70,8 @@ export default function TeamSection({
           {members.map((member, index) => (
             <div 
               key={index} 
-              className={`bg-${bgColor} dark:bg-backgroundDark dark:bg-opacity-90 rounded-lg shadow-md overflow-hidden transition-all hover:shadow-xl
-                ${variant === 'list' ? 'flex flex-col md:flex-row gap-6 p-6' : ''}`}
+              className={`glass-card rounded-2xl shadow-xl overflow-hidden animate-fade-in animate-scale-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative ${variant === 'list' ? 'flex flex-col md:flex-row gap-6 p-6' : 'p-6'}`}
+              style={{ animationDelay: `${index * 0.12}s` }}
             >
               <div className={`${variant === 'list' ? 'flex-shrink-0 w-full md:w-1/3' : ''}`}>
                 <div className={`${variant === 'list' ? '' : 'p-6'}`}>
@@ -132,6 +133,7 @@ export default function TeamSection({
                   </div>
                 )}
               </div>
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-30 rounded-2xl" />
             </div>
           ))}
         </div>

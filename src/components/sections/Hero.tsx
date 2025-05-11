@@ -66,27 +66,31 @@ export default function Hero({
 
   if (variant === 'centered') {
     return (
-      <section className="bg-white py-16 md:py-24">
+      <section className="relative bg-white/0 py-16 md:py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none" />
         <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative">
-          <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl">
-            {titleText}
-          </h1>
-          <p className="mb-8 text-lg font-normal text-gray-700 lg:text-xl sm:px-16 lg:px-48">
-            {subtitleText}
-          </p>
-          <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
-            {primaryActionLabel && primaryActionHref && (
-              <Button href={primaryActionHref} size="lg">
-                {primaryLabel}
-              </Button>
-            )}
-            {secondaryActionLabel && secondaryActionHref && (
-              <Button href={secondaryActionHref} variant="outline" size="lg">
-                {secondaryLabel}
-              </Button>
-            )}
+          <div className="mx-auto max-w-3xl glass-card animate-fade-in">
+            <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl drop-shadow-xl">
+              {titleText}
+            </h1>
+            <p className="mb-8 text-lg font-normal text-gray-700 lg:text-xl sm:px-16 lg:px-48">
+              {subtitleText}
+            </p>
+            <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
+              {primaryActionLabel && primaryActionHref && (
+                <Button href={primaryActionHref} size="lg" className="glass-btn animate-scale-in hover:scale-105 hover:shadow-glass transition-all duration-300">
+                  {primaryLabel}
+                </Button>
+              )}
+              {secondaryActionLabel && secondaryActionHref && (
+                <Button href={secondaryActionHref} variant="outline" size="lg" className="glass-btn animate-scale-in hover:scale-105 hover:shadow-glass transition-all duration-300">
+                  {secondaryLabel}
+                </Button>
+              )}
+            </div>
           </div>
         </div>
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-16 bg-gradient-to-t from-white/60 to-transparent rounded-b-3xl blur-lg opacity-60 pointer-events-none" />
       </section>
     );
   }

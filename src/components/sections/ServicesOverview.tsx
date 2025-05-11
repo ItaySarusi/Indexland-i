@@ -49,7 +49,8 @@ export default function ServicesOverview({
   const subtitleText = getLocalizedText(subtitle) || t(defaultSubtitle);
 
   return (
-    <section className="py-12 bg-gray-50 dark:bg-backgroundDark dark:bg-opacity-70 transition-colors duration-200">
+    <section className="relative py-12 bg-gray-50 dark:bg-backgroundDark dark:bg-opacity-70 transition-colors duration-200 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/10 pointer-events-none" />
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="mb-4">{titleText}</h2>
@@ -60,7 +61,7 @@ export default function ServicesOverview({
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div key={index} className="bg-white dark:bg-backgroundDark dark:bg-opacity-90 p-6 rounded-lg shadow-md transition-all hover:shadow-xl">
+            <div key={index} className="glass-card p-6 rounded-2xl shadow-xl transition-all duration-300 animate-fade-in hover:scale-105 hover:shadow-glass group relative overflow-hidden">
               <div className="text-primary mb-4">
                 {service.icon}
               </div>
@@ -73,10 +74,11 @@ export default function ServicesOverview({
                     alt={getLocalizedText(service.title)}
                     width={350}
                     height={200}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
               )}
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-40 rounded-2xl" />
               <Link href={service.href} className="text-primary hover:opacity-90 font-medium inline-flex items-center">
                 {t({ he: "קרא עוד", en: "Read More" })}
                 <svg className={`w-4 h-4 ${language === 'he' ? 'mr-2 rtl:rotate-180' : 'ml-2'}`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

@@ -100,7 +100,8 @@ export default function TestimonialsSection({
   };
 
   return (
-    <section className={`py-16 ${bgColor === 'white' ? 'bg-white' : bgColor === 'gray' ? 'bg-gray-50' : bgColor === 'light' ? 'bg-blue-50' : 'bg-white'} dark:bg-backgroundDark dark:bg-opacity-90 transition-colors duration-200`}>
+    <section className={`relative py-16 ${bgColor === 'white' ? 'bg-white' : bgColor === 'gray' ? 'bg-gray-50' : bgColor === 'light' ? 'bg-blue-50' : 'bg-white'} dark:bg-backgroundDark dark:bg-opacity-90 transition-colors duration-200 overflow-hidden`}>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none" />
       <div className="container">
         {(title || subtitle) && (
           <div className="text-center mb-12">
@@ -116,36 +117,35 @@ export default function TestimonialsSection({
                 {testimonials.map((testimonial, idx) => (
                   <div 
                     key={idx}
-                    className={`transition-all duration-300 ${idx === currentIndex ? 'opacity-100' : 'opacity-0 absolute top-0 left-0'}`}
+                    className={`glass-card transition-all duration-300 ${idx === currentIndex ? 'opacity-100' : 'opacity-0 absolute top-0 left-0'} rounded-2xl shadow-xl animate-fade-in hover:scale-105 hover:shadow-glass relative overflow-hidden p-6 md:p-10`}
                   >
-                    <div className="relative p-6 md:p-10">
-                      <div className="mb-4">
-                        <svg className="w-8 h-8 text-gray-300 dark:text-gray-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                        </svg>
+                    <div className="mb-4">
+                      <svg className="w-8 h-8 text-gray-300 dark:text-gray-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                      </svg>
+                    </div>
+                    <p className="text-gray-600 dark:text-textSecondary mb-4 italic">
+                      &ldquo;{getLocalizedText(testimonial.quote)}&rdquo;
+                    </p>
+                    <div className="flex items-center">
+                      <div className="mr-4">
+                        <Image 
+                          className="w-12 h-12 object-cover rounded-full border-2 border-primary"
+                          src={testimonial.avatar}
+                          alt={typeof testimonial.author === 'object' ? testimonial.author[language] : testimonial.author}
+                          width={48}
+                          height={48}
+                        />
                       </div>
-                      <p className="text-gray-600 dark:text-textSecondary mb-4 italic">
-                        &ldquo;{getLocalizedText(testimonial.quote)}&rdquo;
-                      </p>
-                      <div className="flex items-center">
-                        <div className="mr-4">
-                          <Image 
-                            className="w-12 h-12 object-cover rounded-full border-2 border-primary"
-                            src={testimonial.avatar}
-                            alt={typeof testimonial.author === 'object' ? testimonial.author[language] : testimonial.author}
-                            width={48}
-                            height={48}
-                          />
-                        </div>
-                        <div>
-                          <p className="font-semibold">{typeof testimonial.author === 'object' ? testimonial.author[language] : testimonial.author}</p>
-                          <p className="text-sm text-gray-600 dark:text-textSecondary">
-                            {typeof testimonial.position === 'object' ? testimonial.position[language] : testimonial.position}
-                            {testimonial.company && <span>, {typeof testimonial.company === 'object' ? testimonial.company[language] : testimonial.company}</span>}
-                          </p>
-                        </div>
+                      <div>
+                        <p className="font-semibold">{typeof testimonial.author === 'object' ? testimonial.author[language] : testimonial.author}</p>
+                        <p className="text-sm text-gray-600 dark:text-textSecondary">
+                          {typeof testimonial.position === 'object' ? testimonial.position[language] : testimonial.position}
+                          {testimonial.company && <span>, {typeof testimonial.company === 'object' ? testimonial.company[language] : testimonial.company}</span>}
+                        </p>
                       </div>
                     </div>
+                    <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-30 rounded-2xl" />
                   </div>
                 ))}
               </div>

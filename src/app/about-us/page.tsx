@@ -7,6 +7,9 @@ import TeamSection from "@/components/sections/TeamSection";
 import FaqSection from "@/components/sections/FaqSection";
 import CtaSection from "@/components/sections/CtaSection";
 import { SEO, IMAGES } from "@/constants/site";
+import MissionVisionSection from "@/components/sections/MissionVisionSection";
+import OurOfferSection from "@/components/sections/OurOfferSection";
+import CoreValuesSection from "@/components/sections/CoreValuesSection";
 
 export const metadata: Metadata = {
   title: typeof SEO.aboutUs.title === 'object' ? SEO.aboutUs.title.he : SEO.aboutUs.title,
@@ -315,32 +318,32 @@ export default function AboutUs() {
 
   return (
     <PageContainer>
-      <Hero
-        title={{
-          he: "אודות Indexland",
-          en: "About Indexland"
-        }}
-        subtitle={{
-          he: "אנו מובילים פתרונות נדל\"ן חדשניים עם דגש על מקצועיות, שקיפות ושירות אישי",
-          en: "We lead innovative real estate solutions with emphasis on professionalism, transparency, and personal service"
-        }}
-        variant="centered"
-        imageUrl={IMAGES.hero.aboutUs}
-      />
-      
-      <WhyChooseUs 
-        title={{
-          he: "הסיפור שלנו",
-          en: "Our Story"
-        }}
-        subtitle={{
-          he: "Indexland נוסדה בשנת 2009 במטרה לספק פתרונות ייחודיים בעולם הנדל\"ן המשרדי וההשקעות הבינלאומיות",
-          en: "Indexland was founded in 2009 with the goal of providing unique solutions in the world of office real estate and international investments"
-        }}
-        features={features} 
-        imageUrl={IMAGES.sections.whyChooseUs}
-      />
-      
+      {/* Hero Section - עיצוב יוקרתי */}
+      <section className="relative py-20 bg-white/0 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none" />
+        <div className="container z-10 relative">
+          <div className="max-w-3xl mx-auto glass-card animate-fade-in text-center py-16 px-6 md:px-16 rounded-3xl shadow-2xl">
+            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-primary drop-shadow-xl mb-6">
+              {typeof SEO.aboutUs.title === 'object' ? SEO.aboutUs.title.he : SEO.aboutUs.title}
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-700 dark:text-textSecondary font-light mb-2">
+              {typeof SEO.aboutUs.description === 'object' ? SEO.aboutUs.description.he : SEO.aboutUs.description}
+            </p>
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-16 bg-gradient-to-t from-white/60 to-transparent rounded-b-3xl blur-lg opacity-60 pointer-events-none" />
+      </section>
+
+      {/* Mission & Vision Section */}
+      <MissionVisionSection />
+
+      {/* Our Offer Section */}
+      <OurOfferSection />
+
+      {/* Core Values Section */}
+      <CoreValuesSection />
+
+      {/* Team Section */}
       <TeamSection 
         title={{
           he: "ההנהלה שלנו",
@@ -353,33 +356,8 @@ export default function AboutUs() {
         members={teamMembers}
         variant="grid"
       />
-      
-      <Metrics 
-        title={{
-          he: "במספרים",
-          en: "In Numbers"
-        }}
-        subtitle={{
-          he: "ההישגים שלנו מדברים בעד עצמם",
-          en: "Our achievements speak for themselves"
-        }}
-        metrics={metrics} 
-      />
-      
-      <FaqSection 
-        title={{
-          he: "שאלות נפוצות",
-          en: "Frequently Asked Questions"
-        }}
-        subtitle={{
-          he: "תשובות לשאלות הנפוצות ביותר על השירותים שלנו",
-          en: "Answers to the most common questions about our services"
-        }}
-        faqs={faqs}
-        columns={2}
-        bgColor="white"
-      />
-      
+
+      {/* CTA Section */}
       <CtaSection 
         title={{
           he: "נשמח לדבר איתך",

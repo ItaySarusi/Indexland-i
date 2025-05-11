@@ -40,7 +40,8 @@ const CLIENTS_SUCCESS = [
 export default function ClientsSuccessSection() {
   const { language, t } = useLanguage();
   return (
-    <section className="py-16 bg-gray-50 dark:bg-backgroundDark dark:bg-opacity-90 transition-colors duration-200">
+    <section className="relative py-16 bg-gray-50 dark:bg-backgroundDark dark:bg-opacity-90 transition-colors duration-200 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none" />
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="mb-4 text-3xl font-bold text-primary">
@@ -55,7 +56,7 @@ export default function ClientsSuccessSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {CLIENTS_SUCCESS.map((item, idx) => (
-            <div key={idx} className="bg-white dark:bg-backgroundDark dark:bg-opacity-80 rounded-lg shadow-md p-6 flex flex-col items-center text-center transition-all hover:shadow-xl">
+            <div key={idx} className="glass-card rounded-2xl shadow-xl p-6 flex flex-col items-center text-center animate-fade-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative overflow-hidden">
               <div className="mb-4 w-24 h-24 relative">
                 <Image
                   src={item.image}
@@ -67,6 +68,7 @@ export default function ClientsSuccessSection() {
               </div>
               <h3 className="text-xl font-semibold mb-2 text-primary">{item.title[language]}</h3>
               <p className="text-gray-600 dark:text-textSecondary">{item.description[language]}</p>
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-30 rounded-2xl" />
             </div>
           ))}
         </div>
