@@ -21,48 +21,48 @@ export const SOCIAL_LINKS = {
 
 export const NAV_LINKS = {
   he: [
-    { name: "בית", href: "/" },
-    { name: "אודות", href: "/about-us" },
+    { name: 'בית', href: '/' },
+    { name: 'אודות', href: '/about-us' },
     {
-      name: "שירותים",
-      href: "#",
+      name: 'שירותים',
+      href: '#',
       children: [
         {
-          name: "ניהול נכסי משרדים",
-          href: "/services/office-asset-management",
-          description: "ניהול מקצועי של נכסי משרדים עם דגש על השבחה והשאת תשואה",
+          name: 'השקעות נדל"ן בינלאומיות להשכרה',
+          href: '/services/international-investment-brokerage',
+          description: 'השקעות יוקרתיות בנדל"ן בינלאומי עם ליווי אישי ומקצועי',
         },
         {
-          name: "תיווך השקעות בינלאומיות",
-          href: "/services/international-investment-brokerage",
-          description: "ליווי אישי בתהליך ההשקעה בנכסי נדל\"ן בינלאומיים",
+          name: 'ניהול נכסי משרדים',
+          href: '/services/office-asset-management',
+          description: 'ניהול מקצועי של נכסי משרדים עם דגש על השבחה והשאת תשואה',
         },
       ],
     },
-    { name: "בלוג", href: "/blog" },
-    { name: "לקביעת פגישה", href: "/book-meeting", isButton: true },
+    { name: 'בלוג', href: '/blog' },
+    { name: 'לקביעת פגישה', href: '/book-meeting', isButton: true },
   ],
   en: [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about-us" },
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about-us' },
     {
-      name: "Services",
-      href: "#",
+      name: 'Services',
+      href: '#',
       children: [
         {
-          name: "Office Asset Management",
-          href: "/services/office-asset-management",
-          description: "Professional management of office assets with emphasis on enhancement and yield maximization",
+          name: 'International Real Estate Investments for Rent',
+          href: '/services/international-investment-brokerage',
+          description: 'Luxury international real estate investments with personal and professional guidance',
         },
         {
-          name: "International Investment Brokerage",
-          href: "/services/international-investment-brokerage",
-          description: "Personal guidance in the process of investing in international real estate assets",
+          name: 'Office Asset Management',
+          href: '/services/office-asset-management',
+          description: 'Professional management of office assets with emphasis on enhancement and yield maximization',
         },
       ],
     },
-    { name: "Blog", href: "/blog" },
-    { name: "Book a Meeting", href: "/book-meeting", isButton: true },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Book a Meeting', href: '/book-meeting', isButton: true },
   ]
 };
 

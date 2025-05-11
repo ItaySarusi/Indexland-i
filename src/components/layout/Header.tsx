@@ -53,12 +53,18 @@ export default function Header() {
 
   return (
     <header className="fixed w-full bg-white dark:bg-backgroundDark z-50 shadow-sm transition-colors duration-200">
-      <div className={`container py-4 flex items-center justify-between ${language === 'he' ? 'flex-row-reverse' : 'flex-row'}`}>
-        <Link href="/" className="font-bold text-2xl text-primary" onClick={closeMenu}>
+      <div className={`container py-4 flex items-center justify-between ${language === 'he' ? 'flex-row' : 'flex-row-reverse'}`}>
+        <Link
+          href="/"
+          className={`font-bold text-2xl text-primary ${language === 'he' ? 'order-2 ml-0 mr-4' : 'order-1 mr-0 ml-4'}`}
+          onClick={closeMenu}
+        >
           Indexland
         </Link>
         
-        <nav className="hidden md:flex items-center gap-6">
+        <nav
+          className={`hidden md:flex items-center gap-6 ${language === 'he' ? 'order-1' : 'order-2'}`}
+        >
           {NAV_LINKS[language].map((link) => 
             !link.children ? (
               <Link 

@@ -1,3 +1,4 @@
+"use client";
 import { useLanguage } from '@/lib/language-context';
 import { FaHandshake } from 'react-icons/fa';
 

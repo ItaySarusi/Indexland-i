@@ -5,7 +5,7 @@ import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import { SEO } from "@/constants/site";
 
 export const metadata: Metadata = {
-  title: SEO.officeAssetManagement.title,
+  title: 'ייעוץ נדל"ן מקומי',
   description: SEO.officeAssetManagement.description,
   keywords: SEO.officeAssetManagement.keywords,
   openGraph: {
@@ -56,19 +56,58 @@ export default function OfficeAssetManagement() {
 
   return (
     <PageContainer>
-      <Hero
-        title="ניהול נכסי משרדים"
-        subtitle="פתרונות מקיפים לניהול והשבחת נכסי המשרדים שלך, עם דגש על מקסום התשואה"
-        primaryActionLabel="צור קשר עכשיו"
-        primaryActionHref="/book-meeting"
-        variant="image-right"
-      />
-      
-      <WhyChooseUs 
-        title="השירותים שלנו"
-        subtitle="אנו מציעים מגוון שירותים בתחום ניהול נכסי המשרדים"
-        features={features} 
-      />
+      {/* Hero Section - Glassy luxury style */}
+      <section className="relative py-20 bg-white/0 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none" />
+        <div className="container z-10 relative">
+          <div className="max-w-3xl mx-auto glass-card animate-fade-in text-center py-16 px-6 md:px-16 rounded-3xl shadow-2xl">
+            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-primary drop-shadow-xl mb-6">
+              ייעוץ נדל"ן מקומי
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-700 dark:text-textSecondary font-light mb-2">
+              פתרונות מקיפים לניהול והשבחת נכסי המשרדים שלך, עם דגש על מקסום התשואה
+            </p>
+            <a href="/book-meeting" className="mt-8 inline-block px-8 py-3 rounded-full bg-primary text-white font-semibold shadow-lg hover:bg-primary-700 transition-all duration-200">
+              צור קשר עכשיו
+            </a>
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-16 bg-gradient-to-t from-white/60 to-transparent rounded-b-3xl blur-lg opacity-60 pointer-events-none" />
+      </section>
+
+      {/* Divider */}
+      <div className="container mx-auto my-12">
+        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30" />
+      </div>
+
+      {/* Why Choose Us - Glassy cards with slide-in animation */}
+      <section className="relative py-16 overflow-visible">
+        <div className="container">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-10 animate-fade-in">
+            השירותים שלנו
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-textSecondary text-center mb-12 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            אנו מציעים מגוון שירותים בתחום ניהול נכסי המשרדים
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            {features.map((feature, idx) => (
+              <div
+                key={idx}
+                className="glass-card rounded-2xl shadow-xl p-8 flex flex-col items-center text-center animate-slide-in-up"
+                style={{ animationDelay: `${0.1 + idx * 0.1}s` }}
+              >
+                {feature.icon}
+                <h3 className="text-xl font-bold text-primary mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-700 dark:text-textSecondary text-base">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </PageContainer>
   );
 } 

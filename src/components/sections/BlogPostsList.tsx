@@ -76,17 +76,21 @@ export default function BlogPostsList({
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {posts.map((post) => (
-                <article key={post.id} className="bg-white dark:bg-backgroundDark dark:bg-opacity-90 rounded-lg shadow-md overflow-hidden transition-all hover:shadow-xl">
+                <article
+                  key={post.id}
+                  className="glass-card rounded-3xl overflow-hidden shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-glass animate-fade-in group"
+                  style={{ minHeight: 420 }}
+                >
                   <Link href={`/blog/${post.slug}`}>
-                    <Image 
-                      className="w-full h-48 object-cover" 
-                      src={post.coverImage} 
-                      alt={typeof post.title === 'object' ? post.title[language] : post.title} 
+                    <Image
+                      className="w-full h-48 object-cover transition-all duration-300 group-hover:scale-105 group-hover:brightness-95"
+                      src={post.coverImage}
+                      alt={typeof post.title === 'object' ? post.title[language] : post.title}
                       width={400}
                       height={200}
                     />
                   </Link>
-                  <div className="p-6">
+                  <div className="p-7 flex flex-col gap-3">
                     <div className="flex items-center text-sm text-gray-500 dark:text-textSecondary mb-2">
                       <time dateTime={post.publishedAt}>
                         {new Date(post.publishedAt).toLocaleDateString(language === 'he' ? 'he-IL' : 'en-US')}
@@ -95,14 +99,26 @@ export default function BlogPostsList({
                       <span>{post.readingTime} {t(readingTimeText)}</span>
                     </div>
                     <Link href={`/blog/${post.slug}`}>
-                      <h3 className="text-xl font-bold mb-2 hover:text-primary transition-colors">
+                      <h3 className="text-2xl font-extrabold mb-2 hover:text-primary transition-colors text-balance">
                         {getLocalizedText(post.title)}
                       </h3>
                     </Link>
-                    <p className="text-gray-600 dark:text-textSecondary mb-4 line-clamp-3">
+                    <p className="mb-2 text-base line-clamp-3 text-gray-700 dark:text-textSecondary">
                       {getLocalizedText(post.description)}
                     </p>
-                    <div className="flex items-center">
+                    <div className="flex flex-wrap gap-2 mb-2">
+                      {(Array.isArray(post.tags)
+                        ? post.tags
+                        : post.tags[language] || []).slice(0, 4).map((tag, i) => (
+                        <span
+                          key={i}
+                          className="px-3 py-1 rounded-full bg-white/60 dark:bg-backgroundDark/40 text-xs font-semibold text-primary/90 dark:text-primary/80 backdrop-blur-md border border-white/30 dark:border-white/10 shadow-sm"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex items-center mt-auto pt-2">
                       <Image 
                         className="w-10 h-10 rounded-full mr-4" 
                         src={post.author.image} 

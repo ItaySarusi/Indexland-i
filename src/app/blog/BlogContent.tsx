@@ -291,10 +291,10 @@ export default function BlogContent() {
           he: "מאמרים, ניתוחים ותובנות בתחום הנדל\"ן המשרדי וההשקעות הבינלאומיות",
           en: "Articles, analysis and insights in the field of office real estate and international investments"
         }}
+        variant="centered"
       />
-      
       <div className="py-12 md:py-16">
-        <BlogPostsList posts={posts} />
+        <BlogPostsList posts={posts.slice(0, 9)} />
       </div>
     </PageContainer>
   );

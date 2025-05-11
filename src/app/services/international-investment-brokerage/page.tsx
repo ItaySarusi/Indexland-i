@@ -1,11 +1,9 @@
 import { Metadata } from "next";
 import PageContainer from "@/components/layout/PageContainer";
-import Hero from "@/components/sections/Hero";
-import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import { SEO } from "@/constants/site";
 
 export const metadata: Metadata = {
-  title: SEO.internationalInvestmentBrokerage.title,
+  title: 'השקעות נדל"ן בינלאומיות להשכרה',
   description: SEO.internationalInvestmentBrokerage.description,
   keywords: SEO.internationalInvestmentBrokerage.keywords,
   openGraph: {
@@ -56,19 +54,103 @@ export default function InternationalInvestmentBrokerage() {
 
   return (
     <PageContainer>
-      <Hero
-        title="תיווך השקעות בינלאומיות"
-        subtitle="פתרונות השקעה גלובליים עם ליווי מקצועי ומותאם אישית לכל משקיע"
-        primaryActionLabel="לתיאום פגישת ייעוץ"
-        primaryActionHref="/book-meeting"
-        variant="image-right"
-      />
-      
-      <WhyChooseUs 
-        title="היתרונות שלנו"
-        subtitle="אנו מציעים שירותי תיווך מקצועיים להשקעות נדל&quot;ן בינלאומיות"
-        features={features} 
-      />
+      {/* Hero Section */}
+      <section className="relative py-20 bg-white/0 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/20 pointer-events-none" />
+        <div className="container z-10 relative">
+          <div className="max-w-3xl mx-auto glass-card animate-fade-in text-center py-16 px-6 md:px-16 rounded-3xl shadow-2xl border border-white/30 dark:border-white/10 backdrop-blur-xl bg-white/60 dark:bg-gray-900/60">
+            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-primary drop-shadow-xl mb-6">
+              השקעות נדל"ן בינלאומיות להשכרה
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-700 dark:text-textSecondary font-light mb-2">
+              גלו עולם של הזדמנויות השקעה יוקרתיות בנדל"ן להשכרה במיקומים בינלאומיים מובילים, עם ליווי אישי ומקצועי.
+            </p>
+            <a href="/book-meeting" className="mt-8 inline-block px-8 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-200">
+              לתיאום פגישת ייעוץ
+            </a>
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-16 bg-gradient-to-t from-white/60 to-transparent rounded-b-3xl blur-lg opacity-60 pointer-events-none" />
+      </section>
+
+      {/* Divider */}
+      <div className="container mx-auto my-12">
+        <div className="h-1 w-32 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-40" />
+      </div>
+
+      {/* Dubai Investment Section */}
+      <section className="relative py-20 overflow-visible">
+        <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-primary/5 pointer-events-none rounded-3xl blur-lg opacity-60" />
+        <div className="container z-10 relative">
+          <div className="max-w-2xl mx-auto glass-card rounded-3xl shadow-2xl p-12 animate-slide-in-up text-center border border-white/30 dark:border-white/10 backdrop-blur-xl bg-white/70 dark:bg-gray-900/60">
+            <div className="flex items-center justify-center mb-6">
+              <svg className="w-14 h-14 text-primary drop-shadow-glow mr-3 rtl:ml-3 rtl:mr-0" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 110-16 8 8 0 010 16zm1-13h-2v6h2V7zm0 8h-2v2h2v-2z" />
+              </svg>
+              <h2 className="text-3xl font-bold text-primary">
+                השקעות בינלאומיות בדובאי
+              </h2>
+            </div>
+            <p className="text-gray-700 dark:text-textSecondary text-lg">
+              דובאי הפכה בשנים האחרונות ליעד השקעה מבוקש למשקיעי נדל"ן מכל העולם. בזכות רגולציה מתקדמת, תשואות גבוהות, פטור ממס רכישה, ומגוון פרויקטים יוקרתיים – דובאי מציעה שילוב נדיר של ביטחון, חדשנות ורווחיות. אנו מלווים את לקוחותינו בכל שלב – מאיתור הנכס ועד לניהול השוטף והשכרתו.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="container mx-auto my-12">
+        <div className="h-1 w-32 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-40" />
+      </div>
+
+      {/* Why Work With Us Section */}
+      <section className="relative py-20 overflow-visible">
+        <div className="container">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-12 animate-fade-in">
+            למה לעבוד איתנו
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+            {features.map((feature, idx) => (
+              <div
+                key={idx}
+                className="glass-card rounded-2xl shadow-xl p-8 flex flex-col items-center text-center animate-slide-in-up border border-white/20 dark:border-white/10 backdrop-blur-xl bg-white/60 dark:bg-gray-900/60 hover:scale-105 hover:shadow-2xl transition-all duration-300 group relative overflow-hidden"
+                style={{ animationDelay: `${0.1 + idx * 0.1}s` }}
+              >
+                <div className="absolute inset-0 pointer-events-none group-hover:opacity-60 opacity-0 transition-all duration-300 bg-gradient-to-br from-primary/10 to-secondary/20 blur-lg" />
+                {feature.icon}
+                <h3 className="text-xl font-bold text-primary mb-2 z-10 relative">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-700 dark:text-textSecondary text-base z-10 relative">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="container mx-auto my-12">
+        <div className="h-1 w-32 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-40" />
+      </div>
+
+      {/* CTA Section */}
+      <section className="relative py-20 overflow-hidden">
+        <div className="container">
+          <div className="max-w-2xl mx-auto glass-card rounded-3xl shadow-2xl p-12 animate-fade-in text-center border border-white/30 dark:border-white/10 backdrop-blur-xl bg-white/70 dark:bg-gray-900/60">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-6">
+              מעוניינים להשקיע בנדל"ן בדובאי או בעולם?
+            </h2>
+            <p className="text-lg text-gray-700 dark:text-textSecondary mb-10">
+              צוות המומחים שלנו ישמח ללוות אותך בכל שלב – מהתכנון ועד לניהול הנכס והשכרתו. פנה אלינו לייעוץ ראשוני ללא התחייבות.
+            </p>
+            <a href="/book-meeting" className="inline-block px-10 py-4 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-200 text-lg">
+              לתיאום פגישה
+            </a>
+          </div>
+        </div>
+      </section>
     </PageContainer>
   );
 } 

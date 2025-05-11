@@ -1,3 +1,4 @@
+"use client";
 import { useLanguage } from '@/lib/language-context';
 import { FaRegLightbulb, FaRegCompass } from 'react-icons/fa';
 
