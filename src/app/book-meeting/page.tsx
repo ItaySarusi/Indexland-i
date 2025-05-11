@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { SEO } from "@/constants/site";
-import BookMeetingContent from './BookMeetingContent';
+import BookMeetingContent from '../../components/BookMeetingContent';
 
 // הכנת ערכי מטה-דאטה
 const metadataTitle = "קביעת פגישה | Indexland";

@@ -3,6 +3,9 @@ import Hero from "@/components/sections/Hero";
 import ServicesOverview from "@/components/sections/ServicesOverview";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import Metrics from "@/components/sections/Metrics";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
+import TeamSection from "@/components/sections/TeamSection";
+import CtaSection from "@/components/sections/CtaSection";
 import { SEO, IMAGES } from "@/constants/site";
 import { Metadata } from "next";
 import { Language } from "@/lib/language-context";
@@ -184,6 +187,127 @@ export default function Home() {
       },
     },
   ];
+  
+  // המלצות לקוחות
+  const testimonials = [
+    {
+      quote: {
+        he: "Indexland ליוו אותנו בתהליך רכישת נכס בחו\"ל. מהרגע הראשון קיבלנו שירות מקצועי, אדיב ומותאם אישית לצרכים שלנו. אני ממליץ בחום על השירותים שלהם.",
+        en: "Indexland accompanied us through the process of purchasing a property overseas. From the first moment, we received professional, courteous, and tailored service to our needs. I highly recommend their services."
+      },
+      author: {
+        he: "יובל כהן",
+        en: "Yuval Cohen"
+      },
+      position: {
+        he: "מנכ\"ל",
+        en: "CEO"
+      },
+      company: {
+        he: "טק פרו בע\"מ",
+        en: "Tech Pro Ltd"
+      },
+      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format",
+      rating: 5
+    },
+    {
+      quote: {
+        he: "הליווי של צוות Indexland היה מעל ומעבר למצופה. הם עזרו לנו למצוא את הנכס המושלם עבור המשרדים החדשים שלנו ודאגו לכל הפרטים. התהליך היה חלק ומקצועי.",
+        en: "The guidance from the Indexland team was above and beyond our expectations. They helped us find the perfect property for our new offices and took care of all the details. The process was smooth and professional."
+      },
+      author: {
+        he: "מיכל לוי",
+        en: "Michal Levy"
+      },
+      position: {
+        he: "סמנכ\"ל תפעול",
+        en: "COO"
+      },
+      company: {
+        he: "חברת אלפא אינטרנשיונל",
+        en: "Alpha International"
+      },
+      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format",
+      rating: 5
+    },
+    {
+      quote: {
+        he: "בתור משקיע מנוסה, אני יכול לומר בוודאות שהשירות שקיבלתי מ-Indexland היה מהטובים שחוויתי. הידע והמקצועיות שלהם עזרו לי להשיג תשואה מצוינת על ההשקעה שלי.",
+        en: "As an experienced investor, I can confidently say that the service I received from Indexland was among the best I've experienced. Their knowledge and professionalism helped me achieve an excellent return on my investment."
+      },
+      author: {
+        he: "אייל דגן",
+        en: "Eyal Dagan"
+      },
+      position: {
+        he: "משקיע נדל\"ן",
+        en: "Real Estate Investor"
+      },
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format",
+      rating: 5
+    }
+  ];
+  
+  // צוות לדוגמה
+  const teamMembers = [
+    {
+      name: {
+        he: "דן ישראלי",
+        en: "Dan Israeli"
+      },
+      role: {
+        he: "מייסד ומנכ\"ל",
+        en: "Founder & CEO"
+      },
+      bio: {
+        he: "עם ניסיון של למעלה מ-15 שנה בתחום הנדל\"ן והשקעות, דן הוביל עסקאות בהיקף של מאות מיליוני דולרים.",
+        en: "With over 15 years of experience in real estate and investments, Dan has led deals worth hundreds of millions of dollars."
+      },
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format",
+      socialLinks: {
+        linkedin: "https://linkedin.com/",
+        email: "dan@indexland.com"
+      }
+    },
+    {
+      name: {
+        he: "מיכל ברק",
+        en: "Michal Barak"
+      },
+      role: {
+        he: "סמנכ\"לית השקעות בינלאומיות",
+        en: "VP of International Investments"
+      },
+      bio: {
+        he: "מיכל מתמחה בייעוץ ללקוחות בינלאומיים ובהשקעות מעבר לים, עם מומחיות מיוחדת בשווקים האירופאים והאמריקאיים.",
+        en: "Michal specializes in advising international clients and overseas investments, with special expertise in European and American markets."
+      },
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format",
+      socialLinks: {
+        linkedin: "https://linkedin.com/",
+        email: "michal@indexland.com"
+      }
+    },
+    {
+      name: {
+        he: "יונתן כהן",
+        en: "Jonathan Cohen"
+      },
+      role: {
+        he: "מנהל נכסים בכיר",
+        en: "Senior Asset Manager"
+      },
+      bio: {
+        he: "יונתן אחראי על ניהול תיק הנכסים של החברה, עם התמחות בהשבחת נכסים ומיקסום תשואות.",
+        en: "Jonathan is responsible for managing the company's asset portfolio, specializing in asset enhancement and yield maximization."
+      },
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format",
+      socialLinks: {
+        linkedin: "https://linkedin.com/",
+        email: "jonathan@indexland.com"
+      }
+    }
+  ];
 
   return (
     <PageContainer>
@@ -214,6 +338,38 @@ export default function Home() {
       <WhyChooseUs features={features} imageUrl={IMAGES.sections.whyChooseUs} />
       
       <Metrics metrics={metrics} />
+      
+      <TestimonialsSection 
+        testimonials={testimonials}
+        bgColor="white"
+      />
+      
+      <TeamSection 
+        members={teamMembers}
+      />
+      
+      <CtaSection 
+        title={{
+          he: "מוכנים להתחיל?",
+          en: "Ready to get started?"
+        }}
+        subtitle={{
+          he: "צרו איתנו קשר היום לפגישת ייעוץ ללא התחייבות",
+          en: "Contact us today for a no-obligation consultation"
+        }}
+        primaryButtonText={{
+          he: "תיאום פגישה",
+          en: "Schedule a Meeting"
+        }}
+        primaryButtonHref="/book-meeting"
+        secondaryButtonText={{
+          he: "קרא עוד על השירותים שלנו",
+          en: "Learn More About Our Services"
+        }}
+        secondaryButtonHref="/services/office-asset-management"
+        variant="highlight"
+        bgColor="light"
+      />
     </PageContainer>
   );
 }
