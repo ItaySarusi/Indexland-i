@@ -45,10 +45,16 @@ export default function Header() {
     setMenuOpen(!menuOpen);
   };
 
+  const closeMenu = () => {
+    if (menuOpen) {
+      setMenuOpen(false);
+    }
+  };
+
   return (
     <header className="fixed w-full bg-white dark:bg-backgroundDark z-50 shadow-sm transition-colors duration-200">
       <div className="container py-4 flex items-center justify-between">
-        <Link href="/" className="font-bold text-2xl text-primary">
+        <Link href="/" className="font-bold text-2xl text-primary" onClick={closeMenu}>
           Indexland
         </Link>
         
