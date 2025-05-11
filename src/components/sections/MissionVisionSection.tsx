@@ -5,10 +5,14 @@ import { FaRegLightbulb, FaRegCompass } from 'react-icons/fa';
 export default function MissionVisionSection() {
   const { language, t } = useLanguage();
   return (
-    <section className="relative py-16 overflow-hidden">
-      <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <div className="glass-card rounded-2xl shadow-xl p-8 animate-fade-in mb-8 md:mb-0">
+    <section className="relative py-20 overflow-hidden">
+      {/* Floating glassmorphic background */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl opacity-40 animate-float-slow" />
+      </div>
+      <div className="container relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="glass-card rounded-3xl shadow-2xl p-10 animate-fade-in animate-scale-in mb-8 md:mb-0" style={{ animationDelay: '0.05s' }}>
             <div className="flex items-center mb-4">
               <FaRegLightbulb className="text-primary text-4xl mr-3 rtl:ml-3 rtl:mr-0" />
               <h2 className="text-2xl font-bold text-primary">
@@ -22,7 +26,7 @@ export default function MissionVisionSection() {
               })}
             </p>
           </div>
-          <div className="glass-card rounded-2xl shadow-xl p-8 animate-fade-in" style={{ animationDelay: '0.15s' }}>
+          <div className="glass-card rounded-3xl shadow-2xl p-10 animate-fade-in animate-scale-in" style={{ animationDelay: '0.18s' }}>
             <div className="flex items-center mb-4">
               <FaRegCompass className="text-primary text-4xl mr-3 rtl:ml-3 rtl:mr-0" />
               <h2 className="text-2xl font-bold text-primary">

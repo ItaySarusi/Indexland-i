@@ -56,26 +56,30 @@ export default function TeamSection({
   const subtitleText = getLocalizedText(subtitle) || t(defaultSubtitle);
 
   return (
-    <section className="relative py-12 bg-backgroundLight dark:bg-backgroundDark transition-colors duration-200 overflow-hidden">
+    <section className="relative py-20 bg-backgroundLight dark:bg-backgroundDark transition-colors duration-200 overflow-hidden">
+      {/* Floating glassmorphic background */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[400px] h-[160px] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl opacity-40 animate-float-slow" />
+      </div>
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none" />
-      <div className="container">
-        <div className="text-center mb-12">
-          <h2 className="mb-4">{titleText}</h2>
-          <p className="text-lg text-gray-600 dark:text-textSecondary max-w-3xl mx-auto">
+      <div className="container relative z-10">
+        <div className="text-center mb-14">
+          <h2 className="mb-4 text-4xl md:text-5xl font-extrabold tracking-tight text-primary drop-shadow-xl animate-fade-in">{titleText}</h2>
+          <p className="text-lg text-gray-600 dark:text-textSecondary max-w-3xl mx-auto animate-fade-in delay-100">
             {subtitleText}
           </p>
         </div>
         
-        <div className={`${variant === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8' : 'space-y-8'}`}>
+        <div className={`${variant === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12' : 'space-y-8'}`}>
           {members.map((member, index) => (
             <div 
               key={index} 
-              className={`glass-card rounded-2xl shadow-xl overflow-hidden animate-fade-in animate-scale-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative ${variant === 'list' ? 'flex flex-col md:flex-row gap-6 p-6' : 'p-6'}`}
-              style={{ animationDelay: `${index * 0.12}s` }}
+              className={`glass-card rounded-3xl shadow-2xl overflow-hidden animate-fade-in animate-scale-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative ${variant === 'list' ? 'flex flex-col md:flex-row gap-6 p-8' : 'p-10'}`}
+              style={{ animationDelay: `${0.1 + index * 0.12}s` }}
             >
               <div className={`${variant === 'list' ? 'flex-shrink-0 w-full md:w-1/3' : ''}`}>
                 <div className={`${variant === 'list' ? '' : 'p-6'}`}>
-                  <div className="relative overflow-hidden rounded-lg aspect-square mb-4">
+                  <div className="relative overflow-hidden rounded-xl aspect-square mb-6">
                     <Image 
                       src={member.image} 
                       alt={getLocalizedText(member.name)}
@@ -87,9 +91,9 @@ export default function TeamSection({
               </div>
               
               <div className={`${variant === 'list' ? 'flex-grow' : 'px-6 pb-6'}`}>
-                <h3 className="text-xl font-bold mb-1">{getLocalizedText(member.name)}</h3>
-                <p className="text-primary dark:text-primary mb-3">{getLocalizedText(member.role)}</p>
-                <p className="text-gray-600 dark:text-textSecondary mb-4">{getLocalizedText(member.bio)}</p>
+                <h3 className="text-xl font-bold mb-1 text-primary drop-shadow animate-fade-in delay-100">{getLocalizedText(member.name)}</h3>
+                <p className="text-primary dark:text-primary mb-3 animate-fade-in delay-200">{getLocalizedText(member.role)}</p>
+                <p className="text-gray-600 dark:text-textSecondary mb-4 animate-fade-in delay-300">{getLocalizedText(member.bio)}</p>
                 
                 {member.socialLinks && (
                   <div className="flex space-x-4 rtl:space-x-reverse">

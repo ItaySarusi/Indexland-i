@@ -319,11 +319,11 @@ export default function AboutUs() {
   return (
     <PageContainer>
       {/* Hero Section - עיצוב יוקרתי */}
-      <section className="relative py-20 bg-white/0 overflow-hidden">
+      <section className="relative py-24 bg-white/0 overflow-hidden animate-fade-in">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none" />
         <div className="container z-10 relative">
-          <div className="max-w-3xl mx-auto glass-card animate-fade-in text-center py-16 px-6 md:px-16 rounded-3xl shadow-2xl">
-            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-primary drop-shadow-xl mb-6">
+          <div className="max-w-3xl mx-auto glass-card text-center py-20 px-8 md:px-20 rounded-3xl shadow-2xl animate-scale-in">
+            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-primary drop-shadow-xl mb-8">
               {typeof SEO.aboutUs.title === 'object' ? SEO.aboutUs.title.he : SEO.aboutUs.title}
             </h1>
             <p className="text-xl md:text-2xl text-gray-700 dark:text-textSecondary font-light mb-2">
@@ -334,46 +334,81 @@ export default function AboutUs() {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-16 bg-gradient-to-t from-white/60 to-transparent rounded-b-3xl blur-lg opacity-60 pointer-events-none" />
       </section>
 
+      {/* Divider */}
+      <div className="container mx-auto my-16">
+        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
+      </div>
+
       {/* Mission & Vision Section */}
-      <MissionVisionSection />
+      <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
+        <MissionVisionSection />
+      </div>
+
+      {/* Divider */}
+      <div className="container mx-auto my-16">
+        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
+      </div>
 
       {/* Our Offer Section */}
-      <OurOfferSection />
+      <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
+        <OurOfferSection />
+      </div>
+
+      {/* Divider */}
+      <div className="container mx-auto my-16">
+        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
+      </div>
 
       {/* Core Values Section */}
-      <CoreValuesSection />
+      <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
+        <CoreValuesSection />
+      </div>
+
+      {/* Divider */}
+      <div className="container mx-auto my-16">
+        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
+      </div>
 
       {/* Team Section */}
-      <TeamSection 
-        title={{
-          he: "ההנהלה שלנו",
-          en: "Our Leadership"
-        }}
-        subtitle={{
-          he: "הכירו את הצוות המנוסה שמוביל את החברה להישגים",
-          en: "Meet the experienced team that leads the company to achievements"
-        }}
-        members={teamMembers}
-        variant="grid"
-      />
+      <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
+        <TeamSection 
+          title={{
+            he: "ההנהלה שלנו",
+            en: "Our Leadership"
+          }}
+          subtitle={{
+            he: "הכירו את הצוות המנוסה שמוביל את החברה להישגים",
+            en: "Meet the experienced team that leads the company to achievements"
+          }}
+          members={teamMembers}
+          variant="grid"
+        />
+      </div>
+
+      {/* Divider */}
+      <div className="container mx-auto my-16">
+        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
+      </div>
 
       {/* CTA Section */}
-      <CtaSection 
-        title={{
-          he: "נשמח לדבר איתך",
-          en: "We'd Love to Talk"
-        }}
-        subtitle={{
-          he: "יש לך שאלות? צור קשר עם הצוות שלנו",
-          en: "Got questions? Get in touch with our team"
-        }}
-        primaryButtonText={{
-          he: "תיאום פגישה",
-          en: "Schedule a Meeting"
-        }}
-        primaryButtonHref="/book-meeting"
-        variant="centered"
-      />
+      <div className="animate-fade-in" style={{ animationDelay: '0.5s' }}>
+        <CtaSection 
+          title={{
+            he: "נשמח לדבר איתך",
+            en: "We'd Love to Talk"
+          }}
+          subtitle={{
+            he: "יש לך שאלות? צור קשר עם הצוות שלנו",
+            en: "Got questions? Get in touch with our team"
+          }}
+          primaryButtonText={{
+            he: "תיאום פגישה",
+            en: "Schedule a Meeting"
+          }}
+          primaryButtonHref="/book-meeting"
+          variant="centered"
+        />
+      </div>
     </PageContainer>
   );
 } 

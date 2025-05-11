@@ -117,17 +117,19 @@ export default function TestimonialsSection({
                 {testimonials.map((testimonial, idx) => (
                   <div 
                     key={idx}
-                    className={`glass-card transition-all duration-300 ${idx === currentIndex ? 'opacity-100' : 'opacity-0 absolute top-0 left-0'} rounded-2xl shadow-xl animate-fade-in hover:scale-105 hover:shadow-glass relative overflow-hidden p-6 md:p-10`}
+                    className={`glass-card transition-all duration-300 ${idx === currentIndex ? 'opacity-100' : 'opacity-0 absolute top-0 left-0'} rounded-3xl shadow-2xl border border-white/30 dark:border-white/10 backdrop-blur-2xl animate-fade-in hover:scale-105 hover:shadow-glass relative overflow-hidden p-8 md:p-12`}
                   >
+                    {/* Glass reflection overlay */}
+                    <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent opacity-30 rounded-t-3xl pointer-events-none" />
                     <div className="mb-4">
                       <svg className="w-8 h-8 text-gray-300 dark:text-gray-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                       </svg>
                     </div>
-                    <p className="text-gray-600 dark:text-textSecondary mb-4 italic">
+                    <p className="text-gray-600 dark:text-textSecondary mb-4 italic animate-fade-in delay-100">
                       &ldquo;{getLocalizedText(testimonial.quote)}&rdquo;
                     </p>
-                    <div className="flex items-center">
+                    <div className="flex items-center animate-fade-in delay-200">
                       <div className="mr-4">
                         <Image 
                           className="w-12 h-12 object-cover rounded-full border-2 border-primary"
@@ -138,14 +140,14 @@ export default function TestimonialsSection({
                         />
                       </div>
                       <div>
-                        <p className="font-semibold">{typeof testimonial.author === 'object' ? testimonial.author[language] : testimonial.author}</p>
+                        <p className="font-semibold text-primary">{typeof testimonial.author === 'object' ? testimonial.author[language] : testimonial.author}</p>
                         <p className="text-sm text-gray-600 dark:text-textSecondary">
                           {typeof testimonial.position === 'object' ? testimonial.position[language] : testimonial.position}
                           {testimonial.company && <span>, {typeof testimonial.company === 'object' ? testimonial.company[language] : testimonial.company}</span>}
                         </p>
                       </div>
                     </div>
-                    <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-30 rounded-2xl" />
+                    <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-30 rounded-3xl" />
                   </div>
                 ))}
               </div>

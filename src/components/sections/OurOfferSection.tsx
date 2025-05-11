@@ -5,9 +5,13 @@ import { FaHandshake } from 'react-icons/fa';
 export default function OurOfferSection() {
   const { t } = useLanguage();
   return (
-    <section className="relative py-16 overflow-hidden">
-      <div className="container">
-        <div className="max-w-3xl mx-auto glass-card rounded-2xl shadow-xl p-10 animate-fade-in text-center">
+    <section className="relative py-20 overflow-hidden">
+      {/* Floating glassmorphic background */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[400px] h-[160px] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl opacity-40 animate-float-slow" />
+      </div>
+      <div className="container relative z-10">
+        <div className="max-w-3xl mx-auto glass-card rounded-3xl shadow-2xl p-12 animate-fade-in animate-scale-in text-center">
           <div className="flex items-center justify-center mb-4">
             <FaHandshake className="text-primary text-4xl mr-3 rtl:ml-3 rtl:mr-0" />
             <h2 className="text-2xl font-bold text-primary">

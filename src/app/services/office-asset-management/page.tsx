@@ -81,28 +81,37 @@ export default function OfficeAssetManagement() {
       </div>
 
       {/* Why Choose Us - Glassy cards with slide-in animation */}
-      <section className="relative py-16 overflow-visible">
-        <div className="container">
+      <section className="relative py-20 overflow-visible">
+        {/* Floating glassmorphic background */}
+        <div className="pointer-events-none absolute inset-0 z-0">
+          <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[500px] h-[180px] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl opacity-40 animate-float-slow" />
+        </div>
+        <div className="container relative z-10">
           <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-10 animate-fade-in">
             השירותים שלנו
           </h2>
           <p className="text-lg text-gray-600 dark:text-textSecondary text-center mb-12 animate-fade-in" style={{ animationDelay: '0.1s' }}>
             אנו מציעים מגוון שירותים בתחום ניהול נכסי המשרדים
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
             {features.map((feature, idx) => (
               <div
                 key={idx}
-                className="glass-card rounded-2xl shadow-xl p-8 flex flex-col items-center text-center animate-slide-in-up"
-                style={{ animationDelay: `${0.1 + idx * 0.1}s` }}
+                className="glass-card rounded-3xl shadow-glass-xl border-2 border-white/40 dark:border-white/10 p-10 flex flex-col items-center text-center animate-fade-in animate-scale-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative overflow-hidden group"
+                style={{ animationDelay: `${0.1 + idx * 0.12}s` }}
               >
-                {feature.icon}
-                <h3 className="text-xl font-bold text-primary mb-2">
+                {/* Glass reflection overlay */}
+                <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/50 to-transparent opacity-40 rounded-t-3xl pointer-events-none animate-glass-reflection" />
+                <div className="text-primary mb-4 animate-scale-in group-hover:scale-125 transition-transform duration-300">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold text-primary mb-2 animate-fade-in delay-100">
                   {feature.title}
                 </h3>
-                <p className="text-gray-700 dark:text-textSecondary text-base">
+                <p className="text-gray-700 dark:text-textSecondary text-base animate-fade-in delay-200">
                   {feature.description}
                 </p>
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-40 rounded-3xl" />
               </div>
             ))}
           </div>

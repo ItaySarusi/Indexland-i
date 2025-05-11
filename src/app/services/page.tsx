@@ -341,92 +341,150 @@ export default function Services() {
         variant="centered"
         imageUrl="/images/hero/services.jpg"
       />
-      
-      <ServicesOverview 
-        title={{
-          he: "הפתרונות שלנו",
-          en: "Our Solutions"
-        }}
-        subtitle={{
-          he: "שירותים מקצועיים המותאמים לצרכי הלקוח",
-          en: "Professional services tailored to client needs"
-        }}
-        services={services} 
-      />
-      
-      <WhyChooseUs 
-        title={{
-          he: "למה לבחור בנו",
-          en: "Why Choose Us"
-        }}
-        subtitle={{
-          he: "הצוות המקצועי שלנו מביא ניסיון של עשרות שנים וגישה חדשנית",
-          en: "Our professional team brings decades of experience and an innovative approach"
-        }}
-        features={features} 
-        imageUrl={IMAGES?.sections?.whyChooseUs || ""}
-      />
-      
-      <Metrics 
-        title={{
-          he: "ביצועים מוכחים",
-          en: "Proven Performance"
-        }}
-        subtitle={{
-          he: "תוצאות מוכחות בשטח",
-          en: "Proven results in the field"
-        }}
-        metrics={metrics} 
-      />
-      
-      <FaqSection 
-        title={{
-          he: "שאלות נפוצות",
-          en: "Frequently Asked Questions"
-        }}
-        subtitle={{
-          he: "תשובות לשאלות הנפוצות ביותר על שירותים שלנו",
-          en: "Answers to the most common questions about our services"
-        }}
-        faqs={faqs}
-        columns={2}
-        bgColor="light"
-      />
-      
-      <ContactSection 
-        title={{
-          he: "דברו איתנו",
-          en: "Talk to Us"
-        }}
-        subtitle={{
-          he: "צור קשר עם המומחים שלנו כדי לקבל מידע נוסף על השירותים שלנו",
-          en: "Contact our experts to get more information about our services"
-        }}
-        contactInfos={contactInfos}
-      />
-      
-      <CtaSection 
-        title={{
-          he: "מוכנים להתחיל?",
-          en: "Ready to Start?"
-        }}
-        subtitle={{
-          he: "הצעד הראשון להשקעה מוצלחת מתחיל בשיחה",
-          en: "The first step to a successful investment starts with a conversation"
-        }}
-        primaryButtonText={{
-          he: "קבע פגישת ייעוץ",
-          en: "Schedule a Consultation"
-        }}
-        primaryButtonHref="/contact"
-        secondaryButtonText={{
-          he: "צור קשר",
-          en: "Contact Us"
-        }}
-        secondaryButtonHref="/contact"
-        variant="highlight"
-        bgColor="primary"
-      />
+
+      {/* Divider */}
+      <div className="container mx-auto my-16">
+        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
+      </div>
+
+      {/* ServicesOverview Section */}
+      <div className="container max-w-6xl mx-auto mb-20 animate-fade-in animate-scale-in" style={{ animationDelay: '0.1s' }}>
+        <div className="glass-card rounded-3xl shadow-2xl p-10 md:p-14">
+          <ServicesOverview 
+            title={{
+              he: "הפתרונות שלנו",
+              en: "Our Solutions"
+            }}
+            subtitle={{
+              he: "שירותים מקצועיים המותאמים לצרכי הלקוח",
+              en: "Professional services tailored to client needs"
+            }}
+            services={services} 
+          />
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className="container mx-auto my-16">
+        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
+      </div>
+
+      {/* WhyChooseUs Section */}
+      <div className="container max-w-6xl mx-auto mb-20 animate-fade-in animate-scale-in" style={{ animationDelay: '0.2s' }}>
+        <div className="glass-card rounded-3xl shadow-2xl p-10 md:p-14">
+          <WhyChooseUs 
+            title={{
+              he: "למה לבחור בנו",
+              en: "Why Choose Us"
+            }}
+            subtitle={{
+              he: "הצוות המקצועי שלנו מביא ניסיון של עשרות שנים וגישה חדשנית",
+              en: "Our professional team brings decades of experience and an innovative approach"
+            }}
+            features={features} 
+            imageUrl={IMAGES?.sections?.whyChooseUs || ""}
+          />
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className="container mx-auto my-16">
+        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
+      </div>
+
+      {/* Metrics Section */}
+      <div className="container max-w-6xl mx-auto mb-20 animate-fade-in animate-scale-in" style={{ animationDelay: '0.3s' }}>
+        <div className="glass-card rounded-3xl shadow-2xl p-10 md:p-14">
+          <Metrics 
+            title={{
+              he: "ביצועים מוכחים",
+              en: "Proven Performance"
+            }}
+            subtitle={{
+              he: "תוצאות מוכחות בשטח",
+              en: "Proven results in the field"
+            }}
+            metrics={metrics} 
+          />
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className="container mx-auto my-16">
+        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
+      </div>
+
+      {/* FAQ Section */}
+      <div className="container max-w-6xl mx-auto mb-20 animate-fade-in animate-scale-in" style={{ animationDelay: '0.4s' }}>
+        <div className="glass-card rounded-3xl shadow-2xl p-10 md:p-14">
+          <FaqSection 
+            title={{
+              he: "שאלות נפוצות",
+              en: "Frequently Asked Questions"
+            }}
+            subtitle={{
+              he: "תשובות לשאלות הנפוצות ביותר על שירותים שלנו",
+              en: "Answers to the most common questions about our services"
+            }}
+            faqs={faqs}
+            columns={2}
+            bgColor="light"
+          />
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className="container mx-auto my-16">
+        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
+      </div>
+
+      {/* Contact Section */}
+      <div className="container max-w-4xl mx-auto mb-20 animate-fade-in animate-scale-in" style={{ animationDelay: '0.5s' }}>
+        <div className="glass-card rounded-3xl shadow-2xl p-10 md:p-14">
+          <ContactSection 
+            title={{
+              he: "דברו איתנו",
+              en: "Talk to Us"
+            }}
+            subtitle={{
+              he: "צור קשר עם המומחים שלנו כדי לקבל מידע נוסף על השירותים שלנו",
+              en: "Contact our experts to get more information about our services"
+            }}
+            contactInfos={contactInfos}
+          />
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className="container mx-auto my-16">
+        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
+      </div>
+
+      {/* CTA Section */}
+      <div className="container max-w-4xl mx-auto mb-20 animate-fade-in animate-scale-in" style={{ animationDelay: '0.6s' }}>
+        <CtaSection 
+          title={{
+            he: "מוכנים להתחיל?",
+            en: "Ready to Start?"
+          }}
+          subtitle={{
+            he: "הצעד הראשון להשקעה מוצלחת מתחיל בשיחה",
+            en: "The first step to a successful investment starts with a conversation"
+          }}
+          primaryButtonText={{
+            he: "קבע פגישת ייעוץ",
+            en: "Schedule a Consultation"
+          }}
+          primaryButtonHref="/contact"
+          secondaryButtonText={{
+            he: "צור קשר",
+            en: "Contact Us"
+          }}
+          secondaryButtonHref="/contact"
+          variant="highlight"
+          bgColor="primary"
+        />
+      </div>
     </PageContainer>
   );
 } 

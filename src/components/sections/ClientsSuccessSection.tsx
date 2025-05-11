@@ -56,19 +56,20 @@ export default function ClientsSuccessSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {CLIENTS_SUCCESS.map((item, idx) => (
-            <div key={idx} className="glass-card rounded-2xl shadow-xl p-6 flex flex-col items-center text-center animate-fade-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative overflow-hidden">
-              <div className="mb-4 w-24 h-24 relative">
+            <div key={idx} className="glass-card rounded-3xl shadow-2xl border border-white/30 dark:border-white/10 backdrop-blur-2xl p-8 flex flex-col items-center text-center animate-fade-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent opacity-30 rounded-t-3xl pointer-events-none" />
+              <div className="mb-6 w-28 h-28 relative animate-scale-in">
                 <Image
                   src={item.image}
                   alt={item.title[language]}
                   fill
-                  className="object-cover rounded-full border-2 border-primary"
-                  sizes="96px"
+                  className="object-cover rounded-full border-4 border-white/60 shadow-lg backdrop-blur-xl"
+                  sizes="112px"
                 />
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-primary">{item.title[language]}</h3>
-              <p className="text-gray-600 dark:text-textSecondary">{item.description[language]}</p>
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-30 rounded-2xl" />
+              <h3 className="text-2xl font-semibold mb-2 text-primary drop-shadow animate-fade-in delay-100">{item.title[language]}</h3>
+              <p className="text-gray-600 dark:text-textSecondary animate-fade-in delay-200">{item.description[language]}</p>
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-30 rounded-3xl" />
             </div>
           ))}
         </div>

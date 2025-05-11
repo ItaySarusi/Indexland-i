@@ -91,18 +91,23 @@ export default function CtaSection({
   
   if (variant === 'highlight') {
     return (
-      <section className={`relative py-12 ${getBgClass()} transition-colors duration-200 overflow-hidden`}>
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none" />
+      <section className={`relative py-16 ${getBgClass()} transition-colors duration-200 overflow-hidden`}>
+        {/* Glassmorphic, animated, layered background for CTA */}
+        <div className="pointer-events-none absolute inset-0 z-0">
+          <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-gradient-to-br from-primary/30 to-secondary/20 rounded-full blur-3xl opacity-40 animate-float-slow" />
+        </div>
         <div className="container">
-          <div className="glass-card rounded-3xl bg-gradient-to-r from-primary/80 to-secondary/80 p-8 md:p-12 shadow-2xl animate-fade-in relative overflow-hidden">
+          <div className="glass-card rounded-3xl bg-gradient-to-r from-primary/80 to-secondary/80 p-12 md:p-16 shadow-2xl animate-fade-in relative overflow-hidden border-2 border-white/30 dark:border-white/10 backdrop-blur-2xl">
+            {/* Animated gradient border/glow */}
+            <div className="absolute inset-0 rounded-3xl pointer-events-none border-4 border-gradient-to-r from-primary/40 to-secondary/40 animate-glow" />
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-12 bg-gradient-to-t from-white/60 to-transparent rounded-b-3xl blur-lg opacity-60 pointer-events-none" />
             <div className="md:flex md:items-center md:justify-between">
               <div className="mb-6 md:mb-0 md:w-2/3">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white drop-shadow-xl">
+                <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white drop-shadow-xl animate-scale-in">
                   {titleText}
                 </h2>
                 {subtitleText && (
-                  <p className="text-lg text-white/80 mb-0">
+                  <p className="text-lg text-white/80 mb-0 animate-fade-in delay-100">
                     {subtitleText}
                   </p>
                 )}
@@ -112,7 +117,7 @@ export default function CtaSection({
                   href={primaryButtonHref}
                   variant="outline"
                   size="lg"
-                  className="glass-btn text-white border-white hover:bg-white hover:text-primary animate-scale-in hover:scale-105 hover:shadow-glass transition-all duration-300"
+                  className="glass-btn text-white border-white hover:bg-white hover:text-primary animate-scale-in hover:scale-105 hover:shadow-glass transition-all duration-300 font-semibold text-lg px-8 py-3"
                 >
                   {primaryBtnText}
                 </Button>
@@ -121,7 +126,7 @@ export default function CtaSection({
                     href={secondaryButtonHref}
                     variant="ghost"
                     size="lg"
-                    className="glass-btn text-white hover:bg-white/10 animate-scale-in hover:scale-105 hover:shadow-glass transition-all duration-300"
+                    className="glass-btn text-white hover:bg-white/10 animate-scale-in hover:scale-105 hover:shadow-glass transition-all duration-300 font-semibold text-lg px-8 py-3"
                   >
                     {secondaryBtnText}
                   </Button>

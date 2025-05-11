@@ -61,17 +61,19 @@ export default function Metrics({
           </div>
         )}
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {metrics.map((metric, index) => (
-            <div key={index} className="glass-card p-6 rounded-2xl shadow-xl text-center animate-fade-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative overflow-hidden">
-              <div className="text-4xl font-bold text-primary mb-2">
+            <div key={index} className="glass-card p-8 rounded-3xl shadow-2xl border border-white/30 dark:border-white/10 backdrop-blur-2xl text-center animate-fade-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative overflow-hidden">
+              {/* Glass reflection overlay */}
+              <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent opacity-30 rounded-t-3xl pointer-events-none" />
+              <div className="text-5xl font-extrabold text-primary mb-2 drop-shadow animate-scale-in">
                 {metric.value}
               </div>
-              <div className="text-xl font-semibold mb-2">{getLocalizedText(metric.label)}</div>
+              <div className="text-xl font-semibold mb-2 text-primary animate-fade-in delay-100">{getLocalizedText(metric.label)}</div>
               {metric.description && (
-                <p className="text-gray-600 dark:text-textSecondary">{getLocalizedText(metric.description)}</p>
+                <p className="text-gray-600 dark:text-textSecondary animate-fade-in delay-200">{getLocalizedText(metric.description)}</p>
               )}
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-30 rounded-2xl" />
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-30 rounded-3xl" />
             </div>
           ))}
         </div>

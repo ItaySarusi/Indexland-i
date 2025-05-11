@@ -303,7 +303,7 @@ export default function Home() {
   ];
 
   return (
-    <PageContainer>
+    <PageContainer glass>
       <Hero
         title={{
           he: "פתרונות נדל\"ן מתקדמים עבור המשקיעים של מחר",

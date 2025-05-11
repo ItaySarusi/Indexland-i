@@ -66,24 +66,31 @@ export default function Hero({
 
   if (variant === 'centered') {
     return (
-      <section className="relative bg-white/0 py-16 md:py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none" />
-        <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative">
-          <div className="mx-auto max-w-3xl glass-card animate-fade-in">
-            <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl drop-shadow-xl">
+      <section className="relative bg-white/0 py-20 md:py-32 overflow-hidden">
+        {/* Parallax/floating glassmorphic background */}
+        <div className="pointer-events-none absolute inset-0 z-0">
+          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-gradient-to-br from-primary/30 to-secondary/20 rounded-full blur-3xl opacity-60 animate-float-slow" />
+          <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-gradient-to-tr from-secondary/30 to-primary/10 rounded-full blur-2xl opacity-40 animate-float-medium" />
+          <div className="absolute bottom-0 left-1/3 w-96 h-40 bg-white/20 dark:bg-backgroundDark/30 backdrop-blur-xl rounded-3xl shadow-glass border border-white/20 dark:border-white/10 opacity-60 animate-float-fast" />
+        </div>
+        <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-20 z-10 relative">
+          <div className="mx-auto max-w-3xl glass-card animate-fade-in shadow-2xl rounded-3xl p-10 md:p-16 border border-white/30 dark:border-white/10 backdrop-blur-2xl relative overflow-hidden">
+            {/* Glass reflection overlay */}
+            <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent opacity-30 rounded-t-3xl pointer-events-none" />
+            <h1 className="mb-6 text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-primary drop-shadow-xl animate-scale-in" style={{letterSpacing: '-0.02em'}}>
               {titleText}
             </h1>
-            <p className="mb-8 text-lg font-normal text-gray-700 lg:text-xl sm:px-16 lg:px-48">
+            <p className="mb-10 text-xl font-light text-gray-700 dark:text-textSecondary animate-fade-in delay-100 sm:px-16 lg:px-32">
               {subtitleText}
             </p>
             <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
               {primaryActionLabel && primaryActionHref && (
-                <Button href={primaryActionHref} size="lg" className="glass-btn animate-scale-in hover:scale-105 hover:shadow-glass transition-all duration-300">
+                <Button href={primaryActionHref} size="lg" className="glass-btn animate-scale-in hover:scale-105 hover:shadow-glass transition-all duration-300 font-semibold text-lg px-8 py-3">
                   {primaryLabel}
                 </Button>
               )}
               {secondaryActionLabel && secondaryActionHref && (
-                <Button href={secondaryActionHref} variant="outline" size="lg" className="glass-btn animate-scale-in hover:scale-105 hover:shadow-glass transition-all duration-300">
+                <Button href={secondaryActionHref} variant="outline" size="lg" className="glass-btn animate-scale-in hover:scale-105 hover:shadow-glass transition-all duration-300 font-semibold text-lg px-8 py-3">
                   {secondaryLabel}
                 </Button>
               )}

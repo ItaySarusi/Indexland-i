@@ -40,17 +40,21 @@ const values = [
 export default function CoreValuesSection() {
   const { t } = useLanguage();
   return (
-    <section className="relative py-16 overflow-hidden">
-      <div className="container">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-10 animate-fade-in">
+    <section className="relative py-20 overflow-hidden">
+      {/* Floating glassmorphic background */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[400px] h-[160px] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl opacity-40 animate-float-slow" />
+      </div>
+      <div className="container relative z-10">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-14 animate-fade-in">
           {t({ he: 'הערכים שלנו', en: 'Our Core Values' })}
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
           {values.map((value, idx) => (
             <div
               key={idx}
-              className="glass-card rounded-2xl shadow-xl p-8 flex flex-col items-center text-center animate-fade-in"
-              style={{ animationDelay: `${0.1 + idx * 0.1}s` }}
+              className="glass-card rounded-3xl shadow-2xl p-10 flex flex-col items-center text-center animate-fade-in animate-scale-in"
+              style={{ animationDelay: `${0.1 + idx * 0.12}s` }}
             >
               {value.icon}
               <h3 className="text-xl font-bold text-primary mb-2">
