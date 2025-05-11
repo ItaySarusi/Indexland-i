@@ -53,12 +53,12 @@ export default function Header() {
 
   return (
     <header className="fixed w-full bg-white dark:bg-backgroundDark z-50 shadow-sm transition-colors duration-200">
-      <div className="container py-4 flex items-center justify-between">
+      <div className={`container py-4 flex items-center justify-between ${language === 'he' ? 'flex-row-reverse' : 'flex-row'}`}>
         <Link href="/" className="font-bold text-2xl text-primary" onClick={closeMenu}>
           Indexland
         </Link>
         
-        <nav className={`hidden md:flex items-center gap-6 ${language === 'en' ? 'flex-row-reverse' : ''}`}>
+        <nav className="hidden md:flex items-center gap-6">
           {NAV_LINKS[language].map((link) => 
             !link.children ? (
               <Link 

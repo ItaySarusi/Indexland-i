@@ -8,6 +8,7 @@ import Metrics from "@/components/sections/Metrics";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import TeamSection from "@/components/sections/TeamSection";
 import CtaSection from "@/components/sections/CtaSection";
+import ClientsSuccessSection from "@/components/sections/ClientsSuccessSection";
 import { IMAGES } from "@/constants/site";
 import { Language } from "@/lib/language-context";
 
@@ -334,11 +335,12 @@ export default function Home() {
       <TestimonialsSection 
         testimonials={testimonials}
         bgColor="white"
+        variant="carousel"
+        autoPlay={true}
+        autoPlayInterval={6000}
       />
       
-      <TeamSection 
-        members={teamMembers}
-      />
+      <ClientsSuccessSection />
       
       <CtaSection 
         title={{

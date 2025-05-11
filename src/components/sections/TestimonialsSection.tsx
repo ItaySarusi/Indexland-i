@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useLanguage } from '@/lib/language-context';
 
@@ -19,6 +19,8 @@ interface TestimonialsSectionProps {
   testimonials: Testimonial[];
   variant?: 'grid' | 'carousel';
   bgColor?: 'white' | 'light' | 'gray';
+  autoPlay?: boolean;
+  autoPlayInterval?: number;
 }
 
 export default function TestimonialsSection({
@@ -26,10 +28,13 @@ export default function TestimonialsSection({
   subtitle,
   testimonials = [],
   variant = 'carousel',
-  bgColor = 'light'
+  bgColor = 'light',
+  autoPlay = false,
+  autoPlayInterval = 6000
 }: TestimonialsSectionProps) {
   const { t, language } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
   
   // קבלת הטקסט בשפה הנכונה
   const getLocalizedText = (text: string | Record<string, string> | undefined) => {
@@ -50,6 +55,17 @@ export default function TestimonialsSection({
       prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
     );
   };
+  
+  // Auto-play effect
+  useEffect(() => {
+    if (variant !== 'carousel' || !autoPlay || testimonials.length <= 1) return;
+    intervalRef.current = setInterval(() => {
+      nextSlide();
+    }, autoPlayInterval);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [autoPlay, autoPlayInterval, testimonials.length, variant]);
   
   const defaultTitle = {
     he: "מה הלקוחות שלנו אומרים",
@@ -134,6 +150,29 @@ export default function TestimonialsSection({
                 ))}
               </div>
             </div>
+            {/* חיצים לניווט */}
+            {testimonials.length > 1 && (
+              <div className="absolute inset-y-0 flex items-center justify-between w-full pointer-events-none">
+                <button
+                  onClick={prevSlide}
+                  className="pointer-events-auto bg-white dark:bg-backgroundDark dark:bg-opacity-80 rounded-full shadow p-2 absolute left-0 top-1/2 -translate-y-1/2 hover:bg-primary hover:text-white transition-colors"
+                  aria-label={language === 'he' ? 'המלצה קודמת' : 'Previous testimonial'}
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="pointer-events-auto bg-white dark:bg-backgroundDark dark:bg-opacity-80 rounded-full shadow p-2 absolute right-0 top-1/2 -translate-y-1/2 hover:bg-primary hover:text-white transition-colors"
+                  aria-label={language === 'he' ? 'המלצה הבאה' : 'Next testimonial'}
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            )}
           </div>
         ) : (
           <div className={`${variant === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8' : 'space-y-6'}`}>
