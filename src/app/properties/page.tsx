@@ -2,15 +2,16 @@ import { Metadata } from "next";
 import PageContainer from "@/components/layout/PageContainer";
 import Hero from "@/components/sections/Hero";
 import CtaSection from "@/components/sections/CtaSection";
-import { SEO, IMAGES } from "@/constants/site";
+import { IMAGES } from "@/constants/site";
 import Image from "next/image";
+import { Language } from "@/lib/language-context";
 
 export const metadata: Metadata = {
-  title: typeof SEO.properties.title === 'object' ? SEO.properties.title.he : SEO.properties.title,
-  description: typeof SEO.properties.description === 'object' ? SEO.properties.description.he : SEO.properties.description,
-  keywords: typeof SEO.properties.keywords === 'object' ? SEO.properties.keywords.he : SEO.properties.keywords,
+  title: "הנכסים שלנו | Indexland",
+  description: "נכסי נדל\"ן מסחריים ומשרדיים איכותיים עם פוטנציאל תשואה גבוה",
+  keywords: "נכסי נדל\"ן, השקעות נדל\"ן, משרדים, נכסים מסחריים, תשואה",
   openGraph: {
-    images: [SEO.properties.ogImage],
+    images: ["/images/og-properties.jpg"],
   },
 };
 

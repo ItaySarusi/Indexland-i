@@ -23,7 +23,7 @@ export default function FaqSection({
   columns = 1,
   bgColor = 'white'
 }: FaqSectionProps) {
-  const { language, t } = useLanguage();
+  const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   
   // קבלת הטקסט בשפה הנכונה

@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
-import { useLanguage, Language } from '@/lib/language-context';
+import { useLanguage } from '@/lib/language-context';
 
 interface Testimonial {
   quote: string | Record<Language, string>;
@@ -18,25 +18,37 @@ interface TestimonialsSectionProps {
   subtitle?: string | Record<Language, string>;
   testimonials: Testimonial[];
   variant?: 'grid' | 'carousel';
-  bgColor?: 'white' | 'light';
+  bgColor?: 'white' | 'light' | 'gray';
 }
 
 export default function TestimonialsSection({
   title,
   subtitle,
   testimonials = [],
-  variant = 'grid',
+  variant = 'carousel',
   bgColor = 'light'
 }: TestimonialsSectionProps) {
-  const { language, t } = useLanguage();
+  const { t, language } = useLanguage();
+  const [currentIndex, setCurrentIndex] = useState(0);
   
   // קבלת הטקסט בשפה הנכונה
-  const getLocalizedText = (text: string | Record<Language, string> | undefined): string => {
+  const getLocalizedText = (text: string | Record<string, string> | undefined) => {
     if (!text) return '';
-    if (typeof text === 'string') {
-      return text;
-    }
+    if (typeof text === 'string') return text;
     return t(text);
+  };
+  
+  // Navigation functions
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+  
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+    );
   };
   
   const defaultTitle = {
@@ -72,56 +84,91 @@ export default function TestimonialsSection({
   };
 
   return (
-    <section className={`py-12 ${bgColor === 'light' ? 'bg-backgroundLight dark:bg-backgroundDark' : 'bg-white dark:bg-backgroundDark dark:bg-opacity-90'} transition-colors duration-200`}>
+    <section className={`py-16 ${bgColor === 'white' ? 'bg-white' : bgColor === 'gray' ? 'bg-gray-50' : bgColor === 'light' ? 'bg-blue-50' : 'bg-white'} dark:bg-backgroundDark dark:bg-opacity-90 transition-colors duration-200`}>
       <div className="container">
-        <div className="text-center mb-12">
-          <h2 className="mb-4">{titleText}</h2>
-          <p className="text-lg text-gray-600 dark:text-textSecondary max-w-3xl mx-auto">
-            {subtitleText}
-          </p>
-        </div>
+        {(title || subtitle) && (
+          <div className="text-center mb-12">
+            {title && <h2 className="mb-4">{titleText}</h2>}
+            {subtitle && <p className="text-lg text-gray-600 dark:text-textSecondary max-w-3xl mx-auto">{subtitleText}</p>}
+          </div>
+        )}
         
-        <div className={`${variant === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8' : 'space-y-6'}`}>
-          {testimonials.map((testimonial, index) => (
-            <div 
-              key={index} 
-              className="bg-white dark:bg-backgroundDark dark:bg-opacity-90 p-6 rounded-lg shadow-md"
-            >
-              <div className="mb-6">
-                <svg className="h-8 w-8 text-primary mb-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                </svg>
-                
-                {testimonial.rating && renderStars(testimonial.rating)}
-                
-                <p className="text-gray-600 dark:text-textSecondary mb-4 italic">
-                  "{getLocalizedText(testimonial.quote)}"
-                </p>
-              </div>
-              
-              <div className="flex items-center">
-                {testimonial.avatar && (
-                  <div className="flex-shrink-0 mr-4 rtl:mr-0 rtl:ml-4">
-                    <Image 
-                      src={testimonial.avatar}
-                      alt={getLocalizedText(testimonial.author)}
-                      width={50}
-                      height={50}
-                      className="rounded-full"
-                    />
+        {variant === 'carousel' ? (
+          <div className="relative max-w-4xl mx-auto">
+            <div className="overflow-hidden">
+              <div className="relative">
+                {testimonials.map((testimonial, idx) => (
+                  <div 
+                    key={idx}
+                    className={`transition-all duration-300 ${idx === currentIndex ? 'opacity-100' : 'opacity-0 absolute top-0 left-0'}`}
+                  >
+                    <div className="relative p-6 md:p-10">
+                      <div className="mb-4">
+                        <svg className="w-8 h-8 text-gray-300 dark:text-gray-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                        </svg>
+                      </div>
+                      <p className="text-gray-600 dark:text-textSecondary mb-4 italic">
+                        &ldquo;{getLocalizedText(testimonial.quote)}&rdquo;
+                      </p>
+                      <div className="flex items-center">
+                        <div className="mr-4">
+                          <Image 
+                            className="w-12 h-12 object-cover rounded-full border-2 border-primary"
+                            src={testimonial.avatar}
+                            alt={typeof testimonial.author === 'object' ? testimonial.author[language] : testimonial.author}
+                            width={48}
+                            height={48}
+                          />
+                        </div>
+                        <div>
+                          <p className="font-semibold">{typeof testimonial.author === 'object' ? testimonial.author[language] : testimonial.author}</p>
+                          <p className="text-sm text-gray-600 dark:text-textSecondary">
+                            {typeof testimonial.position === 'object' ? testimonial.position[language] : testimonial.position}
+                            {testimonial.company && <span>, {typeof testimonial.company === 'object' ? testimonial.company[language] : testimonial.company}</span>}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                )}
-                <div>
-                  <h4 className="font-bold">{getLocalizedText(testimonial.author)}</h4>
-                  <p className="text-sm text-gray-600 dark:text-textSecondary">
-                    {getLocalizedText(testimonial.position)}
-                    {testimonial.company && ` - ${getLocalizedText(testimonial.company)}`}
-                  </p>
-                </div>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ) : (
+          <div className={`${variant === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8' : 'space-y-6'}`}>
+            {testimonials.map((testimonial, index) => (
+              <div className="relative p-6 md:p-10">
+                <div className="mb-4">
+                  <svg className="w-8 h-8 text-gray-300 dark:text-gray-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                  </svg>
+                </div>
+                <p className="text-gray-600 dark:text-textSecondary mb-4 italic">
+                  &ldquo;{getLocalizedText(testimonial.quote)}&rdquo;
+                </p>
+                <div className="flex items-center">
+                  <div className="mr-4">
+                    <Image 
+                      className="w-12 h-12 object-cover rounded-full border-2 border-primary"
+                      src={testimonial.avatar}
+                      alt={typeof testimonial.author === 'object' ? testimonial.author[language] : testimonial.author}
+                      width={48}
+                      height={48}
+                    />
+                  </div>
+                  <div>
+                    <p className="font-semibold">{typeof testimonial.author === 'object' ? testimonial.author[language] : testimonial.author}</p>
+                    <p className="text-sm text-gray-600 dark:text-textSecondary">
+                      {typeof testimonial.position === 'object' ? testimonial.position[language] : testimonial.position}
+                      {testimonial.company && <span>, {typeof testimonial.company === 'object' ? testimonial.company[language] : testimonial.company}</span>}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

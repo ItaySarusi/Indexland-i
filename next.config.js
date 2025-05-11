@@ -2,7 +2,20 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['indexland.com', 'unsplash.com', 'images.unsplash.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'indexland.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
   },
   eslint: {
     // עקיפת בדיקות לינטר בבנייה זו רק עד שנטפל בשגיאות באופן מלא
@@ -12,6 +25,14 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  // אפשרויות נתמכות עבור experimental
+  experimental: {
+    inlineCss: true
+  },
+  env: {
+    NEXT_PUBLIC_SITE_URL: 'https://indexland.com',
+  },
+  distDir: '.next',
 };
 
 module.exports = nextConfig; 

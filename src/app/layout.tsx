@@ -10,6 +10,7 @@ import { LanguageProvider } from "@/lib/language-context";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://indexland.com'),
   title: {
     template: `%s | ${SITE_NAME}`,
     default: SITE_NAME,
@@ -19,15 +20,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="he">
       <body className={inter.className}>
         <LanguageProvider>
           <Header />
-          {children}
+          <div className="dark:bg-backgroundDark transition-colors duration-200">
+            {children}
+          </div>
           <Footer />
         </LanguageProvider>
       </body>

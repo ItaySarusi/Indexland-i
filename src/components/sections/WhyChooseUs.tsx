@@ -16,15 +16,19 @@ interface WhyChooseUsProps {
   subtitle?: string | Record<Language, string>;
   features: Feature[];
   imageUrl?: string;
+  reversed?: boolean;
+  bgColor?: string;
 }
 
 export default function WhyChooseUs({
   title,
   subtitle,
   features = [],
-  imageUrl = IMAGES.sections.whyChooseUs
+  imageUrl = IMAGES.sections.whyChooseUs,
+  reversed = false,
+  bgColor = 'white'
 }: WhyChooseUsProps) {
-  const { language, t } = useLanguage();
+  const { t } = useLanguage();
   
   // קבלת הטקסט בשפה הנכונה
   const getLocalizedText = (text: string | Record<Language, string> | undefined): string => {
@@ -49,9 +53,9 @@ export default function WhyChooseUs({
   const subtitleText = getLocalizedText(subtitle) || t(defaultSubtitle);
 
   return (
-    <section className="py-12 bg-white dark:bg-backgroundDark dark:bg-opacity-90 transition-colors duration-200">
+    <section className={`py-12 ${bgColor} dark:bg-backgroundDark dark:bg-opacity-90 transition-colors duration-200`}>
       <div className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${reversed ? 'lg:flex-row-reverse' : ''}`}>
           <div>
             <h2 className="mb-4">{titleText}</h2>
             <p className="text-lg text-gray-600 dark:text-textSecondary mb-8">

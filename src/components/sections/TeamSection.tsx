@@ -21,15 +21,17 @@ interface TeamSectionProps {
   subtitle?: string | Record<Language, string>;
   members: TeamMember[];
   variant?: 'grid' | 'list';
+  bgColor?: string;
 }
 
 export default function TeamSection({
   title,
   subtitle,
   members = [],
-  variant = 'grid'
+  variant = 'grid',
+  bgColor = 'white'
 }: TeamSectionProps) {
-  const { language, t } = useLanguage();
+  const { t } = useLanguage();
   
   // קבלת הטקסט בשפה הנכונה
   const getLocalizedText = (text: string | Record<Language, string> | undefined): string => {
@@ -67,7 +69,7 @@ export default function TeamSection({
           {members.map((member, index) => (
             <div 
               key={index} 
-              className={`bg-white dark:bg-backgroundDark dark:bg-opacity-90 rounded-lg shadow-md overflow-hidden transition-all hover:shadow-xl
+              className={`bg-${bgColor} dark:bg-backgroundDark dark:bg-opacity-90 rounded-lg shadow-md overflow-hidden transition-all hover:shadow-xl
                 ${variant === 'list' ? 'flex flex-col md:flex-row gap-6 p-6' : ''}`}
             >
               <div className={`${variant === 'list' ? 'flex-shrink-0 w-full md:w-1/3' : ''}`}>

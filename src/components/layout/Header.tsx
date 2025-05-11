@@ -3,10 +3,10 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { NAV_LINKS } from '@/constants/site';
-import { useLanguage, Language } from '@/lib/language-context';
+import { useLanguage } from '@/lib/language-context';
 
 export default function Header() {
-  const { language, setLanguage, t, dir } = useLanguage();
+  const { language, setLanguage } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -39,6 +39,10 @@ export default function Header() {
       localStorage.setItem('theme', 'dark');
       setIsDarkMode(true);
     }
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
 
   return (
@@ -135,7 +139,7 @@ export default function Header() {
           
           <button 
             className="text-gray-700 dark:text-textPrimary"
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={toggleMenu}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -153,7 +157,7 @@ export default function Header() {
                     key={link.name}
                     href={link.href}
                     className="py-2 text-gray-700 dark:text-textPrimary hover:text-primary transition-colors"
-                    onClick={() => setMenuOpen(false)}
+                    onClick={toggleMenu}
                   >
                     {link.name}
                   </Link>
@@ -166,7 +170,7 @@ export default function Header() {
                           key={child.name}
                           href={child.href}
                           className="block py-1 text-gray-600 dark:text-textSecondary hover:text-primary"
-                          onClick={() => setMenuOpen(false)}
+                          onClick={toggleMenu}
                         >
                           {child.name}
                         </Link>

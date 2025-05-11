@@ -1,66 +1,32 @@
 import { Metadata } from "next";
+import { SEO, IMAGES } from "@/constants/site";
 import PageContainer from "@/components/layout/PageContainer";
 import Hero from "@/components/sections/Hero";
 import ContactSection from "@/components/sections/ContactSection";
 import FaqSection from "@/components/sections/FaqSection";
-import { SEO, IMAGES } from "@/constants/site";
 
 export const metadata: Metadata = {
-  title: typeof SEO.contact.title === 'object' ? SEO.contact.title.he : SEO.contact.title,
-  description: typeof SEO.contact.description === 'object' ? SEO.contact.description.he : SEO.contact.description,
-  keywords: typeof SEO.contact.keywords === 'object' ? SEO.contact.keywords.he : SEO.contact.keywords,
+  title: "צור קשר | Indexland",
+  description: "צרו קשר עם Indexland לקבלת מידע נוסף על שירותי ניהול נכסים והשקעות נדל\"ן",
+  keywords: "צור קשר, אודות, נדל\"ן, השקעות",
   openGraph: {
-    images: [SEO.contact.ogImage],
+    images: ["/images/og-contact.jpg"],
   },
 };
 
 export default function Contact() {
-  // פרטי יצירת קשר
-  const contactInfo = {
-    email: {
-      label: {
-        he: "דוא\"ל",
-        en: "Email"
-      },
-      value: "info@indexland.com",
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-        </svg>
-      )
-    },
-    phone: {
-      label: {
-        he: "טלפון",
-        en: "Phone"
-      },
-      value: "+972-3-1234567",
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-        </svg>
-      )
-    },
-    address: {
-      label: {
-        he: "כתובת",
-        en: "Address"
-      },
-      value: {
-        he: "רחוב אלנבי 123, תל אביב, ישראל",
-        en: "123 Allenby St., Tel Aviv, Israel"
-      },
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-        </svg>
-      )
-    }
-  };
-  
   // שאלות נפוצות
   const faqs = [
+    {
+      question: {
+        he: "איך אוכל לקבוע פגישת ייעוץ?",
+        en: "How can I schedule a consultation?"
+      },
+      answer: {
+        he: "ניתן לקבוע פגישת ייעוץ דרך דף 'קביעת פגישה' באתר, בטלפון, או באמצעות טופס יצירת הקשר.",
+        en: "You can schedule a consultation through our 'Book a Meeting' page, by phone, or through our contact form."
+      }
+    },
     {
       question: {
         he: "כמה זמן בדרך כלל לוקח לכם להגיב לפניות?",
@@ -100,6 +66,26 @@ export default function Contact() {
         he: "כן, אנו מציעים סיורים בנכסים למשקיעים פוטנציאליים. הסיורים מותאמים אישית לפי העדפותיכם והקריטריונים שלכם. ניתן לתאם סיור באמצעות יצירת קשר עם הצוות שלנו.",
         en: "Yes, we offer property tours for potential investors. The tours are customized according to your preferences and criteria. You can schedule a tour by contacting our team."
       }
+    },
+    {
+      question: {
+        he: "האם אתם מספקים שירותים גם למשקיעים פרטיים?",
+        en: "Do you provide services for private investors as well?"
+      },
+      answer: {
+        he: "כן, אנחנו מלווים משקיעים פרטיים ומוסדיים כאחד. הצוות שלנו מותאם לצרכים הספציפיים של כל לקוח.",
+        en: "Yes, we support both private and institutional investors. Our team adapts to the specific needs of each client."
+      }
+    },
+    {
+      question: {
+        he: "האם אתם עובדים עם ספקי משכנתאות?",
+        en: "Do you work with mortgage providers?"
+      },
+      answer: {
+        he: "כן, יש לנו שיתופי פעולה עם מספר בנקים וספקי משכנתאות מובילים שיכולים להציע תנאים מועדפים ללקוחותינו.",
+        en: "Yes, we have partnerships with several leading banks and mortgage providers that can offer preferred terms for our clients."
+      }
     }
   ];
 
@@ -111,23 +97,31 @@ export default function Contact() {
           en: "Contact Us"
         }}
         subtitle={{
-          he: "אנחנו כאן לענות על כל שאלה ולסייע בכל דרך אפשרית",
-          en: "We're here to answer any questions and assist in any way possible"
+          he: "אנחנו כאן כדי לענות על כל שאלה ולסייע לך בכל צורך",
+          en: "We're here to answer any questions and assist you with your needs"
         }}
         variant="centered"
-        imageUrl={IMAGES.hero.contact}
       />
       
-      <ContactSection 
-        title={{
-          he: "נשמח לשמוע ממך",
-          en: "We'd Love to Hear from You"
+      <ContactSection
+        title={{ 
+          he: "צרו איתנו קשר",
+          en: "Contact Us"
         }}
-        subtitle={{
-          he: "מלא את הטופס ונחזור אליך בהקדם",
-          en: "Fill out the form and we'll get back to you shortly"
+        subtitle={{ 
+          he: "נשמח לשמוע ממך ולענות על כל שאלה. מלא את הטופס ונחזור אליך בהקדם.",
+          en: "We'd love to hear from you and answer any questions. Fill out the form and we'll get back to you soon."
         }}
-        contactInfo={contactInfo}
+        officeLocations={[
+          {
+            city: { he: "תל אביב", en: "Tel Aviv" },
+            address: { he: "רחוב רוטשילד 123, תל אביב", en: "123 Rothschild St, Tel Aviv" },
+            email: "info@indexland.com",
+            phone: "+972-3-1234567",
+            hours: { he: "א&apos;-ה&apos;, 9:00-18:00", en: "Sun-Thu, 9:00-18:00" }
+          },
+          // ... existing code ...
+        ]}
         bgColor="white"
       />
       

@@ -22,7 +22,7 @@ export default function Metrics({
   metrics = [],
   bgColor = 'gray'
 }: MetricsProps) {
-  const { language, t } = useLanguage();
+  const { t } = useLanguage();
   
   // Function to get localized text
   const getLocalizedText = (text: string | Record<Language, string> | undefined): string => {

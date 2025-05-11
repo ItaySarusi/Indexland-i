@@ -29,7 +29,7 @@ export default function ContactSection({
   bgColor = 'light',
   variant = 'default'
 }: ContactSectionProps) {
-  const { language, t } = useLanguage();
+  const { t } = useLanguage();
   
   // קבלת הטקסט בשפה הנכונה
   const getLocalizedText = (text: string | Record<Language, string> | undefined): string => {

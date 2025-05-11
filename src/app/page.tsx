@@ -1,3 +1,5 @@
+'use client';
+
 import PageContainer from "@/components/layout/PageContainer";
 import Hero from "@/components/sections/Hero";
 import ServicesOverview from "@/components/sections/ServicesOverview";
@@ -6,18 +8,8 @@ import Metrics from "@/components/sections/Metrics";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import TeamSection from "@/components/sections/TeamSection";
 import CtaSection from "@/components/sections/CtaSection";
-import { SEO, IMAGES } from "@/constants/site";
-import { Metadata } from "next";
+import { IMAGES } from "@/constants/site";
 import { Language } from "@/lib/language-context";
-
-export const metadata: Metadata = {
-  title: SEO.home.title.he,
-  description: SEO.home.description.he,
-  keywords: SEO.home.keywords.he,
-  openGraph: {
-    images: [SEO.home.ogImage],
-  },
-};
 
 export default function Home() {
   // שירותים לדוגמה
@@ -37,7 +29,7 @@ export default function Home() {
         </svg>
       ),
       href: "/services/office-asset-management",
-      image: IMAGES.sections.services.officeManagement
+      image: IMAGES?.sections?.services?.officeManagement || ""
     },
     {
       title: {
@@ -54,7 +46,7 @@ export default function Home() {
         </svg>
       ),
       href: "/services/international-investment-brokerage",
-      image: IMAGES.sections.services.internationalInvestment
+      image: IMAGES?.sections?.services?.internationalInvestment || ""
     },
     {
       title: {
@@ -71,7 +63,7 @@ export default function Home() {
         </svg>
       ),
       href: "/book-meeting",
-      image: IMAGES.sections.services.investmentAdvice
+      image: IMAGES?.sections?.services?.investmentAdvice || ""
     },
   ];
   

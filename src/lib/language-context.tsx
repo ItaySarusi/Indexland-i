@@ -9,7 +9,7 @@ export type Language = 'he' | 'en';
 type LanguageContextType = {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (text: Record<Language, string>) => string;
+  t: (text: Record<Language, string> | undefined) => string;
   dir: 'rtl' | 'ltr';
 };
 
@@ -31,7 +31,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [dir, setDir] = useState<'rtl' | 'ltr'>('rtl');
 
   // פונקציה למיפוי של טקסט לפי השפה הנוכחית
-  const t = (text: Record<Language, string>): string => {
+  const t = (text: Record<Language, string> | undefined): string => {
+    if (!text) return '';
     return text[language] || text.en || '';
   };
 
