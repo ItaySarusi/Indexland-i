@@ -1,0 +1,138 @@
+'use client';
+
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { BlogPost } from '@/types/blog';
+import { useLanguage, Language } from '@/lib/language-context';
+
+interface BlogPostsListProps {
+  title?: string | Record<Language, string>;
+  subtitle?: string | Record<Language, string>;
+  posts: BlogPost[];
+  showViewAllLink?: boolean;
+}
+
+export default function BlogPostsList({
+  title,
+  subtitle,
+  posts = [],
+  showViewAllLink = true
+}: BlogPostsListProps) {
+  const { language, t } = useLanguage();
+  
+  // Function to get localized text
+  const getLocalizedText = (text: string | Record<Language, string> | undefined): string => {
+    if (!text) return '';
+    if (typeof text === 'string') {
+      return text;
+    }
+    return t(text);
+  };
+  
+  const defaultTitle = {
+    he: "המאמרים האחרונים",
+    en: "Latest Articles"
+  };
+  
+  const defaultSubtitle = {
+    he: "עדכונים, חדשות ומידע מקצועי בתחום הנדל\"ן וההשקעות",
+    en: "Updates, news, and professional information in the field of real estate and investments"
+  };
+  
+  const noPostsText = {
+    he: "אין מאמרים להצגה כרגע.",
+    en: "No articles to display at the moment."
+  };
+  
+  const readingTimeText = {
+    he: "דקות קריאה",
+    en: "min read"
+  };
+  
+  const viewAllText = {
+    he: "לכל המאמרים",
+    en: "View All Articles"
+  };
+  
+  const titleText = getLocalizedText(title) || t(defaultTitle);
+  const subtitleText = getLocalizedText(subtitle) || t(defaultSubtitle);
+
+  return (
+    <section className="py-12 bg-white dark:bg-backgroundDark dark:bg-opacity-90 transition-colors duration-200">
+      <div className="container">
+        <div className="text-center mb-12">
+          <h2 className="mb-4">{titleText}</h2>
+          <p className="text-lg text-gray-600 dark:text-textSecondary max-w-3xl mx-auto">
+            {subtitleText}
+          </p>
+        </div>
+        
+        {posts.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-gray-500 dark:text-textSecondary">{t(noPostsText)}</p>
+          </div>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {posts.map((post) => (
+                <article key={post.id} className="bg-white dark:bg-backgroundDark dark:bg-opacity-90 rounded-lg shadow-md overflow-hidden transition-all hover:shadow-xl">
+                  <Link href={`/blog/${post.slug}`}>
+                    <Image 
+                      className="w-full h-48 object-cover" 
+                      src={post.coverImage} 
+                      alt={typeof post.title === 'object' ? post.title[language] : post.title} 
+                      width={400}
+                      height={200}
+                    />
+                  </Link>
+                  <div className="p-6">
+                    <div className="flex items-center text-sm text-gray-500 dark:text-textSecondary mb-2">
+                      <time dateTime={post.publishedAt}>
+                        {new Date(post.publishedAt).toLocaleDateString(language === 'he' ? 'he-IL' : 'en-US')}
+                      </time>
+                      <span className="mx-2">•</span>
+                      <span>{post.readingTime} {t(readingTimeText)}</span>
+                    </div>
+                    <Link href={`/blog/${post.slug}`}>
+                      <h3 className="text-xl font-bold mb-2 hover:text-primary transition-colors">
+                        {getLocalizedText(post.title)}
+                      </h3>
+                    </Link>
+                    <p className="text-gray-600 dark:text-textSecondary mb-4 line-clamp-3">
+                      {getLocalizedText(post.description)}
+                    </p>
+                    <div className="flex items-center">
+                      <Image 
+                        className="w-10 h-10 rounded-full mr-4" 
+                        src={post.author.image} 
+                        alt={getLocalizedText(post.author.name)} 
+                        width={40}
+                        height={40}
+                      />
+                      <div>
+                        <p className="text-sm font-medium">{getLocalizedText(post.author.name)}</p>
+                        <p className="text-xs text-gray-500 dark:text-textSecondary">{getLocalizedText(post.author.title)}</p>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+            
+            {showViewAllLink && (
+              <div className="text-center mt-12">
+                <Link href="/blog" className="inline-flex items-center text-primary hover:opacity-90 font-medium">
+                  {t(viewAllText)}
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
+                  </svg>
+                </Link>
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </section>
+  );
+} 
