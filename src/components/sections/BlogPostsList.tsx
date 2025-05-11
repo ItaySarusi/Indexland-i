@@ -74,13 +74,15 @@ export default function BlogPostsList({
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {posts.map((post) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+              {posts.map((post, idx) => (
                 <article
                   key={post.id}
-                  className="glass-card rounded-3xl overflow-hidden shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-glass animate-fade-in group"
-                  style={{ minHeight: 420 }}
+                  className="glass-card rounded-3xl overflow-hidden shadow-glass-xl border-2 border-white/40 dark:border-white/10 transition-all duration-300 hover:scale-105 hover:shadow-glass group relative animate-fade-in animate-scale-in"
+                  style={{ minHeight: 440, animationDelay: `${0.1 + idx * 0.10}s` }}
                 >
+                  {/* Glass reflection overlay */}
+                  <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/50 to-transparent opacity-40 rounded-t-3xl pointer-events-none animate-glass-reflection" />
                   <Link href={`/blog/${post.slug}`}>
                     <Image
                       className="w-full h-48 object-cover transition-all duration-300 group-hover:scale-105 group-hover:brightness-95"
@@ -90,20 +92,20 @@ export default function BlogPostsList({
                       height={200}
                     />
                   </Link>
-                  <div className="p-7 flex flex-col gap-3">
-                    <div className="flex items-center text-sm text-gray-500 dark:text-textSecondary mb-2">
-                      <time dateTime={post.publishedAt}>
+                  <div className="p-8 flex flex-col gap-4">
+                    <div className="flex items-center text-sm text-gray-500 dark:text-textSecondary mb-1 font-semibold tracking-wide uppercase">
+                      <time dateTime={post.publishedAt} className="font-semibold">
                         {new Date(post.publishedAt).toLocaleDateString(language === 'he' ? 'he-IL' : 'en-US')}
                       </time>
                       <span className="mx-2">•</span>
                       <span>{post.readingTime} {t(readingTimeText)}</span>
                     </div>
                     <Link href={`/blog/${post.slug}`}>
-                      <h3 className="text-2xl font-extrabold mb-2 hover:text-primary transition-colors text-balance">
+                      <h3 className="text-3xl font-extrabold mb-2 hover:text-primary transition-colors text-balance leading-tight">
                         {getLocalizedText(post.title)}
                       </h3>
                     </Link>
-                    <p className="mb-2 text-base line-clamp-3 text-gray-700 dark:text-textSecondary">
+                    <p className="mb-2 text-lg line-clamp-3 text-gray-700 dark:text-textSecondary font-light">
                       {getLocalizedText(post.description)}
                     </p>
                     <div className="flex flex-wrap gap-2 mb-2">
@@ -127,8 +129,8 @@ export default function BlogPostsList({
                         height={40}
                       />
                       <div>
-                        <p className="text-sm font-medium">{getLocalizedText(post.author.name)}</p>
-                        <p className="text-xs text-gray-500 dark:text-textSecondary">{getLocalizedText(post.author.title)}</p>
+                        <p className="text-base font-semibold leading-tight">{getLocalizedText(post.author.name)}</p>
+                        <p className="text-xs text-gray-500 dark:text-textSecondary font-medium">{getLocalizedText(post.author.title)}</p>
                       </div>
                     </div>
                   </div>

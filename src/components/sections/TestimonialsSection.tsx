@@ -117,7 +117,7 @@ export default function TestimonialsSection({
                 {testimonials.map((testimonial, idx) => (
                   <div 
                     key={idx}
-                    className={`glass-card transition-all duration-300 ${idx === currentIndex ? 'opacity-100' : 'opacity-0 absolute top-0 left-0'} rounded-3xl shadow-2xl border border-white/30 dark:border-white/10 backdrop-blur-2xl animate-fade-in hover:scale-105 hover:shadow-glass relative overflow-hidden p-8 md:p-12`}
+                    className={`glass-card glass-inner-shadow transition-all duration-300 ${idx === currentIndex ? 'opacity-100' : 'opacity-0 absolute top-0 left-0'} rounded-3xl animate-fade-in hover:scale-105 hover:shadow-glass relative overflow-hidden p-8 md:p-12`}
                   >
                     {/* Glass reflection overlay */}
                     <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent opacity-30 rounded-t-3xl pointer-events-none" />

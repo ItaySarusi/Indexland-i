@@ -74,7 +74,7 @@ export default function TeamSection({
           {members.map((member, index) => (
             <div 
               key={index} 
-              className={`glass-card rounded-3xl shadow-2xl overflow-hidden animate-fade-in animate-scale-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative ${variant === 'list' ? 'flex flex-col md:flex-row gap-6 p-8' : 'p-10'}`}
+              className={`glass-card glass-inner-shadow rounded-3xl overflow-hidden animate-fade-in animate-scale-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative ${variant === 'list' ? 'flex flex-col md:flex-row gap-6 p-8' : 'p-10'}`}
               style={{ animationDelay: `${0.1 + index * 0.12}s` }}
             >
               <div className={`${variant === 'list' ? 'flex-shrink-0 w-full md:w-1/3' : ''}`}>

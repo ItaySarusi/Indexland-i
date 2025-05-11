@@ -63,7 +63,7 @@ export default function Metrics({
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {metrics.map((metric, index) => (
-            <div key={index} className="glass-card p-8 rounded-3xl shadow-2xl border border-white/30 dark:border-white/10 backdrop-blur-2xl text-center animate-fade-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative overflow-hidden">
+            <div key={index} className="glass-card glass-inner-shadow p-8 rounded-3xl text-center animate-fade-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative overflow-hidden" style={{ animationDelay: `${0.1 + index * 0.12}s` }}>
               {/* Glass reflection overlay */}
               <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent opacity-30 rounded-t-3xl pointer-events-none" />
               <div className="text-5xl font-extrabold text-primary mb-2 drop-shadow animate-scale-in">

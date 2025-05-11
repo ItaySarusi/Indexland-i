@@ -66,7 +66,7 @@ export default function WhyChooseUs({
             <p className="text-lg text-gray-600 dark:text-textSecondary mb-8 animate-fade-in delay-100">{subtitleText}</p>
             <div className="space-y-8">
               {features.map((feature, index) => (
-                <div key={index} className="flex gap-4 glass-card rounded-3xl p-6 shadow-2xl border border-white/30 dark:border-white/10 backdrop-blur-2xl animate-fade-in transition-all duration-300 hover:scale-105 hover:shadow-glass group relative overflow-hidden">
+                <div key={index} className="glass-card glass-inner-shadow rounded-3xl p-6 transition-all duration-300 animate-fade-in hover:scale-105 hover:shadow-glass group relative overflow-hidden" style={{ animationDelay: `${0.1 + index * 0.12}s` }}>
                   {/* Glass reflection overlay */}
                   <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent opacity-30 rounded-t-3xl pointer-events-none" />
                   <div className="text-primary flex-shrink-0 animate-scale-in">

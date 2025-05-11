@@ -53,7 +53,7 @@ export default function CoreValuesSection() {
           {values.map((value, idx) => (
             <div
               key={idx}
-              className="glass-card rounded-3xl shadow-2xl p-10 flex flex-col items-center text-center animate-fade-in animate-scale-in"
+              className="glass-card glass-inner-shadow rounded-3xl p-10 flex flex-col items-center text-center animate-fade-in animate-scale-in"
               style={{ animationDelay: `${0.1 + idx * 0.12}s` }}
             >
               {value.icon}

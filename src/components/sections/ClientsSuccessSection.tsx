@@ -56,7 +56,7 @@ export default function ClientsSuccessSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {CLIENTS_SUCCESS.map((item, idx) => (
-            <div key={idx} className="glass-card rounded-3xl shadow-2xl border border-white/30 dark:border-white/10 backdrop-blur-2xl p-8 flex flex-col items-center text-center animate-fade-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative overflow-hidden">
+            <div key={idx} className="glass-card glass-inner-shadow rounded-3xl p-8 flex flex-col items-center text-center animate-fade-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative overflow-hidden" style={{ animationDelay: `${0.1 + idx * 0.12}s` }}>
               <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent opacity-30 rounded-t-3xl pointer-events-none" />
               <div className="mb-6 w-28 h-28 relative animate-scale-in">
                 <Image

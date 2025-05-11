@@ -68,7 +68,7 @@ export default function ServicesOverview({
           {services.map((service, index) => (
             <div
               key={index}
-              className="glass-card p-10 rounded-3xl shadow-glass-xl border-2 border-white/40 dark:border-white/10 backdrop-blur-2xl transition-all duration-300 animate-fade-in animate-scale-in hover:scale-105 hover:shadow-glass relative overflow-hidden group"
+              className="glass-card glass-inner-shadow p-10 rounded-3xl transition-all duration-300 animate-fade-in animate-scale-in hover:scale-105 hover:shadow-glass relative overflow-hidden group"
               style={{ animationDelay: `${0.1 + index * 0.12}s` }}
             >
               {/* Glass reflection overlay */}
