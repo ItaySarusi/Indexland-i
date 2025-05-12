@@ -37,7 +37,7 @@
 
 @layer components {
   .container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-fit mx-auto;
   }
   .glass-card {
     @apply bg-white/30 dark:bg-backgroundDark/30 backdrop-blur-2xl shadow-xl ring-0 relative rounded-[2.5rem];

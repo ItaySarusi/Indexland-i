@@ -4,68 +4,89 @@ import PageContainer from "@/components/layout/PageContainer";
 import Hero from "@/components/sections/Hero";
 import ServicesOverview from "@/components/sections/ServicesOverview";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
+import ServicesAtAGlance from "@/components/sections/ServicesAtAGlance";
 import Metrics from "@/components/sections/Metrics";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import TeamSection from "@/components/sections/TeamSection";
 import CtaSection from "@/components/sections/CtaSection";
 import ClientsSuccessSection from "@/components/sections/ClientsSuccessSection";
 import { IMAGES } from "@/constants/site";
-import { Language } from "@/lib/language-context";
+import { HeroGeometric } from "@/components/ui/shape-landing-hero";
 
 export default function Home() {
   // שירותים לדוגמה
   const services = [
     {
       title: {
-        he: "ניהול נכסי משרדים",
-        en: "Office Asset Management"
+        he: "פתרונות משרד מוכנים לאכלוס",
+        en: "Turnkey Office Solutions"
       },
       description: {
-        he: "ניהול מקצועי של נכסי משרדים עם דגש על השבחה והשאת תשואה",
-        en: "Professional management of office assets with emphasis on enhancement and yield maximization"
+        he: "מאיתור האתר ועד הכניסה וליווי יומיומי - שירות קונסיירז' מלא",
+        en: "From site scouting to move-in and daily concierge services"
       },
       icon: (
         <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm3 1h6v4H7V5zm8 8v2h1v1H4v-1h1v-2H4v-1h16v1h-1z" clipRule="evenodd"></path>
         </svg>
       ),
-      href: "/services/office-asset-management",
+      svg: "/files/svg/metrics.svg",
+      href: "/services/turnkey-office-solutions",
       image: IMAGES?.sections?.services?.officeManagement || ""
     },
     {
       title: {
-        he: "תיווך השקעות בינלאומיות",
-        en: "International Investment Brokerage"
+        he: "ניהול נכסים גדולים",
+        en: "Large Asset Management"
       },
       description: {
-        he: "ליווי אישי בתהליך ההשקעה בנכסי נדל\"ן בינלאומיים",
-        en: "Personal guidance in the process of investing in international real estate assets"
+        he: "פיקוח, תחזוקה, דיווח ואסטרטגיות להשבחת ערך הנכס",
+        en: "Oversight, maintenance, reporting, and value-add strategies"
       },
       icon: (
         <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"></path>
         </svg>
       ),
-      href: "/services/international-investment-brokerage",
+      svg: "/files/svg/real-time-analytics.svg",
+      href: "/services/large-asset-management",
       image: IMAGES?.sections?.services?.internationalInvestment || ""
     },
     {
       title: {
-        he: "ייעוץ השקעות",
-        en: "Investment Consulting"
+        he: "השקעות בינלאומיות",
+        en: "International Investment"
       },
       description: {
-        he: "ייעוץ מקצועי המותאם אישית לצרכים שלך והאסטרטגיה העסקית",
-        en: "Professional consulting tailored to your needs and business strategy"
+        he: "איתור נכסי נדל\"ן בדובאי, תמיכה משפטית ופיקוח מקצועי",
+        en: "Dubai real estate sourcing, legal support, and oversight"
       },
       icon: (
         <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd"></path>
         </svg>
       ),
-      href: "/book-meeting",
+      svg: "/files/svg/bull-market.svg",
+      href: "/services/international-investment",
       image: IMAGES?.sections?.services?.investmentAdvice || ""
     },
+    {
+      title: {
+        he: "תיווך מקומי",
+        en: "Local Brokerage"
+      },
+      description: {
+        he: "מכירות מסחריות, השכרה וייעוץ בתל אביב והסביבה",
+        en: "Tel Aviv commercial sales, leasing, and advisory"
+      },
+      icon: (
+        <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd"></path>
+        </svg>
+      ),
+      svg: "/files/svg/handshake.svg",
+      href: "/services/local-brokerage",
+      image: IMAGES?.sections?.services?.officeManagement || ""
+    }
   ];
   
   // יתרונות לדוגמה
@@ -147,7 +168,7 @@ export default function Home() {
       },
     },
     {
-      value: "+200M",
+      value: "M+200",
       label: {
         he: "נכסים בניהול",
         en: "Assets Under Management"
@@ -304,6 +325,27 @@ export default function Home() {
 
   return (
     <PageContainer glass>
+      <HeroGeometric
+        title={{
+          he: "פתרונות נדל\"ן מתקדמים עבור המשקיעים של מחר",
+          en: "Advanced Real Estate Solutions for Tomorrow's Investors"
+        }}
+        subtitle={{
+          he: "אנו מתמחים בניהול נכסי משרדים, תיווך והשקעות נדל\"ן בינלאומיות, עם דגש על שירות אישי ומקצועי",
+          en: "We specialize in office asset management, brokerage, and international real estate investments, with emphasis on personal and professional service"
+        }}
+        primaryActionLabel={{
+          he: "קבע פגישת ייעוץ",
+          en: "Schedule a Consultation"
+        }}
+        primaryActionHref="/book-meeting"
+        secondaryActionLabel={{
+          he: "קרא עוד",
+          en: "Read More"
+        }}
+        secondaryActionHref="/about-us"
+        imageUrl={IMAGES.hero.home}
+      />
       <Hero
         title={{
           he: "פתרונות נדל\"ן מתקדמים עבור המשקיעים של מחר",
@@ -325,17 +367,18 @@ export default function Home() {
         secondaryActionHref="/about-us"
         imageUrl={IMAGES.hero.home}
       />
-      
+
       <ServicesOverview services={services} />
       
       <WhyChooseUs features={features} imageUrl={IMAGES.sections.whyChooseUs} />
       
-      <Metrics metrics={metrics} />
+      <ServicesAtAGlance />
       
+      <Metrics metrics={metrics} />
+
       <TestimonialsSection 
         testimonials={testimonials}
         bgColor="white"
-        variant="carousel"
         autoPlay={true}
         autoPlayInterval={6000}
       />

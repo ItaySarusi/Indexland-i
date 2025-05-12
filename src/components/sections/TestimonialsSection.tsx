@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import { useLanguage } from '@/lib/language-context';
+import { Language } from '@/lib/language-context'; // Assuming Language type is exported from here
 
 interface Testimonial {
   quote: string | Record<Language, string>;
@@ -10,14 +11,12 @@ interface Testimonial {
   position: string | Record<Language, string>;
   company?: string | Record<Language, string>;
   avatar?: string;
-  rating?: number;
 }
 
 interface TestimonialsSectionProps {
   title?: string | Record<Language, string>;
   subtitle?: string | Record<Language, string>;
   testimonials: Testimonial[];
-  variant?: 'grid' | 'carousel';
   bgColor?: 'white' | 'light' | 'gray';
   autoPlay?: boolean;
   autoPlayInterval?: number;
@@ -27,190 +26,189 @@ export default function TestimonialsSection({
   title,
   subtitle,
   testimonials = [],
-  variant = 'carousel',
   bgColor = 'light',
-  autoPlay = false,
-  autoPlayInterval = 6000
+  autoPlay = true,
+  autoPlayInterval = 7000,
 }: TestimonialsSectionProps) {
   const { t, language } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  
-  // קבלת הטקסט בשפה הנכונה
-  const getLocalizedText = (text: string | Record<string, string> | undefined) => {
+  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Helper function to get localized text
+  const getLocalizedText = useCallback((text: string | Record<string, string> | undefined): string => {
     if (!text) return '';
     if (typeof text === 'string') return text;
     return t(text);
-  };
-  
-  // Navigation functions
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-  
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
-    );
-  };
-  
-  // Auto-play effect
-  useEffect(() => {
-    if (variant !== 'carousel' || !autoPlay || testimonials.length <= 1) return;
-    intervalRef.current = setInterval(() => {
-      nextSlide();
-    }, autoPlayInterval);
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, [autoPlay, autoPlayInterval, testimonials.length, variant]);
-  
-  const defaultTitle = {
-    he: "מה הלקוחות שלנו אומרים",
-    en: "What Our Clients Say"
-  };
-  
-  const defaultSubtitle = {
-    he: "המחויבות שלנו ללקוחות שלנו היא ללא פשרות",
-    en: "Our commitment to our clients is uncompromising"
-  };
-  
-  const titleText = getLocalizedText(title) || t(defaultTitle);
-  const subtitleText = getLocalizedText(subtitle) || t(defaultSubtitle);
+  }, [t]);
 
-  const renderStars = (rating: number) => {
-    return (
-      <div className="flex items-center mb-2">
-        {[...Array(5)].map((_, i) => (
-          <svg
-            key={i}
-            className={`w-5 h-5 ${
-              i < rating ? 'text-primary' : 'text-gray-300 dark:text-gray-600'
-            }`}
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-          </svg>
-        ))}
-      </div>
-    );
+  // Stop autoplay
+  const stopAutoPlay = () => {
+    if (autoPlayRef.current) {
+      clearInterval(autoPlayRef.current);
+      autoPlayRef.current = null;
+    }
   };
+
+  // Start autoplay
+  const startAutoPlay = useCallback(() => {
+    if (!autoPlay || testimonials.length <= 1) return;
+    stopAutoPlay(); // Clear existing interval
+    autoPlayRef.current = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    }, autoPlayInterval);
+  }, [autoPlay, autoPlayInterval, testimonials.length]);
+
+  // Handle slide change
+  const goToSlide = (index: number) => {
+    stopAutoPlay();
+    setCurrentIndex(index);
+    // Optionally restart autoplay after manual interaction
+    // setTimeout(startAutoPlay, 5000); 
+  };
+
+  const nextSlide = () => {
+    stopAutoPlay();
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    // Optionally restart autoplay
+    // setTimeout(startAutoPlay, 5000);
+  };
+
+  const prevSlide = () => {
+    stopAutoPlay();
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
+     // Optionally restart autoplay
+    // setTimeout(startAutoPlay, 5000);
+  };
+
+  // Effect for autoplay
+  useEffect(() => {
+    startAutoPlay();
+    return () => stopAutoPlay(); // Cleanup on unmount
+  }, [startAutoPlay]); // Rerun if startAutoPlay changes
+
+  // Effect to update scroll position (optional, for visual centering if needed)
+  useEffect(() => {
+    if (containerRef.current) {
+        const slideWidth = containerRef.current.offsetWidth;
+        // Basic scroll, might need adjustment based on exact layout/styling
+        containerRef.current.scrollTo({
+            left: currentIndex * slideWidth,
+            behavior: 'smooth' 
+        });
+    }
+  }, [currentIndex]);
+
+  const defaultTitle = {
+    he: 'מה הלקוחות שלנו חושבים',
+    en: 'What Our Clients Think',
+  };
+
+  const titleText = getLocalizedText(title) || t(defaultTitle);
+  const subtitleText = getLocalizedText(subtitle);
+
+  if (!testimonials || testimonials.length === 0) {
+    return null; // Don't render anything if there are no testimonials
+  }
+
+  const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <section className={`relative py-16 ${bgColor === 'white' ? 'bg-white' : bgColor === 'gray' ? 'bg-gray-50' : bgColor === 'light' ? 'bg-blue-50' : 'bg-white'} dark:bg-backgroundDark dark:bg-opacity-90 transition-colors duration-200 overflow-hidden`}>
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none" />
-      <div className="container">
-        {(title || subtitle) && (
-          <div className="text-center mb-12">
-            {title && <h2 className="mb-4">{titleText}</h2>}
-            {subtitle && <p className="text-lg text-gray-600 dark:text-textSecondary max-w-3xl mx-auto">{subtitleText}</p>}
+    <section className={`px-8 relative py-16 md:py-24 overflow-hidden ${
+      bgColor === 'white' ? 'bg-white' : bgColor === 'gray' ? 'bg-gray-50' : 'bg-blue-50'
+    } dark:bg-backgroundDark dark:bg-opacity-90 transition-colors duration-200`}>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10 pointer-events-none opacity-50" />
+      
+      <div className="container relative z-10">
+        {(titleText || subtitleText) && (
+          <div className="text-center mb-12 max-w-3xl mx-auto">
+            {titleText && <h2 className="mb-4">{titleText}</h2>}
+            {subtitleText && <p className="text-lg text-gray-600 dark:text-textSecondary">{subtitleText}</p>}
           </div>
         )}
-        
-        {variant === 'carousel' ? (
-          <div className="relative max-w-4xl mx-auto">
-            <div className="overflow-hidden">
-              <div className="relative">
-                {testimonials.map((testimonial, idx) => (
-                  <div 
-                    key={idx}
-                    className={`glass-card glass-inner-shadow transition-all duration-300 ${idx === currentIndex ? 'opacity-100' : 'opacity-0 absolute top-0 left-0'} rounded-3xl animate-fade-in hover:scale-105 hover:shadow-glass relative overflow-hidden p-8 md:p-12`}
-                  >
-                    {/* Glass reflection overlay */}
-                    <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent opacity-30 rounded-t-3xl pointer-events-none" />
-                    <div className="mb-4">
-                      <svg className="w-8 h-8 text-gray-300 dark:text-gray-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                      </svg>
-                    </div>
-                    <p className="text-gray-600 dark:text-textSecondary mb-4 italic animate-fade-in delay-100">
-                      &ldquo;{getLocalizedText(testimonial.quote)}&rdquo;
-                    </p>
-                    <div className="flex items-center animate-fade-in delay-200">
-                      <div className="mr-4">
-                        <Image 
-                          className="w-12 h-12 object-cover rounded-full border-2 border-primary"
-                          src={testimonial.avatar}
-                          alt={typeof testimonial.author === 'object' ? testimonial.author[language] : testimonial.author}
-                          width={48}
-                          height={48}
-                        />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-primary">{typeof testimonial.author === 'object' ? testimonial.author[language] : testimonial.author}</p>
-                        <p className="text-sm text-gray-600 dark:text-textSecondary">
-                          {typeof testimonial.position === 'object' ? testimonial.position[language] : testimonial.position}
-                          {testimonial.company && <span>, {typeof testimonial.company === 'object' ? testimonial.company[language] : testimonial.company}</span>}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-30 rounded-3xl" />
-                  </div>
-                ))}
+
+        <div className="relative max-w-3xl mx-auto">
+          {/* Testimonial Card */}
+          <div 
+            className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-500 ease-in-out p-8 md:p-10 min-h-[250px] flex flex-col justify-center"
+            key={currentIndex} // Add key to trigger re-render animation on change
+            style={{animation: 'fadeIn 0.7s ease-in-out'}}
+          >
+             <svg className="w-10 h-10 text-primary dark:text-secondary mb-4 opacity-80" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.983 3v7.391c0 2.749-2.05 5.749-5.983 7.609l2.454 1.992c3.759-1.992 4.546-5.992 4.546-8.601h3v-9h-7.017zm11.017 0v7.391c0 2.749-2.05 5.749-5.983 7.609l2.454 1.992c3.759-1.992 4.546-5.992 4.546-8.601h3v-9h-7.017z"/>
+            </svg>
+
+            <blockquote className="text-gray-700 dark:text-gray-300 text-lg md:text-xl italic mb-6 flex-grow">
+              &ldquo;{getLocalizedText(currentTestimonial.quote)}&rdquo;
+            </blockquote>
+            
+            <div className="flex items-center">
+              <Image
+                className="w-12 h-12 object-cover rounded-full mr-4 border-2 border-primary/50"
+                src={currentTestimonial.avatar || '/images/placeholder-avatar.png'} // Provide fallback
+                alt={getLocalizedText(currentTestimonial.author)}
+                width={48}
+                height={48}
+                onError={(e) => (e.currentTarget.src = '/images/placeholder-avatar.png')} // Handle image load error
+              />
+              <div>
+                <p className="font-semibold text-primary dark:text-secondary">
+                  {getLocalizedText(currentTestimonial.author)}
+                </p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  {getLocalizedText(currentTestimonial.position)}
+                  {currentTestimonial.company && (
+                    <span>, {getLocalizedText(currentTestimonial.company)}</span>
+                  )}
+                </p>
               </div>
             </div>
-            {/* חיצים לניווט */}
-            {testimonials.length > 1 && (
-              <div className="absolute inset-y-0 flex items-center justify-between w-full pointer-events-none">
-                <button
-                  onClick={prevSlide}
-                  className="pointer-events-auto bg-white dark:bg-backgroundDark dark:bg-opacity-80 rounded-full shadow p-2 absolute left-0 top-1/2 -translate-y-1/2 hover:bg-primary hover:text-white transition-colors"
-                  aria-label={language === 'he' ? 'המלצה קודמת' : 'Previous testimonial'}
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className="pointer-events-auto bg-white dark:bg-backgroundDark dark:bg-opacity-80 rounded-full shadow p-2 absolute right-0 top-1/2 -translate-y-1/2 hover:bg-primary hover:text-white transition-colors"
-                  aria-label={language === 'he' ? 'המלצה הבאה' : 'Next testimonial'}
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </div>
-            )}
           </div>
-        ) : (
-          <div className={`${variant === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8' : 'space-y-6'}`}>
-            {testimonials.map((testimonial, index) => (
-              <div className="relative p-6 md:p-10">
-                <div className="mb-4">
-                  <svg className="w-8 h-8 text-gray-300 dark:text-gray-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                  </svg>
-                </div>
-                <p className="text-gray-600 dark:text-textSecondary mb-4 italic">
-                  &ldquo;{getLocalizedText(testimonial.quote)}&rdquo;
-                </p>
-                <div className="flex items-center">
-                  <div className="mr-4">
-                    <Image 
-                      className="w-12 h-12 object-cover rounded-full border-2 border-primary"
-                      src={testimonial.avatar}
-                      alt={typeof testimonial.author === 'object' ? testimonial.author[language] : testimonial.author}
-                      width={48}
-                      height={48}
-                    />
-                  </div>
-                  <div>
-                    <p className="font-semibold">{typeof testimonial.author === 'object' ? testimonial.author[language] : testimonial.author}</p>
-                    <p className="text-sm text-gray-600 dark:text-textSecondary">
-                      {typeof testimonial.position === 'object' ? testimonial.position[language] : testimonial.position}
-                      {testimonial.company && <span>, {typeof testimonial.company === 'object' ? testimonial.company[language] : testimonial.company}</span>}
-                    </p>
-                  </div>
-                </div>
-              </div>
+
+          {/* Navigation Arrows */}
+          {testimonials.length > 1 && (
+            <>
+              <button
+                onClick={prevSlide}
+                aria-label={language === 'he' ? 'המלצה קודמת' : 'Previous testimonial'}
+                className="absolute top-1/2 -left-4 md:-left-10 transform -translate-y-1/2 bg-white dark:bg-gray-700 rounded-full p-2 shadow-md hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 z-20"
+              >
+                <svg className="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
+              </button>
+              <button
+                onClick={nextSlide}
+                aria-label={language === 'he' ? 'המלצה הבאה' : 'Next testimonial'}
+                className="absolute top-1/2 -right-4 md:-right-10 transform -translate-y-1/2 bg-white dark:bg-gray-700 rounded-full p-2 shadow-md hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 z-20"
+              >
+                <svg className="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+              </button>
+            </>
+          )}
+        </div>
+
+        {/* Navigation Dots */}
+        {testimonials.length > 1 && (
+          <div className="flex justify-center mt-8 gap-2">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                aria-label={`${language === 'he' ? 'עבור להמלצה' : 'Go to testimonial'} ${index + 1}`}
+                className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                  currentIndex === index ? 'bg-primary dark:bg-secondary' : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
+                }`}
+              />
             ))}
           </div>
         )}
       </div>
+      {/* Simple CSS Fade-in Animation */}
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0.3; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </section>
   );
 } 

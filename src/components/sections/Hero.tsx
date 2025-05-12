@@ -104,8 +104,12 @@ export default function Hero({
 
   if (variant === 'image-right') {
     return (
-      <section className="bg-white">
-        <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+      <section className="relative bg-white overflow-hidden">
+        {/* Floating glassmorphic background */}
+        <div className="pointer-events-none absolute inset-0 z-0">
+          <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[600px] h-[240px] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl opacity-40 animate-float-slow" />
+        </div>
+        <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 relative z-10">
           <div className="mr-auto place-self-center lg:col-span-7">
             {renderContent()}
           </div>
@@ -128,8 +132,12 @@ export default function Hero({
 
   // Default variant
   return (
-    <section className="bg-white">
-      <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+    <section className="relative bg-white overflow-hidden">
+      {/* Floating glassmorphic background */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[600px] h-[240px] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl opacity-40 animate-float-slow" />
+      </div>
+      <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 relative z-10">
         <div className="mr-auto place-self-center lg:col-span-7">
           {renderContent()}
         </div>

@@ -9,7 +9,6 @@ import FaqSection from "@/components/sections/FaqSection";
 import CtaSection from "@/components/sections/CtaSection";
 import ContactSection from "@/components/sections/ContactSection";
 import { IMAGES } from "@/constants/site";
-import { Language } from "@/lib/language-context";
 
 export default function Services() {
   // שירותים לדוגמה
@@ -29,6 +28,7 @@ export default function Services() {
           <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clipRule="evenodd"></path>
         </svg>
       ),
+      svg: "/files/svg/office-asset-management.svg",
       href: "/services/office-asset-management"
     },
     {
@@ -46,6 +46,7 @@ export default function Services() {
           <path fillRule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clipRule="evenodd"></path>
         </svg>
       ),
+      svg: "/files/svg/international-investment-brokerage.svg",
       href: "/services/international-investment-brokerage"
     },
     {
@@ -64,6 +65,7 @@ export default function Services() {
           <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
         </svg>
       ),
+      svg: "/files/svg/investment-consulting.svg",
       href: "/services/investment-consulting"
     },
     {
@@ -82,6 +84,7 @@ export default function Services() {
           <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path>
         </svg>
       ),
+      svg: "/files/svg/project-development.svg",
       href: "/services/project-development"
     },
   ];
@@ -332,7 +335,7 @@ export default function Services() {
       <Hero
         title={{
           he: "השירותים שלנו",
-          en: "Our Services"
+          en: "Core Offering"
         }}
         subtitle={{
           he: "אנו מציעים מגוון פתרונות לניהול והשקעות בנדל\"ן משרדי בישראל ובעולם",
