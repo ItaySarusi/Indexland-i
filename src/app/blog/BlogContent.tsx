@@ -5,6 +5,7 @@ import PageContainer from "@/components/layout/PageContainer";
 import Hero from "@/components/sections/Hero";
 import BlogPostsList from "@/components/sections/BlogPostsList";
 import { BlogPost } from '@/types/blog';
+import { IMAGES } from '@/constants/site';
 
 export default function BlogContent() {
   // מידע מדמה (mock) לפוסטים של הבלוג
@@ -286,12 +287,26 @@ export default function BlogContent() {
   return (
     <PageContainer>
       <Hero
-        title={{ he: "הבלוג שלנו", en: "Our Blog" }}
-        subtitle={{ 
+        title={{
+          he: "הבלוג שלנו",
+          en: "Our Blog"
+        }}
+        subtitle={{
           he: "מאמרים, ניתוחים ותובנות בתחום הנדל\"ן המשרדי וההשקעות הבינלאומיות",
           en: "Articles, analysis and insights in the field of office real estate and international investments"
         }}
-        variant="centered"
+        primaryActionLabel={{
+          he: "קרא עוד",
+          en: "Read More"
+        }}
+        primaryActionHref="/blog"
+        secondaryActionLabel={{
+          he: "קרא עוד",
+          en: "Read More"
+        }}
+        secondaryActionHref="/blog"
+        imageUrl={IMAGES.hero.blog}
+        variant="default"
       />
       <div className="py-12 md:py-16">
         <BlogPostsList posts={posts.slice(0, 9)} />

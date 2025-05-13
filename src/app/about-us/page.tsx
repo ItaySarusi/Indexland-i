@@ -318,21 +318,28 @@ export default function AboutUs() {
 
   return (
     <PageContainer>
-      {/* Hero Section - עיצוב יוקרתי */}
-      <section className="relative py-24 bg-white/0 overflow-hidden animate-fade-in">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none" />
-        <div className="container z-10 relative">
-          <div className="max-w-3xl mx-auto glass-card text-center py-20 px-8 md:px-20 rounded-3xl shadow-2xl animate-scale-in">
-            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-primary drop-shadow-xl mb-8">
-              {typeof SEO.aboutUs.title === 'object' ? SEO.aboutUs.title.he : SEO.aboutUs.title}
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-700 dark:text-textSecondary font-light mb-2">
-              {typeof SEO.aboutUs.description === 'object' ? SEO.aboutUs.description.he : SEO.aboutUs.description}
-            </p>
-          </div>
-        </div>
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-16 bg-gradient-to-t from-white/60 to-transparent rounded-b-3xl blur-lg opacity-60 pointer-events-none" />
-      </section>
+      <Hero 
+        title={{
+          he: "הסיפור שלנו - מי אנחנו ולמה אנחנו כאן",
+          en: "Our Story - Who We Are and Why We're Here"
+        }}
+        subtitle={{
+          he: "צוות המומחים שלנו מחויב להוביל את לקוחותינו להצלחה בעולם הנדל\"ן, תוך שמירה על ערכי מקצועיות, יושרה ושירות אישי",
+          en: "Our team of experts is committed to leading our clients to success in the real estate world, while maintaining values of professionalism, integrity and personal service"
+        }}
+        primaryActionLabel={{
+          he: "צור קשר עכשיו",
+          en: "Contact Us Now"
+        }}
+        primaryActionHref="/book-meeting"
+        secondaryActionLabel={{
+          he: "השירותים שלנו",
+          en: "Our Services"
+        }}
+        secondaryActionHref="/services"
+        imageUrl={IMAGES.hero.aboutUs}
+        variant="background-image"
+      />
 
       {/* Divider */}
       <div className="container mx-auto my-16">

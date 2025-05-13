@@ -15,10 +15,10 @@ type LanguageContextType = {
 
 // יצירת הקונטקסט עם ערכים ברירת מחדל
 const LanguageContext = createContext<LanguageContextType>({
-  language: 'he',
+  language: 'en',
   setLanguage: () => { },
   t: () => '',
-  dir: 'rtl',
+  dir: 'ltr',
 });
 
 // הוק לשימוש בקונטקסט השפה
@@ -27,8 +27,8 @@ export const useLanguage = () => useContext(LanguageContext);
 // ספק הקונטקסט עבור השפה
 export function LanguageProvider({ children }: { children: ReactNode }) {
   // השתמש בשפת מערכת ההפעלה או בהעדפת המשתמש השמורה כערך ברירת מחדל
-  const [language, setLanguage] = useState<Language>('he');
-  const [dir, setDir] = useState<'rtl' | 'ltr'>('rtl');
+  const [language, setLanguage] = useState<Language>('en');
+  const [dir, setDir] = useState<'rtl' | 'ltr'>('ltr');
 
   // פונקציה למיפוי של טקסט לפי השפה הנוכחית
   const t = (text: Record<Language, string> | undefined): string => {
@@ -52,9 +52,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     if (savedLanguage && (savedLanguage === 'he' || savedLanguage === 'en')) {
       setLanguage(savedLanguage);
     } else {
-      // אם אין שפה שמורה, השתמש בשפת הדפדפן
-      const browserLanguage = navigator.language.startsWith('he') ? 'he' : 'en';
-      setLanguage(browserLanguage);
+      // אם אין שפה שמורה, השתמש באנגלית כברירת מחדל
+      setLanguage('en');
     }
   }, []);
 

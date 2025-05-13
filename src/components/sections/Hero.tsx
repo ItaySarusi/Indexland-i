@@ -13,7 +13,7 @@ interface HeroProps {
   secondaryActionLabel?: string | Record<Language, string>;
   secondaryActionHref?: string;
   imageUrl?: string;
-  variant?: 'default' | 'centered' | 'image-right';
+  variant?: 'default' | 'centered' | 'image-right' | 'background-image';
 }
 
 export default function Hero({
@@ -63,6 +63,49 @@ export default function Hero({
       </div>
     </div>
   );
+
+  // וריאנט חדש עם התמונה כרקע מלא
+  if (variant === 'background-image') {
+    return (
+      <section className="relative overflow-hidden min-h-[700px] flex items-center">
+        {imageUrl && (
+          <div className="absolute inset-0 w-full h-full">
+            <Image 
+              src={imageUrl} 
+              alt={typeof title === 'string' ? title : title[language]} 
+              fill
+              style={{ objectFit: 'cover' }}
+              priority
+              className="brightness-[0.8]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
+          </div>
+        )}
+        <div className="container mx-auto px-6 py-16 relative z-10">
+          <div className="max-w-xl bg-black/20 backdrop-blur-sm p-8 rounded-lg border border-white/10">
+            <h1 className="mb-6 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl text-white drop-shadow-lg" style={{letterSpacing: '-0.02em'}}>
+              {titleText}
+            </h1>
+            <p className="mb-10 text-lg font-normal text-white/90 lg:text-xl drop-shadow-md">
+              {subtitleText}
+            </p>
+            <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
+              {primaryActionLabel && primaryActionHref && (
+                <Button href={primaryActionHref} size="lg" className="font-semibold px-8 py-3 shadow-lg hover:scale-105 transition-all duration-300">
+                  {primaryLabel}
+                </Button>
+              )}
+              {secondaryActionLabel && secondaryActionHref && (
+                <Button href={secondaryActionHref} variant="outline" size="lg" className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 font-semibold px-8 py-3 shadow-lg hover:scale-105 transition-all duration-300">
+                  {secondaryLabel}
+                </Button>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   if (variant === 'centered') {
     return (

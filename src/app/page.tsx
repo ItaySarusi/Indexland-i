@@ -325,28 +325,8 @@ export default function Home() {
 
   return (
     <PageContainer glass>
-      <HeroGeometric
-        title={{
-          he: "פתרונות נדל\"ן מתקדמים עבור המשקיעים של מחר",
-          en: "Advanced Real Estate Solutions for Tomorrow's Investors"
-        }}
-        subtitle={{
-          he: "אנו מתמחים בניהול נכסי משרדים, תיווך והשקעות נדל\"ן בינלאומיות, עם דגש על שירות אישי ומקצועי",
-          en: "We specialize in office asset management, brokerage, and international real estate investments, with emphasis on personal and professional service"
-        }}
-        primaryActionLabel={{
-          he: "קבע פגישת ייעוץ",
-          en: "Schedule a Consultation"
-        }}
-        primaryActionHref="/book-meeting"
-        secondaryActionLabel={{
-          he: "קרא עוד",
-          en: "Read More"
-        }}
-        secondaryActionHref="/about-us"
-        imageUrl={IMAGES.hero.home}
-      />
       <Hero
+        variant="background-image"
         title={{
           he: "פתרונות נדל\"ן מתקדמים עבור המשקיעים של מחר",
           en: "Advanced Real Estate Solutions for Tomorrow's Investors"
