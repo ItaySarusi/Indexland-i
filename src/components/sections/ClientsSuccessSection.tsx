@@ -1,5 +1,6 @@
 import { useLanguage } from '@/lib/language-context';
 import Image from 'next/image';
+import { useState } from 'react';
 
 const CLIENTS_SUCCESS = [
   {
@@ -39,9 +40,10 @@ const CLIENTS_SUCCESS = [
 
 export default function ClientsSuccessSection() {
   const { language, t } = useLanguage();
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
   return (
-    <section className="relative py-16 bg-gray-50 dark:bg-backgroundDark dark:bg-opacity-90 transition-colors duration-200 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none" />
+    <section className="relative py-20 bg-gradient-to-br from-blue-50 via-cyan-100 to-primary/10 dark:from-secondary/20 dark:via-primary/10 dark:to-backgroundDark transition-colors duration-200 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none opacity-40" />
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="mb-4 text-3xl font-bold text-primary">
@@ -54,22 +56,44 @@ export default function ClientsSuccessSection() {
             })}
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {CLIENTS_SUCCESS.map((item, idx) => (
-            <div key={idx} className="glass-card glass-inner-shadow rounded-3xl p-8 flex flex-col items-center text-center animate-fade-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative overflow-hidden" style={{ animationDelay: `${0.1 + idx * 0.12}s` }}>
-              <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent opacity-30 rounded-t-3xl pointer-events-none" />
+            <div
+              key={idx}
+              className={
+                `group relative rounded-3xl shadow-2xl border-2 border-white/30 bg-white/90 dark:bg-backgroundDark/80 p-8 flex flex-col items-center text-center cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-primary/30 overflow-hidden` +
+                (openIdx === idx ? ' ring-4 ring-primary/20' : '')
+              }
+              style={{ animationDelay: `${0.1 + idx * 0.12}s` }}
+              onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
+            >
               <div className="mb-6 w-28 h-28 relative animate-scale-in">
                 <Image
                   src={item.image}
                   alt={item.title[language]}
                   fill
-                  className="object-cover rounded-full border-4 border-white/60 shadow-lg backdrop-blur-xl"
+                  className="object-cover rounded-full border-4 border-primary/30 shadow-lg backdrop-blur-xl"
                   sizes="112px"
                 />
               </div>
-              <h3 className="text-2xl font-semibold mb-2 text-primary drop-shadow animate-fade-in delay-100">{item.title[language]}</h3>
-              <p className="text-gray-600 dark:text-textSecondary animate-fade-in delay-200">{item.description[language]}</p>
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-30 rounded-3xl" />
+              <h3 className="text-2xl font-semibold mb-2 text-primary drop-shadow animate-fade-in delay-100">
+                {item.title[language]}
+              </h3>
+              <div className="h-2 w-10 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full mb-4" />
+              <div className="relative w-full">
+                <p className="text-gray-600 dark:text-textSecondary animate-fade-in delay-200 line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
+                  {item.description[language]}
+                </p>
+                {/* Accordion: show more on click */}
+                <div className={`transition-all duration-400 overflow-hidden ${openIdx === idx ? 'max-h-40 opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
+                  <div className="p-4 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 text-gray-700 dark:text-textSecondary shadow-inner text-base">
+                    {t({
+                      he: 'למידע נוסף על תהליך הליווי וההצלחה, צרו קשר עם הצוות שלנו.',
+                      en: 'For more details about the process and success, contact our team.'
+                    })}
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
         </div>
