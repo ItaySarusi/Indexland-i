@@ -12,54 +12,51 @@ export default function Footer() {
     <footer className="relative transition-colors duration-200">
       {/* Gradient background for light/dark mode */}
       <div className="absolute inset-0 z-0 bg-gradient-to-tr from-[#fff7f2] via-[#fff3e6] to-[#ffe0c2] dark:from-backgroundDark dark:via-gray-900 dark:to-primary/20" style={{background: 'linear-gradient(120deg, #fff7f2 0%, #fff3e6 60%, #ffe0c2 100%)'}} />
-      <div className="container relative z-10 py-8 flex flex-col gap-6 items-center justify-center">
+      <div className="container relative z-10 py-6 flex flex-col gap-4 items-center justify-center">
         {/* Main grid */}
-        <div className="w-full flex flex-col md:flex-row md:items-start md:justify-center gap-8 md:gap-16">
+        <div className="w-full flex flex-col md:flex-row md:items-start md:justify-center gap-8 md:gap-24">
           {/* Navigation */}
           <nav className="flex flex-col items-center md:items-start">
             <h3 className="text-lg font-bold text-primary mb-2">Navigation</h3>
-            <div className="flex flex-col w-40 md:w-44">
-              <Link href="/" className="rounded-lg bg-primary text-white border-2 border-primary/70 shadow-md px-0 py-2 font-semibold hover:bg-orange-500 hover:text-white transition-all text-center focus:outline-none focus:ring-2 focus:ring-primary/40 focus:ring-offset-2 nav-cta-btn mb-1">Home</Link>
-              <Link href="/about-us" className="rounded-lg bg-primary text-white border-2 border-primary/70 shadow-md px-0 py-2 font-semibold hover:bg-orange-500 hover:text-white transition-all text-center focus:outline-none focus:ring-2 focus:ring-primary/40 focus:ring-offset-2 nav-cta-btn mb-1">About</Link>
-              <Link href="/blog" className="rounded-lg bg-primary text-white border-2 border-primary/70 shadow-md px-0 py-2 font-semibold hover:bg-orange-500 hover:text-white transition-all text-center focus:outline-none focus:ring-2 focus:ring-primary/40 focus:ring-offset-2 nav-cta-btn">Blog</Link>
+            <div className="flex flex-col w-28 md:w-32">
+              <Link href="/" className="rounded-md bg-primary text-white border-2 border-primary/70 shadow-md px-0 py-1.5 text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all text-center focus:outline-none focus:ring-2 focus:ring-primary/40 focus:ring-offset-2 nav-cta-btn mb-1">Home</Link>
+              <Link href="/about-us" className="rounded-md bg-primary text-white border-2 border-primary/70 shadow-md px-0 py-1.5 text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all text-center focus:outline-none focus:ring-2 focus:ring-primary/40 focus:ring-offset-2 nav-cta-btn mb-1">About</Link>
+              <Link href="/blog" className="rounded-md bg-primary text-white border-2 border-primary/70 shadow-md px-0 py-1.5 text-sm font-semibold hover:bg-orange-500 hover:text-white transition-all text-center focus:outline-none focus:ring-2 focus:ring-primary/40 focus:ring-offset-2 nav-cta-btn">Blog</Link>
             </div>
           </nav>
-          {/* Social & Contact in glass card */}
-          <div className="flex flex-col gap-3">
-            <div className="glass-card rounded-2xl p-6 shadow-xl border border-white/30 dark:border-white/10 backdrop-blur-xl bg-white/80 dark:bg-backgroundDark/80">
-              <h3 className="text-lg font-bold text-primary mb-3">Contact</h3>
-              <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300 mb-2">
+          {/* Social & Contact in compact glass card */}
+          <div className="flex flex-col gap-2 items-center md:items-start">
+            <div className="glass-card rounded-xl p-4 shadow-xl border border-white/30 dark:border-white/10 backdrop-blur-xl bg-white/80 dark:bg-backgroundDark/80 w-64 max-w-full">
+              <h3 className="text-base font-bold text-primary mb-2">Contact</h3>
+              <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300 mb-1 text-sm">
                 <FaEnvelope className="text-primary" />
                 <a href="mailto:info@indexland.com" className="hover:text-primary transition-colors">info@indexland.com</a>
               </div>
-              <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300 mb-2">
+              <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300 mb-1 text-sm">
                 <FaPhone className="text-primary" />
                 <a href="tel:+972-3-0000000" className="hover:text-primary transition-colors">+972-3-0000000</a>
               </div>
-              <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300 mb-2">
+              <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300 mb-1 text-sm">
                 <FaMapMarkerAlt className="text-primary" />
                 <span>100 Rothschild Blvd, Tel Aviv</span>
-              </div>
-              <div className="flex gap-4 mt-3">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary text-gray-500 dark:text-gray-400 text-xl"><FaFacebook /></a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary text-gray-500 dark:text-gray-400 text-xl"><FaLinkedin /></a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary text-gray-500 dark:text-gray-400 text-xl"><FaInstagram /></a>
               </div>
             </div>
           </div>
           {/* About/Brand */}
-          <div className="flex flex-col gap-3 max-w-md">
-            <h3 className="text-lg font-bold text-primary mb-2">Indexland</h3>
-            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-              Indexland is a boutique real estate firm specializing in office asset management, brokerage, and international real estate investments. <br />
-              With deep roots in Tel Aviv and a global reach, we provide tailored solutions for investors and companies seeking to maximize value and minimize risk.<br />
-              Our team combines data-driven insights, local expertise, and a commitment to personal service. We believe in transparency, innovation, and building long-term partnerships with our clients.<br />
-              Whether you are expanding your portfolio, entering new markets, or seeking a trusted partner for ongoing management, Indexland is here to guide you every step of the way.
+          <div className="flex flex-col gap-2 max-w-xs items-center md:items-start">
+            <h3 className="text-lg font-bold text-primary mb-1">Indexland</h3>
+            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed text-center md:text-left">
+              Advanced solutions in office asset management, brokerage, and international real estate investments.
             </p>
+            <div className="flex gap-4 mt-2 justify-center md:justify-start">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary text-gray-500 dark:text-gray-400 text-xl"><FaFacebook /></a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary text-gray-500 dark:text-gray-400 text-xl"><FaLinkedin /></a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary text-gray-500 dark:text-gray-400 text-xl"><FaInstagram /></a>
+            </div>
           </div>
         </div>
         {/* Bottom bar */}
-        <div className="border-t border-gray-200 dark:border-gray-800 pt-6 text-center text-gray-500 dark:text-gray-400 text-sm">
+        <div className="border-t border-gray-200 dark:border-gray-800 pt-4 text-center text-gray-500 dark:text-gray-400 text-xs">
           &copy; {new Date().getFullYear()} Indexland. All rights reserved.
         </div>
       </div>
