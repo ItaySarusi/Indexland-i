@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage, Language } from '@/lib/language-context';
+import { motion } from 'framer-motion';
 
 interface Service {
   title: string | Record<Language, string>;
@@ -65,51 +66,41 @@ export default function ServicesOverview({
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={index}
-              className="glass-card glass-inner-shadow p-10 rounded-3xl transition-all duration-300 animate-fade-in animate-scale-in hover:scale-105 hover:shadow-glass relative overflow-hidden group"
-              style={{ animationDelay: `${0.1 + index * 0.12}s` }}
+              className="glass-card glass-inner-shadow p-12 rounded-[2.5rem] flex flex-col items-center text-center transition-all duration-300 group relative overflow-hidden shadow-2xl border-2 border-white/30 hover:scale-105 hover:shadow-2xl hover:border-primary/60 hover:bg-gradient-to-br hover:from-white/60 hover:to-primary/10 dark:hover:from-backgroundDark/60 dark:hover:to-secondary/10"
+              initial={{ opacity: 0, x: language === 'he' ? 80 : -80 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.15 + index * 0.13, ease: [0.23, 1, 0.32, 1] }}
             >
-              {/* Glass reflection overlay */}
-              <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/50 to-transparent opacity-40 rounded-t-3xl pointer-events-none animate-glass-reflection" />
-              <div className="text-primary animate-scale-in">
-                {service.svg ? (
-                  <Image
-                    src={service.svg}
-                    alt={getLocalizedText(service.title)}
-                    width={64}
-                    height={64}
-                    className="m-0 w-28 h-28 object-contain"
-                  />
-                ) : null}
+              {/* Glass reflection overlay + glow border */}
+              <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/60 to-transparent opacity-50 rounded-t-[2.5rem] pointer-events-none animate-glass-reflection" />
+              <div className="absolute inset-0 rounded-[2.5rem] border-4 border-white/20 group-hover:border-primary/40 pointer-events-none" style={{boxShadow:'0 0 32px 0 rgba(255,180,80,0.10), 0 1.5px 12px 0 rgba(255,255,255,0.10)'}} />
+              <div className="flex justify-center items-center mb-6 animate-scale-in">
+                {service.icon}
               </div>
-              <h3 className="text-2xl font-semibold mb-2 text-primary drop-shadow animate-fade-in delay-100">{getLocalizedText(service.title)}</h3>
-              <p className="text-gray-600 dark:text-textSecondary mb-4 animate-fade-in delay-200">{getLocalizedText(service.description)}</p>
-              {service.image && (
-                <div className="mb-4 rounded-xl overflow-hidden animate-fade-in delay-300">
-                  <Image 
-                    src={service.image}
-                    alt={getLocalizedText(service.title)}
-                    width={350}
-                    height={200}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500 rounded-xl shadow-lg"
-                  />
-                </div>
-              )}
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-40 rounded-3xl" />
-              <div className="absolute bottom-0 left-0 right-0 flex">
-                <Link href={service.href} className={`glass-btn inline-flex items-center justify-center px-6 py-2 font-semibold text-primary bg-white/40 dark:bg-backgroundDark/30 border border-white/30 dark:border-white/10 rounded-xl shadow transition-all duration-300 hover:bg-white/60 hover:shadow-glass animate-fade-in delay-400 backdrop-blur-md ${language === 'he' ? 'ml-auto mr-4' : 'mr-auto ml-4'} mb-1`}>
-                  {t({ he: "קרא עוד", en: "Read More" })}
-                  <svg className={`w-4 h-4 ${language === 'he' ? 'mr-2 rtl:rotate-180' : 'ml-2'}`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-                  </svg>
-                </Link>
-              </div>
-            </div>
+              <h3 className="text-2xl md:text-3xl font-extrabold mb-3 text-primary drop-shadow-xl animate-fade-in delay-100 text-center tracking-tight leading-tight">
+                {service.title}
+              </h3>
+              <p className="text-base md:text-lg text-gray-700 dark:text-textSecondary mb-0 animate-fade-in delay-200 text-center font-medium tracking-wide">
+                {service.description}
+              </p>
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-40 rounded-[2.5rem]" />
+            </motion.div>
           ))}
         </div>
+        <style jsx>{`
+          @keyframes slide-up {
+            from { opacity: 0; transform: translateY(32px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          .animate-slide-up {
+            animation: slide-up 1.1s cubic-bezier(0.23, 1, 0.32, 1) both;
+          }
+        `}</style>
       </div>
     </section>
   );

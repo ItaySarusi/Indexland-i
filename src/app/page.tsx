@@ -16,76 +16,40 @@ export default function Home() {
   // שירותים לדוגמה
   const services = [
     {
-      title: {
-        he: "פתרונות משרד מוכנים לאכלוס",
-        en: "Turnkey Office Solutions"
-      },
-      description: {
-        he: "מאיתור האתר ועד הכניסה וליווי יומיומי - שירות קונסיירז' מלא",
-        en: "From site scouting to move-in and daily concierge services"
-      },
+      title: "Turnkey Office Solutions",
+      description: "From scouting and lease to daily concierge.",
       icon: (
-        <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm3 1h6v4H7V5zm8 8v2h1v1H4v-1h1v-2H4v-1h16v1h-1z" clipRule="evenodd"></path>
-        </svg>
+        <svg className="w-12 h-12 animate-bounce" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2" fill="#fff" stroke="#FF9800"/><path d="M16 3v4M8 3v4" stroke="#FF9800" strokeWidth="2" strokeLinecap="round"/><rect x="9" y="12" width="6" height="5" rx="1" fill="#FF9800"/></svg>
       ),
-      svg: "/files/svg/metrics.svg",
       href: "/services/turnkey-office-solutions",
-      image: IMAGES?.sections?.services?.officeManagement || ""
+      svg: "/files/svg/metrics.svg"
     },
     {
-      title: {
-        he: "ניהול נכסים גדולים",
-        en: "Large Asset Management"
-      },
-      description: {
-        he: "פיקוח, תחזוקה, דיווח ואסטרטגיות להשבחת ערך הנכס",
-        en: "Oversight, maintenance, reporting, and value-add strategies"
-      },
+      title: "Large Asset Management",
+      description: "End-to-end strategy, reporting & value creation.",
       icon: (
-        <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"></path>
-        </svg>
+        <svg className="w-12 h-12 animate-pulse" fill="none" stroke="#2196F3" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="13" width="4" height="8" rx="1" fill="#2196F3"/><rect x="9" y="9" width="4" height="12" rx="1" fill="#90CAF9"/><rect x="15" y="5" width="4" height="16" rx="1" fill="#2196F3"/></svg>
       ),
-      svg: "/files/svg/real-time-analytics.svg",
       href: "/services/large-asset-management",
-      image: IMAGES?.sections?.services?.internationalInvestment || ""
+      svg: "/files/svg/real-time-analytics.svg"
     },
     {
-      title: {
-        he: "השקעות בינלאומיות",
-        en: "International Investment"
-      },
-      description: {
-        he: "איתור נכסי נדל\"ן בדובאי, תמיכה משפטית ופיקוח מקצועי",
-        en: "Dubai real estate sourcing, legal support, and oversight"
-      },
+      title: "International Investment",
+      description: "Dubai-based sourcing, legal, and investor support.",
       icon: (
-        <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd"></path>
-        </svg>
+        <svg className="w-12 h-12 animate-spin-slow" fill="none" stroke="#43A047" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#43A047" strokeWidth="2" fill="#C8E6C9"/><path d="M12 6v6l4 2" stroke="#388E3C" strokeWidth="2" strokeLinecap="round"/></svg>
       ),
-      svg: "/files/svg/bull-market.svg",
       href: "/services/international-investment",
-      image: IMAGES?.sections?.services?.investmentAdvice || ""
+      svg: "/files/svg/bull-market.svg"
     },
     {
-      title: {
-        he: "תיווך מקומי",
-        en: "Local Brokerage"
-      },
-      description: {
-        he: "מכירות מסחריות, השכרה וייעוץ בתל אביב והסביבה",
-        en: "Tel Aviv commercial sales, leasing, and advisory"
-      },
+      title: "Local Brokerage",
+      description: "Tel Aviv deals—sales, leases, and market advisory.",
       icon: (
-        <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd"></path>
-        </svg>
+        <svg className="w-12 h-12 animate-wiggle" fill="none" stroke="#9C27B0" strokeWidth="2" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2" fill="#E1BEE7"/><path d="M12 2v8" stroke="#9C27B0" strokeWidth="2" strokeLinecap="round"/><circle cx="12" cy="6" r="2" fill="#9C27B0"/></svg>
       ),
-      svg: "/files/svg/handshake.svg",
       href: "/services/local-brokerage",
-      image: IMAGES?.sections?.services?.officeManagement || ""
+      svg: "/files/svg/handshake.svg"
     }
   ];
   
