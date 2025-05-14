@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useLanguage, Language } from '@/lib/language-context';
 import { IMAGES } from '@/constants/site';
+import { motion } from 'framer-motion';
 
 interface Feature {
   title: string | Record<Language, string>;
@@ -119,23 +120,32 @@ export default function WhyChooseUs({
       <div className="container relative z-10">
         <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${reversed ? 'lg:flex-row-reverse' : ''}`}>
           <div>
-            <h2 className="mb-4 text-4xl md:text-5xl font-extrabold tracking-tight text-primary drop-shadow-xl animate-fade-in">{titleText}</h2>
-            <p className="text-lg text-gray-600 dark:text-textSecondary mb-8 animate-fade-in delay-100">{subtitleText}</p>
-            <div className="space-y-8">
-              {(features.length ? features : defaultFeatures).map((feature, index) => (
-                <div key={index} className="glass-card glass-inner-shadow rounded-3xl p-6 transition-all duration-300 animate-fade-in hover:scale-105 hover:shadow-glass group relative overflow-hidden" style={{ animationDelay: `${0.1 + index * 0.12}s` }}>
-                  {/* Glass reflection overlay */}
-                  <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent opacity-30 rounded-t-3xl pointer-events-none" />
-                  <div className="text-primary flex-shrink-0 animate-scale-in">
-                    {feature.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-semibold mb-2 text-primary drop-shadow animate-fade-in delay-100">{getLocalizedText(feature.title)}</h3>
-                    <p className="text-gray-600 dark:text-textSecondary animate-fade-in delay-200">{getLocalizedText(feature.description)}</p>
-                  </div>
-                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-30 rounded-3xl" />
-                </div>
-              ))}
+            <h2 className="mb-4 text-4xl md:text-5xl font-extrabold tracking-tight text-primary drop-shadow-xl animate-fade-in text-center">{titleText}</h2>
+            <p className="text-lg text-gray-600 dark:text-textSecondary mb-8 animate-fade-in delay-100 text-center">{subtitleText}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
+              {(features.length ? features : defaultFeatures).map((feature, index) => {
+                // 0,1 (שורה ראשונה) delay 0; 2,3 (שורה שנייה) delay 0.25
+                const rowDelay = index < 2 ? 0 : 0.25;
+                return (
+                  <motion.div
+                    key={index}
+                    className="glass-card glass-inner-shadow rounded-3xl p-4 max-w-md w-full mx-auto transition-all duration-300 hover:scale-105 hover:shadow-glass group relative overflow-hidden"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true, amount: 0.4 }}
+                    transition={{ duration: 0.7, delay: rowDelay }}
+                  >
+                    {/* Glass reflection overlay */}
+                    <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent opacity-30 rounded-t-3xl pointer-events-none" />
+                    <div className="text-primary flex-shrink-0 animate-scale-in mb-2 flex justify-center">{feature.icon}</div>
+                    <div>
+                      <h3 className="text-xl font-semibold mb-1 text-primary drop-shadow text-center">{getLocalizedText(feature.title)}</h3>
+                      <p className="text-gray-600 dark:text-textSecondary text-center">{getLocalizedText(feature.description)}</p>
+                    </div>
+                    <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-30 rounded-3xl" />
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
           <div className="relative animate-fade-in delay-200">

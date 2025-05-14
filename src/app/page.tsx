@@ -57,63 +57,54 @@ export default function Home() {
   const features = [
     {
       title: {
-        he: "ניסיון מקצועי",
-        en: "Professional Experience"
+        he: "שותף אחד חכם",
+        en: "One Smart Partner."
       },
       description: {
-        he: "צוות עם ניסיון רב בענף הנדל\"ן המשרדי וההשקעות",
-        en: "Team with extensive experience in the office real estate and investment industry"
+        he: "משרדים, נכסים והשקעות – הכל במקום אחד.",
+        en: "Offices, assets, investments—all in one place."
       },
       icon: (
-        <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-        </svg>
+        <svg className="w-10 h-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="7" width="18" height="13" rx="3" fill="#fff" stroke="#FF9800" strokeWidth="2"/><path d="M8 3h8v4" stroke="#FF9800" strokeWidth="2" strokeLinecap="round"/><rect x="10" y="13" width="4" height="5" rx="1" fill="#FF9800"/></svg>
       ),
     },
     {
       title: {
-        he: "שירות אישי",
-        en: "Personal Service"
+        he: "Data-First.",
+        en: "Data-First."
       },
       description: {
-        he: "ליווי אישי צמוד לאורך כל תהליך ההשקעה והניהול",
-        en: "Close personal guidance throughout the investment and management process"
+        he: "דשבורדים בזמן אמת. החלטות חכמות יותר.",
+        en: "Real-time dashboards. Smarter decisions."
       },
       icon: (
-        <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>
-        </svg>
+        <svg className="w-10 h-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="13" width="4" height="8" rx="1" fill="#2196F3"/><rect x="9" y="9" width="4" height="12" rx="1" fill="#90CAF9"/><rect x="15" y="5" width="4" height="16" rx="1" fill="#2196F3"/></svg>
       ),
     },
     {
       title: {
-        he: "אסטרטגיה מותאמת",
-        en: "Tailored Strategy"
+        he: "On the Ground.",
+        en: "On the Ground."
       },
       description: {
-        he: "פתרונות המותאמים לצרכים הייחודיים של כל לקוח",
-        en: "Solutions tailored to the unique needs of each client"
+        he: "שורשים בתל אביב עם גישה מקומית עמוקה.",
+        en: "Tel Aviv roots with deep local access."
       },
       icon: (
-        <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-          <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
-        </svg>
+        <svg className="w-10 h-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#4CAF50" strokeWidth="2"/><path d="M12 8v4l3 3" stroke="#4CAF50" strokeWidth="2" strokeLinecap="round"/></svg>
       ),
     },
     {
       title: {
-        he: "שקיפות מלאה",
-        en: "Full Transparency"
+        he: "Go Global.",
+        en: "Go Global."
       },
       description: {
-        he: "תקשורת פתוחה ושקופה עם לקוחותינו בכל שלב",
-        en: "Open and transparent communication with our clients at every stage"
+        he: "שער חלק לשוק של דובאי.",
+        en: "Smooth gateway into Dubai's market."
       },
       icon: (
-        <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path>
-        </svg>
+        <svg className="w-10 h-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16zm1-13h-2v6h2V7zm0 8h-2v2h2v-2z" fill="#673AB7"/></svg>
       ),
     },
   ];
@@ -302,7 +293,7 @@ export default function Home() {
 
       <ServicesOverview services={services} />
       
-      <WhyChooseUs features={features} imageUrl={IMAGES.sections.whyChooseUs} />
+      <WhyChooseUs features={features} imageUrl={IMAGES.sections.whyChooseUs} bgColor="bg-gray-50 dark:bg-backgroundDark/80" />
       
       <ServicesAtAGlance />
       
