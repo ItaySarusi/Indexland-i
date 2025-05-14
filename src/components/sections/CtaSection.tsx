@@ -102,7 +102,7 @@ export default function CtaSection({
     // Detect direction for animation
     const { dir } = useLanguage();
     return (
-      <section className="relative py-16 bg-gradient-to-br from-[#ffecd2]/80 via-[#ffb199]/70 to-[#ff512f]/60 transition-colors duration-200 overflow-hidden">
+      <section className="relative py-20 bg-gradient-to-br from-[#ffb199] via-[#ff512f] to-[#ff512f]/90 transition-colors duration-200 overflow-hidden">
         {/* Animated floating white icons in background */}
         <div className="pointer-events-none absolute inset-0 z-0">
           {floatingIcons.map((item, i) => (
@@ -120,8 +120,8 @@ export default function CtaSection({
         </div>
         <div className="container flex justify-center items-center">
           <motion.div
-            className="relative w-full max-w-5xl mx-auto glass-card rounded-3xl p-12 md:p-16 shadow-2xl border border-white/30 backdrop-blur-2xl overflow-hidden flex flex-col md:flex-row md:items-center md:justify-between"
-            style={{ background: 'linear-gradient(120deg,rgba(255,255,255,0.25) 0%,rgba(255,255,255,0.10) 100%)', boxShadow: '0 8px 48px 0 rgba(255, 152, 0, 0.10), 0 1.5px 12px 0 rgba(255,255,255,0.10)' }}
+            className="relative w-full max-w-5xl mx-auto glass-card rounded-3xl p-12 md:p-16 shadow-2xl border border-white/40 backdrop-blur-2xl overflow-hidden flex flex-col md:flex-row md:items-center md:justify-between"
+            style={{ background: 'linear-gradient(120deg,rgba(255,255,255,0.38) 0%,rgba(255,255,255,0.18) 100%)', boxShadow: '0 8px 48px 0 rgba(255, 152, 0, 0.13), 0 1.5px 12px 0 rgba(255,255,255,0.13)' }}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -129,71 +129,72 @@ export default function CtaSection({
             aria-label="Call to Action Section"
           >
             {/* Glass reflection overlay */}
-            <div className="absolute inset-0 rounded-3xl pointer-events-none" style={{background:'linear-gradient(120deg,rgba(255,255,255,0.18) 0%,rgba(255,255,255,0.08) 100%)'}} />
+            <div className="absolute inset-0 rounded-3xl pointer-events-none" style={{background:'linear-gradient(120deg,rgba(255,255,255,0.22) 0%,rgba(255,255,255,0.10) 100%)'}} />
             {/* Glow border */}
-            <div className="absolute inset-0 rounded-3xl pointer-events-none border-4 border-white/30 animate-glow" style={{boxShadow:'0 0 32px 0 #fff7, 0 1.5px 12px 0 #fff3'}} />
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-12 bg-gradient-to-t from-white/60 to-transparent rounded-b-3xl blur-lg opacity-60 pointer-events-none" />
-            <motion.div
-              className="flex-1 mb-8 md:mb-0 md:mr-8"
-              initial={{ opacity: 0, x: dir === 'rtl' ? 80 : -80 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-            >
-              <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-white drop-shadow-xl animate-scale-in tracking-tight">
-                {titleText}
-              </h2>
-              {subtitleText && (
-                <p className="text-lg text-white/80 mb-0 animate-fade-in delay-100">
-                  {subtitleText}
-                </p>
-              )}
-            </motion.div>
-            <motion.div
-              className="flex flex-col sm:flex-row gap-6 md:gap-4 flex-shrink-0"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.7, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
-            >
-              <button
-                className="luxury-cta-btn group"
-                aria-label={primaryBtnText}
-                tabIndex={0}
-                type="button"
+            <div className="absolute inset-0 rounded-3xl pointer-events-none border-4 border-white/40 animate-glow" style={{boxShadow:'0 0 32px 0 #fff7, 0 1.5px 12px 0 #fff3'}} />
+            <div className="flex flex-col md:flex-row w-full md:items-center md:justify-between gap-8">
+              <motion.div
+                className="flex-1 mb-8 md:mb-0 md:mr-8 flex flex-col justify-center"
+                initial={{ opacity: 0, x: dir === 'rtl' ? 80 : -80 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
               >
-                <span className="flex items-center gap-2 text-primary font-bold text-lg">
-                  <FaRegComments className="text-xl text-primary group-hover:text-primary transition-colors duration-200" />
-                  {primaryBtnText}
-                </span>
-              </button>
-              {secondaryButtonText && secondaryButtonHref && (
+                <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-white drop-shadow-xl animate-scale-in tracking-tight leading-tight whitespace-pre-line">
+                  {typeof titleText === 'string' ? titleText.replace(/ ([^ ]*)$/, '\n$1') : titleText}
+                </h2>
+                {subtitleText && (
+                  <p className="text-lg text-white/80 mb-0 animate-fade-in delay-100 max-w-xl whitespace-pre-line">
+                    {typeof subtitleText === 'string' ? subtitleText.replace(/ ([^ ]*)$/, '\n$1') : subtitleText}
+                  </p>
+                )}
+              </motion.div>
+              <motion.div
+                className="flex flex-col gap-6 md:gap-6 flex-shrink-0 items-center md:items-end w-full max-w-xs"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.7, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
+              >
                 <button
                   className="luxury-cta-btn group"
-                  aria-label={secondaryBtnText}
+                  aria-label={primaryBtnText}
                   tabIndex={0}
                   type="button"
                 >
                   <span className="flex items-center gap-2 text-primary font-bold text-lg">
-                    <FaHandshake className="text-xl text-primary group-hover:text-primary transition-colors duration-200" />
-                    {secondaryBtnText}
+                    <FaRegComments className="text-xl text-primary group-hover:text-primary transition-colors duration-200" />
+                    {primaryBtnText}
                   </span>
                 </button>
-              )}
-            </motion.div>
+                {secondaryButtonText && secondaryButtonHref && (
+                  <button
+                    className="luxury-cta-btn group"
+                    aria-label={secondaryBtnText}
+                    tabIndex={0}
+                    type="button"
+                  >
+                    <span className="flex items-center gap-2 text-primary font-bold text-lg">
+                      <FaHandshake className="text-xl text-primary group-hover:text-primary transition-colors duration-200" />
+                      {secondaryBtnText}
+                    </span>
+                  </button>
+                )}
+              </motion.div>
+            </div>
             <style jsx>{`
               .luxury-cta-btn {
-                background: rgba(255,255,255,0.18);
-                border: 2px solid #fff;
+                background: rgba(255,255,255,0.22);
+                border: 2.5px solid #fff;
                 border-radius: 1.5rem;
                 box-shadow: 0 2px 24px 0 #fff6, 0 1.5px 12px 0 #fff3;
                 padding: 1.25rem 2.5rem;
-                min-width: 220px;
+                min-width: 320px;
                 min-height: 80px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                transition: box-shadow 0.25s, background 0.25s, transform 0.18s;
+                transition: box-shadow 0.25s, background 0.25s, transform 0.18s, border-color 0.18s;
                 font-weight: 700;
                 font-size: 1.18rem;
                 outline: none;
@@ -203,8 +204,8 @@ export default function CtaSection({
               .luxury-cta-btn:hover, .luxury-cta-btn:focus, .luxury-cta-btn:active {
                 background: rgba(255,255,255,0.32);
                 box-shadow: 0 0 32px 6px #fff, 0 2px 24px 0 #ff9800cc;
-                transform: scale(1.045);
-                border-color: #fff;
+                transform: scale(1.055);
+                border-color: #ff9800;
                 z-index: 2;
               }
               .luxury-cta-btn:after {
@@ -217,7 +218,13 @@ export default function CtaSection({
                 transition: box-shadow 0.25s;
               }
               .luxury-cta-btn:hover:after, .luxury-cta-btn:focus:after, .luxury-cta-btn:active:after {
-                box-shadow: 0 0 24px 6px #ff9800cc;
+                box-shadow: 0 0 32px 8px #ff9800cc, 0 0 64px 16px #fff8;
+                animation: luxury-shine 0.5s linear;
+              }
+              @keyframes luxury-shine {
+                0% { box-shadow: 0 0 0 0 #ff9800cc, 0 0 0 0 #fff8; }
+                50% { box-shadow: 0 0 32px 8px #ff9800cc, 0 0 64px 16px #fff8; }
+                100% { box-shadow: 0 0 0 0 #ff9800cc, 0 0 0 0 #fff8; }
               }
             `}</style>
           </motion.div>

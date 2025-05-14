@@ -96,6 +96,12 @@
     position: relative;
     z-index: 3;
   }
+  .snake-border-btn.bg-primary:hover,
+  .snake-border-btn.bg-primary:focus {
+    background: #00eaff !important;
+    color: #fff !important;
+    /* Remove any white overlay or gradient */
+  }
 }
 
 @layer utilities {
