@@ -327,24 +327,12 @@ export default function Home() {
     <PageContainer glass>
       <Hero
         variant="background-image"
-        title={{
-          he: "פתרונות נדל\"ן מתקדמים עבור המשקיעים של מחר",
-          en: "Advanced Real Estate Solutions for Tomorrow's Investors"
-        }}
-        subtitle={{
-          he: "אנו מתמחים בניהול נכסי משרדים, תיווך והשקעות נדל\"ן בינלאומיות, עם דגש על שירות אישי ומקצועי",
-          en: "We specialize in office asset management, brokerage, and international real estate investments, with emphasis on personal and professional service"
-        }}
-        primaryActionLabel={{
-          he: "קבע פגישת ייעוץ",
-          en: "Schedule a Consultation"
-        }}
+        title="Indexland: Your A–Z Office & Real Estate Partner"
+        subtitle="Turnkey workspace solutions, asset management, and investment services—local and global."
+        primaryActionLabel="Book a Meeting"
         primaryActionHref="/book-meeting"
-        secondaryActionLabel={{
-          he: "קרא עוד",
-          en: "Read More"
-        }}
-        secondaryActionHref="/about-us"
+        secondaryActionLabel="Explore Services"
+        secondaryActionHref="/services"
         imageUrl={IMAGES.hero.home}
       />
 

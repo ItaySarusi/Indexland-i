@@ -52,40 +52,30 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed w-full bg-white dark:bg-backgroundDark z-50 shadow-sm transition-colors duration-200">
-      <div className={`container py-4 flex items-center justify-between ${language === 'he' ? 'flex-row' : 'flex-row-reverse'}`}>
-        <Link
-          href="/"
-          className={`font-bold text-2xl text-primary ${language === 'he' ? 'order-2 ml-0 mr-4' : 'order-1 mr-0 ml-4'}`}
-          onClick={closeMenu}
-        >
-          Indexland
-        </Link>
-        
-        <nav
-          className={`hidden md:flex items-center gap-6 ${language === 'he' ? 'order-1' : 'order-2'}`}
-        >
-          {NAV_LINKS[language].map((link) => 
+    <header className="navbar-glass absolute top-0 left-0 w-full z-50 transition-colors duration-200 py-2 px-0 bg-white/0 backdrop-blur-xl">
+      <div className="container flex items-center justify-between flex-row-reverse">
+        <nav className="hidden md:flex items-center gap-8 order-1">
+          {NAV_LINKS[language].map((link) =>
             !link.children ? (
-              <Link 
+              <Link
                 key={link.name}
                 href={link.href}
-                className={link.isButton 
-                  ? "bg-primary text-white px-4 py-2 rounded-md hover:opacity-90 transition-colors dark:text-textPrimary" 
-                  : "text-gray-700 hover:text-primary transition-colors dark:text-textPrimary"
+                className={link.isButton
+                  ? "snake-border-btn bg-primary text-white dark:text-textPrimary"
+                  : "snake-border-btn"
                 }
               >
-                {link.name}
+                <span>{link.name}</span>
               </Link>
             ) : (
               <div key={link.name} className="relative group">
-                <button className="text-gray-700 hover:text-primary transition-colors dark:text-textPrimary flex items-center gap-1">
-                  {link.name}
+                <button className="snake-border-btn flex items-center gap-1">
+                  <span>{link.name}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div className={`absolute ${language === 'he' ? 'right-0' : 'left-0'} mt-2 w-64 bg-white dark:bg-backgroundDark border dark:border-gray-700 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all`}>
+                <div className={`absolute right-0 mt-2 w-64 bg-white/90 dark:bg-backgroundDark/90 border dark:border-gray-700 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all backdrop-blur-xl`}>
                   {link.children.map((child) => (
                     <Link
                       key={child.name}
@@ -100,10 +90,9 @@ export default function Header() {
               </div>
             )
           )}
-          
-          <button 
+          <button
             onClick={toggleDarkMode}
-            className="ml-2 p-2 rounded-md text-gray-700 dark:text-textPrimary hover:bg-gray-100 dark:hover:bg-backgroundDark dark:hover:bg-opacity-50"
+            className="snake-border-btn ml-2 p-2 flex items-center justify-center"
             aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
           >
             {isDarkMode ? (
@@ -116,14 +105,20 @@ export default function Header() {
               </svg>
             )}
           </button>
-          
-          <button 
+          <button
             onClick={toggleLanguage}
-            className="px-3 py-1 rounded-md border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-textPrimary hover:bg-gray-50 dark:hover:bg-backgroundDark dark:hover:bg-opacity-50"
+            className="snake-border-btn px-3 py-1"
           >
-            {language === 'he' ? 'EN' : 'עב'}
+            <span>{language === 'he' ? 'EN' : 'עב'}</span>
           </button>
         </nav>
+        <Link
+          href="/"
+          className="font-extrabold text-3xl tracking-tight text-primary order-2 ml-0 mr-12 drop-shadow-neon"
+          onClick={closeMenu}
+        >
+          Indexland
+        </Link>
         
         <div className="md:hidden flex items-center">
           <button 

@@ -4,6 +4,8 @@ import React from 'react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import { useLanguage, Language } from '@/lib/language-context';
+import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 interface HeroProps {
   title: string | Record<Language, string>;
@@ -66,8 +68,22 @@ export default function Hero({
 
   // וריאנט חדש עם התמונה כרקע מלא
   if (variant === 'background-image') {
+    // Typing animation for the first line (remove colon)
+    const headline = titleText.split(':')[0];
+    const subheadline = titleText.split(':')[1]?.trim() || '';
+    const [typed, setTyped] = useState('');
+    useEffect(() => {
+      let i = 0;
+      setTyped('');
+      const interval = setInterval(() => {
+        setTyped(headline.slice(0, i + 1));
+        i++;
+        if (i === headline.length) clearInterval(interval);
+      }, 40);
+      return () => clearInterval(interval);
+    }, [headline]);
     return (
-      <section className="relative overflow-hidden min-h-[700px] flex items-center">
+      <section className="relative overflow-hidden min-h-screen flex items-center" style={{ minHeight: '100vh' }}>
         {imageUrl && (
           <div className="absolute inset-0 w-full h-full">
             <Image 
@@ -81,28 +97,79 @@ export default function Hero({
             <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
           </div>
         )}
-        <div className="container mx-auto px-6 py-16 relative z-10">
-          <div className="max-w-xl bg-black/20 backdrop-blur-sm p-8 rounded-lg border border-white/10">
-            <h1 className="mb-6 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl text-white drop-shadow-lg" style={{letterSpacing: '-0.02em'}}>
-              {titleText}
+        <div className="container mx-auto h-full flex justify-center items-center relative z-10">
+          <div className="max-w-2xl w-full bg-black/20 backdrop-blur-sm py-6 px-8 rounded-lg border border-white/10 flex flex-col items-center text-center min-h-fit">
+            <h1 className="mb-1 text-5xl font-extrabold tracking-tight leading-none md:text-6xl lg:text-7xl text-white drop-shadow-lg" style={{letterSpacing: '-0.02em'}}>
+              <span className="block whitespace-pre-line min-h-[2.5em]">
+                <span className="block">
+                  {typed}
+                  <span className="inline-block animate-pulse">|</span>
+                </span>
+                <motion.span
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: typed.length === headline.length ? 1 : 0, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="block text-white/90 text-2xl md:text-3xl mt-2 font-bold"
+                >
+                  {subheadline}
+                </motion.span>
+              </span>
             </h1>
-            <p className="mb-10 text-lg font-normal text-white/90 lg:text-xl drop-shadow-md">
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: typed.length === headline.length ? 1 : 0, y: 0 }}
+              transition={{ duration: 1, delay: 0.6 }}
+              className="mt-0 mb-2 text-lg font-normal text-white/90 lg:text-xl drop-shadow-md"
+            >
               {subtitleText}
-            </p>
-            <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
+            </motion.p>
+            <div className="flex flex-col sm:flex-row justify-center items-center w-full gap-4 mt-1">
               {primaryActionLabel && primaryActionHref && (
-                <Button href={primaryActionHref} size="lg" className="font-semibold px-8 py-3 shadow-lg hover:scale-105 transition-all duration-300">
+                <Button
+                  href={primaryActionHref}
+                  size="lg"
+                  className="shine-btn bg-orange-500 text-white hover:bg-orange-600 border-none font-semibold px-8 py-3 shadow-lg transition-all duration-300"
+                >
                   {primaryLabel}
                 </Button>
               )}
               {secondaryActionLabel && secondaryActionHref && (
-                <Button href={secondaryActionHref} variant="outline" size="lg" className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 font-semibold px-8 py-3 shadow-lg hover:scale-105 transition-all duration-300">
+                <Button
+                  href={secondaryActionHref}
+                  variant="outline"
+                  size="lg"
+                  className="shine-btn bg-white border-orange-500 text-orange-500 hover:bg-orange-50 font-semibold px-8 py-3 shadow-lg transition-all duration-300"
+                >
                   {secondaryLabel}
                 </Button>
               )}
             </div>
           </div>
         </div>
+        <style jsx>{`
+          .shine-btn {
+            position: relative;
+            overflow: hidden;
+          }
+          .shine-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -30%;
+            width: 60%;
+            height: 200%;
+            background: linear-gradient(120deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.15) 100%);
+            transform: skewX(-20deg);
+            transition: opacity 0.3s;
+            opacity: 0.7;
+            pointer-events: none;
+            animation: shine-move 2.2s linear infinite;
+          }
+          @keyframes shine-move {
+            0% { left: -60%; }
+            100% { left: 120%; }
+          }
+        `}</style>
       </section>
     );
   }

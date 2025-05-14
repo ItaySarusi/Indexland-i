@@ -60,6 +60,42 @@
   .shadow-glass {
     box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18), 0 1.5px 6px 0 rgba(255,255,255,0.12);
   }
+  .navbar-glass {
+    @apply bg-white/30 dark:bg-backgroundDark/30 backdrop-blur-xl shadow-xl ring-0 relative;
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.14), 0 1.5px 6px 0 rgba(255,255,255,0.10), inset 0 1.5px 12px 0 rgba(80,180,255,0.10);
+    border: none;
+    border-radius: 2rem;
+    border-top: 1.5px solid rgba(255,255,255,0.18);
+    border-bottom: 1.5px solid rgba(80,180,255,0.10);
+  }
+  .snake-border-btn {
+    @apply relative px-4 py-2 font-semibold text-primary dark:text-textPrimary bg-transparent rounded-xl overflow-hidden transition-colors duration-200;
+    border: none;
+    z-index: 1;
+  }
+  .snake-border-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 1rem;
+    padding: 2px;
+    background: linear-gradient(120deg, #00eaff, #fff, #00eaff, #fff, #00eaff);
+    background-size: 400% 400%;
+    opacity: 0;
+    transition: opacity 0.3s, filter 0.3s;
+    filter: blur(2px) brightness(1.2);
+    z-index: 2;
+    pointer-events: none;
+    animation: snake-border-move 2.5s linear infinite;
+  }
+  .snake-border-btn:hover::before {
+    opacity: 1;
+    filter: blur(0.5px) brightness(1.5);
+  }
+  .snake-border-btn span {
+    position: relative;
+    z-index: 3;
+  }
 }
 
 @layer utilities {
@@ -119,5 +155,9 @@
   }
   .animate-glass-reflection {
     animation: glass-reflection 6s ease-in-out infinite;
+  }
+  @keyframes snake-border-move {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
   }
 } 
