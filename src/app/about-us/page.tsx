@@ -337,7 +337,7 @@ export default function AboutUs() {
       />
 
       {/* Our Story Section - זכוכיתי, חצי חצי */}
-      <section className="relative py-6 px-16 bg-transparent overflow-hidden animate-fade-in" id="our-story">
+      <section className="relative py-6 px-12 bg-transparent overflow-hidden animate-fade-in" id="our-story">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Text Side */}
           <div className="glass-card rounded-3xl shadow-2xl p-8 md:p-14 animate-fade-in animate-scale-in min-h-[320px] flex flex-col justify-center" style={{ animationDelay: '0.1s' }}>

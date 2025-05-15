@@ -169,7 +169,9 @@ export default function Header() {
                   <Link 
                     key={link.name}
                     href={link.href}
-                    className="py-2 text-gray-700 dark:text-textPrimary hover:text-primary transition-colors"
+                    className={link.isButton
+                      ? "py-2 bg-primary text-white dark:text-textPrimary px-4 rounded-md text-center"
+                      : "py-2 text-gray-700 dark:text-textPrimary hover:text-primary transition-colors"}
                     onClick={toggleMenu}
                   >
                     {link.name}

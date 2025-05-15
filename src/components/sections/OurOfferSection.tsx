@@ -49,7 +49,7 @@ export default function OurOfferSection() {
             })}
           </p>
         </div>
-        <div className="flex flex-col md:flex-row justify-center items-stretch gap-10 md:gap-8 max-w-5xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-center items-stretch gap-10 md:gap-8 max-w-7xl mx-auto">
           {steps.map((step, idx) => (
             <div
               key={step.number}

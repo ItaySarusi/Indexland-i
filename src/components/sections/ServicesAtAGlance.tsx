@@ -167,13 +167,13 @@ export default function ServicesAtAGlance({
           </motion.div>
 
           {/* Horizontal tabs above main card */}
-          <div className="flex flex-row justify-center gap-6 mb-10 flex-wrap">
+          <div className="flex overflow-x-auto pb-4 snap-x snap-mandatory md:justify-center md:flex-wrap gap-4 md:gap-6 mb-10">
             {serviceItems.map((service, index) => (
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
                 className={cn(
-                  "px-8 h-16 min-w-[220px] rounded-2xl font-semibold text-lg transition-all duration-300 ease-in-out flex items-center justify-center relative overflow-hidden",
+                  "px-5 md:px-8 h-14 md:h-16 min-w-[180px] md:min-w-[220px] rounded-2xl font-medium md:font-semibold text-base md:text-lg transition-all duration-300 ease-in-out flex items-center justify-center relative overflow-hidden snap-center shrink-0",
                   "backdrop-blur-xl border-2 border-transparent bg-white/60 dark:bg-backgroundDark/60 shadow-lg",
                   "hover:bg-gradient-to-br hover:from-white/80 hover:to-primary/10 dark:hover:from-backgroundDark/80 dark:hover:to-secondary/10",
                   activeIndex === index

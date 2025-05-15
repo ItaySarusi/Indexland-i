@@ -5,7 +5,7 @@ import { FaRegLightbulb, FaRegCompass, FaFlag, FaEye } from 'react-icons/fa';
 export default function MissionVisionSection() {
   const { language, t } = useLanguage();
   return (
-    <section className="relative py-24 px-16 overflow-visible bg-transparent">
+    <section className="relative py-24 px-12 overflow-visible bg-transparent">
       {/* Floating glassmorphic background */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl opacity-40 animate-float-slow" />
@@ -20,7 +20,7 @@ export default function MissionVisionSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Mission Card */}
-          <div className="glass-card rounded-3xl shadow-2xl p-12 animate-fade-in animate-scale-in mb-8 md:mb-0 transition-transform duration-200 hover:scale-105 hover:shadow-glass border-2 border-gradient-to-br from-primary/20 to-secondary/20 bg-white/90 dark:bg-backgroundDark/90 relative overflow-hidden group">
+          <div className="glass-card rounded-3xl shadow-2xl p-8 animate-fade-in animate-scale-in mb-8 md:mb-0 transition-transform duration-200 hover:scale-105 hover:shadow-glass border-2 border-gradient-to-br from-primary/20 to-secondary/20 bg-white/90 dark:bg-backgroundDark/90 relative overflow-hidden group">
             {/* Glass reflection overlay */}
             <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent opacity-30 rounded-t-3xl pointer-events-none" />
             <div className="flex items-center justify-center mb-4">
@@ -38,7 +38,7 @@ export default function MissionVisionSection() {
             <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-20 rounded-3xl" />
           </div>
           {/* Vision Card */}
-          <div className="glass-card rounded-3xl shadow-2xl p-12 animate-fade-in animate-scale-in transition-transform duration-200 hover:scale-105 hover:shadow-glass border-2 border-gradient-to-br from-secondary/20 to-primary/20 bg-white/90 dark:bg-backgroundDark/90 relative overflow-hidden group">
+          <div className="glass-card rounded-3xl shadow-2xl p-8 animate-fade-in animate-scale-in transition-transform duration-200 hover:scale-105 hover:shadow-glass border-2 border-gradient-to-br from-secondary/20 to-primary/20 bg-white/90 dark:bg-backgroundDark/90 relative overflow-hidden group">
             {/* Glass reflection overlay */}
             <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent opacity-30 rounded-t-3xl pointer-events-none" />
             <div className="flex items-center justify-center mb-4">
