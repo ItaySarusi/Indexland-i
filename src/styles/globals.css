@@ -97,8 +97,8 @@
   }
   .snake-border-btn.bg-primary:hover,
   .snake-border-btn.bg-primary:focus {
-    background: #00eaff !important;
-    color: #fff !important;
+    color: var(--color-primary) !important;
+    background-color: transparent !important;
     /* Remove any white overlay or gradient */
   }
 }
