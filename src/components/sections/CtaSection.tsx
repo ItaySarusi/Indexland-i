@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Button from '@/components/ui/Button';
 import { useLanguage, Language } from '@/lib/language-context';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaEnvelope, FaPhoneAlt, FaRegComments, FaHandshake } from 'react-icons/fa';
 
 interface CtaSectionProps {
@@ -27,7 +27,7 @@ export default function CtaSection({
   variant = 'default',
   bgColor = 'primary'
 }: CtaSectionProps) {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   
   // קבלת הטקסט בשפה הנכונה
   const getLocalizedText = (text: string | Record<Language, string> | undefined): string => {
@@ -55,31 +55,52 @@ export default function CtaSection({
   };
 
   if (variant === 'centered') {
+    const cardRef = useRef(null);
+    const { scrollYProgress } = useScroll({ target: cardRef, offset: ['start end', 'end start'] });
+    const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
+    const scale = useTransform(scrollYProgress, [0, 1], [1, 0.97]);
+    const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
+    // Floating animation (gentle up/down/left/right loop)
+    const floatAnim = {
+      y: [0, -10, 0, 10, 0],
+      x: [0, 8, 0, -8, 0],
+      transition: {
+        duration: 7,
+        repeat: Infinity,
+        ease: 'easeInOut',
+      },
+    };
     return (
-      <section className="py-16 bg-[#fff9f6] transition-colors duration-200 flex justify-center items-center min-h-[340px]"> 
-        <div className="container flex justify-center items-center">
+      <section className="py-8 sm:py-12 md:py-16 bg-[#fff9f6] transition-colors duration-200 flex justify-center items-center min-h-[340px]" dir={lang === 'he' ? 'rtl' : 'ltr'}>
+        <div className="container flex justify-center items-center px-2 sm:px-4">
           <motion.div
+            ref={cardRef}
+            style={{ y, scale, opacity }}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-            className="cta-orange-card rounded-3xl shadow-2xl border-none p-10 md:p-16 max-w-2xl w-full mx-auto flex flex-col items-center text-center relative overflow-visible animate-fade-in animate-scale-in"
+            className="relative"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white drop-shadow-xl">{titleText}</h2>
-            {subtitleText && (
-              <p className="text-lg mb-8 text-white/90 drop-shadow animate-fade-in">{subtitleText}</p>
-            )}
-            <motion.a
-              href={primaryButtonHref}
-              initial={{ opacity: 0, scale: 0.92 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
-              className="cta-animated-btn group font-extrabold text-xl px-10 py-4 rounded-2xl shadow-xl bg-white text-primary border-2 border-white relative overflow-hidden transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary/30"
+            <motion.div
+              className="cta-orange-card rounded-3xl shadow-2xl border-none p-4 sm:p-8 md:p-12 max-w-2xl w-full mx-auto flex flex-col items-center text-center overflow-visible animate-fade-in animate-scale-in"
+              animate={floatAnim}
             >
-              <span className="relative z-10">{primaryBtnText}</span>
-              <span className="shine-effect absolute inset-0 pointer-events-none" />
-            </motion.a>
-            {/* Floating effect */}
-            <div className="absolute -z-10 inset-0 rounded-3xl bg-[#f26a3d] blur-[2px] opacity-90 shadow-2xl" />
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-white drop-shadow-xl leading-tight break-words">{titleText}</h2>
+              {subtitleText && (
+                <p className="text-base sm:text-lg mb-8 text-white/90 drop-shadow animate-fade-in leading-relaxed">{subtitleText}</p>
+              )}
+              <motion.a
+                href={primaryButtonHref}
+                whileHover={{ scale: 1.08, boxShadow: '0 0 32px 8px #fff, 0 2px 24px 0 #ff9800cc' }}
+                whileTap={{ scale: 0.97 }}
+                className="cta-animated-btn group font-extrabold text-lg sm:text-xl px-6 sm:px-10 py-3 sm:py-4 rounded-2xl shadow-xl bg-white text-primary border-2 border-white relative overflow-hidden transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary/30"
+              >
+                <span className="relative z-10">{primaryBtnText}</span>
+                <span className="shine-effect absolute inset-0 pointer-events-none" />
+              </motion.a>
+              {/* Floating effect */}
+              <div className="absolute -z-10 inset-0 rounded-3xl bg-[#f26a3d] blur-[2px] opacity-90 shadow-2xl" />
+            </motion.div>
           </motion.div>
         </div>
         <style jsx>{`

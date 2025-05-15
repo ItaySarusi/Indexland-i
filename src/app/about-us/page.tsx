@@ -1,3 +1,4 @@
+'use client';
 import { Metadata } from "next";
 import PageContainer from "@/components/layout/PageContainer";
 import Hero from "@/components/sections/Hero";
@@ -10,17 +11,11 @@ import { SEO, IMAGES } from "@/constants/site";
 import MissionVisionSection from "@/components/sections/MissionVisionSection";
 import OurOfferSection from "@/components/sections/OurOfferSection";
 import CoreValuesSection from "@/components/sections/CoreValuesSection";
-
-export const metadata: Metadata = {
-  title: typeof SEO.aboutUs.title === 'object' ? SEO.aboutUs.title.he : SEO.aboutUs.title,
-  description: typeof SEO.aboutUs.description === 'object' ? SEO.aboutUs.description.he : SEO.aboutUs.description,
-  keywords: typeof SEO.aboutUs.keywords === 'object' ? SEO.aboutUs.keywords.he : SEO.aboutUs.keywords,
-  openGraph: {
-    images: [SEO.aboutUs.ogImage],
-  },
-};
+import { useLanguage } from '@/lib/language-context';
+import { motion } from 'framer-motion';
 
 export default function AboutUs() {
+  const { t, language, dir } = useLanguage();
   // יתרונות לדוגמה
   const features = [
     {
@@ -399,7 +394,7 @@ export default function AboutUs() {
           }}
           primaryButtonText={{
             he: "תיאום פגישה",
-            en: "Book a Meeting"
+            en: "Schedule a Meeting"
           }}
           primaryButtonHref="/book-meeting"
           variant="centered"
