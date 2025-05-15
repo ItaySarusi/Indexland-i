@@ -1,29 +1,81 @@
 "use client";
 import { useLanguage } from '@/lib/language-context';
-import { FaHandshake } from 'react-icons/fa';
+import { LucideClipboardList, LucideRocket, LucideSettings, LucideTrendingUp } from 'lucide-react';
 
 export default function OurOfferSection() {
   const { t } = useLanguage();
+  const steps = [
+    {
+      number: 1,
+      icon: <LucideClipboardList className="w-10 h-10 text-primary" />,
+      title: { he: 'תכנון וייעוץ', en: 'Consult & Plan' },
+      description: { he: 'הבנת מטרות, תקציבים ולוחות זמנים.', en: 'Understand goals, budgets, and timelines.' }
+    },
+    {
+      number: 2,
+      icon: <LucideRocket className="w-10 h-10 text-primary" />,
+      title: { he: 'ביצוע', en: 'Execute' },
+      description: { he: 'איתור נכס, מו"מ, התאמות והשקה.', en: 'Site sourcing, negotiations, fit-out, and launch.' }
+    },
+    {
+      number: 3,
+      icon: <LucideSettings className="w-10 h-10 text-primary" />,
+      title: { he: 'תפעול', en: 'Operate' },
+      description: { he: 'קונסיירז׳ יומי, תחזוקה ותיאום ספקים.', en: 'Daily concierge, maintenance, and vendor coordination.' }
+    },
+    {
+      number: 4,
+      icon: <LucideTrendingUp className="w-10 h-10 text-primary" />,
+      title: { he: 'אופטימיזציה', en: 'Optimize' },
+      description: { he: 'ניתוח נתונים, השבחה ושיפור מתמיד.', en: 'Data analysis, value-add strategies, and continuous improvement.' }
+    },
+  ];
   return (
-    <section className="relative py-20 overflow-hidden">
-      {/* Floating glassmorphic background */}
+    <section className="relative py-24 overflow-visible bg-transparent">
+      {/* Glassmorphic background */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[400px] h-[160px] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl opacity-40 animate-float-slow" />
       </div>
       <div className="container relative z-10">
-        <div className="max-w-3xl mx-auto glass-card rounded-3xl shadow-2xl p-12 animate-fade-in animate-scale-in text-center">
-          <div className="flex items-center justify-center mb-4">
-            <FaHandshake className="text-primary text-4xl mr-3 rtl:ml-3 rtl:mr-0" />
-            <h2 className="text-2xl font-bold text-primary">
-              {t({ he: 'ההצעה שלנו', en: 'Our Offer' })}
-            </h2>
-          </div>
-          <p className="text-gray-700 dark:text-textSecondary text-lg">
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-primary drop-shadow-xl mb-4" style={{letterSpacing: '-0.02em'}}>
+            {t({ he: 'איך אנחנו עובדים', en: 'Our Approach' })}
+          </h2>
+          <div className="mx-auto w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full opacity-60 mb-2" />
+          <p className="text-lg text-gray-700 dark:text-textSecondary max-w-2xl mx-auto animate-fade-in delay-100">
             {t({
-              he: 'אנו מציעים ללקוחותינו ליווי אישי, מקצועי וחדשני בכל שלבי ההשקעה והניהול, עם דגש על פתרונות מותאמים, שקיפות מלאה ותשומת לב לפרטים הקטנים.',
-              en: 'We offer our clients personal, professional, and innovative guidance throughout all stages of investment and management, with an emphasis on tailored solutions, full transparency, and attention to detail.'
+              he: 'תהליך ארבעה שלבים להצלחה בנדל"ן',
+              en: 'Our Four-Step Process to Real Estate Success'
             })}
           </p>
+        </div>
+        <div className="flex flex-col md:flex-row justify-center items-stretch gap-10 md:gap-8 max-w-5xl mx-auto">
+          {steps.map((step, idx) => (
+            <div
+              key={step.number}
+              className="flex-1 glass-card rounded-[2.5rem] shadow-2xl p-10 flex flex-col items-center text-center animate-fade-in animate-scale-in transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-gold-400 hover:bg-gradient-to-br hover:from-white/60 hover:to-primary/10 dark:hover:from-backgroundDark/60 dark:hover:to-secondary/10 border-4 border-gradient-to-br from-yellow-300/40 via-primary/20 to-secondary/20 bg-white/70 dark:bg-backgroundDark/80 relative overflow-hidden group"
+              style={{ animationDelay: `${0.1 + idx * 0.13}s`, boxShadow: '0 8px 48px 0 rgba(255, 180, 80, 0.13), 0 1.5px 12px 0 rgba(255,255,255,0.13)' }}
+            >
+              {/* Glass reflection overlay + glow border */}
+              <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/60 to-transparent opacity-50 rounded-t-[2.5rem] pointer-events-none animate-glass-reflection" />
+              <div className="absolute inset-0 rounded-[2.5rem] border-4 border-gradient-to-br from-yellow-300/30 via-primary/10 to-secondary/10 group-hover:border-yellow-400 pointer-events-none" style={{boxShadow:'0 0 32px 0 rgba(255,180,80,0.10), 0 1.5px 12px 0 rgba(255,255,255,0.10)'}} />
+              <div className="flex flex-col items-center mb-6 animate-scale-in">
+                <div className="flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary/10 to-yellow-100/40 shadow-lg mb-3 group-hover:scale-110 group-hover:shadow-gold-400 transition-all duration-300">
+                  {step.icon}
+                </div>
+                <span className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-yellow-200/60 to-primary/10 text-primary font-extrabold text-2xl shadow-lg border-2 border-yellow-300 mb-2 animate-fade-in delay-100">
+                  {step.number}
+                </span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-extrabold mb-3 text-primary drop-shadow-xl animate-fade-in delay-100 text-center tracking-tight leading-tight">
+                {t(step.title)}
+              </h3>
+              <p className="text-base md:text-lg text-gray-700 dark:text-textSecondary mb-0 animate-fade-in delay-200 text-center font-medium tracking-wide">
+                {t(step.description)}
+              </p>
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-20 rounded-[2.5rem]" />
+            </div>
+          ))}
         </div>
       </div>
     </section>

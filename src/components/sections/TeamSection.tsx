@@ -19,15 +19,30 @@ interface TeamMember {
 interface TeamSectionProps {
   title?: string | Record<Language, string>;
   subtitle?: string | Record<Language, string>;
-  members: TeamMember[];
   variant?: 'grid' | 'list';
   bgColor?: string;
 }
 
+const founders: TeamMember[] = [
+  {
+    name: 'Noam',
+    role: 'Founder',
+    bio: 'Noam, Founder – Over 10 years in real estate, Noam led Indexland\'s vision from boutique agency to full-spectrum consultancy.',
+    image: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=400&auto=format',
+    socialLinks: { linkedin: '#', email: 'noam@indexland.com' }
+  },
+  {
+    name: 'Ori',
+    role: 'Co-Founder',
+    bio: 'Ori, Co-Founder – Expert in asset management and client operations, Ori is the operational heart behind every Indexland project.',
+    image: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=400&auto=format',
+    socialLinks: { linkedin: '#', email: 'ori@indexland.com' }
+  }
+];
+
 export default function TeamSection({
   title,
   subtitle,
-  members = [],
   variant = 'grid',
   bgColor = 'white'
 }: TeamSectionProps) {
@@ -44,19 +59,22 @@ export default function TeamSection({
   
   const defaultTitle = {
     he: "הצוות שלנו",
-    en: "Our Team"
+    en: "Meet the Team"
   };
   
   const defaultSubtitle = {
-    he: "הכירו את הצוות המקצועי שמאחורי ההצלחה שלנו",
-    en: "Meet the professional team behind our success"
+    he: "הכירו את המומחים שמאחורי Indexland",
+    en: "Meet the Experts Behind Indexland"
   };
   
   const titleText = getLocalizedText(title) || t(defaultTitle);
   const subtitleText = getLocalizedText(subtitle) || t(defaultSubtitle);
 
+  // Always use only Noam and Ori
+  const visibleMembers = founders;
+
   return (
-    <section className="relative py-20 bg-backgroundLight dark:bg-backgroundDark transition-colors duration-200 overflow-hidden">
+    <section className="relative py-24 bg-backgroundLight dark:bg-backgroundDark transition-colors duration-200 overflow-hidden">
       {/* Floating glassmorphic background */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[400px] h-[160px] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl opacity-40 animate-float-slow" />
@@ -64,80 +82,43 @@ export default function TeamSection({
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none" />
       <div className="container relative z-10">
         <div className="text-center mb-14">
-          <h2 className="mb-4 text-4xl md:text-5xl font-extrabold tracking-tight text-primary drop-shadow-xl animate-fade-in">{titleText}</h2>
-          <p className="text-lg text-gray-600 dark:text-textSecondary max-w-3xl mx-auto animate-fade-in delay-100">
-            {subtitleText}
-          </p>
+          <h2 className="mb-4 text-4xl md:text-5xl font-extrabold tracking-tight text-primary drop-shadow-xl animate-fade-in">{subtitleText}</h2>
         </div>
-        
-        <div className={`${variant === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12' : 'space-y-8'}`}>
-          {members.map((member, index) => (
-            <div 
-              key={index} 
-              className={`glass-card glass-inner-shadow rounded-3xl overflow-hidden animate-fade-in animate-scale-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative ${variant === 'list' ? 'flex flex-col md:flex-row gap-6 p-8' : 'p-10'}`}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-12">
+          {visibleMembers.map((member, index) => (
+            <div
+              key={index}
+              className="glass-card glass-inner-shadow rounded-3xl overflow-hidden animate-fade-in animate-scale-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative p-0 group"
               style={{ animationDelay: `${0.1 + index * 0.12}s` }}
             >
-              <div className={`${variant === 'list' ? 'flex-shrink-0 w-full md:w-1/3' : ''}`}>
-                <div className={`${variant === 'list' ? '' : 'p-6'}`}>
-                  <div className="relative overflow-hidden rounded-xl aspect-square mb-6">
-                    <Image 
-                      src={member.image} 
-                      alt={getLocalizedText(member.name)}
-                      className="object-cover"
-                      fill
-                    />
-                  </div>
-                </div>
+              <div className="relative overflow-hidden aspect-square w-full h-72">
+                <img
+                  src={member.image}
+                  alt={getLocalizedText(member.name)}
+                  className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
+                />
               </div>
-              
-              <div className={`${variant === 'list' ? 'flex-grow' : 'px-6 pb-6'}`}>
-                <h3 className="text-xl font-bold mb-1 text-primary drop-shadow animate-fade-in delay-100">{getLocalizedText(member.name)}</h3>
-                <p className="text-primary dark:text-primary mb-3 animate-fade-in delay-200">{getLocalizedText(member.role)}</p>
-                <p className="text-gray-600 dark:text-textSecondary mb-4 animate-fade-in delay-300">{getLocalizedText(member.bio)}</p>
-                
+              <div className="px-8 py-8 flex flex-col items-center text-center bg-white/80 dark:bg-backgroundDark/80 transition-all duration-300">
+                <h3 className="text-2xl font-bold mb-1 text-primary drop-shadow animate-fade-in delay-100">{getLocalizedText(member.name)}</h3>
+                <p className="text-primary dark:text-primary mb-3 font-semibold animate-fade-in delay-200">{getLocalizedText(member.role)}</p>
+                <p className="text-gray-600 dark:text-textSecondary mb-0 animate-fade-in delay-300 group-hover:opacity-100 opacity-80 transition-opacity duration-300">
+                  {getLocalizedText(member.bio)}
+                </p>
                 {member.socialLinks && (
-                  <div className="flex space-x-4 rtl:space-x-reverse">
+                  <div className="flex space-x-4 rtl:space-x-reverse mt-4">
                     {member.socialLinks.linkedin && (
-                      <a 
-                        href={member.socialLinks.linkedin} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-gray-500 dark:text-textSecondary hover:text-primary dark:hover:text-primary transition-colors"
-                        aria-label="LinkedIn"
-                      >
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
-                      </a>
-                    )}
-                    {member.socialLinks.twitter && (
-                      <a 
-                        href={member.socialLinks.twitter} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-gray-500 dark:text-textSecondary hover:text-primary dark:hover:text-primary transition-colors"
-                        aria-label="Twitter"
-                      >
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                          <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.1 10.1 0 01-3.127 1.184 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.161a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                        </svg>
+                      <a href={member.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-textSecondary hover:text-primary dark:hover:text-primary transition-colors" aria-label="LinkedIn">
+                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                       </a>
                     )}
                     {member.socialLinks.email && (
-                      <a 
-                        href={`mailto:${member.socialLinks.email}`}
-                        className="text-gray-500 dark:text-textSecondary hover:text-primary dark:hover:text-primary transition-colors"
-                        aria-label="Email"
-                      >
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                        </svg>
+                      <a href={`mailto:${member.socialLinks.email}`} className="text-gray-500 dark:text-textSecondary hover:text-primary dark:hover:text-primary transition-colors" aria-label="Email">
+                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                       </a>
                     )}
                   </div>
                 )}
               </div>
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-30 rounded-2xl" />
             </div>
           ))}
         </div>

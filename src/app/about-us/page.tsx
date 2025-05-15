@@ -320,26 +320,51 @@ export default function AboutUs() {
     <PageContainer>
       <Hero 
         title={{
-          he: "הסיפור שלנו - מי אנחנו ולמה אנחנו כאן",
-          en: "Our Story - Who We Are and Why We're Here"
+          he: 'הסיפור שלנו - מי אנחנו ולמה אנחנו כאן',
+          en: 'Our Story - Who We Are and Why We\'re Here'
         }}
         subtitle={{
-          he: "צוות המומחים שלנו מחויב להוביל את לקוחותינו להצלחה בעולם הנדל\"ן, תוך שמירה על ערכי מקצועיות, יושרה ושירות אישי",
+          he: 'צוות המומחים שלנו מחויב להוביל את לקוחותינו להצלחה בעולם הנדל"ן, תוך שמירה על ערכי מקצועיות, יושרה ושירות אישי',
           en: "Our team of experts is committed to leading our clients to success in the real estate world, while maintaining values of professionalism, integrity and personal service"
         }}
         primaryActionLabel={{
-          he: "צור קשר עכשיו",
+          he: 'צור קשר עכשיו',
           en: "Contact Us Now"
         }}
         primaryActionHref="/book-meeting"
         secondaryActionLabel={{
-          he: "השירותים שלנו",
-          en: "Our Services"
+          he: 'למידע נוסף על החזון שלנו',
+          en: "Learn More About Our Vision"
         }}
-        secondaryActionHref="/services"
+        secondaryActionHref="#mission-vision"
         imageUrl={IMAGES.hero.aboutUs}
         variant="background-image"
       />
+
+      {/* Our Story Section - זכוכיתי, חצי חצי */}
+      <section className="relative py-24 bg-transparent overflow-hidden animate-fade-in" id="our-story">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          {/* Text Side */}
+          <div className="glass-card rounded-3xl shadow-2xl p-10 md:p-14 animate-fade-in animate-scale-in" style={{ animationDelay: '0.1s' }}>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-6 animate-fade-in">Our Story</h2>
+            <div className="space-y-6">
+              <p className="text-lg text-gray-700 dark:text-textSecondary animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                Indexland started as a boutique brokerage in Tel Aviv and evolved into a full-service office concierge and real estate partner—now bridging local precision with global opportunity.
+              </p>
+            </div>
+          </div>
+          {/* Image Side */}
+          <div className="relative animate-fade-in animate-scale-in" style={{ animationDelay: '0.3s' }}>
+            <img
+              src="https://images.unsplash.com/photo-1464983953574-0892a716854b?q=80&w=800&auto=format"
+              alt="Indexland Team Office"
+              className="rounded-3xl shadow-2xl object-cover w-full h-[340px] md:h-[420px] glass-card"
+              style={{ minHeight: 260 }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent rounded-3xl pointer-events-none" />
+          </div>
+        </div>
+      </section>
 
       {/* Divider */}
       <div className="container mx-auto my-16">
