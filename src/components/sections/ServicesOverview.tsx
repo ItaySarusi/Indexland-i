@@ -83,10 +83,10 @@ export default function ServicesOverview({
                 {service.icon}
               </div>
               <h3 className="text-2xl md:text-3xl font-extrabold mb-3 text-primary drop-shadow-xl animate-fade-in delay-100 text-center tracking-tight leading-tight">
-                {service.title}
+                {getLocalizedText(service.title)}
               </h3>
               <p className="text-base md:text-lg text-gray-700 dark:text-textSecondary mb-0 animate-fade-in delay-200 text-center font-medium tracking-wide">
-                {service.description}
+                {getLocalizedText(service.description)}
               </p>
               <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-40 rounded-[2.5rem]" />
             </motion.div>

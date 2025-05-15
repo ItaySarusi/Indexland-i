@@ -92,7 +92,7 @@ export default function Header() {
           )}
           <button
             onClick={toggleDarkMode}
-            className="snake-border-btn ml-2 p-2 flex items-center justify-center"
+            className="snake-border-btn ml-2 p-2 flex items-center justify-center no-hover-effect"
             aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
           >
             {isDarkMode ? (
@@ -107,7 +107,7 @@ export default function Header() {
           </button>
           <button
             onClick={toggleLanguage}
-            className="snake-border-btn px-3 py-1 flex items-center gap-1"
+            className="snake-border-btn px-3 py-1 flex items-center gap-1 no-hover-effect"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
@@ -126,7 +126,7 @@ export default function Header() {
         <div className="md:hidden flex items-center">
           <button 
             onClick={toggleDarkMode}
-            className="mr-2 p-2 rounded-md text-gray-700 dark:text-textPrimary"
+            className="mr-2 p-2 rounded-md text-gray-700 dark:text-textPrimary no-hover-effect"
             aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
           >
             {isDarkMode ? (
@@ -142,7 +142,7 @@ export default function Header() {
           
           <button 
             onClick={toggleLanguage}
-            className="mr-4 px-2 py-1 rounded-md border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-textPrimary flex items-center gap-1"
+            className="mr-4 px-2 py-1 rounded-md border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-textPrimary flex items-center gap-1 no-hover-effect"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />

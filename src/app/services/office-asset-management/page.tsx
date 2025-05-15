@@ -103,7 +103,6 @@ export default function OfficeAssetManagement() {
               src="/dubai.jpg"
               alt="Dubai Skyline"
               className="object-cover w-full h-full"
-              style={{borderTopRightRadius:'2rem', borderBottomRightRadius:'2rem'}}
             />
           </div>
           {/* Tel Aviv side */}
@@ -112,7 +111,6 @@ export default function OfficeAssetManagement() {
               src="/telaviv.jpg"
               alt="Tel Aviv Skyline"
               className="object-cover w-full h-full"
-              style={{borderTopLeftRadius:'2rem', borderBottomLeftRadius:'2rem'}}
             />
           </div>
           {/* Overlay for readability: split gradient */}
@@ -123,7 +121,7 @@ export default function OfficeAssetManagement() {
           />
         </div>
         {/* Centered content */}
-        <div className="relative z-20 w-full flex flex-col items-center justify-center text-center px-4">
+        <div className="relative py-28 z-20 w-full flex flex-col items-center justify-center text-center px-4">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-white drop-shadow-2xl tracking-tight" style={{lineHeight:1.1, letterSpacing:'-0.01em'}}>
             Global Reach, Local Mastery
             </h1>

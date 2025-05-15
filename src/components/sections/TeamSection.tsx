@@ -74,7 +74,7 @@ export default function TeamSection({
   const visibleMembers = founders;
 
   return (
-    <section className="relative py-24 bg-backgroundLight dark:bg-backgroundDark transition-colors duration-200 overflow-hidden">
+    <section className="relative py-24 px-16 bg-backgroundLight dark:bg-backgroundDark transition-colors duration-200 overflow-hidden">
       {/* Floating glassmorphic background */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[400px] h-[160px] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl opacity-40 animate-float-slow" />

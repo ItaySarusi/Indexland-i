@@ -5,7 +5,7 @@ import { FaRegLightbulb, FaRegCompass, FaFlag, FaEye } from 'react-icons/fa';
 export default function MissionVisionSection() {
   const { language, t } = useLanguage();
   return (
-    <section className="relative py-24 overflow-visible bg-transparent">
+    <section className="relative py-24 px-16 overflow-visible bg-transparent">
       {/* Floating glassmorphic background */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl opacity-40 animate-float-slow" />
