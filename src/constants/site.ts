@@ -55,9 +55,9 @@ export const NAV_LINKS = {
           description: 'End-to-end office solutions and large asset management',
         },
         {
-          name: 'Office Asset Management',
+          name: 'International Real Estate Investment & Local Brokerage',
           href: '/services/office-asset-management',
-          description: 'Professional management of office assets with emphasis on enhancement and yield maximization',
+          description: 'Professional management of office assets, international investment, and local brokerage',
         },
       ],
     },

@@ -188,6 +188,121 @@ export default function InternationalInvestmentBrokerage() {
           </div>
         </div>
       </section>
+
+      {/* Maximize Returns Section */}
+      <section className="w-full py-20 px-4 bg-transparent">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-12">
+          Maximize returns and uptime across your properties
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          {/* Card 1 */}
+          <div className="group bg-white/70 dark:bg-backgroundDark/80 border border-gray-200 dark:border-white/10 shadow-xl glass-card hover:bg-white/90 hover:shadow-2xl transition-all duration-300 rounded-xl md:rounded-lg p-8 flex flex-col items-center text-center cursor-pointer backdrop-blur-md hover:backdrop-blur-xl hover:border-primary/40 hover:scale-[1.03] relative overflow-hidden">
+            <div className="mb-4 text-primary group-hover:text-secondary transition-colors duration-300">
+              {/* Icon: Dashboard */}
+              <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2" stroke="currentColor"/><rect x="14" y="3" width="7" height="7" rx="2" stroke="currentColor"/><rect x="14" y="14" width="7" height="7" rx="2" stroke="currentColor"/><rect x="3" y="14" width="7" height="7" rx="2" stroke="currentColor"/></svg>
+            </div>
+            <h3 className="text-lg font-bold mb-2 text-primary">Portfolio Oversight</h3>
+            <p className="text-gray-700 dark:text-textSecondary text-base font-medium">Centralized performance dashboard</p>
+            {/* Glass hover effect */}
+            <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/40 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
+          </div>
+          {/* Card 2 */}
+          <div className="group bg-white/70 dark:bg-backgroundDark/80 border border-gray-200 dark:border-white/10 shadow-xl glass-card hover:bg-white/90 hover:shadow-2xl transition-all duration-300 rounded-xl md:rounded-lg p-8 flex flex-col items-center text-center cursor-pointer backdrop-blur-md hover:backdrop-blur-xl hover:border-primary/40 hover:scale-[1.03] relative overflow-hidden">
+            <div className="mb-4 text-primary group-hover:text-secondary transition-colors duration-300">
+              {/* Icon: Vendor/Settings */}
+              <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" stroke="currentColor"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 8.6 15a1.65 1.65 0 0 0-1.82-.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 15 8.6a1.65 1.65 0 0 0 1.82.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 15z"/></svg>
+            </div>
+            <h3 className="text-lg font-bold mb-2 text-primary">Vendor Management</h3>
+            <p className="text-gray-700 dark:text-textSecondary text-base font-medium">Preventive maintenance and SLAs</p>
+            <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/40 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
+          </div>
+          {/* Card 3 */}
+          <div className="group bg-white/70 dark:bg-backgroundDark/80 border border-gray-200 dark:border-white/10 shadow-xl glass-card hover:bg-white/90 hover:shadow-2xl transition-all duration-300 rounded-xl md:rounded-lg p-8 flex flex-col items-center text-center cursor-pointer backdrop-blur-md hover:backdrop-blur-xl hover:border-primary/40 hover:scale-[1.03] relative overflow-hidden">
+            <div className="mb-4 text-primary group-hover:text-secondary transition-colors duration-300">
+              {/* Icon: Financial/Report */}
+              <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor"/><path d="M8 10h8M8 14h4" stroke="currentColor"/></svg>
+            </div>
+            <h3 className="text-lg font-bold mb-2 text-primary">Financial Reporting</h3>
+            <p className="text-gray-700 dark:text-textSecondary text-base font-medium">P&L, budgeting, and ROI analysis</p>
+            <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/40 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
+          </div>
+          {/* Card 4 */}
+          <div className="group bg-white/70 dark:bg-backgroundDark/80 border border-gray-200 dark:border-white/10 shadow-xl glass-card hover:bg-white/90 hover:shadow-2xl transition-all duration-300 rounded-xl md:rounded-lg p-8 flex flex-col items-center text-center cursor-pointer backdrop-blur-md hover:backdrop-blur-xl hover:border-primary/40 hover:scale-[1.03] relative overflow-hidden">
+            <div className="mb-4 text-primary group-hover:text-secondary transition-colors duration-300">
+              {/* Icon: Value-Add/TrendingUp */}
+              <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor"/><path d="M14 7h7v7" stroke="currentColor"/></svg>
+            </div>
+            <h3 className="text-lg font-bold mb-2 text-primary">Value-Add Strategies</h3>
+            <p className="text-gray-700 dark:text-textSecondary text-base font-medium">Capex planning, repositioning, and cost optimization</p>
+            <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/40 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
+          </div>
+        </div>
+      </section>
+
+      {/* Why Businesses Trust Indexland Section */}
+      <section className="w-full py-20 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 font-sans" dir="auto">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center mb-14 drop-shadow-lg font-sans" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
+          Why Businesses Trust Indexland?
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 max-w-5xl mx-auto">
+          {/* Card 1 */}
+          <div className="group bg-gray-800/90 border border-gray-700 shadow-2xl rounded-xl p-6 md:p-8 flex flex-col items-center text-center transition-all duration-300 hover:bg-black hover:border-orange-500 hover:scale-[1.04] relative overflow-hidden min-h-[210px] w-full font-sans" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
+            <div className="mb-5 text-orange-500 group-hover:text-white transition-colors duration-300">
+              {/* Icon: Clock/Time Save */}
+              <svg className="w-11 h-11" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor"/><path d="M12 6v6l4 2" stroke="currentColor" strokeLinecap="round"/></svg>
+            </div>
+            <h3 className="text-lg font-bold mb-2 text-white">Save 30+ hours monthly</h3>
+            <p className="text-gray-200 text-base font-medium leading-snug">with managed offices<br/>and streamlined support</p>
+          </div>
+          {/* Card 2 */}
+          <div className="group bg-gray-800/90 border border-gray-700 shadow-2xl rounded-xl p-6 md:p-8 flex flex-col items-center text-center transition-all duration-300 hover:bg-black hover:border-orange-500 hover:scale-[1.04] relative overflow-hidden min-h-[210px] w-full font-sans" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
+            <div className="mb-5 text-orange-500 group-hover:text-white transition-colors duration-300">
+              {/* Icon: Control/Shield */}
+              <svg className="w-11 h-11" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V7l8-4z" stroke="currentColor"/><path d="M9 12l2 2 4-4" stroke="currentColor" strokeLinecap="round"/></svg>
+            </div>
+            <h3 className="text-lg font-bold mb-2 text-white">End-to-end control</h3>
+            <p className="text-gray-200 text-base font-medium leading-snug">with zero hassle<br/>and full peace of mind</p>
+          </div>
+          {/* Card 3 */}
+          <div className="group bg-gray-800/90 border border-gray-700 shadow-2xl rounded-xl p-6 md:p-8 flex flex-col items-center text-center transition-all duration-300 hover:bg-black hover:border-orange-500 hover:scale-[1.04] relative overflow-hidden min-h-[210px] w-full font-sans" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
+            <div className="mb-5 text-orange-500 group-hover:text-white transition-colors duration-300">
+              {/* Icon: Report/Chart */}
+              <svg className="w-11 h-11" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="3" y="12" width="4" height="8" rx="1" stroke="currentColor"/><rect x="9" y="8" width="4" height="12" rx="1" stroke="currentColor"/><rect x="15" y="4" width="4" height="16" rx="1" stroke="currentColor"/></svg>
+            </div>
+            <h3 className="text-lg font-bold mb-2 text-white">Transparent reports</h3>
+            <p className="text-gray-200 text-base font-medium leading-snug">Smarter real estate<br/>strategy and insights</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonial + CTA Section */}
+      <section className="w-full py-16 md:py-20 px-2 md:px-4 bg-gradient-to-br from-white via-gray-50 to-white border-t border-b border-gray-200 font-sans" dir="auto">
+        <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
+          <div className="relative mb-10 w-full">
+            {/* Quote Icon */}
+            <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-orange-500 text-7xl font-serif opacity-30 select-none" aria-hidden="true">“</span>
+            <blockquote className="text-xl md:text-3xl font-semibold text-gray-900 leading-snug drop-shadow-sm relative z-10 font-sans" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
+              With Indexland managing our offices and assets, we reclaimed 30+ hours per month.
+            </blockquote>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center w-full">
+            <a
+              href="/contact?meeting=true"
+              className="px-8 py-3 rounded-full bg-orange-500 text-white font-extrabold shadow-lg hover:bg-black hover:text-orange-400 transition-all text-lg border-2 border-orange-500 min-w-[180px] text-center w-full sm:w-auto"
+              style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif', letterSpacing:'0.01em'}}
+            >
+              Book a Meeting
+            </a>
+            <a
+              href="#learn-more"
+              className="px-8 py-3 rounded-full bg-white text-orange-500 font-extrabold shadow-lg hover:bg-black hover:text-white transition-all text-lg border-2 border-orange-500 min-w-[180px] text-center w-full sm:w-auto"
+              style={{borderWidth:2, fontWeight:800, fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif', letterSpacing:'0.01em'}}
+            >
+              Learn More
+            </a>
+          </div>
+        </div>
+      </section>
     </PageContainer>
   );
 } 
