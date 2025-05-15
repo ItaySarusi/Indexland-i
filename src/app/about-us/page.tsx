@@ -399,7 +399,7 @@ export default function AboutUs() {
           }}
           primaryButtonText={{
             he: "תיאום פגישה",
-            en: "Schedule a Meeting"
+            en: "Book a Meeting"
           }}
           primaryButtonHref="/book-meeting"
           variant="centered"

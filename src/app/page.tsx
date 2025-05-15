@@ -364,7 +364,7 @@ export default function Home() {
             }}
             primaryButtonText={{
               he: "תיאום פגישה",
-              en: "Schedule a Meeting"
+              en: "Book a Meeting"
             }}
             primaryButtonHref="/book-meeting"
             secondaryButtonText={{
