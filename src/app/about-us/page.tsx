@@ -342,43 +342,33 @@ export default function AboutUs() {
       />
 
       {/* Our Story Section - זכוכיתי, חצי חצי */}
-      <section className="relative py-24 bg-transparent overflow-hidden animate-fade-in" id="our-story">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <section className="relative py-6 bg-transparent overflow-hidden animate-fade-in" id="our-story">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Text Side */}
-          <div className="glass-card rounded-3xl shadow-2xl p-10 md:p-14 animate-fade-in animate-scale-in" style={{ animationDelay: '0.1s' }}>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-6 animate-fade-in">Our Story</h2>
-            <div className="space-y-6">
+          <div className="glass-card rounded-3xl shadow-2xl p-8 md:p-14 animate-fade-in animate-scale-in min-h-[320px] flex flex-col justify-center" style={{ animationDelay: '0.1s' }}>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-3 animate-fade-in">Our Story</h2>
+            <div className="space-y-2">
               <p className="text-lg text-gray-700 dark:text-textSecondary animate-fade-in" style={{ animationDelay: '0.2s' }}>
                 Indexland started as a boutique brokerage in Tel Aviv and evolved into a full-service office concierge and real estate partner—now bridging local precision with global opportunity.
               </p>
             </div>
           </div>
           {/* Image Side */}
-          <div className="relative animate-fade-in animate-scale-in" style={{ animationDelay: '0.3s' }}>
+          <div className="relative animate-fade-in animate-scale-in min-h-[320px] flex items-center" style={{ animationDelay: '0.3s' }}>
             <img
               src="https://images.unsplash.com/photo-1464983953574-0892a716854b?q=80&w=800&auto=format"
               alt="Indexland Team Office"
-              className="rounded-3xl shadow-2xl object-cover w-full h-[340px] md:h-[420px] glass-card"
-              style={{ minHeight: 260 }}
+              className="rounded-3xl shadow-2xl object-cover w-full h-[320px] md:h-[420px] glass-card"
+              style={{ minHeight: 220 }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent rounded-3xl pointer-events-none" />
           </div>
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="container mx-auto my-16">
-        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
-      </div>
-
       {/* Mission & Vision Section */}
       <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
         <MissionVisionSection />
-      </div>
-
-      {/* Divider */}
-      <div className="container mx-auto my-16">
-        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
       </div>
 
       {/* Our Offer Section */}
@@ -386,29 +376,14 @@ export default function AboutUs() {
         <OurOfferSection />
       </div>
 
-      {/* Divider */}
-      <div className="container mx-auto my-16">
-        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
-      </div>
-
       {/* Team Section */}
       <div className="animate-fade-in" style={{ animationDelay: '0.25s' }}>
         <TeamSection title="meet the team" />
       </div>
 
-      {/* Divider */}
-      <div className="container mx-auto my-16">
-        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
-      </div>
-
       {/* Core Values Section */}
       <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
         <CoreValuesSection />
-      </div>
-
-      {/* Divider */}
-      <div className="container mx-auto my-16">
-        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
       </div>
 
       {/* CTA Section */}

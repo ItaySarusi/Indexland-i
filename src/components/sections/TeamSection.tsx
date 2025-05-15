@@ -64,7 +64,7 @@ export default function TeamSection({
   
   const defaultSubtitle = {
     he: "הכירו את המומחים שמאחורי Indexland",
-    en: "Meet the Experts Behind Indexland"
+    en: "Meet The Experts Behind Indexland"
   };
   
   const titleText = getLocalizedText(title) || t(defaultTitle);

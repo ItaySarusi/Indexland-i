@@ -56,37 +56,65 @@ export default function CtaSection({
 
   if (variant === 'centered') {
     return (
-      <section className={`py-12 ${getBgClass()} transition-colors duration-200`}>
-        <div className="container">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${bgColor === 'primary' ? 'text-white' : ''}`}>
-              {titleText}
-            </h2>
+      <section className="py-16 bg-[#fff9f6] transition-colors duration-200 flex justify-center items-center min-h-[340px]"> 
+        <div className="container flex justify-center items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+            className="cta-orange-card rounded-3xl shadow-2xl border-none p-10 md:p-16 max-w-2xl w-full mx-auto flex flex-col items-center text-center relative overflow-visible animate-fade-in animate-scale-in"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white drop-shadow-xl">{titleText}</h2>
             {subtitleText && (
-              <p className={`text-lg mb-8 ${bgColor === 'primary' ? 'text-white/80' : 'text-gray-600 dark:text-textSecondary'}`}>
-                {subtitleText}
-              </p>
+              <p className="text-lg mb-8 text-white/90 drop-shadow animate-fade-in">{subtitleText}</p>
             )}
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button 
-                href={primaryButtonHref}
-                variant={bgColor === 'primary' ? 'outline' : 'primary'}
-                size="lg"
-              >
-                {primaryBtnText}
-              </Button>
-              {secondaryButtonText && secondaryButtonHref && (
-                <Button 
-                  href={secondaryButtonHref}
-                  variant={bgColor === 'primary' ? 'ghost' : 'outline'}
-                  size="lg"
-                >
-                  {secondaryBtnText}
-                </Button>
-              )}
-            </div>
-          </div>
+            <motion.a
+              href={primaryButtonHref}
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
+              className="cta-animated-btn group font-extrabold text-xl px-10 py-4 rounded-2xl shadow-xl bg-white text-primary border-2 border-white relative overflow-hidden transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary/30"
+            >
+              <span className="relative z-10">{primaryBtnText}</span>
+              <span className="shine-effect absolute inset-0 pointer-events-none" />
+            </motion.a>
+            {/* Floating effect */}
+            <div className="absolute -z-10 inset-0 rounded-3xl bg-[#f26a3d] blur-[2px] opacity-90 shadow-2xl" />
+          </motion.div>
         </div>
+        <style jsx>{`
+          .cta-orange-card {
+            background: #f26a3d;
+            box-shadow: 0 8px 48px 0 #f26a3d88, 0 1.5px 12px 0 #fff3;
+            border: none;
+            position: relative;
+          }
+          .cta-animated-btn {
+            box-shadow: 0 4px 32px 0 #fff8, 0 1.5px 12px 0 #ff980033;
+            position: relative;
+            overflow: hidden;
+            transition: box-shadow 0.25s, background 0.25s, transform 0.18s, border-color 0.18s;
+          }
+          .cta-animated-btn:hover, .cta-animated-btn:focus {
+            background: #fff7f2;
+            box-shadow: 0 0 32px 8px #ff6a2b, 0 2px 24px 0 #ff9800cc;
+            transform: scale(1.07);
+            border-color: #ff9800;
+            z-index: 2;
+          }
+          .shine-effect {
+            content: '';
+            display: block;
+            background: linear-gradient(120deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.15) 100%);
+            opacity: 0.7;
+            pointer-events: none;
+            animation: shine-move 2.2s linear infinite;
+          }
+          @keyframes shine-move {
+            0% { left: -60%; }
+            100% { left: 120%; }
+          }
+        `}</style>
       </section>
     );
   }
