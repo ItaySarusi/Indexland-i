@@ -1,156 +1,115 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import PageContainer from "@/components/layout/PageContainer";
-import Hero from "@/components/sections/Hero";
-import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
+import Button from "@/components/ui/Button";
 import Textarea from "@/components/ui/Textarea";
 import Select from "@/components/ui/Select";
+import Image from 'next/image';
+import { IMAGES } from '@/constants/site';
 import { useLanguage } from "@/lib/language-context";
 
 export default function BookMeetingContent() {
   const { language, t } = useLanguage();
-  
-  const heroTitle = {
-    he: "קביעת פגישת ייעוץ",
-    en: "Book a Consultation"
-  };
-  
-  const heroSubtitle = {
-    he: "מלאו את הפרטים ונחזור אליכם בהקדם לתיאום פגישה עם אחד המומחים שלנו",
-    en: "Fill in the details and we will get back to you as soon as possible to schedule a meeting with one of our experts"
-  };
-  
-  const serviceOptions = {
-    he: [
-      { value: "office-asset-management", label: "ניהול נכסי משרדים" },
-      { value: "international-investment", label: "תיווך השקעות בינלאומיות" },
-      { value: "investment-advice", label: "ייעוץ השקעות" },
-      { value: "other", label: "אחר" },
-    ],
-    en: [
-      { value: "office-asset-management", label: "Office Asset Management" },
-      { value: "international-investment", label: "International Investments" },
-      { value: "investment-advice", label: "Investment Consulting" },
-      { value: "other", label: "Other" },
-    ]
-  };
-  
-  const formLabels = {
-    fullName: {
-      he: "שם מלא",
-      en: "Full Name"
-    },
-    phone: {
-      he: "טלפון",
-      en: "Phone"
-    },
-    email: {
-      he: "דוא״ל",
-      en: "Email"
-    },
-    meetingTopic: {
-      he: "נושא הפגישה",
-      en: "Meeting Topic"
-    },
-    additionalDetails: {
-      he: "פרטים נוספים",
-      en: "Additional Details"
-    },
-    sendRequest: {
-      he: "שלח בקשה לפגישה",
-      en: "Send Meeting Request"
-    },
-    responseTime: {
-      he: "אנו מתחייבים לחזור אליך תוך 24 שעות בימי עסקים",
-      en: "We commit to get back to you within 24 hours on business days"
-    }
-  };
-  
-  const placeholders = {
-    fullName: {
-      he: "הכנס את שמך המלא",
-      en: "Enter your full name"
-    },
-    phone: {
-      he: "הכנס את מספר הטלפון שלך",
-      en: "Enter your phone number"
-    },
-    email: {
-      he: "הכנס את כתובת הדוא״ל שלך",
-      en: "Enter your email address"
-    },
-    meetingTopic: {
-      he: "בחר את נושא הפגישה",
-      en: "Select the meeting topic"
-    },
-    additionalDetails: {
-      he: "ספר לנו קצת על הצרכים שלך",
-      en: "Tell us a bit about your needs"
-    }
-  };
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    topic: '',
+    details: ''
+  });
+  const [errors, setErrors] = useState({});
+
+  const topics = [
+    { value: '', label: 'Select meeting topic' },
+    { value: 'office-asset-management', label: 'Office Asset Management' },
+    { value: 'international-investment', label: 'International Investments' },
+    { value: 'investment-advice', label: 'Investment Consulting' },
+    { value: 'other', label: 'Other' },
+  ];
+
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
+  function validate() {
+    const errs = {};
+    if (!form.name) errs.name = 'Name is required';
+    if (!form.email) errs.email = 'Email is required';
+    if (!form.phone) errs.phone = 'Phone is required';
+    if (!form.topic) errs.topic = 'Meeting topic is required';
+    return errs;
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const errs = validate();
+    setErrors(errs);
+    if (Object.keys(errs).length > 0) return;
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setSubmitted(true);
+    }, 1200);
+  }
 
   return (
     <PageContainer>
-      <Hero
-        title={heroTitle}
-        subtitle={heroSubtitle}
-        variant="centered"
-      />
-      
-      <div className="max-w-2xl mx-auto my-12 p-8 bg-white dark:bg-backgroundDark dark:bg-opacity-90 rounded-lg shadow-md">
-        <form className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Input 
-              label={t(formLabels.fullName)}
-              placeholder={t(placeholders.fullName)}
-              required
-              fullWidth
-            />
-            <Input 
-              label={t(formLabels.phone)}
-              type="tel"
-              placeholder={t(placeholders.phone)}
-              required
-              fullWidth
-            />
-          </div>
-          
-          <Input 
-            label={t(formLabels.email)}
-            type="email"
-            placeholder={t(placeholders.email)}
-            required
-            fullWidth
-          />
-          
-          <Select 
-            label={t(formLabels.meetingTopic)}
-            options={serviceOptions[language]}
-            placeholder={t(placeholders.meetingTopic)}
-            required
-            fullWidth
-          />
-          
-          <Textarea 
-            label={t(formLabels.additionalDetails)}
-            placeholder={t(placeholders.additionalDetails)}
-            rows={4}
-            fullWidth
-          />
-          
-          <div className="flex justify-center">
-            <Button type="submit" size="lg">
-              {t(formLabels.sendRequest)}
-            </Button>
-          </div>
-          
-          <p className="text-sm text-gray-500 dark:text-textSecondary text-center mt-4">
-            {t(formLabels.responseTime)}
-          </p>
-        </form>
-      </div>
+      {/* Intro Section */}
+      <section className="relative flex flex-col items-center justify-center min-h-[340px] py-12 md:py-20 bg-gradient-to-br from-white via-orange-50 to-orange-100 overflow-hidden">
+        {/* דינאמיות: תמונה ברקע */}
+        <Image src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format" alt="Office meeting" fill priority className="object-cover object-center opacity-30 pointer-events-none z-0" />
+        {/* לוגו שקוף */}
+        <div className="absolute top-8 left-8 opacity-20 z-10 hidden md:block">
+          <Image src={IMAGES.logo} alt="Indexland Logo" width={80} height={80} />
+        </div>
+        <div className="relative z-20 flex flex-col items-center text-center max-w-2xl mx-auto">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-primary mb-4 drop-shadow-lg">Ready to Elevate Your Workspace & Portfolio?</h1>
+          <p className="text-lg md:text-xl text-gray-700 mb-2 font-medium">Share a few details below, and we'll be in touch within 24 hours to schedule your free discovery call.</p>
+        </div>
+      </section>
+      {/* Contact Form Section */}
+      <section className="flex flex-col items-center justify-center py-12 md:py-20 bg-white dark:bg-backgroundDark">
+        <div className="w-full max-w-lg bg-white/90 dark:bg-backgroundDark/90 rounded-2xl shadow-xl p-8 md:p-12 border border-orange-100 dark:border-white/10">
+          {submitted ? (
+            <div className="text-center py-16">
+              <h2 className="text-2xl font-bold text-primary mb-4">Thank you!</h2>
+              <p className="text-lg text-gray-700 mb-2">We'll be in touch soon to schedule your meeting.</p>
+            </div>
+          ) : (
+            <form className="flex flex-col gap-6" onSubmit={handleSubmit} autoComplete="off" noValidate>
+              <div>
+                <label htmlFor="name" className="block text-sm font-semibold mb-1">Name <span className="text-red-500">*</span></label>
+                <Input id="name" name="name" type="text" placeholder="Enter your full name" value={form.name} onChange={handleChange} required aria-required="true" aria-invalid={!!errors.name} className="w-full" />
+                {errors.name && <span className="text-xs text-red-500">{errors.name}</span>}
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-semibold mb-1">Email <span className="text-red-500">*</span></label>
+                <Input id="email" name="email" type="email" placeholder="Enter your email address" value={form.email} onChange={handleChange} required aria-required="true" aria-invalid={!!errors.email} className="w-full" />
+                {errors.email && <span className="text-xs text-red-500">{errors.email}</span>}
+              </div>
+              <div>
+                <label htmlFor="phone" className="block text-sm font-semibold mb-1">Phone <span className="text-red-500">*</span></label>
+                <Input id="phone" name="phone" type="tel" placeholder="Enter your phone number" value={form.phone} onChange={handleChange} required aria-required="true" aria-invalid={!!errors.phone} className="w-full" />
+                {errors.phone && <span className="text-xs text-red-500">{errors.phone}</span>}
+              </div>
+              <div>
+                <label htmlFor="topic" className="block text-sm font-semibold mb-1">Meeting Topic <span className="text-red-500">*</span></label>
+                <Select id="topic" name="topic" value={form.topic} onChange={handleChange} required aria-required="true" aria-invalid={!!errors.topic} className="w-full" options={topics} placeholder="Select meeting topic" />
+                {errors.topic && <span className="text-xs text-red-500">{errors.topic}</span>}
+              </div>
+              <div>
+                <label htmlFor="details" className="block text-sm font-semibold mb-1">Additional Details</label>
+                <Textarea id="details" name="details" placeholder="Tell us a bit about your needs (optional)" value={form.details} onChange={handleChange} className="w-full" rows={3} />
+              </div>
+              <Button type="submit" className="w-full mt-2" isLoading={loading} size="lg">Book a Meeting</Button>
+            </form>
+          )}
+        </div>
+      </section>
     </PageContainer>
   );
 } 
