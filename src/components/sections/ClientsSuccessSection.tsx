@@ -56,7 +56,7 @@ export default function ClientsSuccessSection() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const handleToggle = (idx: number) => setOpenIdx(openIdx === idx ? null : idx);
   return (
-    <section className="relative py-20 bg-gradient-to-br from-blue-50 via-cyan-100 to-primary/10 dark:from-secondary/20 dark:via-primary/10 dark:to-backgroundDark transition-colors duration-200 overflow-hidden">
+    <section className="relative py-20 bg-gradient-to-br from-primary/10 via-primary/10 to-primary/10 dark:from-secondary/20 dark:via-primary/10 dark:to-backgroundDark transition-colors duration-200 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none opacity-40" />
       <div className="container px-2 md:px-8">
         <div className="text-center mb-12">

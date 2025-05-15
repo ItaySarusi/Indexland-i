@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from "react";
 import PageContainer from "@/components/layout/PageContainer";
 import Hero from "@/components/sections/Hero";
 import ServicesOverview from "@/components/sections/ServicesOverview";
@@ -11,8 +12,27 @@ import CtaSection from "@/components/sections/CtaSection";
 import ClientsSuccessSection from "@/components/sections/ClientsSuccessSection";
 import { IMAGES } from "@/constants/site";
 import { HeroGeometric } from "@/components/ui/shape-landing-hero";
+import SlackIntro from "@/components/mage-ui/hero/slack-intro";
+import StaticSlackElements from "@/components/mage-ui/decorative/static-slack-elements";
 
 export default function Home() {
+  const [showLoader, setShowLoader] = useState(true);
+  const [loadedContent, setLoadedContent] = useState(false);
+
+  // נטען את התוכן רק אחרי שהלואדר מסתיים
+  useEffect(() => {
+    if (!showLoader) {
+      const timer = setTimeout(() => {
+        setLoadedContent(true);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [showLoader]);
+
+  const handleAnimationComplete = () => {
+    setShowLoader(false);
+  };
+
   // שירותים לדוגמה
   const services = [
     {
@@ -279,57 +299,94 @@ export default function Home() {
   ];
 
   return (
-    <PageContainer glass>
-      <Hero
-        variant="background-image"
-        title="Indexland: Your A–Z Office & Real Estate Partner"
-        subtitle="Turnkey workspace solutions, asset management, and investment services—local and global."
-        primaryActionLabel="Book a Meeting"
-        primaryActionHref="/book-meeting"
-        secondaryActionLabel="Explore Services"
-        secondaryActionHref="/services"
-        imageUrl={IMAGES.hero.home}
-      />
+    <>
+      {showLoader && <SlackIntro onAnimationComplete={handleAnimationComplete} />}
+      
+      <div className={`transition-opacity duration-500 ${loadedContent ? 'opacity-100' : 'opacity-0'}`}>
+        <PageContainer>
+          <Hero
+            variant="background-image"
+            title="Indexland: Your A–Z Office & Real Estate Partner"
+            subtitle="Turnkey workspace solutions, asset management, and investment services—local and global."
+            primaryActionLabel="Book a Meeting"
+            primaryActionHref="/book-meeting"
+            secondaryActionLabel="Explore Services"
+            secondaryActionHref="/services"
+            imageUrl={IMAGES.hero.home}
+          />
 
-      <ServicesOverview services={services} />
-      
-      <WhyChooseUs features={features} imageUrl={IMAGES.sections.whyChooseUs} bgColor="bg-gray-50 dark:bg-backgroundDark/80" />
-      
-      <ServicesAtAGlance />
-      
-      <Metrics metrics={metrics} />
+          {/* אלמנטים סטטיים מינימליים לפני WhyChooseUs עם אפקט פרלקס */}
+          <div className="relative w-full overflow-hidden">
+            <StaticSlackElements 
+              type="minimal" 
+              variant="primary" 
+              scrollEffect="parallax"
+              className="opacity-90 py-6 mb-4" 
+            />
+          </div>
 
-      <TestimonialsSection 
-        testimonials={testimonials}
-        bgColor="white"
-        autoPlay={true}
-        autoPlayInterval={6000}
-      />
-      
-      <ClientsSuccessSection />
-      
-      <CtaSection 
-        title={{
-          he: "מוכנים להתחיל?",
-          en: "Ready to get started?"
-        }}
-        subtitle={{
-          he: "צרו איתנו קשר היום לפגישת ייעוץ ללא התחייבות",
-          en: "Contact us today for a no-obligation consultation"
-        }}
-        primaryButtonText={{
-          he: "תיאום פגישה",
-          en: "Schedule a Meeting"
-        }}
-        primaryButtonHref="/book-meeting"
-        secondaryButtonText={{
-          he: "קרא עוד על השירותים שלנו",
-          en: "Learn More About Our Services"
-        }}
-        secondaryButtonHref="/services/office-asset-management"
-        variant="highlight"
-        bgColor="light"
-      />
-    </PageContainer>
+          <ServicesOverview services={services} />
+          
+          <WhyChooseUs features={features} imageUrl={IMAGES.sections.whyChooseUs} bgColor="bg-gray-50 dark:bg-backgroundDark/80" />
+          
+          <ServicesAtAGlance />
+          
+          {/* אלמנטים סטטיים מלאים לאחר הטסטימוניאלס עם אפקט פרלקס */}
+          <div className="relative w-full overflow-hidden">
+            <StaticSlackElements 
+              type="full" 
+              direction="horizontal"
+              variant="mixed" 
+              scrollEffect="parallax"
+              className="opacity-95 py-6" 
+            />
+          </div>
+          
+          <Metrics metrics={metrics} />
+
+          <TestimonialsSection 
+            testimonials={testimonials}
+            bgColor="white"
+            autoPlay={true}
+            autoPlayInterval={6000}
+          />
+          
+          <ClientsSuccessSection />
+          
+          <CtaSection 
+            title={{
+              he: "מוכנים להתחיל?",
+              en: "Ready to get started?"
+            }}
+            subtitle={{
+              he: "צרו איתנו קשר היום לפגישת ייעוץ ללא התחייבות",
+              en: "Contact us today for a no-obligation consultation"
+            }}
+            primaryButtonText={{
+              he: "תיאום פגישה",
+              en: "Schedule a Meeting"
+            }}
+            primaryButtonHref="/book-meeting"
+            secondaryButtonText={{
+              he: "קרא עוד על השירותים שלנו",
+              en: "Learn More About Our Services"
+            }}
+            secondaryButtonHref="/services/office-asset-management"
+            variant="highlight"
+            bgColor="light"
+          />
+
+          {/* אלמנטים סטטיים מפוזרים לאחר ההירו עם אפקט פרלקס */}
+          <div className="relative w-full overflow-hidden">
+            <StaticSlackElements 
+              type="scattered" 
+              variant="mixed" 
+              scrollEffect="parallax"
+              className="opacity-95 py-6" 
+            />
+          </div>
+        </PageContainer>
+      </div>
+    </>
   );
 }

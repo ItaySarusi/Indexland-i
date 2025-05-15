@@ -25,7 +25,7 @@ export default function CtaSection({
   secondaryButtonText,
   secondaryButtonHref,
   variant = 'default',
-  bgColor = 'gray'
+  bgColor = 'primary'
 }: CtaSectionProps) {
   const { t } = useLanguage();
   
