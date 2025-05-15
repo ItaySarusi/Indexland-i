@@ -102,7 +102,7 @@ export default function OfficeAssetManagement() {
             <img
               src="/dubai.jpg"
               alt="Dubai Skyline"
-              className="object-cover w-full h-full opacity-80"
+              className="object-cover w-full h-full"
               style={{borderTopRightRadius:'2rem', borderBottomRightRadius:'2rem'}}
             />
           </div>
@@ -111,18 +111,22 @@ export default function OfficeAssetManagement() {
             <img
               src="/telaviv.jpg"
               alt="Tel Aviv Skyline"
-              className="object-cover w-full h-full opacity-80"
+              className="object-cover w-full h-full"
               style={{borderTopLeftRadius:'2rem', borderBottomLeftRadius:'2rem'}}
             />
           </div>
-          {/* Overlay for readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-white/0 z-10" />
+          {/* Overlay for readability: split gradient */}
+          <div className="absolute inset-0 w-full h-full z-10 pointer-events-none"
+            style={{
+              background: "linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 50%, rgba(255,255,255,0.05) 100%)"
+            }}
+          />
         </div>
         {/* Centered content */}
         <div className="relative z-20 w-full flex flex-col items-center justify-center text-center px-4">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-white drop-shadow-2xl tracking-tight" style={{lineHeight:1.1, letterSpacing:'-0.01em'}}>
             Global Reach, Local Mastery
-          </h1>
+            </h1>
           <p className="text-lg md:text-2xl text-white/90 font-light mb-10 max-w-2xl mx-auto">
             Whether you're entering Dubai's boom market or optimizing Tel Aviv holdings, Indexland connects you to the right opportunities and expertise.
           </p>
@@ -236,7 +240,12 @@ export default function OfficeAssetManagement() {
           </p>
           {/* Tel Aviv visual */}
           <div className="w-full flex justify-center mb-10">
-            <img src="/telaviv.jpg" alt="Tel Aviv Offices" className="rounded-3xl shadow-xl w-full max-w-md object-cover opacity-95 border-4 border-orange-50" style={{boxShadow:'0 8px 32px 0 rgba(0,0,0,0.08)'}} />
+            <img
+              src="/telaviv.jpg"
+              alt="Tel Aviv Offices"
+              className="rounded-3xl shadow-xl w-full max-w-md object-cover"
+              style={{minHeight:220, maxHeight:320, objectPosition:'center'}}
+            />
           </div>
           {/* Light Premium Grid of 4 Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 w-full">
@@ -276,6 +285,69 @@ export default function OfficeAssetManagement() {
               <h3 className="text-lg font-bold mb-2 text-black">After-Deal Support</h3>
               <p className="text-gray-700 text-base font-medium">Handover inspections, renewals, and ongoing guidance</p>
             </div>
+          </div>
+                </div>
+      </section>
+
+      {/* Why Work with Us? Section */}
+      <section className="relative py-20 px-4 bg-gradient-to-br from-orange-50 via-orange-100 to-orange-200" dir={dir}>
+        <div className="container mx-auto max-w-5xl flex flex-col items-center">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-orange-700 text-center mb-3" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
+            Why Work with Us?
+          </h2>
+          <p className="text-lg text-orange-900 text-center mb-12 max-w-2xl" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
+            Leverage our global strategies and local networks for confident, informed investments.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+            {/* Card 1 */}
+            <div className="group bg-white/90 border border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-400 cursor-pointer min-h-[180px]">
+              <div className="mb-4 text-orange-500 group-hover:text-orange-700 transition-colors duration-300">
+                {/* Icon: Dubai/Map/Pin */}
+                <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M12 21c-4.418 0-8-3.582-8-8a8 8 0 1116 0c0 4.418-3.582 8-8 8z" stroke="currentColor"/><circle cx="12" cy="13" r="3" stroke="currentColor"/></svg>
+              </div>
+              <h3 className="text-lg font-bold mb-2 text-orange-900">Strategic access to Dubai's top-performing zones</h3>
+            </div>
+            {/* Card 2 */}
+            <div className="group bg-white/90 border border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-400 cursor-pointer min-h-[180px]">
+              <div className="mb-4 text-orange-500 group-hover:text-orange-700 transition-colors duration-300">
+                {/* Icon: Valuation/Chart */}
+                <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="3" y="12" width="4" height="8" rx="1" stroke="currentColor"/><rect x="9" y="8" width="4" height="12" rx="1" stroke="currentColor"/><rect x="15" y="4" width="4" height="16" rx="1" stroke="currentColor"/></svg>
+              </div>
+              <h3 className="text-lg font-bold mb-2 text-orange-900">Real-time valuation insights in Tel Aviv</h3>
+            </div>
+            {/* Card 3 */}
+            <div className="group bg-white/90 border border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-400 cursor-pointer min-h-[180px]">
+              <div className="mb-4 text-orange-500 group-hover:text-orange-700 transition-colors duration-300">
+                {/* Icon: Global/Handshake */}
+                <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M8 12l-4 4m0 0l4 4m-4-4h18" stroke="currentColor" strokeLinecap="round"/><rect x="14" y="4" width="6" height="6" rx="2" stroke="currentColor"/></svg>
+              </div>
+              <h3 className="text-lg font-bold mb-2 text-orange-900">End-to-end transaction confidence across borders</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative py-16 px-4 bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 flex flex-col items-center justify-center" dir={dir}>
+        <div className="container mx-auto max-w-2xl flex flex-col items-center text-center">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-8" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif', letterSpacing:'-0.01em'}}>
+            Ready to act on smarter real estate opportunities?
+          </h2>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center w-full">
+            <a
+              href="#download-dubai-guide"
+              className="px-8 py-3 rounded-full bg-white text-orange-600 font-extrabold shadow-lg hover:bg-orange-100 transition-all text-lg border-2 border-white min-w-[200px] text-center w-full sm:w-auto"
+              style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif', letterSpacing:'0.01em'}}
+            >
+              Download Dubai Guide
+            </a>
+            <a
+              href="#contact-agent"
+              className="px-8 py-3 rounded-full bg-orange-600 text-white font-extrabold shadow-lg hover:bg-black hover:text-orange-400 transition-all text-lg border-2 border-white min-w-[200px] text-center w-full sm:w-auto"
+              style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif', letterSpacing:'0.01em'}}
+            >
+              Contact a Local Agent
+            </a>
           </div>
         </div>
       </section>
