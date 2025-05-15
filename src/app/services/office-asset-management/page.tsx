@@ -86,14 +86,6 @@ export default function OfficeAssetManagement() {
     he: "צור קשר עכשיו",
     en: "Contact Us Now"
   };
-  const servicesTitle = {
-    he: "השירותים שלנו",
-    en: "Our Services"
-  };
-  const servicesDesc = {
-    he: "אנו מציעים מגוון שירותים בתחום ניהול נכסי המשרדים",
-    en: "We offer a range of services in office asset management"
-  };
 
   return (
     <PageContainer>
@@ -165,10 +157,10 @@ export default function OfficeAssetManagement() {
         </div>
         <div className="container relative z-10">
           <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-10 animate-fade-in">
-            {servicesTitle[language]}
+            Our Services
           </h2>
           <p className="text-lg text-gray-600 dark:text-textSecondary text-center mb-12 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-            {servicesDesc[language]}
+            We offer a range of services in office asset management
           </p>
         </div>
       </section>
