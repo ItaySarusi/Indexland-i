@@ -231,7 +231,6 @@ export default function InternationalInvestmentBrokerage() {
       {/* Turnkey Office Solutions Flow Line Section */}
       <section className="w-full flex flex-col items-center py-20 px-4">
         <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-2">Turnkey Office Solutions – שירותי משרדים מקצה לקצה</h2>
-        <p className="text-lg md:text-xl text-gray-700 dark:text-textSecondary text-center mb-12">Find any office for any company, A–Z.</p>
         <div className="flex flex-col md:flex-row gap-8 md:gap-0 w-full max-w-5xl justify-between items-center">
           {/* Step 1 */}
           <div className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer">
