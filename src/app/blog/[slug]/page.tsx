@@ -347,13 +347,6 @@ async function getBlogPost(slug: string): Promise<BlogPostDetail | null> {
         relatedPosts: mockPosts
           .filter(p => p.id !== post.id)
           .slice(0, 2)
-          .map(p => ({
-            id: p.id,
-            slug: p.slug,
-            title: p.title,
-            description: p.description,
-            coverImage: p.coverImage
-          }))
       };
     }
     
@@ -439,7 +432,7 @@ export default async function BlogPostPage(
   
   return (
     <PageContainer>
-      <article className="max-w-3xl mx-auto py-10">
+      <article className="max-w-3xl mx-auto py-20">
         <header className="mb-8">
           <h1 className="text-3xl font-bold mb-4">{title}</h1>
           <div className="flex items-center text-gray-500 mb-4">

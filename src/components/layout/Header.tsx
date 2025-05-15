@@ -52,7 +52,7 @@ export default function Header() {
   };
 
   return (
-    <header className="navbar-glass fixed top-0 left-0 w-full z-50 transition-colors duration-200 py-2 px-0 bg-white/0 backdrop-blur-xl">
+    <header className="navbar-glass fixed top-0 left-0 w-full z-50 transition-colors duration-200 py-2 px-4 bg-white/0 backdrop-blur-xl">
       <div className="container flex items-center justify-between flex-row-reverse">
         <nav className="hidden md:flex items-center gap-8 order-1">
           {NAV_LINKS[language].map((link) =>

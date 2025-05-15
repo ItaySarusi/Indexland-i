@@ -16,6 +16,7 @@ interface HeroProps {
   secondaryActionHref?: string;
   imageUrl?: string;
   variant?: 'default' | 'centered' | 'image-right' | 'background-image';
+  className?: string;
 }
 
 export default function Hero({
@@ -26,7 +27,8 @@ export default function Hero({
   secondaryActionLabel,
   secondaryActionHref,
   imageUrl,
-  variant = 'default'
+  variant = 'default',
+  className,
 }: HeroProps) {
   const { language, t } = useLanguage();
   
@@ -242,7 +244,7 @@ export default function Hero({
 
   // Default variant
   return (
-    <section className="relative bg-white overflow-hidden">
+    <section className={`relative bg-white overflow-hidden ${className}`}>
       {/* Floating glassmorphic background */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[600px] h-[240px] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl opacity-40 animate-float-slow" />

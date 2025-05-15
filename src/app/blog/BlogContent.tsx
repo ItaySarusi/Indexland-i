@@ -307,6 +307,7 @@ export default function BlogContent() {
         secondaryActionHref="/blog"
         imageUrl={IMAGES.hero.blog}
         variant="default"
+        className="pt-12 md:pt-16"
       />
       <div className="py-12 md:py-16">
         <BlogPostsList posts={posts.slice(0, 9)} />
