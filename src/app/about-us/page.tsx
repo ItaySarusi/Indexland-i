@@ -391,9 +391,9 @@ export default function AboutUs() {
         <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
       </div>
 
-      {/* Core Values Section */}
-      <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
-        <CoreValuesSection />
+      {/* Team Section */}
+      <div className="animate-fade-in" style={{ animationDelay: '0.25s' }}>
+        <TeamSection title="meet the team" />
       </div>
 
       {/* Divider */}
@@ -401,20 +401,9 @@ export default function AboutUs() {
         <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
       </div>
 
-      {/* Team Section */}
-      <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
-        <TeamSection 
-          title={{
-            he: "ההנהלה שלנו",
-            en: "Our Leadership"
-          }}
-          subtitle={{
-            he: "הכירו את הצוות המנוסה שמוביל את החברה להישגים",
-            en: "Meet the experienced team that leads the company to achievements"
-          }}
-          members={teamMembers}
-          variant="grid"
-        />
+      {/* Core Values Section */}
+      <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
+        <CoreValuesSection />
       </div>
 
       {/* Divider */}
