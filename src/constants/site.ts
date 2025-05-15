@@ -28,9 +28,9 @@ export const NAV_LINKS = {
       href: '#',
       children: [
         {
-          name: 'השקעות נדל"ן בינלאומיות להשכרה',
+          name: 'Turnkey Office Solutions & Large Asset Management',
           href: '/services/international-investment-brokerage',
-          description: 'השקעות יוקרתיות בנדל"ן בינלאומי עם ליווי אישי ומקצועי',
+          description: 'שירותי משרדים מקצה לקצה וניהול נכסים גדולים',
         },
         {
           name: 'ניהול נכסי משרדים',
@@ -50,9 +50,9 @@ export const NAV_LINKS = {
       href: '#',
       children: [
         {
-          name: 'International Real Estate Investments for Rent',
+          name: 'Turnkey Office Solutions & Large Asset Management',
           href: '/services/international-investment-brokerage',
-          description: 'Luxury international real estate investments with personal and professional guidance',
+          description: 'End-to-end office solutions and large asset management',
         },
         {
           name: 'Office Asset Management',

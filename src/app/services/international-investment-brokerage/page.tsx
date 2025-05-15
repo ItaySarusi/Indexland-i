@@ -9,7 +9,7 @@ export default function InternationalInvestmentBrokerage() {
 
   // SEO metadata
   const metadata = useMemo(() => ({
-    title: t(SEO.internationalInvestmentBrokerage.title),
+    title: "Turnkey Office Solutions & Large Asset Management",
     description: t(SEO.internationalInvestmentBrokerage.description),
     keywords: t(SEO.internationalInvestmentBrokerage.keywords),
     openGraph: {
@@ -116,22 +116,37 @@ export default function InternationalInvestmentBrokerage() {
   return (
     <PageContainer>
       {/* Hero Section */}
-      <section className="relative py-20 bg-white/0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/20 pointer-events-none" />
-        <div className="container z-10 relative">
-          <div className="max-w-3xl mx-auto glass-card animate-fade-in text-center py-16 px-6 md:px-16 rounded-3xl shadow-2xl border border-white/30 dark:border-white/10 backdrop-blur-xl bg-white/60 dark:bg-gray-900/60">
-            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-primary drop-shadow-xl mb-6">
-              {t(heroTitle)}
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-700 dark:text-textSecondary font-light mb-2">
-              {t(heroDesc)}
-            </p>
-            <a href="/book-meeting" className="mt-8 inline-block px-8 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-200">
-              {t(heroBtn)}
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+        {/* Modern Office background */}
+        <img
+          src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1920&auto=format"
+          alt="Modern Office"
+          className="absolute inset-0 w-full h-full object-cover object-center z-0 brightness-60"
+        />
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-black/70 z-10" />
+        <div className="relative z-20 w-full flex flex-col items-center justify-center text-center px-4 py-24">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-white drop-shadow-2xl" style={{lineHeight:1.1}}>
+            Seamless Workspaces & Asset Control
+          </h1>
+          <p className="text-lg md:text-2xl text-white/90 font-light mb-10 max-w-2xl">
+            Indexland handles every stage of your office lifecycle and real-estate portfolio—so you can focus on business growth.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/contact?meeting=true"
+              className="px-8 py-3 rounded-full bg-orange-500 text-white font-semibold shadow-lg hover:bg-orange-600 transition-all text-lg border-2 border-orange-500"
+            >
+              Book a Meeting
+            </a>
+            <a
+              href="#learn-more"
+              className="px-8 py-3 rounded-full bg-white text-orange-500 font-semibold shadow-lg hover:bg-orange-50 transition-all text-lg border-2 border-orange-500"
+            >
+              Learn More
             </a>
           </div>
         </div>
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-16 bg-gradient-to-t from-white/60 to-transparent rounded-b-3xl blur-lg opacity-60 pointer-events-none" />
       </section>
 
       {/* Divider */}
@@ -209,6 +224,42 @@ export default function InternationalInvestmentBrokerage() {
             <a href="/book-meeting" className="inline-block px-10 py-4 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-200 text-lg">
               {t(ctaBtn)}
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Turnkey Office Solutions Flow Line Section */}
+      <section className="w-full flex flex-col items-center py-20 px-4">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-2">Turnkey Office Solutions – שירותי משרדים מקצה לקצה</h2>
+        <p className="text-lg md:text-xl text-gray-700 dark:text-textSecondary text-center mb-12">Find any office for any company, A–Z.</p>
+        <div className="flex flex-col md:flex-row gap-8 md:gap-0 w-full max-w-5xl justify-between items-center">
+          {/* Step 1 */}
+          <div className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer">
+            <svg className="w-12 h-12 mb-4 text-orange-500 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 48 48" stroke="currentColor"><rect x="8" y="16" width="32" height="24" rx="4" fill="#fff" stroke="#FF9800" strokeWidth="2.5"/><rect x="16" y="24" width="16" height="8" rx="2" fill="#FF9800"/><path d="M16 16V12a8 8 0 0 1 16 0v4" stroke="#FF9800" strokeWidth="2.5" strokeLinecap="round"/></svg>
+            <h3 className="text-xl font-bold mb-2 text-primary">Discovery & Scouting</h3>
+            <p className="text-gray-700 text-base">Tailored tours in prime Tel Aviv districts</p>
+          </div>
+          {/* Line connector */}
+          <div className="hidden md:block w-8 h-1 bg-gradient-to-r from-orange-300 to-orange-500 mx-2 rounded-full" />
+          {/* Step 2 */}
+          <div className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer">
+            <svg className="w-12 h-12 mb-4 text-orange-500 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 48 48" stroke="currentColor"><rect x="10" y="20" width="28" height="16" rx="4" fill="#fff" stroke="#FF9800" strokeWidth="2.5"/><path d="M14 28h20M14 32h12" stroke="#FF9800" strokeWidth="2.5" strokeLinecap="round"/><rect x="18" y="12" width="12" height="8" rx="2" fill="#FF9800"/></svg>
+            <h3 className="text-xl font-bold mb-2 text-primary">Negotiation & Legal</h3>
+            <p className="text-gray-700 text-base">Best lease terms, full paperwork support</p>
+          </div>
+          <div className="hidden md:block w-8 h-1 bg-gradient-to-r from-orange-300 to-orange-500 mx-2 rounded-full" />
+          {/* Step 3 */}
+          <div className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer">
+            <svg className="w-12 h-12 mb-4 text-orange-500 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 48 48" stroke="currentColor"><rect x="8" y="20" width="32" height="16" rx="4" fill="#fff" stroke="#FF9800" strokeWidth="2.5"/><rect x="16" y="28" width="16" height="4" rx="2" fill="#FF9800"/><path d="M24 20v-8m0 0l-4 4m4-4l4 4" stroke="#FF9800" strokeWidth="2.5" strokeLinecap="round"/></svg>
+            <h3 className="text-xl font-bold mb-2 text-primary">Build-Out & Move-In</h3>
+            <p className="text-gray-700 text-base">Fit-out, IT integrations, and launch coordination</p>
+          </div>
+          <div className="hidden md:block w-8 h-1 bg-gradient-to-r from-orange-300 to-orange-500 mx-2 rounded-full" />
+          {/* Step 4 */}
+          <div className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer">
+            <svg className="w-12 h-12 mb-4 text-orange-500 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 48 48" stroke="currentColor"><rect x="12" y="20" width="24" height="16" rx="4" fill="#fff" stroke="#FF9800" strokeWidth="2.5"/><path d="M24 28h8M16 32h16" stroke="#FF9800" strokeWidth="2.5" strokeLinecap="round"/><circle cx="24" cy="28" r="2" fill="#FF9800"/></svg>
+            <h3 className="text-xl font-bold mb-2 text-primary">Ongoing Concierge</h3>
+            <p className="text-gray-700 text-base">Supplies, maintenance, and staff assistance</p>
           </div>
         </div>
       </section>
