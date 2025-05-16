@@ -4,40 +4,40 @@ import { FaStar, FaBalanceScale, FaLightbulb, FaLink } from 'react-icons/fa';
 
 const values = [
   {
-    icon: <FaStar className="text-5xl mb-5 text-white" />,
+    icon: <FaStar className="text-5xl mb-5 text-[#FF5722]" />,
     title: { en: 'Excellence', he: 'מצוינות' },
     description: {
       en: 'No detail too small.',
       he: 'שום פרט אינו קטן מדי.'
     },
-    cardColor: 'bg-[#FF784E] border-[#FF784E]'
+    cardColor: 'bg-white border-[#FF784E]'
   },
   {
-    icon: <FaBalanceScale className="text-5xl mb-5 text-white" />,
+    icon: <FaBalanceScale className="text-5xl mb-5 text-[#FF5722]" />,
     title: { en: 'Integrity', he: 'יושרה' },
     description: {
       en: 'Transparent terms and reporting.',
       he: 'תנאים ודיווח שקופים.'
     },
-    cardColor: 'bg-[#FF784E] border-[#FF784E]'
+    cardColor: 'bg-white border-[#FF784E]'
   },
   {
-    icon: <FaLightbulb className="text-5xl mb-5 text-white" />,
+    icon: <FaLightbulb className="text-5xl mb-5 text-[#FF5722]" />,
     title: { en: 'Innovation', he: 'חדשנות' },
     description: {
       en: 'Smarter processes powered by data.',
       he: 'תהליכים חכמים מונעי דאטה.'
     },
-    cardColor: 'bg-[#FF784E] border-[#FF784E]'
+    cardColor: 'bg-white border-[#FF784E]'
   },
   {
-    icon: <FaLink className="text-5xl mb-5 text-white" />,
+    icon: <FaLink className="text-5xl mb-5 text-[#FF5722]" />,
     title: { en: 'Connection', he: 'קשר' },
     description: {
       en: 'Deep local ties and global networks.',
       he: 'קשרים מקומיים עמוקים ורשתות גלובליות.'
     },
-    cardColor: 'bg-[#FF784E] border-[#FF784E]'
+    cardColor: 'bg-white border-[#FF784E]'
   }
 ];
 
@@ -57,17 +57,16 @@ export default function CoreValuesSection() {
           {values.map((value, idx) => (
             <div
               key={idx}
-              className={`rounded-3xl border shadow-xl p-10 flex flex-col items-center text-center backdrop-blur-md ${value.cardColor} 
-                transition-transform duration-300 ease-out 
-                hover:-translate-y-2 hover:scale-105 
-                animate-pop-in`}
+              className={`rounded-3xl border shadow-xl p-10 flex flex-col items-center text-center backdrop-blur-md relative overflow-hidden ${value.cardColor} transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-105 animate-pop-in`}
               style={{ animationDelay: `${0.1 + idx * 0.12}s` }}
             >
+              {/* Neon floating dot */}
+              <span className="absolute top-4 right-6 w-8 h-8 bg-[#FF5722] opacity-40 rounded-full blur-2xl animate-float-slow pointer-events-none" />
               {value.icon}
-              <h3 className="text-xl font-bold mb-2 tracking-tight text-white">
+              <h3 className="text-xl font-bold mb-2 tracking-tight text-[#FF5722]">
                 {t(value.title)}
               </h3>
-              <p className="text-white text-base font-medium">
+              <p className="text-[#FF5722] text-base font-medium">
                 {t(value.description)}
               </p>
             </div>
