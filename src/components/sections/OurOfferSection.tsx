@@ -60,12 +60,12 @@ export default function OurOfferSection() {
               <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/60 to-transparent opacity-50 rounded-t-[2.5rem] pointer-events-none animate-glass-reflection" />
               <div className="absolute inset-0 rounded-[2.5rem] border-4 border-gradient-to-br from-yellow-300/30 via-primary/10 to-secondary/10 group-hover:border-yellow-400 pointer-events-none" style={{boxShadow:'0 0 32px 0 rgba(255,180,80,0.10), 0 1.5px 12px 0 rgba(255,255,255,0.10)'}} />
               <div className="flex flex-col items-center mb-6 animate-scale-in">
-                <div className="flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary/10 to-yellow-100/40 shadow-lg mb-3 group-hover:scale-110 group-hover:shadow-gold-400 transition-all duration-300">
-                  {step.icon}
-                </div>
-                <span className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-yellow-200/60 to-primary/10 text-primary font-extrabold text-2xl shadow-lg border-2 border-yellow-300 mb-2 animate-fade-in delay-100">
+                <span className="mb-4 flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-yellow-200/60 to-primary/10 text-primary font-extrabold text-2xl shadow-lg border-2 border-yellow-300 mb-2 animate-fade-in delay-100">
                   {step.number}
                 </span>
+                <div className="flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary/10 to-yellow-100/40 shadow-lg mb-2 group-hover:scale-110 group-hover:shadow-gold-400 transition-all duration-300">
+                  {step.icon}
+                </div>
               </div>
               <h3 className="text-2xl md:text-3xl font-extrabold mb-3 text-primary drop-shadow-xl animate-fade-in delay-100 text-center tracking-tight leading-tight">
                 {t(step.title)}

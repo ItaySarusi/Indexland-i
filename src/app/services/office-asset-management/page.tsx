@@ -185,7 +185,7 @@ export default function OfficeAssetManagement() {
               </div>
               <h3 className="text-lg font-bold mb-2 text-black">Property Sourcing</h3>
               <p className="text-gray-700 text-base font-medium">Residential, commercial, and mixed-use assets</p>
-              <span className="absolute top-3 left-3 w-3 h-3 bg-gradient-to-tr from-orange-400 to-white rounded-full opacity-50 animate-pulse pointer-events-none" style={{filter:'blur(2px)'}} />
+              <span className="absolute top-3 right-3 w-4 h-4 bg-gradient-to-tr from-orange-300 to-white rounded-full opacity-60 animate-pulse pointer-events-none" style={{filter:'blur(2px)'}} />
             </div>
             {/* Card 3 */}
             <div className="group relative bg-white border-2 border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer min-h-[260px] sparkle-card">
@@ -195,7 +195,7 @@ export default function OfficeAssetManagement() {
               </div>
               <h3 className="text-lg font-bold mb-2 text-black">Legal & Compliance</h3>
               <p className="text-gray-700 text-base font-medium">Local counsel, visa facilitation, transaction structuring</p>
-              <span className="absolute bottom-3 right-3 w-3 h-3 bg-gradient-to-tr from-orange-400 to-white rounded-full opacity-50 animate-pulse pointer-events-none" style={{filter:'blur(2px)'}} />
+              <span className="absolute top-3 right-3 w-4 h-4 bg-gradient-to-tr from-orange-300 to-white rounded-full opacity-60 animate-pulse pointer-events-none" style={{filter:'blur(2px)'}} />
             </div>
             {/* Card 4 */}
             <div className="group relative bg-white border-2 border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer min-h-[260px] sparkle-card">
@@ -205,7 +205,7 @@ export default function OfficeAssetManagement() {
               </div>
               <h3 className="text-lg font-bold mb-2 text-black">Ongoing Oversight</h3>
               <p className="text-gray-700 text-base font-medium">On-ground asset management and performance tracking</p>
-              <span className="absolute bottom-3 left-3 w-4 h-4 bg-gradient-to-tr from-orange-300 to-white rounded-full opacity-60 animate-pulse pointer-events-none" style={{filter:'blur(2px)'}} />
+              <span className="absolute top-3 right-3 w-4 h-4 bg-gradient-to-tr from-orange-300 to-white rounded-full opacity-60 animate-pulse pointer-events-none" style={{filter:'blur(2px)'}} />
             </div>
           </div>
         </div>

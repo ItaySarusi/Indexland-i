@@ -15,6 +15,7 @@ interface ServiceItem {
   icon: React.ReactNode;
   subServices: Record<Language, string>[];
   accentColor?: string; // Optional accent color for visual distinction
+  svg?: string; // Optional SVG path for visual distinction
 }
 
 // הגדרת הפרופס לקומפוננטה
@@ -57,6 +58,7 @@ export default function ServicesAtAGlance({
         en: "Scouting → Lease → Fit-out → Concierge"
       },
       icon: <BriefcaseBusiness />,
+      svg: "/files/svg/Building-permit-amico.svg",
       subServices: [
         { he: "Scouting", en: "Scouting" },
         { he: "Lease", en: "Lease" },
@@ -68,13 +70,14 @@ export default function ServicesAtAGlance({
     {
       title: {
         he: "ניהול נכסים גדולים",
-        en: "Large Asset Mgmt"
+        en: "Large Asset Management"
       },
       description: {
         he: "Portfolio oversight & reporting",
         en: "Portfolio oversight & reporting"
       },
       icon: <AreaChart />,
+      svg: "/files/svg/Building-permit-amico.svg",
       subServices: [
         { he: "Portfolio oversight", en: "Portfolio oversight" },
         { he: "Reporting", en: "Reporting" }

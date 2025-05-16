@@ -42,7 +42,7 @@ export default function Home() {
         <svg className="w-12 h-12 text-primary animate-bounce" fill="none" viewBox="0 0 48 48" stroke="currentColor"><rect x="8" y="16" width="32" height="24" rx="4" fill="#fff" stroke="#FF9800" strokeWidth="2.5"/><rect x="16" y="24" width="16" height="8" rx="2" fill="#FF9800"/><path d="M16 16V12a8 8 0 0 1 16 0v4" stroke="#FF9800" strokeWidth="2.5" strokeLinecap="round"/></svg>
       ),
       href: "/services/turnkey-office-solutions",
-      svg: "/files/svg/metrics.svg"
+      svg: "/files/gif/company.gif"
     },
     {
       title: "Large Asset Management",
@@ -51,7 +51,7 @@ export default function Home() {
         <svg className="w-12 h-12 text-blue-600 animate-pulse" fill="none" viewBox="0 0 48 48" stroke="currentColor"><rect x="10" y="28" width="6" height="12" rx="2" fill="#2196F3"/><rect x="21" y="20" width="6" height="20" rx="2" fill="#90CAF9"/><rect x="32" y="12" width="6" height="28" rx="2" fill="#2196F3"/><path d="M10 40h28" stroke="#2196F3" strokeWidth="2.5"/></svg>
       ),
       href: "/services/large-asset-management",
-      svg: "/files/svg/real-time-analytics.svg"
+      svg: "/files/svg/Building-permit-amico.svg"
     },
     {
       title: "International Investment",
@@ -60,7 +60,7 @@ export default function Home() {
         <svg className="w-12 h-12 text-green-600 animate-spin-slow" fill="none" viewBox="0 0 48 48" stroke="currentColor"><circle cx="24" cy="24" r="18" fill="#C8E6C9" stroke="#43A047" strokeWidth="2.5"/><path d="M24 12v10l8 4" stroke="#388E3C" strokeWidth="2.5" strokeLinecap="round"/><path d="M24 6a18 18 0 1 1 0 36a18 18 0 0 1 0-36z" stroke="#43A047" strokeWidth="2.5"/></svg>
       ),
       href: "/services/international-investment",
-      svg: "/files/svg/bull-market.svg"
+      svg: "/files/svg/Investor-presentation-bro.svg"
     },
     {
       title: "Local Brokerage",
@@ -69,7 +69,7 @@ export default function Home() {
         <svg className="w-12 h-12 text-purple-600 animate-wiggle" fill="none" viewBox="0 0 48 48" stroke="currentColor"><rect x="10" y="20" width="28" height="16" rx="4" fill="#E1BEE7" stroke="#9C27B0" strokeWidth="2.5"/><path d="M24 8v12" stroke="#9C27B0" strokeWidth="2.5" strokeLinecap="round"/><circle cx="24" cy="14" r="4" fill="#9C27B0"/></svg>
       ),
       href: "/services/local-brokerage",
-      svg: "/files/svg/handshake.svg"
+      svg: "/files/svg/House-searching-rafiki.svg"
     }
   ];
   
