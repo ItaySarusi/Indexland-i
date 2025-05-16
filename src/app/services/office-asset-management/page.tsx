@@ -151,24 +151,8 @@ export default function OfficeAssetManagement() {
         <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30" />
       </div>
 
-      {/* Why Choose Us - Glassy cards with slide-in animation */}
-      <section className="relative py-20 overflow-visible" dir={dir}>
-        {/* Floating glassmorphic background */}
-        <div className="pointer-events-none absolute inset-0 z-0">
-          <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[500px] h-[180px] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl opacity-40 animate-float-slow" />
-        </div>
-        <div className="container relative z-10">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-10 animate-fade-in">
-            Our Services
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-textSecondary text-center mb-12 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-            We offer a range of services in office asset management
-          </p>
-        </div>
-      </section>
-
       {/* International Real Estate Investment (Dubai) Section */}
-      <section className="relative py-20 px-4 bg-white" dir={dir}>
+      <section className="relative py-20 px-4 bg-r" dir={dir}>
         <div className="container mx-auto max-w-6xl flex flex-col items-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-3" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
             International Real Estate Investment (Dubai)
@@ -226,6 +210,11 @@ export default function OfficeAssetManagement() {
           </div>
         </div>
       </section>
+
+      {/* Divider */}
+      <div className="container mx-auto my-12">
+        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30" />
+      </div>
 
       {/* Local Commercial Real Estate Agents (Tel Aviv) Section */}
       <section className="relative py-20 px-4 bg-gray-50" dir={dir}>
@@ -289,6 +278,10 @@ export default function OfficeAssetManagement() {
 
       {/* Why Work with Us? Section */}
       <section className="relative py-20 px-4 bg-gradient-to-br from-orange-50 via-orange-100 to-orange-200" dir={dir}>
+        {/* Divider */}
+        <div className="container mx-auto mb-12">
+          <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30" />
+        </div>
         <div className="container mx-auto max-w-5xl flex flex-col items-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-orange-700 text-center mb-3" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
             Why Work with Us?
