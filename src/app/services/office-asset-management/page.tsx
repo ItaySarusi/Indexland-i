@@ -169,8 +169,11 @@ export default function OfficeAssetManagement() {
             {/* Card 1 */}
             <div className="group relative bg-white border-2 border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer min-h-[260px] sparkle-card">
               <div className="mb-4 text-orange-500 group-hover:text-black transition-colors duration-300">
-                {/* Icon: Research/Chart */}
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="3" y="12" width="4" height="8" rx="1" stroke="currentColor"/><rect x="9" y="8" width="4" height="12" rx="1" stroke="currentColor"/><rect x="15" y="4" width="4" height="16" rx="1" stroke="currentColor"/></svg>
+                {/* Icon: Market Research Video */}
+                <video autoPlay loop muted playsInline width="80" height="80">
+                  <source src="/files/webm/research.webm" type="video/webm" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
               <h3 className="text-lg font-bold mb-2 text-black">Market Research</h3>
               <p className="text-gray-700 text-base font-medium">Sector analysis, yield projections, regulatory overview</p>
@@ -180,8 +183,11 @@ export default function OfficeAssetManagement() {
             {/* Card 2 */}
             <div className="group relative bg-white border-2 border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer min-h-[260px] sparkle-card">
               <div className="mb-4 text-orange-500 group-hover:text-black transition-colors duration-300">
-                {/* Icon: Property/Building */}
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="3" y="7" width="7" height="14" rx="2" stroke="currentColor"/><rect x="14" y="3" width="7" height="18" rx="2" stroke="currentColor"/></svg>
+                {/* Icon: Property Sourcing Video */}
+                <video autoPlay loop muted playsInline width="80" height="80">
+                  <source src="/files/webm/source.webm" type="video/webm" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
               <h3 className="text-lg font-bold mb-2 text-black">Property Sourcing</h3>
               <p className="text-gray-700 text-base font-medium">Residential, commercial, and mixed-use assets</p>
@@ -190,8 +196,11 @@ export default function OfficeAssetManagement() {
             {/* Card 3 */}
             <div className="group relative bg-white border-2 border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer min-h-[260px] sparkle-card">
               <div className="mb-4 text-orange-500 group-hover:text-black transition-colors duration-300">
-                {/* Icon: Legal/Shield */}
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V7l8-4z" stroke="currentColor"/><path d="M9 12l2 2 4-4" stroke="currentColor" strokeLinecap="round"/></svg>
+                {/* Icon: Legal & Compliance Video */}
+                <video autoPlay loop muted playsInline width="80" height="80">
+                  <source src="/files/webm/legal.webm" type="video/webm" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
               <h3 className="text-lg font-bold mb-2 text-black">Legal & Compliance</h3>
               <p className="text-gray-700 text-base font-medium">Local counsel, visa facilitation, transaction structuring</p>
@@ -200,8 +209,11 @@ export default function OfficeAssetManagement() {
             {/* Card 4 */}
             <div className="group relative bg-white border-2 border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer min-h-[260px] sparkle-card">
               <div className="mb-4 text-orange-500 group-hover:text-black transition-colors duration-300">
-                {/* Icon: Oversight/Globe */}
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="currentColor"/></svg>
+                {/* Icon: Ongoing Oversight Video */}
+                <video autoPlay loop muted playsInline width="80" height="80">
+                  <source src="/files/webm/tracking.webm" type="video/webm" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
               <h3 className="text-lg font-bold mb-2 text-black">Ongoing Oversight</h3>
               <p className="text-gray-700 text-base font-medium">On-ground asset management and performance tracking</p>
@@ -239,8 +251,11 @@ export default function OfficeAssetManagement() {
             {/* Card 1 */}
             <div className="group relative bg-white border-2 border-orange-100 rounded-2xl shadow-md p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-orange-400 cursor-pointer min-h-[220px] sparkle-card">
               <div className="mb-4 text-orange-400 group-hover:text-black transition-colors duration-300">
-                {/* Icon: Sales/Handshake */}
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M8 12l-4 4m0 0l4 4m-4-4h18" stroke="currentColor" strokeLinecap="round"/><rect x="14" y="4" width="6" height="6" rx="2" stroke="currentColor"/></svg>
+                {/* Icon: Sales Representation Video */}
+                <video autoPlay loop muted playsInline width="80" height="80">
+                  <source src="/files/webm/sales.webm" type="video/webm" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
               <h3 className="text-lg font-bold mb-2 text-black">Sales Representation</h3>
               <p className="text-gray-700 text-base font-medium">Secure top terms for buyers and sellers</p>
@@ -248,8 +263,11 @@ export default function OfficeAssetManagement() {
             {/* Card 2 */}
             <div className="group relative bg-white border-2 border-orange-100 rounded-2xl shadow-md p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-orange-400 cursor-pointer min-h-[220px] sparkle-card">
               <div className="mb-4 text-orange-400 group-hover:text-black transition-colors duration-300">
-                {/* Icon: Leasing/Key */}
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><circle cx="15" cy="9" r="3" stroke="currentColor"/><path d="M2 22l7-7m0 0l3 3m-3-3v4" stroke="currentColor" strokeLinecap="round"/></svg>
+                {/* Icon: Leasing Services Video */}
+                <video autoPlay loop muted playsInline width="80" height="80">
+                  <source src="/files/webm/marketing.webm" type="video/webm" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
               <h3 className="text-lg font-bold mb-2 text-black">Leasing Services</h3>
               <p className="text-gray-700 text-base font-medium">Marketing, viewings, renewals, and negotiations</p>
@@ -257,8 +275,11 @@ export default function OfficeAssetManagement() {
             {/* Card 3 */}
             <div className="group relative bg-white border-2 border-orange-100 rounded-2xl shadow-md p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-orange-400 cursor-pointer min-h-[220px] sparkle-card">
               <div className="mb-4 text-orange-400 group-hover:text-black transition-colors duration-300">
-                {/* Icon: Valuation/Chart */}
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="3" y="12" width="4" height="8" rx="1" stroke="currentColor"/><rect x="9" y="8" width="4" height="12" rx="1" stroke="currentColor"/><rect x="15" y="4" width="4" height="16" rx="1" stroke="currentColor"/></svg>
+                {/* Icon: Valuation & Advisory Video */}
+                <video autoPlay loop muted playsInline width="80" height="80">
+                  <source src="/files/webm/risk.webm" type="video/webm" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
               <h3 className="text-lg font-bold mb-2 text-black">Valuation & Advisory</h3>
               <p className="text-gray-700 text-base font-medium">Real-time comps, cap rates, and risk assessments</p>
@@ -266,8 +287,11 @@ export default function OfficeAssetManagement() {
             {/* Card 4 */}
             <div className="group relative bg-white border-2 border-orange-100 rounded-2xl shadow-md p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-orange-400 cursor-pointer min-h-[220px] sparkle-card">
               <div className="mb-4 text-orange-400 group-hover:text-black transition-colors duration-300">
-                {/* Icon: Support/Help */}
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor"/><path d="M12 16v-2m0-4a2 2 0 10-2-2" stroke="currentColor" strokeLinecap="round"/></svg>
+                {/* Icon: After-Deal Support Video */}
+                <video autoPlay loop muted playsInline width="80" height="80">
+                  <source src="/files/webm/support.webm" type="video/webm" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
               <h3 className="text-lg font-bold mb-2 text-black">After-Deal Support</h3>
               <p className="text-gray-700 text-base font-medium">Handover inspections, renewals, and ongoing guidance</p>
@@ -293,24 +317,35 @@ export default function OfficeAssetManagement() {
             {/* Card 1 */}
             <div className="group bg-white/90 border border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-400 cursor-pointer min-h-[180px]">
               <div className="mb-4 text-orange-500 group-hover:text-orange-700 transition-colors duration-300">
-                {/* Icon: Dubai/Map/Pin */}
-                <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M12 21c-4.418 0-8-3.582-8-8a8 8 0 1116 0c0 4.418-3.582 8-8 8z" stroke="currentColor"/><circle cx="12" cy="13" r="3" stroke="currentColor"/></svg>
+                {/* Icon: Target (Business style) */}
+                <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor"/>
+                  <circle cx="12" cy="12" r="5" stroke="currentColor"/>
+                  <circle cx="12" cy="12" r="2" fill="currentColor"/>
+                </svg>
               </div>
               <h3 className="text-lg font-bold mb-2 text-orange-900">Strategic access to Dubai's top-performing zones</h3>
             </div>
             {/* Card 2 */}
             <div className="group bg-white/90 border border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-400 cursor-pointer min-h-[180px]">
               <div className="mb-4 text-orange-500 group-hover:text-orange-700 transition-colors duration-300">
-                {/* Icon: Valuation/Chart */}
-                <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="3" y="12" width="4" height="8" rx="1" stroke="currentColor"/><rect x="9" y="8" width="4" height="12" rx="1" stroke="currentColor"/><rect x="15" y="4" width="4" height="16" rx="1" stroke="currentColor"/></svg>
+                {/* Icon: Bar Chart (Business style) */}
+                <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                  <rect x="3" y="12" width="4" height="8" rx="1" stroke="currentColor"/>
+                  <rect x="10" y="8" width="4" height="12" rx="1" stroke="currentColor"/>
+                  <rect x="17" y="4" width="4" height="16" rx="1" stroke="currentColor"/>
+                </svg>
               </div>
               <h3 className="text-lg font-bold mb-2 text-orange-900">Real-time valuation insights in Tel Aviv</h3>
             </div>
             {/* Card 3 */}
             <div className="group bg-white/90 border border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-400 cursor-pointer min-h-[180px]">
               <div className="mb-4 text-orange-500 group-hover:text-orange-700 transition-colors duration-300">
-                {/* Icon: Global/Handshake */}
-                <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M8 12l-4 4m0 0l4 4m-4-4h18" stroke="currentColor" strokeLinecap="round"/><rect x="14" y="4" width="6" height="6" rx="2" stroke="currentColor"/></svg>
+                {/* Icon: Handshake (Business style) */}
+                <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                  <path d="M8 13l-4 4m0 0l4 4m-4-4h18" stroke="currentColor" strokeLinecap="round"/>
+                  <rect x="14" y="4" width="6" height="6" rx="2" stroke="currentColor"/>
+                </svg>
               </div>
               <h3 className="text-lg font-bold mb-2 text-orange-900">End-to-end transaction confidence across borders</h3>
             </div>
