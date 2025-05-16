@@ -4,8 +4,6 @@ import React from 'react';
 import PageContainer from "@/components/layout/PageContainer";
 import Hero from "@/components/sections/Hero";
 import BlogPostsList from "@/components/sections/BlogPostsList";
-import FeaturedArticles from '@/components/sections/FeaturedArticles';
-import BlogSidebar from '@/components/sections/BlogSidebar';
 import { BlogPost } from '@/types/blog';
 import { IMAGES } from '@/constants/site';
 
@@ -298,10 +296,10 @@ export default function BlogContent() {
           en: "Articles, analysis and insights in the field of office real estate and international investments"
         }}
         primaryActionLabel={{
-          he: "קבע פגישה",
-          en: "Book a Meeting"
+          he: "קרא עוד",
+          en: "Read More"
         }}
-        primaryActionHref="/book-meeting"
+        primaryActionHref="/blog"
         secondaryActionLabel={{
           he: "קרא עוד",
           en: "Read More"
@@ -311,18 +309,8 @@ export default function BlogContent() {
         variant="default"
         className="pt-12 md:pt-16"
       />
-      {/* Featured Articles Section */}
-      <div className="py-8 md:py-12">
-        <FeaturedArticles posts={posts.slice(0, 3)} />
-      </div>
-      {/* Main Blog Grid + Sidebar */}
-      <div className="flex flex-col md:flex-row gap-8 md:gap-12">
-        <div className="flex-1 min-w-0">
-          <BlogPostsList posts={posts} title={{he: "Recent Posts", en: "Recent Posts"}} enablePagination={true} pageSize={8} />
-        </div>
-        <aside className="w-full md:w-80 lg:w-96 flex-shrink-0">
-          <BlogSidebar posts={posts} />
-        </aside>
+      <div className="py-12 md:py-16">
+        <BlogPostsList posts={posts.slice(0, 9)} />
       </div>
     </PageContainer>
   );
