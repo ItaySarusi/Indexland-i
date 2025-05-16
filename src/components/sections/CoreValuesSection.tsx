@@ -10,7 +10,7 @@ const values = [
       en: 'No detail too small.',
       he: 'שום פרט אינו קטן מדי.'
     },
-    cardColor: 'bg-[#FFD1A0] border-[#F9B98B]'
+    cardColor: 'bg-[#FF784E] border-[#FF784E]'
   },
   {
     icon: <FaBalanceScale className="text-5xl mb-5 text-white" />,
@@ -19,7 +19,7 @@ const values = [
       en: 'Transparent terms and reporting.',
       he: 'תנאים ודיווח שקופים.'
     },
-    cardColor: 'bg-[#F9B98B] border-[#FFA366]'
+    cardColor: 'bg-[#FF784E] border-[#FF784E]'
   },
   {
     icon: <FaLightbulb className="text-5xl mb-5 text-white" />,
@@ -28,7 +28,7 @@ const values = [
       en: 'Smarter processes powered by data.',
       he: 'תהליכים חכמים מונעי דאטה.'
     },
-    cardColor: 'bg-[#FF5722] border-[#FF5722]'
+    cardColor: 'bg-[#FF784E] border-[#FF784E]'
   },
   {
     icon: <FaLink className="text-5xl mb-5 text-white" />,
@@ -37,7 +37,7 @@ const values = [
       en: 'Deep local ties and global networks.',
       he: 'קשרים מקומיים עמוקים ורשתות גלובליות.'
     },
-    cardColor: 'bg-[#FF5722] border-[#FF5722]'
+    cardColor: 'bg-[#FF784E] border-[#FF784E]'
   }
 ];
 
@@ -64,10 +64,10 @@ export default function CoreValuesSection() {
               style={{ animationDelay: `${0.1 + idx * 0.12}s` }}
             >
               {value.icon}
-              <h3 className="text-xl font-bold mb-2 tracking-tight">
+              <h3 className="text-xl font-bold mb-2 tracking-tight text-white">
                 {t(value.title)}
               </h3>
-              <p className="text-gray-700 dark:text-textSecondary text-base font-medium">
+              <p className="text-white text-base font-medium">
                 {t(value.description)}
               </p>
             </div>

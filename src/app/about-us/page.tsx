@@ -313,43 +313,43 @@ export default function AboutUs() {
 
   return (
     <PageContainer>
-      <Hero 
-        title={{
-          he: 'הסיפור שלנו - מי אנחנו ולמה אנחנו כאן',
-          en: 'Our Story - Who We Are and Why We\'re Here'
-        }}
-        subtitle={{
-          he: 'צוות המומחים שלנו מחויב להוביל את לקוחותינו להצלחה בעולם הנדל"ן, תוך שמירה על ערכי מקצועיות, יושרה ושירות אישי',
-          en: "Our team of experts is committed to leading our clients to success in the real estate world, while maintaining values of professionalism, integrity and personal service"
-        }}
-        primaryActionLabel={{
-          he: 'צור קשר עכשיו',
-          en: "Contact Us Now"
-        }}
-        primaryActionHref="/book-meeting"
-        secondaryActionLabel={{
-          he: 'למידע נוסף על החזון שלנו',
-          en: "Learn More About Our Vision"
-        }}
-        secondaryActionHref="#mission-vision"
-        imageUrl={IMAGES.hero.aboutUs}
-        variant="background-image"
-      />
+      <motion.div initial={{ opacity: 0, y: -40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+        <Hero 
+          title={{
+            he: 'הסיפור שלנו - מי אנחנו ולמה אנחנו כאן',
+            en: 'Our Story - Who We Are and Why We\'re Here'
+          }}
+          subtitle={{
+            he: 'צוות המומחים שלנו מחויב להוביל את לקוחותינו להצלחה בעולם הנדל"ן, תוך שמירה על ערכי מקצועיות, יושרה ושירות אישי',
+            en: "Our team of experts is committed to leading our clients to success in the real estate world, while maintaining values of professionalism, integrity and personal service"
+          }}
+          primaryActionLabel={{
+            he: 'צור קשר עכשיו',
+            en: "Contact Us Now"
+          }}
+          primaryActionHref="/book-meeting"
+          secondaryActionLabel={{
+            he: 'למידע נוסף על החזון שלנו',
+            en: "Learn More About Our Vision"
+          }}
+          secondaryActionHref="#mission-vision"
+          imageUrl={IMAGES.hero.aboutUs}
+          variant="background-image"
+        />
+      </motion.div>
 
-      {/* Our Story Section - זכוכיתי, חצי חצי */}
-      <section className="relative py-6 px-12 bg-transparent overflow-hidden animate-fade-in" id="our-story">
+      {/* Our Story Section */}
+      <motion.section id="our-story" className="relative py-6 px-12 bg-transparent overflow-hidden" initial={{ opacity: 0, x: -60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}>
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          {/* Text Side */}
-          <div className="glass-card rounded-3xl shadow-2xl p-8 md:p-14 animate-fade-in animate-scale-in min-h-[320px] flex flex-col justify-center" style={{ animationDelay: '0.1s' }}>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-3 animate-fade-in">Our Story</h2>
-            <div className="space-y-2">
-              <p className="text-lg text-gray-700 dark:text-textSecondary animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <motion.div className="glass-card rounded-3xl shadow-2xl p-8 md:p-14 animate-fade-in animate-scale-in min-h-[320px] flex flex-col justify-center" style={{ animationDelay: '0.1s' }} initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }}>
+            <motion.h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-3 animate-fade-in animate-scale-in" style={{ animationDelay: '0.3s' }} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }}>Our Story</motion.h2>
+            <motion.div className="space-y-2 animate-fade-in animate-scale-in" style={{ animationDelay: '0.4s' }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.4 }}>
+              <p className="text-lg text-gray-700 dark:text-textSecondary">
                 Indexland started as a boutique brokerage in Tel Aviv and evolved into a full-service office concierge and real estate partner—now bridging local precision with global opportunity.
               </p>
-            </div>
-          </div>
-          {/* Image Side */}
-          <div className="relative animate-fade-in animate-scale-in min-h-[320px] flex items-center" style={{ animationDelay: '0.3s' }}>
+            </motion.div>
+          </motion.div>
+          <motion.div className="relative animate-fade-in animate-scale-in min-h-[320px] flex items-center" style={{ animationDelay: '0.3s' }} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.3 }}>
             <img
               src="https://images.unsplash.com/photo-1464983953574-0892a716854b?q=80&w=800&auto=format"
               alt="Indexland Team Office"
@@ -357,32 +357,32 @@ export default function AboutUs() {
               style={{ minHeight: 220 }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent rounded-3xl pointer-events-none" />
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Mission & Vision Section */}
-      <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
+      <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }}>
         <MissionVisionSection />
-      </div>
+      </motion.div>
 
       {/* Our Offer Section */}
-      <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.15 } } }}>
         <OurOfferSection />
-      </div>
+      </motion.div>
 
       {/* Team Section */}
-      <div className="animate-fade-in" style={{ animationDelay: '0.25s' }}>
+      <motion.div initial={{ opacity: 0, rotateY: 90 }} whileInView={{ opacity: 1, rotateY: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.3 }}>
         <TeamSection title="meet the team" />
-      </div>
+      </motion.div>
 
       {/* Core Values Section */}
-      <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
+      <motion.div initial={{ opacity: 0, scale: 0.7 }} whileInView={{ opacity: 1, scale: 1.05 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.4, type: 'spring', bounce: 0.4 }}>
         <CoreValuesSection />
-      </div>
+      </motion.div>
 
       {/* CTA Section */}
-      <div className="animate-fade-in" style={{ animationDelay: '0.5s' }}>
+      <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.5 }}>
         <CtaSection 
           title={{
             he: "נשמח לדבר איתך",
@@ -399,7 +399,12 @@ export default function AboutUs() {
           primaryButtonHref="/book-meeting"
           variant="centered"
         />
-      </div>
+      </motion.div>
+
+      {/* FAQ Section */}
+      <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.6 }}>
+        <FaqSection faqs={faqs} />
+      </motion.div>
     </PageContainer>
   );
 } 
