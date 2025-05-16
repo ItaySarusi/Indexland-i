@@ -17,6 +17,7 @@ interface HeroProps {
   imageUrl?: string;
   variant?: 'default' | 'centered' | 'image-right' | 'background-image';
   className?: string;
+  enableTyping?: boolean;
 }
 
 export default function Hero({
@@ -29,6 +30,7 @@ export default function Hero({
   imageUrl,
   variant = 'default',
   className,
+  enableTyping = true,
 }: HeroProps) {
   const { language, t } = useLanguage();
   
@@ -74,7 +76,14 @@ export default function Hero({
     const headline = titleText.split(':')[0];
     const subheadline = titleText.split(':')[1]?.trim() || '';
     const [typed, setTyped] = useState('');
+    
+    
     useEffect(() => {
+      if (!enableTyping) {
+        setTyped(headline);
+        return;
+      }
+      
       let i = 0;
       setTyped('');
       const interval = setInterval(() => {
@@ -83,7 +92,8 @@ export default function Hero({
         if (i === headline.length) clearInterval(interval);
       }, 40);
       return () => clearInterval(interval);
-    }, [headline]);
+    }, [headline, enableTyping]);
+    
     return (
       <section className="relative overflow-hidden min-h-screen flex items-center" style={{ minHeight: '100vh' }}>
         {imageUrl && (
@@ -105,11 +115,11 @@ export default function Hero({
               <span className="block whitespace-pre-line min-h-[2.5em]">
                 <span className="block">
                   {typed}
-                  <span className="inline-block animate-pulse">|</span>
+                  {enableTyping && <span className="inline-block animate-pulse">|</span>}
                 </span>
                 <motion.span
                   initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: typed.length === headline.length ? 1 : 0, y: 0 }}
+                  animate={{ opacity: enableTyping ? (typed.length === headline.length ? 1 : 0) : 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                   className="block text-white/90 text-2xl md:text-3xl mt-2 font-bold"
                 >
@@ -119,7 +129,7 @@ export default function Hero({
             </h1>
             <motion.p
               initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: typed.length === headline.length ? 1 : 0, y: 0 }}
+              animate={{ opacity: enableTyping ? (typed.length === headline.length ? 1 : 0) : 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
               className="mt-0 mb-2 text-lg font-normal text-white/90 lg:text-xl drop-shadow-md"
             >

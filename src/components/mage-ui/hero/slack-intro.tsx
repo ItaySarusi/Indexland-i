@@ -164,7 +164,7 @@ export default function SlackIntro({ onAnimationComplete }: SlackIntroProps) {
     // תחילת האנימציה - הכל נכנס פנימה
     const animationStartTimer = setTimeout(() => {
       setAnimationEnd(true);
-    }, 3000);
+    }, 1500);
 
     // אנימציית יציאה מסתיימת - נעלם לגמרי
     const animationEndTimer = setTimeout(() => {

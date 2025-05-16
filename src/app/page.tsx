@@ -313,6 +313,7 @@ export default function Home() {
             secondaryActionLabel="Explore Services"
             secondaryActionHref="/services"
             imageUrl={IMAGES.hero.home}
+            enableTyping={false}
           />
 
           {/* אלמנטים סטטיים מינימליים לפני WhyChooseUs עם אפקט פרלקס */}
