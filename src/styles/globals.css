@@ -165,6 +165,13 @@
     0% { background-position: 0% 50%; }
     100% { background-position: 100% 50%; }
   }
+  @keyframes pop-in {
+    0% { opacity: 0; transform: scale(0.7) translateY(40px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .animate-pop-in {
+    animation: pop-in 0.5s cubic-bezier(0.23, 1, 0.32, 1) both;
+  }
   
   /* אפקט ביטול הובר לכפתורים מיוחדים */
   .no-hover-effect.snake-border-btn:hover::before {

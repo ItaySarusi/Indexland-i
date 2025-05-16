@@ -4,40 +4,40 @@ import { FaStar, FaBalanceScale, FaLightbulb, FaLink } from 'react-icons/fa';
 
 const values = [
   {
-    icon: <FaStar className="text-5xl mb-5 text-blue-600" />,
+    icon: <FaStar className="text-5xl mb-5 text-white" />,
     title: { en: 'Excellence', he: 'מצוינות' },
     description: {
       en: 'No detail too small.',
       he: 'שום פרט אינו קטן מדי.'
     },
-    cardColor: 'bg-blue-100/60 border-blue-300'
+    cardColor: 'bg-[#FFD1A0] border-[#F9B98B]'
   },
   {
-    icon: <FaBalanceScale className="text-5xl mb-5 text-sky-700" />,
+    icon: <FaBalanceScale className="text-5xl mb-5 text-white" />,
     title: { en: 'Integrity', he: 'יושרה' },
     description: {
       en: 'Transparent terms and reporting.',
       he: 'תנאים ודיווח שקופים.'
     },
-    cardColor: 'bg-sky-100/60 border-sky-300'
+    cardColor: 'bg-[#F9B98B] border-[#FFA366]'
   },
   {
-    icon: <FaLightbulb className="text-5xl mb-5 text-orange-500" />,
+    icon: <FaLightbulb className="text-5xl mb-5 text-white" />,
     title: { en: 'Innovation', he: 'חדשנות' },
     description: {
       en: 'Smarter processes powered by data.',
       he: 'תהליכים חכמים מונעי דאטה.'
     },
-    cardColor: 'bg-orange-100/60 border-orange-300'
+    cardColor: 'bg-[#FF5722] border-[#FF5722]'
   },
   {
-    icon: <FaLink className="text-5xl mb-5 text-emerald-600" />,
+    icon: <FaLink className="text-5xl mb-5 text-white" />,
     title: { en: 'Connection', he: 'קשר' },
     description: {
       en: 'Deep local ties and global networks.',
       he: 'קשרים מקומיים עמוקים ורשתות גלובליות.'
     },
-    cardColor: 'bg-emerald-100/60 border-emerald-300'
+    cardColor: 'bg-[#FF5722] border-[#FF5722]'
   }
 ];
 
@@ -57,7 +57,10 @@ export default function CoreValuesSection() {
           {values.map((value, idx) => (
             <div
               key={idx}
-              className={`rounded-3xl border shadow-xl p-10 flex flex-col items-center text-center animate-fade-in animate-scale-in backdrop-blur-md ${value.cardColor}`}
+              className={`rounded-3xl border shadow-xl p-10 flex flex-col items-center text-center backdrop-blur-md ${value.cardColor} 
+                transition-transform duration-300 ease-out 
+                hover:-translate-y-2 hover:scale-105 
+                animate-pop-in`}
               style={{ animationDelay: `${0.1 + idx * 0.12}s` }}
             >
               {value.icon}
