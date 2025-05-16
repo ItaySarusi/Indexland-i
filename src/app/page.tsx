@@ -14,6 +14,7 @@ import { IMAGES } from "@/constants/site";
 import { HeroGeometric } from "@/components/ui/shape-landing-hero";
 import SlackIntro from "@/components/mage-ui/hero/slack-intro";
 import StaticSlackElements from "@/components/mage-ui/decorative/static-slack-elements";
+import { motion } from 'framer-motion';
 
 export default function Home() {
   const [showLoader, setShowLoader] = useState(true);
@@ -313,36 +314,73 @@ export default function Home() {
       
       <div className={`transition-opacity duration-500 ${loadedContent ? 'opacity-100' : 'opacity-0'}`}>
         <PageContainer>
-          <Hero
-            variant="background-image"
-            title="Indexland: Your A–Z Office & Real Estate Partner"
-            subtitle="Turnkey workspace solutions, asset management, and investment services—local and global."
-            primaryActionLabel="Book a Meeting"
-            primaryActionHref="/book-meeting"
-            secondaryActionLabel="Explore Services"
-            secondaryActionHref="/services"
-            imageUrl={IMAGES.hero.home}
-            enableTyping={false}
-          />
+          {/* Hero Section - fade up & scale in */}
+          <motion.div
+            initial={{ opacity: 0, y: 60, scale: 0.98 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, ease: 'easeOut' }}
+          >
+            <Hero
+              variant="background-image"
+              title="Indexland: Your A–Z Office & Real Estate Partner"
+              subtitle="Turnkey workspace solutions, asset management, and investment services—local and global."
+              primaryActionLabel="Book a Meeting"
+              primaryActionHref="/book-meeting"
+              secondaryActionLabel="Explore Services"
+              secondaryActionHref="/services"
+              imageUrl={IMAGES.hero.home}
+              enableTyping={false}
+            />
+          </motion.div>
 
-          {/* אלמנטים סטטיים מינימליים לפני WhyChooseUs עם אפקט פרלקס */}
-          <div className="relative w-full overflow-hidden">
+          {/* StaticSlackElements (minimal) - slide in from left */}
+          <motion.div
+            initial={{ opacity: 0, x: -80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: 'anticipate' }}
+            className="relative w-full overflow-hidden"
+          >
             <StaticSlackElements 
               type="minimal" 
               variant="primary" 
               scrollEffect="parallax"
               className="opacity-90 py-6 mb-4" 
             />
-          </div>
+          </motion.div>
 
+          {/* ServicesOverview (core offering) - NO ANIMATION */}
           <ServicesOverview services={services} />
           
-          <WhyChooseUs features={features} imageUrl={IMAGES.sections.whyChooseUs} bgColor="bg-gray-50 dark:bg-backgroundDark/80" />
+          {/* WhyChooseUs - pop in & scale */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: 'backOut' }}
+          >
+            <WhyChooseUs features={features} imageUrl={IMAGES.sections.whyChooseUs} bgColor="bg-gray-50 dark:bg-backgroundDark/80" />
+          </motion.div>
           
-          <ServicesAtAGlance />
+          {/* ServicesAtAGlance - slide up & fade */}
+          <motion.div
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: 'anticipate' }}
+          >
+            <ServicesAtAGlance />
+          </motion.div>
           
-          {/* אלמנטים סטטיים מלאים לאחר הטסטימוניאלס עם אפקט פרלקס */}
-          <div className="relative w-full overflow-hidden">
+          {/* StaticSlackElements (full) - scaleX pop */}
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0.5 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1, duration: 0.5, type: 'spring', stiffness: 180 }}
+            className="relative w-full overflow-hidden"
+          >
             <StaticSlackElements 
               type="full" 
               direction="horizontal"
@@ -350,51 +388,89 @@ export default function Home() {
               scrollEffect="parallax"
               className="opacity-95 py-6" 
             />
-          </div>
+          </motion.div>
           
-          <Metrics metrics={metrics} />
+          {/* Metrics - flip in */}
+          <motion.div
+            initial={{ opacity: 0, rotateY: 90 }}
+            whileInView={{ opacity: 1, rotateY: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: 'circOut' }}
+          >
+            <Metrics metrics={metrics} />
+          </motion.div>
 
-          <TestimonialsSection 
-            testimonials={testimonials}
-            bgColor="white"
-            autoPlay={true}
-            autoPlayInterval={6000}
-          />
+          {/* TestimonialsSection - bounce in */}
+          <motion.div
+            initial={{ opacity: 0, y: 60, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, type: 'spring', bounce: 0.3 }}
+          >
+            <TestimonialsSection 
+              testimonials={testimonials}
+              bgColor="white"
+              autoPlay={true}
+              autoPlayInterval={6000}
+            />
+          </motion.div>
           
-          <ClientsSuccessSection />
+          {/* ClientsSuccessSection - fade in & scale */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: 'anticipate' }}
+          >
+            <ClientsSuccessSection />
+          </motion.div>
           
-          <CtaSection 
-            title={{
-              he: "מוכנים להתחיל?",
-              en: "Ready to get started?"
-            }}
-            subtitle={{
-              he: "צרו איתנו קשר היום לפגישת ייעוץ ללא התחייבות",
-              en: "Contact us today for a no-obligation consultation"
-            }}
-            primaryButtonText={{
-              he: "תיאום פגישה",
-              en: "Book a Meeting"
-            }}
-            primaryButtonHref="/book-meeting"
-            secondaryButtonText={{
-              he: "קרא עוד על השירותים שלנו",
-              en: "Learn More About Our Services"
-            }}
-            secondaryButtonHref="/services/office-asset-management"
-            variant="highlight"
-            bgColor="light"
-          />
+          {/* CtaSection - pop in from bottom */}
+          <motion.div
+            initial={{ opacity: 0, y: 80, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, type: 'spring', bounce: 0.2 }}
+          >
+            <CtaSection 
+              title={{
+                he: "מוכנים להתחיל?",
+                en: "Ready to get started?"
+              }}
+              subtitle={{
+                he: "צרו איתנו קשר היום לפגישת ייעוץ ללא התחייבות",
+                en: "Contact us today for a no-obligation consultation"
+              }}
+              primaryButtonText={{
+                he: "תיאום פגישה",
+                en: "Book a Meeting"
+              }}
+              primaryButtonHref="/book-meeting"
+              secondaryButtonText={{
+                he: "קרא עוד על השירותים שלנו",
+                en: "Learn More About Our Services"
+              }}
+              secondaryButtonHref="/services/office-asset-management"
+              variant="highlight"
+              bgColor="light"
+            />
+          </motion.div>
 
-          {/* אלמנטים סטטיים מפוזרים לאחר ההירו עם אפקט פרלקס */}
-          <div className="relative w-full overflow-hidden">
+          {/* StaticSlackElements (scattered) - fade in & scale */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: 'anticipate' }}
+            className="relative w-full overflow-hidden"
+          >
             <StaticSlackElements 
               type="scattered" 
               variant="mixed" 
               scrollEffect="parallax"
               className="opacity-95 py-6" 
             />
-          </div>
+          </motion.div>
         </PageContainer>
       </div>
     </>
