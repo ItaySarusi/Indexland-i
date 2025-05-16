@@ -307,11 +307,13 @@ export default function BlogContent() {
         secondaryActionHref="/blog"
         imageUrl={IMAGES.hero.blog}
         variant="default"
-        className="pt-12 md:pt-16"
+        className="pt-20 md:pt-20"
       />
-      <div className="py-12 md:py-16">
+          {/* Divider */}
+        <div className="container mx-auto my-12">
+          <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
+        </div>
         <BlogPostsList posts={posts.slice(0, 9)} />
-      </div>
     </PageContainer>
   );
 } 
