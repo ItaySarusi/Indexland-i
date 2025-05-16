@@ -3,6 +3,7 @@ import { useLanguage } from "@/lib/language-context";
 import PageContainer from "@/components/layout/PageContainer";
 import { SEO } from "@/constants/site";
 import { useMemo } from "react";
+import Image from "next/image";
 
 export default function InternationalInvestmentBrokerage() {
   const { t, language } = useLanguage();
@@ -160,7 +161,10 @@ export default function InternationalInvestmentBrokerage() {
         <div className="flex flex-col md:flex-row gap-8 md:gap-0 w-full max-w-5xl justify-between items-center">
           {/* Step 1 */}
           <div className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer">
-            <svg className="w-12 h-12 mb-4 text-orange-500 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 48 48" stroke="currentColor"><rect x="8" y="16" width="32" height="24" rx="4" fill="#fff" stroke="#FF9800" strokeWidth="2.5"/><rect x="16" y="24" width="16" height="8" rx="2" fill="#FF9800"/><path d="M16 16V12a8 8 0 0 1 16 0v4" stroke="#FF9800" strokeWidth="2.5" strokeLinecap="round"/></svg>
+            <video autoPlay loop muted playsInline width="80" height="80">
+              <source src="/files/webm/scout.webm" type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
             <h3 className="text-xl font-bold mb-2 text-primary">Discovery & Scouting</h3>
             <p className="text-gray-700 text-base">Tailored tours in prime Tel Aviv districts</p>
           </div>
@@ -168,7 +172,10 @@ export default function InternationalInvestmentBrokerage() {
           <div className="hidden md:block w-8 h-1 bg-gradient-to-r from-orange-300 to-orange-500 mx-2 rounded-full" />
           {/* Step 2 */}
           <div className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer">
-            <svg className="w-12 h-12 mb-4 text-orange-500 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 48 48" stroke="currentColor"><rect x="10" y="20" width="28" height="16" rx="4" fill="#fff" stroke="#FF9800" strokeWidth="2.5"/><path d="M14 28h20M14 32h12" stroke="#FF9800" strokeWidth="2.5" strokeLinecap="round"/><rect x="18" y="12" width="12" height="8" rx="2" fill="#FF9800"/></svg>
+            <video autoPlay loop muted playsInline width="80" height="80">
+              <source src="/files/webm/handshake.webm" type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
             <h3 className="text-xl font-bold mb-2 text-primary">Negotiation & Legal</h3>
             <p className="text-gray-700 text-base">Best lease terms, full paperwork support</p>
           </div>
