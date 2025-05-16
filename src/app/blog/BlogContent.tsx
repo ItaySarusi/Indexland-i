@@ -6,6 +6,7 @@ import Hero from "@/components/sections/Hero";
 import BlogPostsList from "@/components/sections/BlogPostsList";
 import { BlogPost } from '@/types/blog';
 import { IMAGES } from '@/constants/site';
+import { motion } from 'framer-motion';
 
 export default function BlogContent() {
   // מידע מדמה (mock) לפוסטים של הבלוג
@@ -286,34 +287,56 @@ export default function BlogContent() {
   
   return (
     <PageContainer>
-      <Hero
-        title={{
-          he: "הבלוג שלנו",
-          en: "Our Blog"
-        }}
-        subtitle={{
-          he: "מאמרים, ניתוחים ותובנות בתחום הנדל\"ן המשרדי וההשקעות הבינלאומיות",
-          en: "Articles, analysis and insights in the field of office real estate and international investments"
-        }}
-        primaryActionLabel={{
-          he: "קרא עוד",
-          en: "Read More"
-        }}
-        primaryActionHref="/blog"
-        secondaryActionLabel={{
-          he: "קרא עוד",
-          en: "Read More"
-        }}
-        secondaryActionHref="/blog"
-        imageUrl={IMAGES.hero.blog}
-        variant="default"
-        className="pt-20 md:pt-20"
-      />
-          {/* Divider */}
-        <div className="container mx-auto my-12">
-          <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
-        </div>
+      {/* Hero Section - fade up & scale in */}
+      <motion.div
+        initial={{ opacity: 0, y: 60, scale: 0.98 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.9, ease: 'easeOut' }}
+      >
+        <Hero
+          title={{
+            he: "הבלוג שלנו",
+            en: "Our Blog"
+          }}
+          subtitle={{
+            he: "מאמרים, ניתוחים ותובנות בתחום הנדל\"ן המשרדי וההשקעות הבינלאומיות",
+            en: "Articles, analysis and insights in the field of office real estate and international investments"
+          }}
+          primaryActionLabel={{
+            he: "קרא עוד",
+            en: "Read More"
+          }}
+          primaryActionHref="/blog"
+          secondaryActionLabel={{
+            he: "קרא עוד",
+            en: "Read More"
+          }}
+          secondaryActionHref="/blog"
+          imageUrl={IMAGES.hero.blog}
+          variant="default"
+          className="pt-20 md:pt-20"
+        />
+      </motion.div>
+      {/* Divider - pop in */}
+      <motion.div
+        initial={{ opacity: 0, scaleX: 0.5 }}
+        whileInView={{ opacity: 1, scaleX: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.1, duration: 0.5, type: 'spring', stiffness: 180 }}
+        className="container mx-auto my-12"
+      >
+        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
+      </motion.div>
+      {/* BlogPostsList - slide up */}
+      <motion.div
+        initial={{ opacity: 0, y: 80 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8, ease: 'anticipate' }}
+      >
         <BlogPostsList posts={posts.slice(0, 9)} />
+      </motion.div>
     </PageContainer>
   );
 } 

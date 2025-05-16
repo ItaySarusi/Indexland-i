@@ -4,6 +4,7 @@ import PageContainer from "@/components/layout/PageContainer";
 import { SEO } from "@/constants/site";
 import { useMemo } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function InternationalInvestmentBrokerage() {
   const { t, language } = useLanguage();
@@ -116,8 +117,13 @@ export default function InternationalInvestmentBrokerage() {
 
   return (
     <PageContainer>
-      {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-36">
+      {/* Hero Section - Fade up & scale in */}
+      <motion.section
+        initial={{ opacity: 0, y: 60, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.9, ease: 'easeOut' }}
+        className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-36"
+      >
         {/* Modern Office background */}
         <img
           src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1920&auto=format"
@@ -127,199 +133,581 @@ export default function InternationalInvestmentBrokerage() {
         {/* Dark overlay for readability */}
         <div className="absolute inset-0 bg-black/70 z-10" />
         <div className="relative z-20 w-full flex flex-col items-center justify-center text-center px-4 py-24">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-white drop-shadow-2xl" style={{lineHeight:1.1}}>
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.92, rotate: -2 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ delay: 0.2, duration: 0.7, ease: 'backOut' }}
+            className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-white drop-shadow-2xl"
+            style={{ lineHeight: 1.1 }}
+          >
             Seamless Workspaces & Asset Control
-          </h1>
-          <p className="text-lg md:text-2xl text-white/90 font-light mb-10 max-w-2xl">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4, duration: 0.7, ease: 'anticipate' }}
+            className="text-lg md:text-2xl text-white/90 font-light mb-10 max-w-2xl"
+          >
             Indexland handles every stage of your office lifecycle and real-estate portfolio—so you can focus on business growth.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.7, ease: 'easeOut' }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <motion.a
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.7, duration: 0.5, type: 'spring', stiffness: 200 }}
               href="/contact?meeting=true"
               className="px-8 py-3 rounded-full bg-orange-500 text-white font-semibold shadow-lg hover:bg-orange-600 transition-all text-lg border-2 border-orange-500"
             >
               Book a Meeting
-            </a>
-            <a
+            </motion.a>
+            <motion.a
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.5, type: 'spring', stiffness: 200 }}
               href="#learn-more"
               className="px-8 py-3 rounded-full bg-white text-orange-500 font-semibold shadow-lg hover:bg-orange-50 transition-all text-lg border-2 border-orange-500"
             >
               Learn More
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* Divider */}
-      <div className="container mx-auto my-12">
+      {/* Divider - scaleX pop */}
+      <motion.div
+        initial={{ opacity: 0, scaleX: 0.5 }}
+        whileInView={{ opacity: 1, scaleX: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.1, duration: 0.5, type: 'spring', stiffness: 180 }}
+        className="container mx-auto my-12"
+      >
         <div className="h-1 w-32 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-40" />
-      </div>
+      </motion.div>
 
-      {/* Turnkey Office Solutions Flow Line Section */}
-      <section className="w-full flex flex-col items-center py-20 px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-2">Turnkey Office Solutions</h2>
+      {/* Turnkey Office Solutions Flow Line Section - slide in from left */}
+      <motion.section
+        initial={{ opacity: 0, x: -80 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        className="w-full flex flex-col items-center py-20 px-4"
+      >
+        <motion.h2
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.7, ease: 'easeOut' }}
+          className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-2"
+        >
+          Turnkey Office Solutions
+        </motion.h2>
         <div className="flex flex-col md:flex-row gap-8 md:gap-0 w-full max-w-5xl justify-between items-center">
           {/* Step 1 */}
-          <div className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer">
-            <video autoPlay loop muted playsInline width="80" height="80">
+          <motion.div
+            initial={{ opacity: 0, y: 60, rotate: -3 }}
+            whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.7, type: 'spring', stiffness: 120 }}
+            className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer"
+          >
+            <motion.video
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.5, type: 'spring', stiffness: 200 }}
+              autoPlay loop muted playsInline width="80" height="80"
+              style={{ borderRadius: 16, boxShadow: '0 2px 16px 0 #ff980033' }}
+            >
               <source src="/files/webm/scout.webm" type="video/webm" />
               Your browser does not support the video tag.
-            </video>
-            <h3 className="text-xl font-bold mb-2 text-primary">Discovery & Scouting</h3>
-            <p className="text-gray-700 text-base">Tailored tours in prime Tel Aviv districts</p>
-          </div>
+            </motion.video>
+            <motion.h3
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.5 }}
+              className="text-xl font-bold mb-2 text-primary"
+            >
+              Discovery & Scouting
+            </motion.h3>
+            <motion.p
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="text-gray-700 text-base"
+            >
+              Tailored tours in prime Tel Aviv districts
+            </motion.p>
+          </motion.div>
           {/* Line connector */}
           <div className="hidden md:block w-8 h-1 bg-gradient-to-r from-orange-300 to-orange-500 mx-2 rounded-full" />
           {/* Step 2 */}
-          <div className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer">
-            <video autoPlay loop muted playsInline width="80" height="80">
+          <motion.div
+            initial={{ opacity: 0, y: 60, rotate: 3 }}
+            whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.7, type: 'spring', stiffness: 120 }}
+            className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer"
+          >
+            <motion.video
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.5, type: 'spring', stiffness: 200 }}
+              autoPlay loop muted playsInline width="80" height="80"
+              style={{ borderRadius: 16, boxShadow: '0 2px 16px 0 #ff980033' }}
+            >
               <source src="/files/webm/handshake.webm" type="video/webm" />
               Your browser does not support the video tag.
-            </video>
-            <h3 className="text-xl font-bold mb-2 text-primary">Negotiation & Legal</h3>
-            <p className="text-gray-700 text-base">Best lease terms, full paperwork support</p>
-          </div>
+            </motion.video>
+            <motion.h3
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45, duration: 0.5 }}
+              className="text-xl font-bold mb-2 text-primary"
+            >
+              Negotiation & Legal
+            </motion.h3>
+            <motion.p
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="text-gray-700 text-base"
+            >
+              Best lease terms, full paperwork support
+            </motion.p>
+          </motion.div>
           <div className="hidden md:block w-8 h-1 bg-gradient-to-r from-orange-300 to-orange-500 mx-2 rounded-full" />
           {/* Step 3 */}
-          <div className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer">
-            <video autoPlay loop muted playsInline width="80" height="80">
+          <motion.div
+            initial={{ opacity: 0, y: 60, scale: 0.9, rotate: -2 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.7, type: 'spring', stiffness: 120 }}
+            className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer"
+          >
+            <motion.video
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.5, type: 'spring', stiffness: 200 }}
+              autoPlay loop muted playsInline width="80" height="80"
+              style={{ borderRadius: 16, boxShadow: '0 2px 16px 0 #ff980033' }}
+            >
               <source src="/files/webm/track build.webm" type="video/webm" />
               Your browser does not support the video tag.
-            </video>
-            <h3 className="text-xl font-bold mb-2 text-primary">Build-Out & Move-In</h3>
-            <p className="text-gray-700 text-base">Fit-out, IT integrations, and launch coordination</p>
-          </div>
+            </motion.video>
+            <motion.h3
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.55, duration: 0.5 }}
+              className="text-xl font-bold mb-2 text-primary"
+            >
+              Build-Out & Move-In
+            </motion.h3>
+            <motion.p
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="text-gray-700 text-base"
+            >
+              Fit-out, IT integrations, and launch coordination
+            </motion.p>
+          </motion.div>
           <div className="hidden md:block w-8 h-1 bg-gradient-to-r from-orange-300 to-orange-500 mx-2 rounded-full" />
           {/* Step 4 */}
-          <div className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer">
-            <video autoPlay loop muted playsInline width="80" height="80">
+          <motion.div
+            initial={{ opacity: 0, y: 60, scale: 0.9, rotate: 2 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5, duration: 0.7, type: 'spring', stiffness: 120 }}
+            className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer"
+          >
+            <motion.video
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.5, type: 'spring', stiffness: 200 }}
+              autoPlay loop muted playsInline width="80" height="80"
+              style={{ borderRadius: 16, boxShadow: '0 2px 16px 0 #ff980033' }}
+            >
               <source src="/files/webm/service man.webm" type="video/webm" />
               Your browser does not support the video tag.
-            </video>
-            <h3 className="text-xl font-bold mb-2 text-primary">Ongoing Concierge</h3>
-            <p className="text-gray-700 text-base">Supplies, maintenance, and staff assistance</p>
-          </div>
+            </motion.video>
+            <motion.h3
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.65, duration: 0.5 }}
+              className="text-xl font-bold mb-2 text-primary"
+            >
+              Ongoing Concierge
+            </motion.h3>
+            <motion.p
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.7, duration: 0.5 }}
+              className="text-gray-700 text-base"
+            >
+              Supplies, maintenance, and staff assistance
+            </motion.p>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* Maximize Returns Section */}
-      <section className="w-full py-20 px-4 bg-transparent">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-12">
+      {/* Maximize Returns Section - zoom in & flip cards */}
+      <motion.section
+        initial={{ opacity: 0, scale: 0.92 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8, ease: 'anticipate' }}
+        className="w-full py-20 px-4 bg-transparent"
+      >
+        <motion.h2
+          initial={{ opacity: 0, y: 40, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ delay: 0.1, duration: 0.7, ease: 'backOut' }}
+          className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-12"
+        >
           Maximize Returns And Uptime Across Your Properties
-        </h2>
+        </motion.h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
           {/* Card 1 */}
-          <div className="group bg-white/70 dark:bg-backgroundDark/80 border border-gray-200 dark:border-white/10 shadow-xl glass-card hover:bg-white/90 hover:shadow-2xl transition-all duration-300 rounded-xl md:rounded-lg p-8 flex flex-col items-center text-center cursor-pointer backdrop-blur-md hover:backdrop-blur-xl hover:border-primary/40 hover:scale-[1.03] relative overflow-hidden">
-            <div className="mb-4 text-primary group-hover:text-secondary transition-colors duration-300">
+          <motion.div
+            initial={{ opacity: 0, rotateY: 90 }}
+            whileInView={{ opacity: 1, rotateY: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.7, type: 'tween', ease: 'circOut' }}
+            className="group bg-white/70 dark:bg-backgroundDark/80 border border-gray-200 dark:border-white/10 shadow-xl glass-card hover:bg-white/90 hover:shadow-2xl transition-all duration-300 rounded-xl md:rounded-lg p-8 flex flex-col items-center text-center cursor-pointer backdrop-blur-md hover:backdrop-blur-xl hover:border-primary/40 hover:scale-[1.03] relative overflow-hidden"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="mb-4 text-primary group-hover:text-secondary transition-colors duration-300"
+            >
               {/* Icon: Dashboard */}
               <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2" stroke="currentColor"/><rect x="14" y="3" width="7" height="7" rx="2" stroke="currentColor"/><rect x="14" y="14" width="7" height="7" rx="2" stroke="currentColor"/><rect x="3" y="14" width="7" height="7" rx="2" stroke="currentColor"/></svg>
-            </div>
-            <h3 className="text-lg font-bold mb-2 text-primary">Portfolio Oversight</h3>
-            <p className="text-gray-700 dark:text-textSecondary text-base font-medium">Centralized performance dashboard</p>
+            </motion.div>
+            <motion.h3
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.35, duration: 0.5 }}
+              className="text-lg font-bold mb-2 text-primary"
+            >
+              Portfolio Oversight
+            </motion.h3>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="text-gray-700 dark:text-textSecondary text-base font-medium"
+            >
+              Centralized performance dashboard
+            </motion.p>
             {/* Glass hover effect */}
             <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/40 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
-          </div>
+          </motion.div>
           {/* Card 2 */}
-          <div className="group bg-white/70 dark:bg-backgroundDark/80 border border-gray-200 dark:border-white/10 shadow-xl glass-card hover:bg-white/90 hover:shadow-2xl transition-all duration-300 rounded-xl md:rounded-lg p-8 flex flex-col items-center text-center cursor-pointer backdrop-blur-md hover:backdrop-blur-xl hover:border-primary/40 hover:scale-[1.03] relative overflow-hidden">
-            <div className="mb-4 text-primary group-hover:text-secondary transition-colors duration-300">
+          <motion.div
+            initial={{ opacity: 0, rotateY: 90 }}
+            whileInView={{ opacity: 1, rotateY: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.7, type: 'tween', ease: 'circOut' }}
+            className="group bg-white/70 dark:bg-backgroundDark/80 border border-gray-200 dark:border-white/10 shadow-xl glass-card hover:bg-white/90 hover:shadow-2xl transition-all duration-300 rounded-xl md:rounded-lg p-8 flex flex-col items-center text-center cursor-pointer backdrop-blur-md hover:backdrop-blur-xl hover:border-primary/40 hover:scale-[1.03] relative overflow-hidden"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="mb-4 text-primary group-hover:text-secondary transition-colors duration-300"
+            >
               {/* Icon: Vendor/Briefcase */}
               <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
                 <rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor"/>
                 <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" stroke="currentColor"/>
                 <path d="M3 13h18" stroke="currentColor"/>
               </svg>
-            </div>
-            <h3 className="text-lg font-bold mb-2 text-primary">Vendor Management</h3>
-            <p className="text-gray-700 dark:text-textSecondary text-base font-medium">Preventive maintenance and SLAs</p>
+            </motion.div>
+            <motion.h3
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.45, duration: 0.5 }}
+              className="text-lg font-bold mb-2 text-primary"
+            >
+              Vendor Management
+            </motion.h3>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="text-gray-700 dark:text-textSecondary text-base font-medium"
+            >
+              Preventive maintenance and SLAs
+            </motion.p>
             <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/40 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
-          </div>
+          </motion.div>
           {/* Card 3 */}
-          <div className="group bg-white/70 dark:bg-backgroundDark/80 border border-gray-200 dark:border-white/10 shadow-xl glass-card hover:bg-white/90 hover:shadow-2xl transition-all duration-300 rounded-xl md:rounded-lg p-8 flex flex-col items-center text-center cursor-pointer backdrop-blur-md hover:backdrop-blur-xl hover:border-primary/40 hover:scale-[1.03] relative overflow-hidden">
-            <div className="mb-4 text-primary group-hover:text-secondary transition-colors duration-300">
+          <motion.div
+            initial={{ opacity: 0, rotateY: -90 }}
+            whileInView={{ opacity: 1, rotateY: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.7, type: 'tween', ease: 'circOut' }}
+            className="group bg-white/70 dark:bg-backgroundDark/80 border border-gray-200 dark:border-white/10 shadow-xl glass-card hover:bg-white/90 hover:shadow-2xl transition-all duration-300 rounded-xl md:rounded-lg p-8 flex flex-col items-center text-center cursor-pointer backdrop-blur-md hover:backdrop-blur-xl hover:border-primary/40 hover:scale-[1.03] relative overflow-hidden"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="mb-4 text-primary group-hover:text-secondary transition-colors duration-300"
+            >
               {/* Icon: Financial/Report */}
               <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor"/><path d="M8 10h8M8 14h4" stroke="currentColor"/></svg>
-            </div>
-            <h3 className="text-lg font-bold mb-2 text-primary">Financial Reporting</h3>
-            <p className="text-gray-700 dark:text-textSecondary text-base font-medium">P&L, budgeting, and ROI analysis</p>
+            </motion.div>
+            <motion.h3
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.55, duration: 0.5 }}
+              className="text-lg font-bold mb-2 text-primary"
+            >
+              Financial Reporting
+            </motion.h3>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="text-gray-700 dark:text-textSecondary text-base font-medium"
+            >
+              P&L, budgeting, and ROI analysis
+            </motion.p>
             <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/40 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
-          </div>
+          </motion.div>
           {/* Card 4 */}
-          <div className="group bg-white/70 dark:bg-backgroundDark/80 border border-gray-200 dark:border-white/10 shadow-xl glass-card hover:bg-white/90 hover:shadow-2xl transition-all duration-300 rounded-xl md:rounded-lg p-8 flex flex-col items-center text-center cursor-pointer backdrop-blur-md hover:backdrop-blur-xl hover:border-primary/40 hover:scale-[1.03] relative overflow-hidden">
-            <div className="mb-4 text-primary group-hover:text-secondary transition-colors duration-300">
+          <motion.div
+            initial={{ opacity: 0, rotateY: -90 }}
+            whileInView={{ opacity: 1, rotateY: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5, duration: 0.7, type: 'tween', ease: 'circOut' }}
+            className="group bg-white/70 dark:bg-backgroundDark/80 border border-gray-200 dark:border-white/10 shadow-xl glass-card hover:bg-white/90 hover:shadow-2xl transition-all duration-300 rounded-xl md:rounded-lg p-8 flex flex-col items-center text-center cursor-pointer backdrop-blur-md hover:backdrop-blur-xl hover:border-primary/40 hover:scale-[1.03] relative overflow-hidden"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="mb-4 text-primary group-hover:text-secondary transition-colors duration-300"
+            >
               {/* Icon: Value-Add/TrendingUp */}
               <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor"/><path d="M14 7h7v7" stroke="currentColor"/></svg>
-            </div>
-            <h3 className="text-lg font-bold mb-2 text-primary">Value-Add Strategies</h3>
-            <p className="text-gray-700 dark:text-textSecondary text-base font-medium">Capex planning, repositioning, and cost optimization</p>
+            </motion.div>
+            <motion.h3
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.65, duration: 0.5 }}
+              className="text-lg font-bold mb-2 text-primary"
+            >
+              Value-Add Strategies
+            </motion.h3>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.5 }}
+              className="text-gray-700 dark:text-textSecondary text-base font-medium"
+            >
+              Capex planning, repositioning, and cost optimization
+            </motion.p>
             <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/40 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* Why Businesses Trust Indexland Section */}
-      <section className="w-full py-20 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 font-sans" dir="auto">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center mb-14 drop-shadow-lg font-sans" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
+      {/* Why Businesses Trust Indexland Section - bounce in */}
+      <motion.section
+        initial={{ opacity: 0, y: 80 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8, type: 'spring', bounce: 0.4 }}
+        className="w-full py-20 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 font-sans"
+        dir="auto"
+      >
+        <motion.h2
+          initial={{ opacity: 0, scale: 0.8, rotate: 2 }}
+          whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ delay: 0.1, duration: 0.7, type: 'spring', bounce: 0.3 }}
+          className="text-4xl md:text-5xl font-extrabold text-white text-center mb-14 drop-shadow-lg font-sans"
+          style={{ fontFamily: 'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif' }}
+        >
           Why Businesses Trust Indexland?
-        </h2>
+        </motion.h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 max-w-5xl mx-auto">
           {/* Card 1 */}
-          <div className="group bg-gray-800/90 border border-gray-700 shadow-2xl rounded-xl p-6 md:p-8 flex flex-col items-center text-center transition-all duration-300 hover:bg-black hover:border-orange-500 hover:scale-[1.04] relative overflow-hidden min-h-[210px] w-full font-sans" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
-            <div className="mb-5 text-orange-500 group-hover:text-white transition-colors duration-300">
+          <motion.div
+            initial={{ opacity: 0, y: 60, scale: 0.9 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.7, type: 'spring', bounce: 0.3 }}
+            className="group bg-gray-800/90 border border-gray-700 shadow-2xl rounded-xl p-6 md:p-8 flex flex-col items-center text-center transition-all duration-300 hover:bg-black hover:border-orange-500 hover:scale-[1.04] relative overflow-hidden min-h-[210px] w-full font-sans"
+            style={{ fontFamily: 'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif' }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.7, rotate: -8 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ delay: 0.3, duration: 0.5, type: 'spring', bounce: 0.4 }}
+              className="mb-5 text-orange-500 group-hover:text-white transition-colors duration-300"
+            >
               {/* Icon: Clock/Time Save */}
               <svg className="w-11 h-11" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor"/><path d="M12 6v6l4 2" stroke="currentColor" strokeLinecap="round"/></svg>
-            </div>
-            <h3 className="text-lg font-bold mb-2 text-white">Save 30+ hours monthly</h3>
-            <p className="text-gray-200 text-base font-medium leading-snug">with managed offices<br/>and streamlined support</p>
-          </div>
+            </motion.div>
+            <motion.h3
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.5 }}
+              className="text-lg font-bold mb-2 text-white"
+            >
+              Save 30+ hours monthly
+            </motion.h3>
+            <motion.p
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="text-gray-200 text-base font-medium leading-snug"
+            >
+              with managed offices<br/>and streamlined support
+            </motion.p>
+          </motion.div>
           {/* Card 2 */}
-          <div className="group bg-gray-800/90 border border-gray-700 shadow-2xl rounded-xl p-6 md:p-8 flex flex-col items-center text-center transition-all duration-300 hover:bg-black hover:border-orange-500 hover:scale-[1.04] relative overflow-hidden min-h-[210px] w-full font-sans" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
-            <div className="mb-5 text-orange-500 group-hover:text-white transition-colors duration-300">
+          <motion.div
+            initial={{ opacity: 0, y: 60, scale: 0.9 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.7, type: 'spring', bounce: 0.3 }}
+            className="group bg-gray-800/90 border border-gray-700 shadow-2xl rounded-xl p-6 md:p-8 flex flex-col items-center text-center transition-all duration-300 hover:bg-black hover:border-orange-500 hover:scale-[1.04] relative overflow-hidden min-h-[210px] w-full font-sans"
+            style={{ fontFamily: 'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif' }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.7, rotate: 8 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ delay: 0.4, duration: 0.5, type: 'spring', bounce: 0.4 }}
+              className="mb-5 text-orange-500 group-hover:text-white transition-colors duration-300"
+            >
               {/* Icon: Control/Shield */}
               <svg className="w-11 h-11" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V7l8-4z" stroke="currentColor"/><path d="M9 12l2 2 4-4" stroke="currentColor" strokeLinecap="round"/></svg>
-            </div>
-            <h3 className="text-lg font-bold mb-2 text-white">End-to-end control</h3>
-            <p className="text-gray-200 text-base font-medium leading-snug">with zero hassle<br/>and full peace of mind</p>
-          </div>
+            </motion.div>
+            <motion.h3
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45, duration: 0.5 }}
+              className="text-lg font-bold mb-2 text-white"
+            >
+              End-to-end control
+            </motion.h3>
+            <motion.p
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="text-gray-200 text-base font-medium leading-snug"
+            >
+              with zero hassle<br/>and full peace of mind
+            </motion.p>
+          </motion.div>
           {/* Card 3 */}
-          <div className="group bg-gray-800/90 border border-gray-700 shadow-2xl rounded-xl p-6 md:p-8 flex flex-col items-center text-center transition-all duration-300 hover:bg-black hover:border-orange-500 hover:scale-[1.04] relative overflow-hidden min-h-[210px] w-full font-sans" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
-            <div className="mb-5 text-orange-500 group-hover:text-white transition-colors duration-300">
+          <motion.div
+            initial={{ opacity: 0, y: 60, scale: 0.9 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.7, type: 'spring', bounce: 0.3 }}
+            className="group bg-gray-800/90 border border-gray-700 shadow-2xl rounded-xl p-6 md:p-8 flex flex-col items-center text-center transition-all duration-300 hover:bg-black hover:border-orange-500 hover:scale-[1.04] relative overflow-hidden min-h-[210px] w-full font-sans"
+            style={{ fontFamily: 'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif' }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.7, rotate: -8 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ delay: 0.5, duration: 0.5, type: 'spring', bounce: 0.4 }}
+              className="mb-5 text-orange-500 group-hover:text-white transition-colors duration-300"
+            >
               {/* Icon: Report/Chart */}
               <svg className="w-11 h-11" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="3" y="12" width="4" height="8" rx="1" stroke="currentColor"/><rect x="9" y="8" width="4" height="12" rx="1" stroke="currentColor"/><rect x="15" y="4" width="4" height="16" rx="1" stroke="currentColor"/></svg>
-            </div>
-            <h3 className="text-lg font-bold mb-2 text-white">Transparent reports</h3>
-            <p className="text-gray-200 text-base font-medium leading-snug">Smarter real estate<br/>strategy and insights</p>
-          </div>
+            </motion.div>
+            <motion.h3
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.55, duration: 0.5 }}
+              className="text-lg font-bold mb-2 text-white"
+            >
+              Transparent reports
+            </motion.h3>
+            <motion.p
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="text-gray-200 text-base font-medium leading-snug"
+            >
+              Smarter real estate<br/>strategy and insights
+            </motion.p>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* Testimonial + CTA Section */}
-      <section className="w-full py-16 md:py-20 px-2 md:px-4 bg-gradient-to-br from-white via-gray-50 to-white border-t border-b border-gray-200 font-sans" dir="auto">
+      {/* Testimonial + CTA Section - fade in & pop */}
+      <motion.section
+        initial={{ opacity: 0, scale: 0.92, y: 40 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8, ease: 'backOut' }}
+        className="w-full py-16 md:py-20 px-2 md:px-4 bg-gradient-to-br from-white via-gray-50 to-white border-t border-b border-gray-200 font-sans"
+        dir="auto"
+      >
         <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
           <div className="relative mb-10 w-full">
             {/* Quote Icon */}
-            <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-orange-500 text-7xl font-serif opacity-30 select-none" aria-hidden="true">“</span>
-            <blockquote className="text-xl md:text-3xl font-semibold text-gray-900 leading-snug drop-shadow-sm relative z-10 font-sans" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
+            <motion.span
+              initial={{ opacity: 0, scale: 0.7, rotate: -10 }}
+              whileInView={{ opacity: 0.3, scale: 1, rotate: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.7, type: 'spring', bounce: 0.3 }}
+              className="absolute -top-8 left-1/2 -translate-x-1/2 text-orange-500 text-7xl font-serif select-none"
+              aria-hidden="true"
+            >
+              “
+            </motion.span>
+            <motion.blockquote
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.7, ease: 'anticipate' }}
+              className="text-xl md:text-3xl font-semibold text-gray-900 leading-snug drop-shadow-sm relative z-10 font-sans"
+              style={{ fontFamily: 'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif' }}
+            >
               With Indexland managing our offices and assets, we reclaimed 30+ hours per month.
-            </blockquote>
+            </motion.blockquote>
           </div>
-          <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center w-full">
-            <a
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5, duration: 0.7, type: 'spring', bounce: 0.2 }}
+            className="flex flex-col sm:flex-row gap-4 mt-8 justify-center w-full"
+          >
+            <motion.a
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.5, type: 'spring', stiffness: 200 }}
               href="/contact?meeting=true"
               className="px-8 py-3 rounded-full bg-orange-500 text-white font-extrabold shadow-lg hover:bg-black hover:text-orange-400 transition-all text-lg border-2 border-orange-500 min-w-[180px] text-center w-full sm:w-auto"
-              style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif', letterSpacing:'0.01em'}}
+              style={{ fontFamily: 'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif', letterSpacing: '0.01em' }}
             >
               Book a Meeting
-            </a>
-            <a
+            </motion.a>
+            <motion.a
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.7, duration: 0.5, type: 'spring', stiffness: 200 }}
               href="#learn-more"
               className="px-8 py-3 rounded-full bg-white text-orange-500 font-extrabold shadow-lg hover:bg-black hover:text-white transition-all text-lg border-2 border-orange-500 min-w-[180px] text-center w-full sm:w-auto"
-              style={{borderWidth:2, fontWeight:800, fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif', letterSpacing:'0.01em'}}
+              style={{ borderWidth: 2, fontWeight: 800, fontFamily: 'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif', letterSpacing: '0.01em' }}
             >
               Learn More
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </PageContainer>
   );
 } 
