@@ -43,7 +43,7 @@ export default function Home() {
         <svg className="w-12 h-12 text-primary animate-bounce" fill="none" viewBox="0 0 48 48" stroke="currentColor"><rect x="8" y="16" width="32" height="24" rx="4" fill="#fff" stroke="#FF9800" strokeWidth="2.5"/><rect x="16" y="24" width="16" height="8" rx="2" fill="#FF9800"/><path d="M16 16V12a8 8 0 0 1 16 0v4" stroke="#FF9800" strokeWidth="2.5" strokeLinecap="round"/></svg>
       ),
       href: "/services/turnkey-office-solutions",
-      svg: "/files/gif/company.gif"
+      svg: "/files/gif/Company.gif"
     },
     {
       title: "Large Asset Management",
