@@ -57,7 +57,6 @@ const createNotionClient = () => {
 };
 
 const extractRichText = (richText: any[]): string => {
-  console.log('richText', richText);
   if (!richText || !Array.isArray(richText)) return '';
   return richText.map(text => text.plain_text).join('');
 };
@@ -183,7 +182,6 @@ export const fetchBlogsFromNotion = async (): Promise<BlogPost[]> => {
       }
     }
 
-    console.log(`Successfully fetched ${blogPosts.length} blog posts from Notion`);
     return blogPosts;
 
   } catch (error) {
@@ -197,7 +195,6 @@ export const refreshBlogCache = async (): Promise<void> => {
     const blogs = await fetchBlogsFromNotion();
     // Here you can implement caching logic if needed
     // For example, save to a JSON file or database
-    console.log(`Cache refreshed with ${blogs.length} blog posts`);
   } catch (error) {
     console.error('Error refreshing blog cache:', error);
     throw error;

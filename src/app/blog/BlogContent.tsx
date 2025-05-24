@@ -150,22 +150,18 @@ export default function BlogContent() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        console.log('BlogContent: Fetching posts from API...');
         setLoading(true);
         setError(null);
         
         const response = await fetch('/api/blog');
-        console.log('BlogContent: Response status:', response.status);
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         
         const data = await response.json();
-        console.log('BlogContent: Data received:', data);
         
         if (data && Array.isArray(data.posts) && data.posts.length > 0) {
-          console.log('BlogContent: Setting real data, posts count:', data.posts.length);
           // הוספת תמונות דיפולטיביות למאמרים שלא קיימות להם תמונות
           const postsWithDefaults = data.posts.map((post: BlogPost) => ({
             ...post,
@@ -178,7 +174,7 @@ export default function BlogContent() {
           setPosts(postsWithDefaults);
           setUsingFallback(false);
         } else {
-          console.log('BlogContent: No posts found, using fallback data');
+          ('BlogContent: No posts found, using fallback data');
           setPosts(mockPosts);
           setUsingFallback(true);
         }
