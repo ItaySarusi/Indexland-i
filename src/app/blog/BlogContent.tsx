@@ -1,342 +1,271 @@
 'use client';
 
-import React from 'react';
-import PageContainer from "@/components/layout/PageContainer";
-import Hero from "@/components/sections/Hero";
-import BlogPostsList from "@/components/sections/BlogPostsList";
+import React, { useState, useEffect } from 'react';
+import BlogPostsList from '@/components/sections/BlogPostsList';
+import { useLanguage } from '@/lib/language-context';
 import { BlogPost } from '@/types/blog';
-import { IMAGES } from '@/constants/site';
-import { motion } from 'framer-motion';
+
+// Mock data for fallback - עם תמיכה רב-לשונית
+const mockPosts: BlogPost[] = [
+  {
+    id: '1',
+    title: {
+      he: 'המדריך המקיף לניהול נכסי משרדים',
+      en: 'Complete Guide to Office Property Management'
+    },
+    description: {
+      he: 'כל מה שצריך לדעת על ניהול נכסי משרדים בישראל - מהבסיס ועד לרמה המתקדמת',
+      en: 'Everything you need to know about office property management in Israel - from basics to advanced level'
+    },
+    content: {
+      he: 'תוכן המאמר כאן...',
+      en: 'Article content here...'
+    },
+    slug: 'office-management-guide',
+    coverImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop',
+    author: {
+      name: {
+        he: 'צוות Indexland',
+        en: 'Indexland Team'
+      },
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3',
+      title: {
+        he: 'מומחי נדלן',
+        en: 'Real Estate Experts'
+      },
+      bio: {
+        he: 'צוות מומחים בתחום הנדלן',
+        en: 'Team of real estate experts'
+      }
+    },
+    publishedAt: '2024-01-15',
+    tags: {
+      he: ['ניהול נכסים', 'משרדים', 'השקעות'],
+      en: ['Property Management', 'Offices', 'Investments']
+    },
+    readingTime: 8
+  },
+  {
+    id: '2',
+    title: {
+      he: 'טרנדים בשוק הנדלן המסחרי 2024',
+      en: 'Commercial Real Estate Market Trends 2024'
+    },
+    description: {
+      he: 'סקירה מקיפה של המגמות החדשות בשוק הנדלן המסחרי והשפעתן על המשקיעים',
+      en: 'Comprehensive overview of new trends in commercial real estate market and their impact on investors'
+    },
+    content: {
+      he: 'תוכן המאמר כאן...',
+      en: 'Article content here...'
+    },
+    slug: 'commercial-real-estate-trends-2024',
+    coverImage: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=1920&auto=format&fit=crop',
+    author: {
+      name: {
+        he: 'צוות Indexland',
+        en: 'Indexland Team'
+      },
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3',
+      title: {
+        he: 'מומחי נדלן',
+        en: 'Real Estate Experts'
+      },
+      bio: {
+        he: 'צוות מומחים בתחום הנדלן',
+        en: 'Team of real estate experts'
+      }
+    },
+    publishedAt: '2024-01-10',
+    tags: {
+      he: ['נדלן מסחרי', 'טרנדים', 'שוק'],
+      en: ['Commercial Real Estate', 'Trends', 'Market']
+    },
+    readingTime: 6
+  },
+  {
+    id: '3',
+    title: {
+      he: 'השקעות נדלן בינלאומיות - מדריך למתחילים',
+      en: 'International Real Estate Investment Guide for Beginners'
+    },
+    description: {
+      he: 'איך להתחיל להשקיע בנדלן בחו"ל, מה הסיכונים והיתרונות',
+      en: 'How to start investing in international real estate, risks and benefits'
+    },
+    content: {
+      he: 'תוכן המאמר כאן...',
+      en: 'Article content here...'
+    },
+    slug: 'international-real-estate-investment-guide',
+    coverImage: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?q=80&w=1920&auto=format&fit=crop',
+    author: {
+      name: {
+        he: 'צוות Indexland',
+        en: 'Indexland Team'
+      },
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3',
+      title: {
+        he: 'מומחי נדלן',
+        en: 'Real Estate Experts'
+      },
+      bio: {
+        he: 'צוות מומחים בתחום הנדלן',
+        en: 'Team of real estate experts'
+      }
+    },
+    publishedAt: '2024-01-05',
+    tags: {
+      he: ['השקעות', 'נדלן בינלאומי', 'מדריך'],
+      en: ['Investments', 'International Real Estate', 'Guide']
+    },
+    readingTime: 10
+  }
+];
+
+// Loading component
+const BlogPostsLoader = () => (
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {[1, 2, 3].map((i) => (
+      <div key={i} className="animate-pulse">
+        <div className="bg-gray-300 dark:bg-gray-700 h-48 rounded-lg mb-4"></div>
+        <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded mb-2"></div>
+        <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
+      </div>
+    ))}
+  </div>
+);
 
 export default function BlogContent() {
-  // מידע מדמה (mock) לפוסטים של הבלוג
-  const posts: BlogPost[] = [
-    {
-      id: "blog004",
-      slug: "key-office-trends-2024",
-      title: {
-        he: "מגמות מפתח בשוק המשרדים לשנת 2024",
-        en: "Key Office Market Trends for 2024"
-      },
-      description: {
-        he: "סקירה מקיפה של המגמות המובילות שישפיעו על שוק המשרדים בשנת 2024",
-        en: "A comprehensive review of the leading trends that will influence the office market in 2024"
-      },
-      content: {
-        he: `מגמות מפתח בשוק המשרדים לשנת 2024...`,
-        en: `Key Office Market Trends for 2024...`
-      },
-      coverImage: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1000&auto=format",
-      author: {
-        name: {
-          he: "דן ישראלי",
-          en: "Dan Israeli"
-        },
-        image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format",
-        title: {
-          he: "מייסד ומנכ\"ל",
-          en: "Founder & CEO"
+  const { language, t } = useLanguage();
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [usingFallback, setUsingFallback] = useState(false);
+
+  // תמונה דיפולטיבית למאמרים
+  const defaultCoverImage = 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop';
+  const defaultAuthorImage = 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3';
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        console.log('BlogContent: Fetching posts from API...');
+        setLoading(true);
+        setError(null);
+        
+        const response = await fetch('/api/blog');
+        console.log('BlogContent: Response status:', response.status);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
-      },
-      publishedAt: "2024-01-08T09:30:00Z",
-      tags: {
-        he: ["2024", "שוק המשרדים", "מגמות", "תחזית"],
-        en: ["2024", "Office Market", "Trends", "Forecast"]
-      },
-      readingTime: 9
+        
+        const data = await response.json();
+        console.log('BlogContent: Data received:', data);
+        
+        if (data && Array.isArray(data.posts) && data.posts.length > 0) {
+          console.log('BlogContent: Setting real data, posts count:', data.posts.length);
+          // הוספת תמונות דיפולטיביות למאמרים שלא קיימות להם תמונות
+          const postsWithDefaults = data.posts.map((post: BlogPost) => ({
+            ...post,
+            coverImage: post.coverImage || defaultCoverImage,
+            author: {
+              ...post.author,
+              image: post.author?.image || defaultAuthorImage
+            }
+          }));
+          setPosts(postsWithDefaults);
+          setUsingFallback(false);
+        } else {
+          console.log('BlogContent: No posts found, using fallback data');
+          setPosts(mockPosts);
+          setUsingFallback(true);
+        }
+      } catch (error) {
+        console.error('BlogContent: Error fetching posts:', error);
+        setError(error instanceof Error ? error.message : 'Unknown error');
+        setPosts(mockPosts);
+        setUsingFallback(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+  // טקסטים רב-לשוניים
+  const texts = {
+    title: {
+      he: 'בלוג Indexland',
+      en: 'Indexland Blog'
     },
-    {
-      id: "blog005",
-      slug: "intl-real-estate-guide",
-      title: {
-        he: "מדריך הזהב להשקעות נדל\"ן בינלאומיות",
-        en: "The Golden Guide to International Real Estate Investments"
-      },
-      description: {
-        he: "טיפים, אסטרטגיות וכלים מעשיים להצלחה בהשקעות נדל\"ן מעבר לים",
-        en: "Tips, strategies and practical tools for success in overseas real estate investments"
-      },
-      content: {
-        he: `מדריך הזהב להשקעות נדל\"ן בינלאומיות...`,
-        en: `The Golden Guide to International Real Estate Investments...`
-      },
-      coverImage: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1000&auto=format",
-      author: {
-        name: {
-          he: "מיכל ברק",
-          en: "Michal Barak"
-        },
-        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format",
-        title: {
-          he: "סמנכ\"לית השקעות בינלאומיות",
-          en: "VP of International Investments"
-        }
-      },
-      publishedAt: "2024-02-15T10:00:00Z",
-      tags: {
-        he: ["השקעות בינלאומיות", "נדל\"ן", "מדריך", "אסטרטגיה"],
-        en: ["International Investments", "Real Estate", "Guide", "Strategy"]
-      },
-      readingTime: 14
+    subtitle: {
+      he: 'מאמרים, עדכונים וטיפים בתחום הנדלן, ההשקעות והמשרדים',
+      en: 'Articles, updates and tips in real estate, investments and offices'
     },
-    {
-      id: "blog006",
-      slug: "esg-commercial-real-estate",
-      title: {
-        he: "ESG בנדל\"ן מסחרי: יותר מאשר טרנד",
-        en: "ESG in Commercial Real Estate: More than Just a Trend"
-      },
-      description: {
-        he: "כיצד שיקולי סביבה, חברה וממשל תאגידי משנים את שוק הנדל\"ן המסחרי ומשפיעים על החלטות השקעה",
-        en: "How environmental, social and corporate governance considerations are changing the commercial real estate market and influencing investment decisions"
-      },
-      content: {
-        he: `ESG בנדל\"ן מסחרי: יותר מאשר טרנד...`,
-        en: `ESG in Commercial Real Estate: More than Just a Trend...`
-      },
-      coverImage: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?q=80&w=1000&auto=format",
-      author: {
-        name: {
-          he: "דן ישראלי",
-          en: "Dan Israeli"
-        },
-        image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format",
-        title: {
-          he: "מייסד ומנכ\"ל",
-          en: "Founder & CEO"
-        }
-      },
-      publishedAt: "2024-03-05T09:15:00Z",
-      tags: {
-        he: ["ESG", "נדל\"ן מסחרי", "קיימות", "השקעות"],
-        en: ["ESG", "Commercial Real Estate", "Sustainability", "Investments"]
-      },
-      readingTime: 11
+    postsTitle: {
+      he: 'המאמרים שלנו',
+      en: 'Our Articles'
     },
-    {
-      id: "blog007",
-      slug: "choose-property-manager",
-      title: {
-        he: "כיצד לבחור מנהל נכסים: המדריך המלא",
-        en: "How to Choose a Property Manager: The Complete Guide"
-      },
-      description: {
-        he: "המדריך המקיף לבחירת מנהל נכסים מקצועי שיבטיח תשואה מקסימלית על נכסי המשרדים שלך",
-        en: "The comprehensive guide to selecting a professional property manager who will ensure maximum returns on your office assets"
-      },
-      content: {
-        he: `כיצד לבחור מנהל נכסים: המדריך המלא...`,
-        en: `How to Choose a Property Manager: The Complete Guide...`
-      },
-      coverImage: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=1000&auto=format",
-      author: {
-        name: {
-          he: "יונתן לוי",
-          en: "Jonathan Levy"
-        },
-        image: "https://images.unsplash.com/photo-1566492031773-4f4e44671857?q=80&w=400&auto=format",
-        title: {
-          he: "מנהל השבחת נכסים",
-          en: "Asset Enhancement Manager"
-        }
-      },
-      publishedAt: "2024-03-22T10:45:00Z",
-      tags: {
-        he: ["ניהול נכסים", "משרדים", "השקעות", "תשואה"],
-        en: ["Property Management", "Offices", "Investments", "Returns"]
-      },
-      readingTime: 8
+    postsSubtitle: {
+      he: 'תובנות ועדכונים מעולם הנדלן והמשרדים',
+      en: 'Insights and updates from the world of real estate and offices'
     },
-    {
-      id: "blog008",
-      slug: "risk-management-real-estate",
-      title: {
-        he: "ניהול סיכונים בהשקעות נדל\"ן: אסטרטגיות למשקיעים מתקדמים",
-        en: "Risk Management in Real Estate Investments: Strategies for Advanced Investors"
-      },
-      description: {
-        he: "כיצד לזהות, לנהל ולהפחית סיכונים בתיק השקעות הנדל\"ן שלך - מדריך מקיף למשקיעים מנוסים",
-        en: "How to identify, manage and mitigate risks in your real estate investment portfolio - a comprehensive guide for experienced investors"
-      },
-      content: {
-        he: `ניהול סיכונים בהשקעות נדל\"ן: אסטרטגיות למשקיעים מתקדמים...`,
-        en: `Risk Management in Real Estate Investments: Strategies for Advanced Investors...`
-      },
-      coverImage: "https://images.unsplash.com/photo-1523287562758-66c507cdb8c1?q=80&w=1000&auto=format",
-      author: {
-        name: {
-          he: "מיכל ברק",
-          en: "Michal Barak"
-        },
-        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format",
-        title: {
-          he: "סמנכ\"לית השקעות בינלאומיות",
-          en: "VP of International Investments"
-        }
-      },
-      publishedAt: "2024-04-10T11:30:00Z",
-      tags: {
-        he: ["ניהול סיכונים", "השקעות נדל\"ן", "אסטרטגיה", "משקיעים מתקדמים"],
-        en: ["Risk Management", "Real Estate Investments", "Strategy", "Advanced Investors"]
-      },
-      readingTime: 13
+    fallbackMessage: {
+      he: 'מציג נתונים לדוגמה - מנסה להתחבר לשרת...',
+      en: 'Showing sample data - trying to connect to server...'
     },
-    {
-      id: "blog003",
-      slug: "office-assets-optimization",
-      title: {
-        he: "5 אסטרטגיות להשבחת נכסי משרדים בשוק תחרותי",
-        en: "5 Strategies for Optimizing Office Assets in a Competitive Market"
-      },
-      description: {
-        he: "איך להשביח נכסי משרדים ולהגדיל את התשואה בשוק התחרותי של היום? 5 אסטרטגיות מנצחות מהמומחים שלנו",
-        en: "How to enhance office assets and increase returns in today's competitive market? 5 winning strategies from our experts"
-      },
-      content: {
-        he: `5 אסטרטגיות להשבחת נכסי משרדים בשוק תחרותי...`,
-        en: `5 Strategies for Optimizing Office Assets in a Competitive Market...`
-      },
-      coverImage: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1000&auto=format",
-      author: {
-        name: {
-          he: "יונתן לוי",
-          en: "Jonathan Levy"
-        },
-        image: "https://images.unsplash.com/photo-1566492031773-4f4e44671857?q=80&w=400&auto=format",
-        title: {
-          he: "מנהל השבחת נכסים",
-          en: "Asset Enhancement Manager"
-        }
-      },
-      publishedAt: "2023-07-10T11:00:00Z",
-      tags: {
-        he: ["נכסי משרדים", "השבחה", "אסטרטגיה", "תשואה"],
-        en: ["Office Assets", "Enhancement", "Strategy", "Returns"]
-      },
-      readingTime: 10
-    },
-    {
-      id: "blog002",
-      slug: "international-investments-guide",
-      title: {
-        he: "המדריך המקיף להשקעות נדל\"ן בינלאומיות: על מה חשוב לשים לב",
-        en: "The Comprehensive Guide to International Real Estate Investments: What to Watch For"
-      },
-      description: {
-        he: "כל מה שצריך לדעת לפני שמשקיעים בנדל\"ן מעבר לים: סיכונים, הזדמנויות, וטיפים מניסיוננו",
-        en: "Everything you need to know before investing in overseas real estate: risks, opportunities, and tips from our experience"
-      },
-      content: {
-        he: `המדריך המקיף להשקעות נדל\"ן בינלאומיות...`,
-        en: `The Comprehensive Guide to International Real Estate Investments...`
-      },
-      coverImage: "https://images.unsplash.com/photo-1451153378752-16ef2b36ad05?q=80&w=1000&auto=format",
-      author: {
-        name: {
-          he: "מיכל ברק",
-          en: "Michal Barak"
-        },
-        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format",
-        title: {
-          he: "סמנכ\"לית השקעות בינלאומיות",
-          en: "VP of International Investments"
-        }
-      },
-      publishedAt: "2023-06-22T10:30:00Z",
-      tags: {
-        he: ["השקעות בינלאומיות", "נדל\"ן", "מדריך", "סיכונים"],
-        en: ["International Investments", "Real Estate", "Guide", "Risks"]
-      },
-      readingTime: 12
-    },
-    {
-      id: "blog001",
-      slug: "investment-trends-2023",
-      title: {
-        he: "מגמות השקעה מובילות בנדל\"ן משרדי לשנת 2023",
-        en: "Leading Office Real Estate Investment Trends for 2023"
-      },
-      description: {
-        he: "ניתוח מעמיק של המגמות המובילות בשוק הנדל\"ן המשרדי בשנת 2023 והזדמנויות ההשקעה הטובות ביותר",
-        en: "An in-depth analysis of the leading trends in the office real estate market in 2023 and the best investment opportunities"
-      },
-      content: {
-        he: `מגמות השקעה מובילות בנדל\"ן משרדי לשנת 2023...`,
-        en: `Leading Office Real Estate Investment Trends for 2023...`
-      },
-      coverImage: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1000&auto=format",
-      author: {
-        name: {
-          he: "דן ישראלי",
-          en: "Dan Israeli"
-        },
-        image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format",
-        title: {
-          he: "מייסד ומנכ\"ל",
-          en: "Founder & CEO"
-        }
-      },
-      publishedAt: "2023-05-15T09:00:00Z",
-      tags: {
-        he: ["נדל\"ן משרדי", "השקעות", "מגמות שוק", "2023"],
-        en: ["Office Real Estate", "Investments", "Market Trends", "2023"]
-      },
-      readingTime: 8
+    errorMessage: {
+      he: 'שגיאה בטעינת המאמרים:',
+      en: 'Error loading articles:'
     }
-  ];
-  
+  };
+
   return (
-    <PageContainer>
-      {/* Hero Section - fade up & scale in */}
-      <motion.div
-        initial={{ opacity: 0, y: 60, scale: 0.98 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.9, ease: 'easeOut' }}
-      >
-        <Hero
-          title={{
-            he: "הבלוג שלנו",
-            en: "Our Blog"
-          }}
-          subtitle={{
-            he: "מאמרים, ניתוחים ותובנות בתחום הנדל\"ן המשרדי וההשקעות הבינלאומיות",
-            en: "Articles, analysis and insights in the field of office real estate and international investments"
-          }}
-          primaryActionLabel={{
-            he: "קרא עוד",
-            en: "Read More"
-          }}
-          primaryActionHref="/blog"
-          secondaryActionLabel={{
-            he: "קרא עוד",
-            en: "Read More"
-          }}
-          secondaryActionHref="/blog"
-          imageUrl={IMAGES.hero.blog}
-          variant="default"
-          className="pt-20 md:pt-20"
-        />
-      </motion.div>
-      {/* Divider - pop in */}
-      <motion.div
-        initial={{ opacity: 0, scaleX: 0.5 }}
-        whileInView={{ opacity: 1, scaleX: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.1, duration: 0.5, type: 'spring', stiffness: 180 }}
-        className="container mx-auto my-12"
-      >
-        <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30 animate-fade-in" />
-      </motion.div>
-      {/* BlogPostsList - slide up */}
-      <motion.div
-        initial={{ opacity: 0, y: 80 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.8, ease: 'anticipate' }}
-      >
-        <BlogPostsList posts={posts.slice(0, 9)} />
-      </motion.div>
-    </PageContainer>
+    <div className="min-h-screen bg-backgroundLight dark:bg-backgroundDark transition-colors duration-200">
+      <div className="container relative z-10">
+        {/* Hero Section */}
+        <div className="text-center py-20">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent">
+            {t(texts.title)}
+          </h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            {t(texts.subtitle)}
+          </p>
+          {usingFallback && (
+            <p className="text-sm text-orange-600 dark:text-orange-400 mt-2">
+              {t(texts.fallbackMessage)}
+            </p>
+          )}
+        </div>
+
+        {/* Loading State */}
+        {loading && (
+          <div className="mb-8">
+            <BlogPostsLoader />
+          </div>
+        )}
+
+        {/* Posts List */}
+        {!loading && (
+          <BlogPostsList 
+            posts={posts}
+            title={t(texts.postsTitle)}
+            subtitle={t(texts.postsSubtitle)}
+          />
+        )}
+
+        {/* Error Message */}
+        {error && !usingFallback && (
+          <div className="text-center py-8">
+            <p className="text-red-600 dark:text-red-400">
+              {t(texts.errorMessage)} {error}
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
   );
 } 
