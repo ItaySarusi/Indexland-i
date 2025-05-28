@@ -98,7 +98,7 @@ export default function Home() {
       },
       description: {
         he: "דשבורדים בזמן אמת. החלטות חכמות יותר.",
-        en: "Real-time dashboards. Smarter decisions."
+        en: "Local expert negotiation, exclusive assets, with  years  of experience in the local market."
       },
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -113,7 +113,7 @@ export default function Home() {
       },
       description: {
         he: "שורשים בתל אביב עם גישה מקומית עמוקה.",
-        en: "Tel Aviv roots with deep local access."
+        en: "Expert team that finds the perfect client for the perfect property."
       },
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -128,8 +128,8 @@ export default function Home() {
         en: "Go Global."
       },
       description: {
-        he: "שער חלק לשוק של דובאי.",
-        en: "Smooth gateway into Dubai's market."
+        he: "שער חלק לשוק של דובאי. שותפים מקומיים בדובאי להצלחה בטוחה.",
+        en: "Smooth gateway into Dubai's market. Local partners in Dubai for secure success."
       },
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -360,7 +360,11 @@ export default function Home() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: 'backOut' }}
           >
-            <WhyChooseUs features={features} imageUrl={IMAGES.sections.whyChooseUs} bgColor="bg-gray-50 dark:bg-backgroundDark/80" />
+            <WhyChooseUs 
+              features={features} 
+              imageUrl={IMAGES.placeholders.avatar} 
+              bgColor="bg-gray-50 dark:bg-backgroundDark/80" 
+            />
           </motion.div>
           
           {/* ServicesAtAGlance - slide up & fade */}

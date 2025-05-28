@@ -149,18 +149,33 @@ export default function WhyChooseUs({
             </div>
           </div>
           <div className="relative animate-fade-in delay-200">
-            {imageUrl && (
-              <div className="relative">
-                <Image 
-                  src={imageUrl} 
-                  alt={titleText} 
-                  className="rounded-3xl shadow-2xl w-full h-auto object-cover dark:opacity-90 animate-scale-in"
-                  width={600}
-                  height={400}
-                />
-                <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-white/60 to-transparent rounded-b-3xl blur-lg opacity-60 pointer-events-none" />
-              </div>
-            )}
+            {/* Dynamic Animated Shapes Instead of Static Image - now larger */}
+            <div className="relative w-full min-h-[400px] md:min-h-[520px] flex items-center justify-center overflow-visible">
+              <svg width="100%" height="100%" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-w-none h-full w-full">
+                <circle cx="260" cy="260" r="200" fill="url(#grad1)" opacity="0.18">
+                  <animate attributeName="r" values="200;240;200" dur="4s" repeatCount="indefinite" />
+                </circle>
+                <circle cx="160" cy="160" r="60" fill="#FF9800" opacity="0.22">
+                  <animate attributeName="cx" values="160;400;160" dur="6s" repeatCount="indefinite" />
+                </circle>
+                <circle cx="400" cy="360" r="38" fill="#FF7043" opacity="0.32">
+                  <animate attributeName="cy" values="360;120;360" dur="5s" repeatCount="indefinite" />
+                </circle>
+                <rect x="90" y="360" width="60" height="60" rx="30" fill="#FFC107" opacity="0.18">
+                  <animate attributeName="y" values="360;180;360" dur="7s" repeatCount="indefinite" />
+                </rect>
+                <defs>
+                  <radialGradient id="grad1" cx="0.5" cy="0.5" r="0.5" fx="0.5" fy="0.5">
+                    <stop offset="0%" stop-color="#FF9800" />
+                    <stop offset="100%" stop-color="#FF7043" />
+                  </radialGradient>
+                </defs>
+              </svg>
+              {/* Extra floating shapes using React for more motion */}
+              <div className="absolute left-10 top-10 animate-bounce-slow w-12 h-12 rounded-full bg-primary/70 blur-xl" style={{animationDuration:'5s'}} />
+              <div className="absolute right-10 bottom-10 animate-pulse w-20 h-20 rounded-full bg-secondary/60 blur-lg" style={{animationDuration:'4s'}} />
+              <div className="absolute left-1/2 top-1/4 animate-float-slow w-10 h-10 rounded-full bg-yellow-400/60 blur-md" style={{animationDuration:'7s'}} />
+            </div>
             <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl pointer-events-none" />
           </div>
         </div>
