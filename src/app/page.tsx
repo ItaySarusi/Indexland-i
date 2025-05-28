@@ -15,6 +15,7 @@ import { HeroGeometric } from "@/components/ui/shape-landing-hero";
 import SlackIntro from "@/components/mage-ui/hero/slack-intro";
 import StaticSlackElements from "@/components/mage-ui/decorative/static-slack-elements";
 import { motion } from 'framer-motion';
+import OurOfferSection from "@/components/sections/OurOfferSection";
 
 export default function Home() {
   const [showLoader, setShowLoader] = useState(true);
@@ -366,7 +367,12 @@ export default function Home() {
               bgColor="bg-gray-50 dark:bg-backgroundDark/80" 
             />
           </motion.div>
-          
+
+          {/* Our Offer Section */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.15 } } }}>
+            <OurOfferSection />
+          </motion.div>
+
           {/* ServicesAtAGlance - slide up & fade */}
           <motion.div
             initial={{ opacity: 0, y: 80 }}
