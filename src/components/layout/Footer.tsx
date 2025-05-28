@@ -46,7 +46,7 @@ export default function Footer() {
           <div className="flex flex-col gap-2 max-w-xs items-center md:items-start">
             <h3 className="text-lg font-bold text-primary mb-1">Indexland</h3>
             <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed text-center md:text-left">
-              Advanced solutions in office asset management, brokerage, and international real estate investments.
+              Advanced solutions: office asset management, brokerage, and international real estate investments.
             </p>
             <div className="flex gap-4 mt-2 justify-center md:justify-start">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary text-gray-500 dark:text-gray-400 text-xl"><FaFacebook /></a>
