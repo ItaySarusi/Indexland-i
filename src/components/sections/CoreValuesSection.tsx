@@ -23,7 +23,7 @@ const values = [
   },
   {
     icon: <FaLightbulb className="text-5xl mb-5 text-[#FF5722]" />,
-    title: { en: 'Innovation', he: 'חדשנות' },
+    title: { en: 'Professionalism', he: 'חדשנות' },
     description: {
       en: 'Smarter processes powered by data.',
       he: 'תהליכים חכמים מונעי דאטה.'

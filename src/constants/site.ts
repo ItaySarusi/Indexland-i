@@ -28,7 +28,7 @@ export const NAV_LINKS = {
       href: '#',
       children: [
         {
-          name: 'Turnkey Office Solutions & Large Asset Management',
+          name: 'TurnKey office solution: From Finding your company\'s new home To Managing commercial assets',
           href: '/services/international-investment-brokerage',
           description: 'שירותי משרדים מקצה לקצה וניהול נכסים גדולים',
         },
@@ -50,12 +50,12 @@ export const NAV_LINKS = {
       href: '#',
       children: [
         {
-          name: 'Turnkey Office Solutions & Large Asset Management',
+          name: 'TurnKey office solution: From Finding your company\'s new home To Managing commercial assets',
           href: '/services/international-investment-brokerage',
           description: 'End-to-end office solutions and large asset management',
         },
         {
-          name: 'International Real Estate Investment & Local Brokerage',
+          name: 'Local and International Investments: Comical & private',
           href: '/services/office-asset-management',
           description: 'Professional management of office assets, international investment, and local brokerage',
         },

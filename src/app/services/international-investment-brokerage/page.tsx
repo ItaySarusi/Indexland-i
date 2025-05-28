@@ -460,7 +460,7 @@ export default function InternationalInvestmentBrokerage() {
               className="mb-4 text-primary group-hover:text-secondary transition-colors duration-300"
             >
               {/* Icon: Financial/Report */}
-              <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor"/><path d="M8 10h8M8 14h4" stroke="currentColor"/></svg>
+              <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="3" y="12" width="4" height="8" rx="1" stroke="currentColor"/><rect x="9" y="8" width="4" height="12" rx="1" stroke="currentColor"/><rect x="15" y="4" width="4" height="16" rx="1" stroke="currentColor"/></svg>
             </motion.div>
             <motion.h3
               initial={{ opacity: 0, x: -30 }}
