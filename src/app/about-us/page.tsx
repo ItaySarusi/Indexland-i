@@ -20,62 +20,62 @@ export default function AboutUs() {
   const features = [
     {
       title: {
-        he: "ניסיון מקצועי",
-        en: "Professional Experience"
+        he: "שותף אחד חכם",
+        en: "One Smart Partner."
       },
       description: {
-        he: "צוות עם ניסיון רב בענף הנדל\"ן המשרדי וההשקעות",
-        en: "Team with extensive experience in the office real estate and investment industry"
+        he: "משרדים, נכסים והשקעות – הכל במקום אחד.",
+        en: "Offices, assets, investments—all in one place."
       },
       icon: (
-        <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
         </svg>
       ),
     },
     {
       title: {
-        he: "שירות אישי",
-        en: "Personal Service"
+        he: "Data-First.",
+        en: "Data-First."
       },
       description: {
-        he: "ליווי אישי צמוד לאורך כל תהליך ההשקעה והניהול",
-        en: "Close personal guidance throughout the investment and management process"
+        he: "דשבורדים בזמן אמת. החלטות חכמות יותר.",
+        en: "Local expert negotiation, exclusive assets, with  years  of experience in the local market."
       },
       icon: (
-        <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
       ),
     },
     {
       title: {
-        he: "אסטרטגיה מותאמת",
-        en: "Tailored Strategy"
+        he: "On the Ground.",
+        en: "On the Ground."
       },
       description: {
-        he: "פתרונות המותאמים לצרכים הייחודיים של כל לקוח",
-        en: "Solutions tailored to the unique needs of each client"
+        he: "שורשים בתל אביב עם גישה מקומית עמוקה.",
+        en: "Expert team that finds the perfect client for the perfect property."
       },
       icon: (
-        <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-          <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
       ),
     },
     {
       title: {
-        he: "שקיפות מלאה",
-        en: "Full Transparency"
+        he: "Go Global.",
+        en: "Go Global."
       },
       description: {
-        he: "תקשורת פתוחה ושקופה עם לקוחותינו בכל שלב",
-        en: "Open and transparent communication with our clients at every stage"
+        he: "שער חלק לשוק של דובאי. שותפים מקומיים בדובאי להצלחה בטוחה.",
+        en: "Smooth gateway into Dubai's market. Local partners in Dubai for secure success."
       },
       icon: (
-        <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
     },
@@ -251,41 +251,51 @@ export default function AboutUs() {
   const faqs = [
     {
       question: {
+        he: "מה מייחד את Indexland מפלטפורמות אחרות לחיפוש משרדים?",
         en: "What makes Indexland different from other office space search platforms?"
       },
       answer: {
+        he: "Indexland משלבת טכנולוגיה מתקדמת עם מומחיות תעשייתית מעשית. הפלטפורמה שלנו לא רק מציגה חללים זמינים אלא גם מספקת תמיכה אישית, תובנות שוק מקומיות והדרכה מקצועית - עוזרת לך לקבל את ההחלטה הטובה ביותר לעסק שלך, במהירות ובביטחון.",
         en: "Indexland combines advanced technology with hands-on industry expertise. Our platform not only shows available spaces but also provides personalized support, local market insights, and expert guidance—helping you make the best decision for your business, quickly and confidently."
       }
     },
     {
       question: {
+        he: "איך Indexland יכולה לעזור לי למקסם תשואות על הנכס המסחרי שלי?",
         en: "How can Indexland help me maximize returns on my commercial property?"
       },
       answer: {
+        he: "לבעלי נכסים, Indexland מציעה כלי רישום חכמים, אנליטיקת שוק וחשיפה לשוכרים איכותיים. אנחנו מייעלים את תהליך ההשכרה, מקלים על מילוי משרות פנויות ומייעלים את ביצועי הנכס שלך.",
         en: "For property owners, Indexland offers smart listing tools, market analytics, and exposure to high-quality tenants. We streamline the leasing process, making it easier to fill vacancies and optimize your property's performance."
       }
     },
     {
       question: {
+        he: "האם Indexland מיועדת רק לחברות גדולות או שגם עסקים קטנים יכולים להשתמש בה?",
         en: "Is Indexland only for large companies or can small businesses use it too?"
       },
       answer: {
+        he: "Indexland מיועדת לכל גדלי העסקים - מסטארט-אפים ועד ארגונים גדולים. בין אם אתה צריך חלל עבודה קטן וגמיש או מטה משרדים גדול, הפלטפורמה שלנו מחברת אותך לאפשרויות המותאמות לצרכים ולתקציב שלך.",
         en: "Indexland is designed for all business sizes—from startups to large enterprises. Whether you need a small flexible workspace or a large office headquarters, our platform connects you with options tailored to your needs and budget."
       }
     },
     {
       question: {
+        he: "האם אני יכול לקבל עזרה מקצועית או שאני צריך לעשות הכל בעצמי?",
         en: "Can I get expert help or do I have to do everything myself?"
       },
       answer: {
+        he: "אתה אף פעם לא צריך להתמודד לבד עם Indexland. הצוות שלנו של אנשי מקצוע מנוסים בנדל\"ן מסחרי זמין להדריך אותך בכל שלב - מרישום חללים ועד משא ומתן וסגירה. פשוט פנה לתמיכה בכל עת.",
         en: "You never have to go it alone with Indexland. Our team of experienced commercial real estate professionals is available to guide you through every step—from shortlisting spaces to negotiation and closing. Just reach out for support at any time."
       }
     },
     {
       question: {
+        he: "איך אני יודע שהרישומים ב-Indexland מדויקים ומעודכנים?",
         en: "How do I know the listings on Indexland are accurate and up to date?"
       },
       answer: {
+        he: "כל הרישומים ב-Indexland נבדקים ומעודכנים באופן קבוע על ידי הצוות הפנימי שלנו וסוכנים מקומיים מהימנים. אנחנו עובדים ישירות עם בעלי נכסים ומנהלים כדי להבטיח שמה שאתה רואה זמין עכשיו, עם נתוני שוק בזמן אמת שאתה יכול לסמוך עליהם.",
         en: "All Indexland listings are regularly verified and updated by our in-house team and trusted local agents. We work directly with property owners and managers to ensure that what you see is available now, with real-time market data you can trust."
       }
     }
@@ -346,10 +356,19 @@ export default function AboutUs() {
         <MissionVisionSection />
       </motion.div>
 
-      {/* Our Offer Section */}
-      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.15 } } }}>
-        <OurOfferSection />
-      </motion.div>
+      {/* WhyChooseUs - pop in & scale */}
+      <motion.div
+            initial={{ opacity: 0, scale: 0.92 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: 'backOut' }}
+          >
+          <WhyChooseUs 
+            features={features} 
+            imageUrl={IMAGES.sections.whyChooseUs} 
+            bgColor="bg-gray-50 dark:bg-backgroundDark/80" 
+          />
+        </motion.div>
 
       {/* Team Section */}
       <motion.div initial={{ opacity: 0, rotateY: 90 }} whileInView={{ opacity: 1, rotateY: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.3 }}>
