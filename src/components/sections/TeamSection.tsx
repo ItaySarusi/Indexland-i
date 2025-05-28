@@ -28,14 +28,14 @@ const founders: TeamMember[] = [
     name: 'Noam',
     role: 'Founder',
     bio: 'Noam, Founder – Over 10 years in real estate, Noam led Indexland\'s vision from boutique agency to full-spectrum consultancy.',
-    image: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=400&auto=format',
+    image: '/partner1.webp',
     socialLinks: { linkedin: '#', email: 'noam@indexland.com' }
   },
   {
     name: 'Ori',
     role: 'Co-Founder',
     bio: 'Ori, Co-Founder – Expert in asset management and client operations, Ori is the operational heart behind every Indexland project.',
-    image: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=400&auto=format',
+    image: '/partner2.webp',
     socialLinks: { linkedin: '#', email: 'ori@indexland.com' }
   }
 ];
