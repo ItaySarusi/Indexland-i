@@ -9,25 +9,37 @@ export default function OurOfferSection() {
       number: 1,
       icon: <LucideClipboardList className="w-10 h-10 text-primary" />,
       title: { he: 'תכנון וייעוץ', en: 'Consult & Plan' },
-      description: { he: 'הבנת מטרות, תקציבים ולוחות זמנים.', en: 'Understand goals, budgets, and timelines.' }
+      description: {
+        he: 'פגישת היכרות, הגדרת מטרות, ניתוח צרכים, תקציב ולוחות זמנים. התאמת אסטרטגיה אישית לכל לקוח.',
+        en: 'Initial consultation to define your goals, analyze your needs, budget, and timeline. We craft a personalized strategy to ensure your office solution fits your business perfectly.'
+      }
     },
     {
       number: 2,
       icon: <LucideRocket className="w-10 h-10 text-primary" />,
       title: { he: 'ביצוע', en: 'Execute' },
-      description: { he: 'איתור נכס, מו"מ, התאמות והשקה.', en: 'Site sourcing, negotiations, fit-out, and launch.' }
+      description: {
+        he: 'איתור נכסים מתאימים, סיורים מודרכים, ניהול מו"מ מקצועי, בדיקות משפטיות, והתאמות נדרשות עד להשקה.',
+        en: 'We source and tour suitable properties, manage negotiations for the best terms, handle legal checks, and coordinate all fit-out and customizations—right up to your move-in day.'
+      }
     },
     {
       number: 3,
       icon: <LucideSettings className="w-10 h-10 text-primary" />,
       title: { he: 'תפעול', en: 'Operate' },
-      description: { he: 'קונסיירז׳ יומי, תחזוקה ותיאום ספקים.', en: 'Daily concierge, maintenance, and vendor coordination.' }
+      description: {
+        he: 'שירות קונסיירז׳ יומיומי, תחזוקה שוטפת, ניהול ספקים, טיפול בתקלות, ותמיכה אדמיניסטרטיבית מלאה.',
+        en: 'Daily concierge service, ongoing maintenance, vendor management, troubleshooting, and full administrative support to keep your office running smoothly.'
+      }
     },
     {
       number: 4,
       icon: <LucideTrendingUp className="w-10 h-10 text-primary" />,
       title: { he: 'אופטימיזציה', en: 'Optimize' },
-      description: { he: 'ניתוח נתונים, השבחה ושיפור מתמיד.', en: 'Data analysis, value-add strategies, and continuous improvement.' }
+      description: {
+        he: 'מעקב שוטף, ניתוח נתונים, ייעול תהליכים, השבחת הנכס, ושיפור מתמיד של סביבת העבודה.',
+        en: 'Continuous monitoring and data analysis, process optimization, value-add strategies, and ongoing improvements to maximize your workspace efficiency and satisfaction.'
+      }
     },
   ];
   return (

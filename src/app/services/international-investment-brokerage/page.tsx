@@ -201,154 +201,110 @@ export default function InternationalInvestmentBrokerage() {
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 0.7, ease: 'easeOut' }}
-          className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-2"
+          className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-10"
         >
           Turnkey Office Solutions
         </motion.h2>
-        <div className="flex flex-col md:flex-row gap-8 md:gap-0 w-full max-w-5xl justify-between items-center">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 w-full max-w-6xl">
           {/* Step 1 */}
           <motion.div
             initial={{ opacity: 0, y: 60, rotate: -3 }}
             whileInView={{ opacity: 1, y: 0, rotate: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.7, type: 'spring', stiffness: 120 }}
-            className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer"
+            className="group flex flex-col items-center text-center bg-white border-2 border-orange-200 rounded-3xl shadow-2xl p-10 min-h-[340px] transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer"
           >
             <motion.video
               initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
+              whileInView={{ scale: 1.1, opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.5, type: 'spring', stiffness: 200 }}
-              autoPlay loop muted playsInline width="80" height="80"
-              style={{ borderRadius: 16, boxShadow: '0 2px 16px 0 #ff980033' }}
+              autoPlay loop muted playsInline width="110" height="110"
+              className="mb-6 rounded-2xl shadow-lg border-4 border-orange-100"
             >
               <source src="/files/webm/scout.webm" type="video/webm" />
               Your browser does not support the video tag.
             </motion.video>
-            <motion.h3
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.5 }}
-              className="text-xl font-bold mb-2 text-primary"
-            >
-              Discovery & Scouting
-            </motion.h3>
-            <motion.p
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              className="text-gray-700 text-base"
-            >
-              Tailored tours in prime Tel Aviv districts
-            </motion.p>
+            <h3 className="text-2xl font-extrabold mb-4 text-orange-500">Discovery & Scouting</h3>
+            <ul className="text-gray-700 text-lg font-medium text-left space-y-2 mx-auto max-w-xs">
+              <li>1. Tell us your needs & budget</li>
+              <li>2. We shortlist the best spaces</li>
+              <li>3. Join guided tours in top locations</li>
+            </ul>
           </motion.div>
-          {/* Line connector */}
-          <div className="hidden md:block w-8 h-1 bg-gradient-to-r from-orange-300 to-orange-500 mx-2 rounded-full" />
           {/* Step 2 */}
           <motion.div
             initial={{ opacity: 0, y: 60, rotate: 3 }}
             whileInView={{ opacity: 1, y: 0, rotate: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.7, type: 'spring', stiffness: 120 }}
-            className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer"
+            className="group flex flex-col items-center text-center bg-white border-2 border-orange-200 rounded-3xl shadow-2xl p-10 min-h-[340px] transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer"
           >
             <motion.video
               initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
+              whileInView={{ scale: 1.1, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.5, type: 'spring', stiffness: 200 }}
-              autoPlay loop muted playsInline width="80" height="80"
-              style={{ borderRadius: 16, boxShadow: '0 2px 16px 0 #ff980033' }}
+              autoPlay loop muted playsInline width="110" height="110"
+              className="mb-6 rounded-2xl shadow-lg border-4 border-orange-100"
             >
               <source src="/files/webm/handshake.webm" type="video/webm" />
               Your browser does not support the video tag.
             </motion.video>
-            <motion.h3
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45, duration: 0.5 }}
-              className="text-xl font-bold mb-2 text-primary"
-            >
-              Negotiation & Legal
-            </motion.h3>
-            <motion.p
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className="text-gray-700 text-base"
-            >
-              Best lease terms, full paperwork support
-            </motion.p>
+            <h3 className="text-2xl font-extrabold mb-4 text-orange-500">Negotiation & Legal</h3>
+            <ul className="text-gray-700 text-lg font-medium text-left space-y-2 mx-auto max-w-xs">
+              <li>1. We negotiate the best lease terms</li>
+              <li>2. Handle all paperwork & legal checks</li>
+              <li>3. You sign with full confidence</li>
+            </ul>
           </motion.div>
-          <div className="hidden md:block w-8 h-1 bg-gradient-to-r from-orange-300 to-orange-500 mx-2 rounded-full" />
           {/* Step 3 */}
           <motion.div
             initial={{ opacity: 0, y: 60, scale: 0.9, rotate: -2 }}
             whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.7, type: 'spring', stiffness: 120 }}
-            className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer"
+            className="group flex flex-col items-center text-center bg-white border-2 border-orange-200 rounded-3xl shadow-2xl p-10 min-h-[340px] transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer"
           >
             <motion.video
               initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
+              whileInView={{ scale: 1.1, opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.5, type: 'spring', stiffness: 200 }}
-              autoPlay loop muted playsInline width="80" height="80"
-              style={{ borderRadius: 16, boxShadow: '0 2px 16px 0 #ff980033' }}
+              autoPlay loop muted playsInline width="110" height="110"
+              className="mb-6 rounded-2xl shadow-lg border-4 border-orange-100"
             >
               <source src="/files/webm/track build.webm" type="video/webm" />
               Your browser does not support the video tag.
             </motion.video>
-            <motion.h3
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.55, duration: 0.5 }}
-              className="text-xl font-bold mb-2 text-primary"
-            >
-              Build-Out & Move-In
-            </motion.h3>
-            <motion.p
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              className="text-gray-700 text-base"
-            >
-              Fit-out, IT integrations, and launch coordination
-            </motion.p>
+            <h3 className="text-2xl font-extrabold mb-4 text-orange-500">Build-Out & Move-In</h3>
+            <ul className="text-gray-700 text-lg font-medium text-left space-y-2 mx-auto max-w-xs">
+              <li>1. We manage all fit-out & IT setup</li>
+              <li>2. Coordinate vendors & timelines</li>
+              <li>3. Move in to a ready-to-work office</li>
+            </ul>
           </motion.div>
-          <div className="hidden md:block w-8 h-1 bg-gradient-to-r from-orange-300 to-orange-500 mx-2 rounded-full" />
           {/* Step 4 */}
           <motion.div
             initial={{ opacity: 0, y: 60, scale: 0.9, rotate: 2 }}
             whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.7, type: 'spring', stiffness: 120 }}
-            className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer"
+            className="group flex flex-col items-center text-center bg-white border-2 border-orange-200 rounded-3xl shadow-2xl p-10 min-h-[340px] transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer"
           >
             <motion.video
               initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
+              whileInView={{ scale: 1.1, opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.5, type: 'spring', stiffness: 200 }}
-              autoPlay loop muted playsInline width="80" height="80"
-              style={{ borderRadius: 16, boxShadow: '0 2px 16px 0 #ff980033' }}
+              autoPlay loop muted playsInline width="110" height="110"
+              className="mb-6 rounded-2xl shadow-lg border-4 border-orange-100"
             >
               <source src="/files/webm/service man.webm" type="video/webm" />
               Your browser does not support the video tag.
             </motion.video>
-            <motion.h3
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.65, duration: 0.5 }}
-              className="text-xl font-bold mb-2 text-primary"
-            >
-              Ongoing Concierge
-            </motion.h3>
-            <motion.p
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.7, duration: 0.5 }}
-              className="text-gray-700 text-base"
-            >
-              Supplies, maintenance, and staff assistance
-            </motion.p>
+            <h3 className="text-2xl font-extrabold mb-4 text-orange-500">Ongoing Concierge</h3>
+            <ul className="text-gray-700 text-lg font-medium text-left space-y-2 mx-auto max-w-xs">
+              <li>1. Supplies & maintenance on demand</li>
+              <li>2. Staff support & daily problem-solving</li>
+              <li>3. Focus on your business, we handle the rest</li>
+            </ul>
           </motion.div>
         </div>
       </motion.section>
@@ -460,7 +416,7 @@ export default function InternationalInvestmentBrokerage() {
               className="mb-4 text-primary group-hover:text-secondary transition-colors duration-300"
             >
               {/* Icon: Financial/Report */}
-              <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="3" y="12" width="4" height="8" rx="1" stroke="currentColor"/><rect x="9" y="8" width="4" height="12" rx="1" stroke="currentColor"/><rect x="15" y="4" width="4" height="16" rx="1" stroke="currentColor"/></svg>
+              <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor"/><path d="M8 10h8M8 14h4" stroke="currentColor"/></svg>
             </motion.div>
             <motion.h3
               initial={{ opacity: 0, x: -30 }}
@@ -675,7 +631,7 @@ export default function InternationalInvestmentBrokerage() {
               className="text-xl md:text-3xl font-semibold text-gray-900 leading-snug drop-shadow-sm relative z-10 font-sans"
               style={{ fontFamily: 'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif' }}
             >
-              With Indexland managing our offices and assets, we reclaimed 30+ hours per month.
+              We interested Indexland 8 years ago with a asset portfolio and never looked back, the best choice we could have made
             </motion.blockquote>
           </div>
           <motion.div

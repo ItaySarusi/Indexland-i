@@ -175,7 +175,7 @@ export default function WhyChooseUs({
               <div className="absolute left-10 top-10 animate-bounce-slow w-12 h-12 rounded-full bg-primary/70 blur-xl" style={{animationDuration:'5s'}} />
               <div className="absolute right-10 bottom-10 animate-pulse w-20 h-20 rounded-full bg-secondary/60 blur-lg" style={{animationDuration:'4s'}} />
               <div className="absolute left-1/2 top-1/4 animate-float-slow w-10 h-10 rounded-full bg-yellow-400/60 blur-md" style={{animationDuration:'7s'}} />
-            </div>
+              </div>
             <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl pointer-events-none" />
           </div>
         </div>

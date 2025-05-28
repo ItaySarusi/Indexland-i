@@ -372,7 +372,7 @@ export default function Home() {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.15 } } }}>
             <OurOfferSection />
           </motion.div>
-
+          
           {/* ServicesAtAGlance - slide up & fade */}
           <motion.div
             initial={{ opacity: 0, y: 80 }}

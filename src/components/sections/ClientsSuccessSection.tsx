@@ -78,8 +78,8 @@ export default function ClientsSuccessSection() {
   const handleCardClick = (idx: number) => {
     setActiveIdx(idx);
     setUserSelected(true);
-    // Navigate to registration/branch page (customize as needed)
-    router.push('/register-branch');
+    // Navigate to book a meeting page
+    router.push('/book-meeting');
   };
 
   return (
@@ -107,14 +107,14 @@ export default function ClientsSuccessSection() {
                 animate={activeIdx === idx ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.5, ease: 'easeInOut' }}
                 style={{ display: activeIdx === idx ? 'block' : 'none', cursor: 'pointer' }}
-                className={`group relative rounded-3xl shadow-2xl border-2 border-white/30 bg-white/90 dark:bg-backgroundDark/80 p-5 md:p-6 flex flex-col items-center justify-center text-center transition-all duration-300 hover:scale-105 hover:shadow-primary/30 overflow-hidden w-full max-w-md mx-auto md:max-w-[90%] ring-4 ring-primary/20`}
+                className={`group relative rounded-3xl shadow-2xl border-2 border-white/30 bg-white/90 dark:bg-backgroundDark/80 p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-primary/30 overflow-hidden w-full max-w-md mx-auto md:max-w-[90%] ring-4 ring-primary/20`}
                 onClick={() => handleCardClick(idx)}
                 tabIndex={0}
                 role="button"
                 aria-label={item.title[language]}
               >
                 <div className="mb-6 flex justify-center w-full">
-                  <div className="w-24 h-24 relative animate-scale-in mx-auto">
+                  <div className="w-24 h-24 relative animate-scale-in">
                     <Image
                       src={item.image}
                       alt={item.title[language]}
@@ -124,7 +124,7 @@ export default function ClientsSuccessSection() {
                     />
                   </div>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-extrabold mb-0 text-primary drop-shadow animate-fade-in delay-100 text-center">
+                <h3 className="text-2xl md:text-3xl font-semibold mb-0 text-primary drop-shadow animate-fade-in delay-100">
                   {item.title[language]}
                 </h3>
               </motion.div>

@@ -251,62 +251,42 @@ export default function AboutUs() {
   const faqs = [
     {
       question: {
-        he: "מהם השירותים העיקריים שאתם מציעים?",
-        en: "What are the main services you offer?"
+        en: "What makes Indexland different from other office space search platforms?"
       },
       answer: {
-        he: "אנו מציעים שירותי ניהול נכסי משרדים, תיווך השקעות בינלאומיות וייעוץ השקעות. אנו מתמחים בליווי אישי ומקצועי של לקוחותינו בכל שלבי העסקה, מהיעוץ הראשוני ועד לביצוע בפועל.",
-        en: "We offer office asset management services, international investment brokerage, and investment consulting. We specialize in personal and professional guidance for our clients throughout all stages of the transaction, from initial consultation to actual execution."
+        en: "Indexland combines advanced technology with hands-on industry expertise. Our platform not only shows available spaces but also provides personalized support, local market insights, and expert guidance—helping you make the best decision for your business, quickly and confidently."
       }
     },
     {
       question: {
-        he: "באילו אזורים אתם פועלים?",
-        en: "In which areas do you operate?"
+        en: "How can Indexland help me maximize returns on my commercial property?"
       },
       answer: {
-        he: "אנו פועלים בעיקר בישראל, אירופה וארה\"ב. יש לנו ניסיון רב גם בשווקים מתפתחים נוספים בהתאם לצרכי הלקוחות.",
-        en: "We operate primarily in Israel, Europe, and the US. We also have extensive experience in additional emerging markets according to client needs."
+        en: "For property owners, Indexland offers smart listing tools, market analytics, and exposure to high-quality tenants. We streamline the leasing process, making it easier to fill vacancies and optimize your property's performance."
       }
     },
     {
       question: {
-        he: "מהו תהליך העבודה שלכם עם לקוחות חדשים?",
-        en: "What is your work process with new clients?"
+        en: "Is Indexland only for large companies or can small businesses use it too?"
       },
       answer: {
-        he: "תהליך העבודה מתחיל בפגישת היכרות והבנת הצרכים, לאחר מכן אנו בונים אסטרטגיה מותאמת אישית, מציגים אפשרויות ולבסוף מלווים את הלקוח עד להשלמת העסקה ולאחריה.",
-        en: "The work process begins with an introductory meeting and understanding needs, then we build a personalized strategy, present options, and finally accompany the client until the completion of the transaction and beyond."
+        en: "Indexland is designed for all business sizes—from startups to large enterprises. Whether you need a small flexible workspace or a large office headquarters, our platform connects you with options tailored to your needs and budget."
       }
     },
     {
       question: {
-        he: "אילו סוגי נכסים אתם מנהלים?",
-        en: "What types of properties do you manage?"
+        en: "Can I get expert help or do I have to do everything myself?"
       },
       answer: {
-        he: "אנו מתמחים בניהול נכסי משרדים, מבני מסחר, מרכזי לוגיסטיקה ונכסים מניבים נוספים. התיק שלנו מגוון ומותאם לפרופיל הסיכון והתשואה הרצוי ללקוח.",
-        en: "We specialize in managing office properties, commercial buildings, logistics centers, and additional income-producing properties. Our portfolio is diverse and adapted to the client's desired risk and return profile."
+        en: "You never have to go it alone with Indexland. Our team of experienced commercial real estate professionals is available to guide you through every step—from shortlisting spaces to negotiation and closing. Just reach out for support at any time."
       }
     },
     {
       question: {
-        he: "מהי ההשקעה המינימלית הנדרשת?",
-        en: "What is the minimum investment required?"
+        en: "How do I know the listings on Indexland are accurate and up to date?"
       },
       answer: {
-        he: "ההשקעה המינימלית משתנה בהתאם לסוג הנכס והשוק. אנו עובדים עם לקוחות פרטיים בסכומים החל מ-$100,000 ועד להשקעות מוסדיות במיליוני דולרים.",
-        en: "The minimum investment varies according to the type of property and market. We work with private clients on amounts starting from $100,000 up to institutional investments in millions of dollars."
-      }
-    },
-    {
-      question: {
-        he: "האם אתם מעניקים שירותי ניהול שוטף לנכסים?",
-        en: "Do you provide ongoing property management services?"
-      },
-      answer: {
-        he: "כן, אנו מציעים שירותי ניהול נכסים הכוללים טיפול בכל ההיבטים התפעוליים, כספיים ואדמיניסטרטיביים של הנכס, כולל גביית שכר דירה, תחזוקה שוטפת וניהול יחסי שוכרים.",
-        en: "Yes, we offer property management services that include handling all operational, financial, and administrative aspects of the property, including rent collection, ongoing maintenance, and tenant relationship management."
+        en: "All Indexland listings are regularly verified and updated by our in-house team and trusted local agents. We work directly with property owners and managers to ensure that what you see is available now, with real-time market data you can trust."
       }
     }
   ];
@@ -316,12 +296,12 @@ export default function AboutUs() {
       <motion.div initial={{ opacity: 0, y: -40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
         <Hero 
           title={{
-            he: 'הסיפור שלנו - מי אנחנו ולמה אנחנו כאן',
-            en: 'Our Story - Who We Are and Why We\'re Here'
+            he: 'למה לבחור ב-Indexland?',
+            en: 'Why Choose Indexland?'
           }}
           subtitle={{
-            he: 'צוות המומחים שלנו מחויב להוביל את לקוחותינו להצלחה בעולם הנדל"ן, תוך שמירה על ערכי מקצועיות, יושרה ושירות אישי',
-            en: "Our team of experts is committed to leading our clients to success in the real estate world, while maintaining values of professionalism, integrity and personal service"
+            he: 'אנחנו מחויבים להוביל את לקוחותינו להצלחה בעולם הנדל"ן, תוך שמירה על ערכי מקצועיות, יושרה ושירות אישי',
+            en: 'We are committed to lead our clients on their path to Success committed to leading our clients to success in the real estate world, while maintaining values of professionalism, integrity and personal service'
           }}
           primaryActionLabel={{
             he: 'צור קשר עכשיו',
@@ -403,7 +383,10 @@ export default function AboutUs() {
 
       {/* FAQ Section */}
       <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.6 }}>
-        <FaqSection faqs={faqs} />
+        <FaqSection 
+          faqs={faqs} 
+          title="Indexland FAQ – SEO & Trust-Building"
+        />
       </motion.div>
     </PageContainer>
   );

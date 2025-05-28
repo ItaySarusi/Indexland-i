@@ -345,35 +345,31 @@ export default function Services() {
 
       {/* Turnkey Office Solutions Flow Line Section */}
       <section className="w-full flex flex-col items-center py-20 px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-12">Find any office for any company, A–Z.</h2>
-        <div className="flex flex-col md:flex-row gap-8 md:gap-0 w-full max-w-5xl justify-between items-center">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-12">Turnkey Office Solutions</h2>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 w-full max-w-6xl">
           {/* Step 1 */}
-          <div className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer">
+          <div className="group flex flex-col items-center text-center bg-white border-2 border-orange-100 rounded-2xl shadow-xl p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-400 cursor-pointer min-h-[260px]">
             <svg className="w-12 h-12 mb-4 text-orange-500 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 48 48" stroke="currentColor"><rect x="8" y="16" width="32" height="24" rx="4" fill="#fff" stroke="#FF9800" strokeWidth="2.5"/><rect x="16" y="24" width="16" height="8" rx="2" fill="#FF9800"/><path d="M16 16V12a8 8 0 0 1 16 0v4" stroke="#FF9800" strokeWidth="2.5" strokeLinecap="round"/></svg>
             <h3 className="text-xl font-bold mb-2 text-primary">Discovery & Scouting</h3>
-            <p className="text-gray-700 text-base">Tailored tours in prime Tel Aviv districts</p>
+            <p className="text-gray-700 text-base font-medium">We start with a deep-dive consultation to understand your business needs, location preferences, and budget. Then, we organize tailored tours in prime Tel Aviv districts, presenting only the most relevant office spaces for your company's goals.</p>
           </div>
-          {/* Line connector */}
-          <div className="hidden md:block w-8 h-1 bg-gradient-to-r from-orange-300 to-orange-500 mx-2 rounded-full" />
           {/* Step 2 */}
-          <div className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer">
+          <div className="group flex flex-col items-center text-center bg-white border-2 border-orange-100 rounded-2xl shadow-xl p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-400 cursor-pointer min-h-[260px]">
             <svg className="w-12 h-12 mb-4 text-orange-500 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 48 48" stroke="currentColor"><rect x="10" y="20" width="28" height="16" rx="4" fill="#fff" stroke="#FF9800" strokeWidth="2.5"/><path d="M14 28h20M14 32h12" stroke="#FF9800" strokeWidth="2.5" strokeLinecap="round"/><rect x="18" y="12" width="12" height="8" rx="2" fill="#FF9800"/></svg>
             <h3 className="text-xl font-bold mb-2 text-primary">Negotiation & Legal</h3>
-            <p className="text-gray-700 text-base">Best lease terms, full paperwork support</p>
+            <p className="text-gray-700 text-base font-medium">Our experts negotiate the best lease terms for you, manage all legal paperwork, and ensure full compliance. We handle every detail, from contract review to final signatures, so you can move forward with confidence and peace of mind.</p>
           </div>
-          <div className="hidden md:block w-8 h-1 bg-gradient-to-r from-orange-300 to-orange-500 mx-2 rounded-full" />
           {/* Step 3 */}
-          <div className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer">
+          <div className="group flex flex-col items-center text-center bg-white border-2 border-orange-100 rounded-2xl shadow-xl p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-400 cursor-pointer min-h-[260px]">
             <svg className="w-12 h-12 mb-4 text-orange-500 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 48 48" stroke="currentColor"><rect x="8" y="20" width="32" height="16" rx="4" fill="#fff" stroke="#FF9800" strokeWidth="2.5"/><rect x="16" y="28" width="16" height="4" rx="2" fill="#FF9800"/><path d="M24 20v-8m0 0l-4 4m4-4l4 4" stroke="#FF9800" strokeWidth="2.5" strokeLinecap="round"/></svg>
             <h3 className="text-xl font-bold mb-2 text-primary">Build-Out & Move-In</h3>
-            <p className="text-gray-700 text-base">Fit-out, IT integrations, and launch coordination</p>
+            <p className="text-gray-700 text-base font-medium">We coordinate all aspects of your office fit-out, including IT integrations, furniture, and branding. Our team manages timelines and vendors, ensuring a seamless move-in and a workspace ready for immediate productivity.</p>
           </div>
-          <div className="hidden md:block w-8 h-1 bg-gradient-to-r from-orange-300 to-orange-500 mx-2 rounded-full" />
           {/* Step 4 */}
-          <div className="group flex flex-col items-center text-center flex-1 px-4 py-8 transition-all duration-300 hover:bg-orange-50 hover:shadow-xl rounded-2xl cursor-pointer">
+          <div className="group flex flex-col items-center text-center bg-white border-2 border-orange-100 rounded-2xl shadow-xl p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-400 cursor-pointer min-h-[260px]">
             <svg className="w-12 h-12 mb-4 text-orange-500 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 48 48" stroke="currentColor"><rect x="12" y="20" width="24" height="16" rx="4" fill="#fff" stroke="#FF9800" strokeWidth="2.5"/><path d="M24 28h8M16 32h16" stroke="#FF9800" strokeWidth="2.5" strokeLinecap="round"/><circle cx="24" cy="28" r="2" fill="#FF9800"/></svg>
             <h3 className="text-xl font-bold mb-2 text-primary">Ongoing Concierge</h3>
-            <p className="text-gray-700 text-base">Supplies, maintenance, and staff assistance</p>
+            <p className="text-gray-700 text-base font-medium">After move-in, we provide ongoing support: supplies, maintenance, staff assistance, and day-to-day problem-solving. Our concierge service ensures your office runs smoothly, letting you focus on your business growth.</p>
           </div>
         </div>
       </section>
