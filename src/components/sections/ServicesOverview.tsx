@@ -86,6 +86,7 @@ export default function ServicesOverview({
                       src={service.svg} 
                       alt={typeof service.title === 'string' ? service.title : ''} 
                       className="w-28 h-28"
+                      unoptimized={service.svg?.endsWith('.gif')}
                     />
                   ) : service?.icon}
               </div>

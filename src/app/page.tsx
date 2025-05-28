@@ -15,6 +15,7 @@ import { HeroGeometric } from "@/components/ui/shape-landing-hero";
 import SlackIntro from "@/components/mage-ui/hero/slack-intro";
 import StaticSlackElements from "@/components/mage-ui/decorative/static-slack-elements";
 import { motion } from 'framer-motion';
+import OurOfferSection from "@/components/sections/OurOfferSection";
 
 export default function Home() {
   const [showLoader, setShowLoader] = useState(true);
@@ -72,71 +73,6 @@ export default function Home() {
       href: "/services/local-brokerage",
       svg: "/files/svg/House-searching-rafiki.svg"
     }
-  ];
-  
-  // יתרונות לדוגמה
-  const features = [
-    {
-      title: {
-        he: "שותף אחד חכם",
-        en: "One Smart Partner."
-      },
-      description: {
-        he: "משרדים, נכסים והשקעות – הכל במקום אחד.",
-        en: "Offices, assets, investments—all in one place."
-      },
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-        </svg>
-      ),
-    },
-    {
-      title: {
-        he: "Data-First.",
-        en: "Data-First."
-      },
-      description: {
-        he: "דשבורדים בזמן אמת. החלטות חכמות יותר.",
-        en: "Real-time dashboards. Smarter decisions."
-      },
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-      ),
-    },
-    {
-      title: {
-        he: "On the Ground.",
-        en: "On the Ground."
-      },
-      description: {
-        he: "שורשים בתל אביב עם גישה מקומית עמוקה.",
-        en: "Tel Aviv roots with deep local access."
-      },
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      ),
-    },
-    {
-      title: {
-        he: "Go Global.",
-        en: "Go Global."
-      },
-      description: {
-        he: "שער חלק לשוק של דובאי.",
-        en: "Smooth gateway into Dubai's market."
-      },
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
-    },
   ];
   
   // מדדים לדוגמה
@@ -352,17 +288,13 @@ export default function Home() {
 
           {/* ServicesOverview (core offering) - NO ANIMATION */}
           <ServicesOverview services={services} />
-          
-          {/* WhyChooseUs - pop in & scale */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.92 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, ease: 'backOut' }}
-          >
-            <WhyChooseUs features={features} imageUrl={IMAGES.sections.whyChooseUs} bgColor="bg-gray-50 dark:bg-backgroundDark/80" />
+
+          {/* Our Offer Section */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.15 } } }}>
+            <OurOfferSection />
           </motion.div>
-          
+
+
           {/* ServicesAtAGlance - slide up & fade */}
           <motion.div
             initial={{ opacity: 0, y: 80 }}

@@ -9,7 +9,6 @@ import FaqSection from "@/components/sections/FaqSection";
 import CtaSection from "@/components/sections/CtaSection";
 import { SEO, IMAGES } from "@/constants/site";
 import MissionVisionSection from "@/components/sections/MissionVisionSection";
-import OurOfferSection from "@/components/sections/OurOfferSection";
 import CoreValuesSection from "@/components/sections/CoreValuesSection";
 import { useLanguage } from '@/lib/language-context';
 import { motion } from 'framer-motion';
@@ -17,69 +16,69 @@ import { motion } from 'framer-motion';
 export default function AboutUs() {
   const { t, language, dir } = useLanguage();
   // יתרונות לדוגמה
-  const features = [
-    {
-      title: {
-        he: "ניסיון מקצועי",
-        en: "Professional Experience"
-      },
-      description: {
-        he: "צוות עם ניסיון רב בענף הנדל\"ן המשרדי וההשקעות",
-        en: "Team with extensive experience in the office real estate and investment industry"
-      },
-      icon: (
-        <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-        </svg>
-      ),
-    },
-    {
-      title: {
-        he: "שירות אישי",
-        en: "Personal Service"
-      },
-      description: {
-        he: "ליווי אישי צמוד לאורך כל תהליך ההשקעה והניהול",
-        en: "Close personal guidance throughout the investment and management process"
-      },
-      icon: (
-        <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>
-        </svg>
-      ),
-    },
-    {
-      title: {
-        he: "אסטרטגיה מותאמת",
-        en: "Tailored Strategy"
-      },
-      description: {
-        he: "פתרונות המותאמים לצרכים הייחודיים של כל לקוח",
-        en: "Solutions tailored to the unique needs of each client"
-      },
-      icon: (
-        <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-          <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
-        </svg>
-      ),
-    },
-    {
-      title: {
-        he: "שקיפות מלאה",
-        en: "Full Transparency"
-      },
-      description: {
-        he: "תקשורת פתוחה ושקופה עם לקוחותינו בכל שלב",
-        en: "Open and transparent communication with our clients at every stage"
-      },
-      icon: (
-        <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path>
-        </svg>
-      ),
-    },
-  ];
+  // const features = [
+  //   {
+  //     title: {
+  //       he: "ניסיון מקצועי",
+  //       en: "Professional Experience"
+  //     },
+  //     description: {
+  //       he: "צוות עם ניסיון רב בענף הנדל\"ן המשרדי וההשקעות",
+  //       en: "Team with extensive experience in the office real estate and investment industry"
+  //     },
+  //     icon: (
+  //       <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+  //         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+  //       </svg>
+  //     ),
+  //   },
+  //   {
+  //     title: {
+  //       he: "שירות אישי",
+  //       en: "Personal Service"
+  //     },
+  //     description: {
+  //       he: "ליווי אישי צמוד לאורך כל תהליך ההשקעה והניהול",
+  //       en: "Close personal guidance throughout the investment and management process"
+  //     },
+  //     icon: (
+  //       <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+  //         <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>
+  //       </svg>
+  //     ),
+  //   },
+  //   {
+  //     title: {
+  //       he: "אסטרטגיה מותאמת",
+  //       en: "Tailored Strategy"
+  //     },
+  //     description: {
+  //       he: "פתרונות המותאמים לצרכים הייחודיים של כל לקוח",
+  //       en: "Solutions tailored to the unique needs of each client"
+  //     },
+  //     icon: (
+  //       <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+  //         <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+  //         <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+  //       </svg>
+  //     ),
+  //   },
+  //   {
+  //     title: {
+  //       he: "שקיפות מלאה",
+  //       en: "Full Transparency"
+  //     },
+  //     description: {
+  //       he: "תקשורת פתוחה ושקופה עם לקוחותינו בכל שלב",
+  //       en: "Open and transparent communication with our clients at every stage"
+  //     },
+  //     icon: (
+  //       <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+  //         <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path>
+  //       </svg>
+  //     ),
+  //   },
+  // ];
   
   // מדדים לדוגמה
   const metrics = [
@@ -311,6 +310,71 @@ export default function AboutUs() {
     }
   ];
 
+    // יתרונות לדוגמה
+  const features = [
+    {
+      title: {
+        he: "שותף אחד חכם",
+        en: "One Smart Partner."
+      },
+      description: {
+        he: "משרדים, נכסים והשקעות – הכל במקום אחד.",
+        en: "Offices, assets, investments—all in one place."
+      },
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+        </svg>
+      ),
+    },
+    {
+      title: {
+        he: "Data-First.",
+        en: "Data-First."
+      },
+      description: {
+        he: "דשבורדים בזמן אמת. החלטות חכמות יותר.",
+        en: "Real-time dashboards. Smarter decisions."
+      },
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      ),
+    },
+    {
+      title: {
+        he: "On the Ground.",
+        en: "On the Ground."
+      },
+      description: {
+        he: "שורשים בתל אביב עם גישה מקומית עמוקה.",
+        en: "Tel Aviv roots with deep local access."
+      },
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      ),
+    },
+    {
+      title: {
+        he: "Go Global.",
+        en: "Go Global."
+      },
+      description: {
+        he: "שער חלק לשוק של דובאי.",
+        en: "Smooth gateway into Dubai's market."
+      },
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+    },
+  ];
+
   return (
     <PageContainer>
       <motion.div initial={{ opacity: 0, y: -40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
@@ -366,10 +430,15 @@ export default function AboutUs() {
         <MissionVisionSection />
       </motion.div>
 
-      {/* Our Offer Section */}
-      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.15 } } }}>
-        <OurOfferSection />
-      </motion.div>
+      {/* WhyChooseUs - pop in & scale */}
+      <motion.div
+            initial={{ opacity: 0, scale: 0.92 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: 'backOut' }}
+          >
+            <WhyChooseUs features={features} imageUrl={IMAGES.sections.whyChooseUs} bgColor="bg-gray-50 dark:bg-backgroundDark/80" />
+          </motion.div>
 
       {/* Team Section */}
       <motion.div initial={{ opacity: 0, rotateY: 90 }} whileInView={{ opacity: 1, rotateY: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.3 }}>
