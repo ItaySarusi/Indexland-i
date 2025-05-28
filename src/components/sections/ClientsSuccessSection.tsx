@@ -1,7 +1,8 @@
 import { useLanguage } from '@/lib/language-context';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 const CLIENTS_SUCCESS = [
   {
@@ -53,8 +54,34 @@ const CLIENTS_SUCCESS = [
 
 export default function ClientsSuccessSection() {
   const { language, t } = useLanguage();
-  const [openIdx, setOpenIdx] = useState<number | null>(null);
-  const handleToggle = (idx: number) => setOpenIdx(openIdx === idx ? null : idx);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [userSelected, setUserSelected] = useState(false);
+  const router = useRouter();
+
+  // Auto-rotate logic
+  useEffect(() => {
+    if (userSelected) return;
+    const timer = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % CLIENTS_SUCCESS.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [userSelected]);
+
+  // Resume auto-rotation after 30s of inactivity
+  useEffect(() => {
+    if (!userSelected) return;
+    const timeout = setTimeout(() => setUserSelected(false), 30000);
+    return () => clearTimeout(timeout);
+  }, [userSelected]);
+
+  // Handle card click (navigate)
+  const handleCardClick = (idx: number) => {
+    setActiveIdx(idx);
+    setUserSelected(true);
+    // Navigate to registration/branch page (customize as needed)
+    router.push('/register-branch');
+  };
+
   return (
     <section className="relative py-20 bg-gradient-to-br from-primary/10 via-primary/10 to-primary/10 dark:from-secondary/20 dark:via-primary/10 dark:to-backgroundDark transition-colors duration-200 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none opacity-40" />
@@ -70,54 +97,50 @@ export default function ClientsSuccessSection() {
             })}
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 px-2 md:px-8">
-          {CLIENTS_SUCCESS.map((item, idx) => (
-            <div
-              key={idx}
-              className={`group relative rounded-3xl shadow-2xl border-2 border-white/30 bg-white/90 dark:bg-backgroundDark/80 p-5 md:p-6 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-primary/30 overflow-hidden w-full max-w-xs mx-auto md:max-w-[90%] ${openIdx === idx ? 'ring-4 ring-primary/20' : ''}`}
-              style={{ animationDelay: `${0.1 + idx * 0.12}s` }}
-            >
-              <div className="mb-4 w-20 h-20 md:w-24 md:h-24 relative animate-scale-in">
-                <Image
-                  src={item.image}
-                  alt={item.title[language]}
-                  fill
-                  className="object-cover rounded-full border-4 border-primary/30 shadow-lg backdrop-blur-xl"
-                  sizes="96px"
-                />
-              </div>
-              <h3 className="text-xl md:text-2xl font-semibold mb-2 text-primary drop-shadow animate-fade-in delay-100">
-                {item.title[language]}
-              </h3>
-              <button
-                className="mb-2 px-5 py-2 rounded-full bg-primary text-white font-semibold shadow hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all duration-200"
-                onClick={() => handleToggle(idx)}
-                aria-expanded={openIdx === idx}
-                aria-controls={`client-details-${idx}`}
+        {/* Carousel */}
+        <div className="flex justify-center items-center">
+          <div className="relative w-full max-w-md">
+            {CLIENTS_SUCCESS.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={activeIdx === idx ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+                style={{ display: activeIdx === idx ? 'block' : 'none', cursor: 'pointer' }}
+                className={`group relative rounded-3xl shadow-2xl border-2 border-white/30 bg-white/90 dark:bg-backgroundDark/80 p-5 md:p-6 flex flex-col items-center justify-center text-center transition-all duration-300 hover:scale-105 hover:shadow-primary/30 overflow-hidden w-full max-w-md mx-auto md:max-w-[90%] ring-4 ring-primary/20`}
+                onClick={() => handleCardClick(idx)}
+                tabIndex={0}
+                role="button"
+                aria-label={item.title[language]}
               >
-                {openIdx === idx ? t({he: 'פחות מידע', en: 'Less Info'}) : t({he: 'עוד מידע', en: 'More Info'})}
-              </button>
-              <AnimatePresence initial={false}>
-                {openIdx === idx && (
-                  <motion.div
-                    id={`client-details-${idx}`}
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
-                    className="overflow-hidden w-full"
-                  >
-                    <p className="mt-3 text-gray-600 dark:text-textSecondary text-base md:text-lg leading-relaxed">
-                      {item.short[language]}
-                    </p>
-                    <p className="mt-2 text-gray-500 dark:text-gray-400 text-sm md:text-base">
-                      {item.details[language]}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                <div className="mb-6 flex justify-center w-full">
+                  <div className="w-24 h-24 relative animate-scale-in mx-auto">
+                    <Image
+                      src={item.image}
+                      alt={item.title[language]}
+                      fill
+                      className="object-cover rounded-full border-4 border-primary/30 shadow-lg backdrop-blur-xl"
+                      sizes="96px"
+                    />
+                  </div>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-extrabold mb-0 text-primary drop-shadow animate-fade-in delay-100 text-center">
+                  {item.title[language]}
+                </h3>
+              </motion.div>
+            ))}
+            {/* Carousel navigation dots */}
+            <div className="flex justify-center gap-2 mt-6">
+              {CLIENTS_SUCCESS.map((_, idx) => (
+                <button
+                  key={idx}
+                  className={`w-3 h-3 rounded-full transition-all duration-200 ${activeIdx === idx ? 'bg-primary' : 'bg-gray-300 dark:bg-gray-600'}`}
+                  onClick={e => { e.stopPropagation(); setActiveIdx(idx); setUserSelected(true); }}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
