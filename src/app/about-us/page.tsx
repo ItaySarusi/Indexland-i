@@ -335,8 +335,10 @@ export default function AboutUs() {
             <motion.h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-3 animate-fade-in animate-scale-in" style={{ animationDelay: '0.3s' }} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }}>Our Story</motion.h2>
             <motion.div className="space-y-2 animate-fade-in animate-scale-in" style={{ animationDelay: '0.4s' }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.4 }}>
               <p className="text-lg text-gray-700 dark:text-textSecondary">
-                Indexland started as a boutique brokerage in Tel Aviv and evolved into a full-service office concierge and real estate partner—now bridging local precision with global opportunity.
-              </p>
+              Indexland | Commercial Real Estate Advisory.<br></br>
+              Established in 1994 and based in Tel Aviv, Indexland is a leading commercial real estate firm providing strategic consulting and brokerage services across Israel and abroad. Our core expertise spans tenant representation, investment sales, and project marketing.
+              With a client-first approach and a reputation for precision, we serve a diverse portfolio of local and international clients, from institutional investors to private stakeholders. Our consistent growth is fueled by a shared DNA—an unwavering commitment to professionalism, personal relationships, and results.
+              At Indexland, we don’t just follow market trends—we help shape them.              </p>
             </motion.div>
           </motion.div>
           <motion.div className="relative animate-fade-in animate-scale-in min-h-[320px] flex items-center" style={{ animationDelay: '0.3s' }} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.3 }}>
