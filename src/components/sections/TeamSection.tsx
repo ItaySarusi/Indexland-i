@@ -29,14 +29,20 @@ const founders: TeamMember[] = [
     role: 'Founder',
     bio: 'Noam, Founder – Over 10 years in real estate, Noam led Indexland\'s vision from boutique agency to full-spectrum consultancy.',
     image: '/partner2.webp',
-    socialLinks: { linkedin: '#', email: 'noam@indexland.com' }
+    socialLinks: {
+      linkedin: 'https://www.linkedin.com/in/noam-brender?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
+      email: 'noam@indexland.co.il'
+    }
   },
   {
     name: 'Ori',
     role: 'Co-Founder',
     bio: 'Ori, Co-Founder – Expert in asset management and client operations, Ori is the operational heart behind every Indexland project.',
     image: '/partner1.webp',
-    socialLinks: { linkedin: '#', email: 'ori@indexland.com' }
+    socialLinks: {
+      linkedin: 'https://www.linkedin.com/in/ori-brender-177534199?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
+      email: 'ori@indexland.co.il'
+    }
   }
 ];
 
@@ -74,24 +80,25 @@ export default function TeamSection({
   const visibleMembers = founders;
 
   return (
-    <section className="relative py-24 px-16 bg-backgroundLight dark:bg-backgroundDark transition-colors duration-200 overflow-hidden">
-      {/* Floating glassmorphic background */}
+    <section className="relative py-24 px-4 md:px-16 bg-white/60 dark:bg-backgroundDark/70 backdrop-blur-xl transition-colors duration-200 overflow-hidden">
+      {/* Animated glassmorphic background */}
       <div className="pointer-events-none absolute inset-0 z-0">
-        <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[400px] h-[160px] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl opacity-40 animate-float-slow" />
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[260px] bg-gradient-to-br from-orange-200/40 via-white/30 to-orange-400/20 rounded-full blur-3xl opacity-60 animate-float-slow" style={{animationDuration:'8s'}} />
+        <div className="absolute bottom-0 right-1/4 w-[320px] h-[120px] bg-gradient-to-tr from-primary/30 via-white/20 to-orange-300/20 rounded-full blur-2xl opacity-40 animate-float-x" style={{animationDuration:'10s'}} />
+        <div className="absolute top-1/3 left-0 w-[180px] h-[80px] bg-gradient-to-br from-orange-100/40 via-white/20 to-primary/20 rounded-full blur-2xl opacity-30 animate-float-y" style={{animationDuration:'12s'}} />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 pointer-events-none" />
       <div className="container relative z-10">
         <div className="text-center mb-14">
           <h2 className="mb-4 text-4xl md:text-5xl font-extrabold tracking-tight text-primary drop-shadow-xl animate-fade-in">{subtitleText}</h2>
         </div>
-        <div className="flex flex-col sm:flex-row sm:justify-center gap-8">
+        <div className="flex flex-row justify-center gap-4">
           {visibleMembers.map((member, index) => (
             <div
               key={index}
-              className="glass-card glass-inner-shadow rounded-2xl overflow-hidden animate-fade-in animate-scale-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative p-0 group max-w-xs w-80 min-h-[420px] mx-auto flex flex-col"
-              style={{ animationDelay: `${0.1 + index * 0.12}s` }}
+              className="glass-card glass-inner-shadow rounded-2xl overflow-hidden animate-fade-in animate-scale-in transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-300 relative p-0 group w-96 max-w-md min-h-[480px] mx-auto flex flex-col bg-white/70 dark:bg-backgroundDark/80 backdrop-blur-md border border-orange-100 shadow-xl"
+              style={{ animationDelay: `${0.1 + index * 0.12}s`, background: 'linear-gradient(135deg, rgba(255,255,255,0.85) 60%, rgba(255,152,0,0.07) 100%)' }}
             >
-              <div className="relative w-full h-64">
+              <div className="relative w-full h-80">
                 <img
                   src={member.image}
                   alt={getLocalizedText(member.name)}
@@ -99,7 +106,7 @@ export default function TeamSection({
                   style={{ background: '#fff' }}
                 />
               </div>
-              <div className="px-6 py-6 flex flex-col items-center text-center bg-white/80 dark:bg-backgroundDark/80 transition-all duration-300 flex-1">
+              <div className="px-8 py-8 flex flex-col items-center text-center bg-white/80 dark:bg-backgroundDark/80 transition-all duration-300 flex-1">
                 <h3 className="text-2xl font-bold mb-1 text-primary drop-shadow animate-fade-in delay-100">{getLocalizedText(member.name)}</h3>
                 <p className="text-primary dark:text-primary mb-3 font-semibold animate-fade-in delay-200">{getLocalizedText(member.role)}</p>
                 <p className="text-gray-600 dark:text-textSecondary mb-0 animate-fade-in delay-300 group-hover:opacity-100 opacity-80 transition-opacity duration-300">
@@ -124,6 +131,23 @@ export default function TeamSection({
           ))}
         </div>
       </div>
+      <style jsx>{`
+        @keyframes float-slow {
+          0%, 100% { transform: translateY(0) scale(1); }
+          50% { transform: translateY(-18px) scale(1.04); }
+        }
+        @keyframes float-x {
+          0%, 100% { transform: translateX(0) scale(1); }
+          50% { transform: translateX(24px) scale(1.03); }
+        }
+        @keyframes float-y {
+          0%, 100% { transform: translateY(0) scale(1); }
+          50% { transform: translateY(16px) scale(1.02); }
+        }
+        .animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+        .animate-float-x { animation: float-x 10s ease-in-out infinite; }
+        .animate-float-y { animation: float-y 12s ease-in-out infinite; }
+      `}</style>
     </section>
   );
 } 
