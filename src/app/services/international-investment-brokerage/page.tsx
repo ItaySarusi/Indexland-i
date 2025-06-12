@@ -126,7 +126,7 @@ export default function InternationalInvestmentBrokerage() {
       >
         {/* Modern Office background */}
         <img
-          src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1920&auto=format"
+          src="/office.webp"
           alt="Modern Office"
           className="absolute inset-0 w-full h-full object-cover object-center z-0 brightness-60"
         />

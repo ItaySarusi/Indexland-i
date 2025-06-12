@@ -326,7 +326,7 @@ export default function Services() {
         primaryActionHref="/book-meeting"
         secondaryActionLabel="Learn More"
         secondaryActionHref="/services"
-        imageUrl={IMAGES.hero.home}
+        imageUrl="/lounge.webp"
         variant="background-image"
       />
 
