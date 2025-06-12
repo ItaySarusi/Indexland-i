@@ -380,6 +380,11 @@ export default function AboutUs() {
             en: "Schedule a Meeting"
           }}
           primaryButtonHref="/book-meeting"
+          secondaryButtonText={{
+            he: "קרא עוד על השירותים שלנו",
+            en: "Learn More About Our Services"
+          }}
+          secondaryButtonHref="/services"
           variant="centered"
         />
       </motion.div>

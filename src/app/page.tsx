@@ -381,7 +381,7 @@ export default function Home() {
                 he: "קרא עוד על השירותים שלנו",
                 en: "Learn More About Our Services"
               }}
-              secondaryButtonHref="/services/office-asset-management"
+              secondaryButtonHref="/services"
               variant="highlight"
               bgColor="light"
             />

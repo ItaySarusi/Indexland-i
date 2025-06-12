@@ -25,7 +25,7 @@ export const NAV_LINKS = {
     { name: 'אודות', href: '/about-us' },
     {
       name: 'שירותים',
-      href: '#',
+      href: '/services',
       children: [
         {
           name: 'פתרון משרדים וניהול נכסים',
@@ -47,7 +47,7 @@ export const NAV_LINKS = {
     { name: 'About', href: '/about-us' },
     {
       name: 'Services',
-      href: '#',
+      href: '/services',
       children: [
         {
           name: 'Office Solution & Asset management',

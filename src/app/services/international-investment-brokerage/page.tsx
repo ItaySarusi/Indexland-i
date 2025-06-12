@@ -169,7 +169,7 @@ export default function InternationalInvestmentBrokerage() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.5, type: 'spring', stiffness: 200 }}
-              href="#learn-more"
+              href="/services"
               className="px-8 py-3 rounded-full bg-white text-orange-500 font-semibold shadow-lg hover:bg-orange-50 transition-all text-lg border-2 border-orange-500"
             >
               Learn More
@@ -655,7 +655,7 @@ export default function InternationalInvestmentBrokerage() {
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.7, duration: 0.5, type: 'spring', stiffness: 200 }}
-              href="#learn-more"
+              href="/services"
               className="px-8 py-3 rounded-full bg-white text-orange-500 font-extrabold shadow-lg hover:bg-black hover:text-white transition-all text-lg border-2 border-orange-500 min-w-[180px] text-center w-full sm:w-auto"
               style={{ borderWidth: 2, fontWeight: 800, fontFamily: 'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif', letterSpacing: '0.01em' }}
             >

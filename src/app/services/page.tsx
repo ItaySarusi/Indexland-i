@@ -338,7 +338,7 @@ export default function Services() {
         primaryActionLabel="Book a Meeting"
         primaryActionHref="/book-meeting"
         secondaryActionLabel="Learn More"
-        secondaryActionHref="#services-overview"
+        secondaryActionHref="/services"
         imageUrl="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1500&q=80"
         variant="background-image"
       />
