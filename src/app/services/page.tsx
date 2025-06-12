@@ -9,6 +9,7 @@ import FaqSection from "@/components/sections/FaqSection";
 import CtaSection from "@/components/sections/CtaSection";
 import ContactSection from "@/components/sections/ContactSection";
 import { IMAGES } from "@/constants/site";
+import Image from "next/image";
 
 export default function Services() {
   // שירותים לדוגמה
@@ -22,13 +23,8 @@ export default function Services() {
         he: "ניהול מקצועי ומקיף של נכסי משרדים עם דגש על מקסום תשואה ושביעות רצון השוכרים",
         en: "Professional and comprehensive management of office assets with emphasis on maximizing returns and tenant satisfaction"
       },
-      imageUrl: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=600&auto=format",
-      icon: (
-        <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clipRule="evenodd"></path>
-        </svg>
-      ),
-      svg: "/files/svg/office-asset-management.svg",
+      svg: "/files/svg/Building-permit-amico.svg",
+      icon: null,
       href: "/services/office-asset-management"
     },
     {
@@ -40,13 +36,8 @@ export default function Services() {
         he: "איתור וניתוח הזדמנויות השקעה איכותיות בשווקים בינלאומיים, כולל ליווי מלא בתהליך הרכישה",
         en: "Locating and analyzing quality investment opportunities in international markets, including full guidance in the acquisition process"
       },
-      imageUrl: "https://images.unsplash.com/photo-1460572894071-bde5697f7197?q=80&w=600&auto=format",
-      icon: (
-        <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fillRule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clipRule="evenodd"></path>
-        </svg>
-      ),
-      svg: "/files/svg/international-investment-brokerage.svg",
+      svg: "/files/svg/Investor-presentation-bro.svg",
+      icon: null,
       href: "/services/international-investment-brokerage"
     },
     {
@@ -58,14 +49,8 @@ export default function Services() {
         he: "ייעוץ פיננסי מותאם אישית המתמקד באסטרטגיות השקעה בנדל\"ן מסחרי ובניית תיק השקעות מאוזן",
         en: "Personalized financial consulting focusing on commercial real estate investment strategies and building a balanced investment portfolio"
       },
-      imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=600&auto=format",
-      icon: (
-        <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-          <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
-        </svg>
-      ),
-      svg: "/files/svg/investment-consulting.svg",
+      svg: "/files/svg/bull-market.svg",
+      icon: null,
       href: "/services/investment-consulting"
     },
     {
@@ -77,14 +62,8 @@ export default function Services() {
         he: "ליווי פרויקטים מהקונספט ועד להשלמה, כולל בדיקות היתכנות, תכנון, רישוי וניהול הבנייה",
         en: "Project guidance from concept to completion, including feasibility studies, planning, licensing, and construction management"
       },
-      imageUrl: "https://images.unsplash.com/photo-1503387837-b154d5074bd2?q=80&w=600&auto=format",
-      icon: (
-        <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fillRule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd"></path>
-          <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path>
-        </svg>
-      ),
-      svg: "/files/svg/project-development.svg",
+      svg: "/files/svg/metrics.svg",
+      icon: null,
       href: "/services/project-development"
     },
   ];
@@ -330,6 +309,14 @@ export default function Services() {
     }
   ];
 
+  // Icons for Turnkey Office Solutions steps (unique, not repeated)
+  const turnkeyIcons = [
+    "/files/svg/real-time-analytics.svg",
+    "/files/svg/House-searching-rafiki.svg",
+    "/files/gif/Company.gif",
+    "/files/svg/Building-permit-amico.svg"
+  ];
+
   return (
     <PageContainer>
       <Hero
@@ -349,25 +336,25 @@ export default function Services() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 w-full max-w-6xl">
           {/* Step 1 */}
           <div className="group flex flex-col items-center text-center bg-white border-2 border-orange-100 rounded-2xl shadow-xl p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-400 cursor-pointer min-h-[260px]">
-            <svg className="w-12 h-12 mb-4 text-orange-500 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 48 48" stroke="currentColor"><rect x="8" y="16" width="32" height="24" rx="4" fill="#fff" stroke="#FF9800" strokeWidth="2.5"/><rect x="16" y="24" width="16" height="8" rx="2" fill="#FF9800"/><path d="M16 16V12a8 8 0 0 1 16 0v4" stroke="#FF9800" strokeWidth="2.5" strokeLinecap="round"/></svg>
+            <Image src={turnkeyIcons[0]} alt="Discovery & Scouting" width={64} height={64} className="mb-4 text-orange-500 group-hover:scale-110 transition-transform duration-300" />
             <h3 className="text-xl font-bold mb-2 text-primary">Discovery & Scouting</h3>
             <p className="text-gray-700 text-base font-medium">We start with a deep-dive consultation to understand your business needs, location preferences, and budget. Then, we organize tailored tours in prime Tel Aviv districts, presenting only the most relevant office spaces for your company's goals.</p>
           </div>
           {/* Step 2 */}
           <div className="group flex flex-col items-center text-center bg-white border-2 border-orange-100 rounded-2xl shadow-xl p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-400 cursor-pointer min-h-[260px]">
-            <svg className="w-12 h-12 mb-4 text-orange-500 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 48 48" stroke="currentColor"><rect x="10" y="20" width="28" height="16" rx="4" fill="#fff" stroke="#FF9800" strokeWidth="2.5"/><path d="M14 28h20M14 32h12" stroke="#FF9800" strokeWidth="2.5" strokeLinecap="round"/><rect x="18" y="12" width="12" height="8" rx="2" fill="#FF9800"/></svg>
+            <Image src={turnkeyIcons[1]} alt="Negotiation & Legal" width={64} height={64} className="mb-4 text-orange-500 group-hover:scale-110 transition-transform duration-300" />
             <h3 className="text-xl font-bold mb-2 text-primary">Negotiation & Legal</h3>
             <p className="text-gray-700 text-base font-medium">Our experts negotiate the best lease terms for you, manage all legal paperwork, and ensure full compliance. We handle every detail, from contract review to final signatures, so you can move forward with confidence and peace of mind.</p>
           </div>
           {/* Step 3 */}
           <div className="group flex flex-col items-center text-center bg-white border-2 border-orange-100 rounded-2xl shadow-xl p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-400 cursor-pointer min-h-[260px]">
-            <svg className="w-12 h-12 mb-4 text-orange-500 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 48 48" stroke="currentColor"><rect x="8" y="20" width="32" height="16" rx="4" fill="#fff" stroke="#FF9800" strokeWidth="2.5"/><rect x="16" y="28" width="16" height="4" rx="2" fill="#FF9800"/><path d="M24 20v-8m0 0l-4 4m4-4l4 4" stroke="#FF9800" strokeWidth="2.5" strokeLinecap="round"/></svg>
+            <Image src={turnkeyIcons[2]} alt="Build-Out & Move-In" width={64} height={64} className="mb-4 text-orange-500 group-hover:scale-110 transition-transform duration-300" />
             <h3 className="text-xl font-bold mb-2 text-primary">Build-Out & Move-In</h3>
             <p className="text-gray-700 text-base font-medium">We coordinate all aspects of your office fit-out, including IT integrations, furniture, and branding. Our team manages timelines and vendors, ensuring a seamless move-in and a workspace ready for immediate productivity.</p>
           </div>
           {/* Step 4 */}
           <div className="group flex flex-col items-center text-center bg-white border-2 border-orange-100 rounded-2xl shadow-xl p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-400 cursor-pointer min-h-[260px]">
-            <svg className="w-12 h-12 mb-4 text-orange-500 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 48 48" stroke="currentColor"><rect x="12" y="20" width="24" height="16" rx="4" fill="#fff" stroke="#FF9800" strokeWidth="2.5"/><path d="M24 28h8M16 32h16" stroke="#FF9800" strokeWidth="2.5" strokeLinecap="round"/><circle cx="24" cy="28" r="2" fill="#FF9800"/></svg>
+            <Image src={turnkeyIcons[3]} alt="Ongoing Concierge" width={64} height={64} className="mb-4 text-orange-500 group-hover:scale-110 transition-transform duration-300" />
             <h3 className="text-xl font-bold mb-2 text-primary">Ongoing Concierge</h3>
             <p className="text-gray-700 text-base font-medium">After move-in, we provide ongoing support: supplies, maintenance, staff assistance, and day-to-day problem-solving. Our concierge service ensures your office runs smoothly, letting you focus on your business growth.</p>
           </div>

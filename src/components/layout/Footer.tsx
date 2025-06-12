@@ -38,7 +38,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300 mb-1 text-sm">
                 <FaMapMarkerAlt className="text-primary" />
-                <span>100 Rothschild Blvd, Tel Aviv</span>
+                <span>{language === 'he' ? 'רחוב הנחושת 10, תל אביב' : 'Hanehoshet 10, Tel Aviv'}</span>
               </div>
             </div>
           </div>
@@ -49,9 +49,7 @@ export default function Footer() {
               Advanced solutions: office asset management, brokerage, and international real estate investments.
             </p>
             <div className="flex gap-4 mt-2 justify-center md:justify-start">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary text-gray-500 dark:text-gray-400 text-xl"><FaFacebook /></a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary text-gray-500 dark:text-gray-400 text-xl"><FaLinkedin /></a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary text-gray-500 dark:text-gray-400 text-xl"><FaInstagram /></a>
+              <a href="https://www.linkedin.com/company/indexland" target="_blank" rel="noopener noreferrer" className="hover:text-primary text-gray-500 dark:text-gray-400 text-xl"><FaLinkedin /></a>
             </div>
           </div>
         </div>
