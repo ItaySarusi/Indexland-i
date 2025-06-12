@@ -80,29 +80,33 @@ export default function TeamSection({
   const visibleMembers = founders;
 
   return (
-    <section className="relative py-24 px-4 md:px-16 bg-white/60 dark:bg-backgroundDark/70 backdrop-blur-xl transition-colors duration-200 overflow-hidden">
-      {/* Animated glassmorphic background */}
+    <section className="relative py-24 px-4 md:px-16 bg-transparent transition-colors duration-200 overflow-hidden">
+      {/* Peach-orange glassy background for the whole section */}
+      <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#ffe5d0]/80 to-[#fff3e0]/70 backdrop-blur-xl rounded-3xl shadow-xl opacity-80 -z-10" style={{filter:'blur(2px)'}} />
+      {/* Animated glassmorphic blobs */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[260px] bg-gradient-to-br from-orange-200/40 via-white/30 to-orange-400/20 rounded-full blur-3xl opacity-60 animate-float-slow" style={{animationDuration:'8s'}} />
         <div className="absolute bottom-0 right-1/4 w-[320px] h-[120px] bg-gradient-to-tr from-primary/30 via-white/20 to-orange-300/20 rounded-full blur-2xl opacity-40 animate-float-x" style={{animationDuration:'10s'}} />
         <div className="absolute top-1/3 left-0 w-[180px] h-[80px] bg-gradient-to-br from-orange-100/40 via-white/20 to-primary/20 rounded-full blur-2xl opacity-30 animate-float-y" style={{animationDuration:'12s'}} />
       </div>
       <div className="container relative z-10">
-        <div className="text-center mb-14">
+        <div className="text-center mb-14 relative">
           <h2 className="mb-4 text-4xl md:text-5xl font-extrabold tracking-tight text-primary drop-shadow-xl animate-fade-in">{subtitleText}</h2>
         </div>
-        <div className="flex flex-row justify-center gap-4">
+        <div
+          className="cards-container flex flex-wrap justify-center gap-6 md:gap-6 lg:gap-6 max-w-[85%] mx-auto relative"
+        >
           {visibleMembers.map((member, index) => (
             <div
               key={index}
-              className="glass-card glass-inner-shadow rounded-2xl overflow-hidden animate-fade-in animate-scale-in transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-300 relative p-0 group w-96 max-w-md min-h-[480px] mx-auto flex flex-col bg-white/70 dark:bg-backgroundDark/80 backdrop-blur-md border border-orange-100 shadow-xl"
+              className="card glass-card glass-inner-shadow rounded-2xl overflow-hidden animate-fade-in animate-scale-in transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-300 relative p-0 group flex flex-col bg-white/70 dark:bg-backgroundDark/80 backdrop-blur-md border border-orange-100 shadow-xl flex-1 min-w-[260px] max-w-[400px]"
               style={{ animationDelay: `${0.1 + index * 0.12}s`, background: 'linear-gradient(135deg, rgba(255,255,255,0.85) 60%, rgba(255,152,0,0.07) 100%)' }}
             >
-              <div className="relative w-full h-80">
+              <div className="relative w-full h-[300px]">
                 <img
                   src={member.image}
                   alt={getLocalizedText(member.name)}
-                  className="object-contain object-top md:object-center w-full h-full rounded-t-2xl"
+                  className={`object-cover w-full h-full rounded-t-2xl ${getLocalizedText(member.name) === 'Ori' ? 'object-[center_20%]' : 'object-center'}`}
                   style={{ background: '#fff' }}
                 />
               </div>
@@ -147,6 +151,17 @@ export default function TeamSection({
         .animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
         .animate-float-x { animation: float-x 10s ease-in-out infinite; }
         .animate-float-y { animation: float-y 12s ease-in-out infinite; }
+        @media (max-width: 900px) {
+          .cards-container {
+            flex-direction: column;
+            gap: 32px;
+            max-width: 98%;
+          }
+          .card {
+            max-width: 98vw;
+            min-width: 0;
+          }
+        }
       `}</style>
     </section>
   );
