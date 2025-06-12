@@ -324,7 +324,7 @@ export default function AboutUs() {
             he: 'למידע נוסף על החזון שלנו',
             en: "Learn More About Our Vision"
           }}
-          secondaryActionHref="#mission-vision"
+          secondaryActionHref="/services"
           imageUrl={IMAGES.hero.aboutUs}
           variant="background-image"
         />

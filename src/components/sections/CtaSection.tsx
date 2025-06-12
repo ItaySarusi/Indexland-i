@@ -205,29 +205,29 @@ export default function CtaSection({
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.7, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
               >
-                <button
+                <a
+                  href={primaryButtonHref}
                   className="luxury-cta-btn group"
                   aria-label={primaryBtnText}
                   tabIndex={0}
-                  type="button"
                 >
                   <span className="flex items-center gap-2 text-primary font-bold text-lg">
                     <FaRegComments className="text-xl text-primary group-hover:text-primary transition-colors duration-200" />
                     {primaryBtnText}
                   </span>
-                </button>
+                </a>
                 {secondaryButtonText && secondaryButtonHref && (
-                  <button
+                  <a
+                    href={secondaryButtonHref}
                     className="luxury-cta-btn group"
                     aria-label={secondaryBtnText}
                     tabIndex={0}
-                    type="button"
                   >
                     <span className="flex items-center gap-2 text-primary font-bold text-lg">
                       <FaHandshake className="text-xl text-primary group-hover:text-primary transition-colors duration-200" />
                       {secondaryBtnText}
                     </span>
-                  </button>
+                  </a>
                 )}
               </motion.div>
             </div>
