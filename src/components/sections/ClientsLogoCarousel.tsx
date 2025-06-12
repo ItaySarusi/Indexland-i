@@ -25,7 +25,7 @@ export default function ClientsLogoCarousel() {
       <div className="relative w-full overflow-hidden">
         <div className="carousel-track flex items-center gap-12 animate-carousel-infinite">
           {LONG_LOGOS.map((logo, idx) => (
-            <div key={idx} className="flex-shrink-0 w-40 h-24 flex items-center justify-center bg-gray-50 rounded-xl shadow-md">
+            <div key={idx} className="flex-shrink-0 w-40 h-24 flex items-center justify-center bg-gray-50 rounded-xl">
               <img src={logo.src} alt={logo.alt} className="max-h-16 max-w-[120px] object-contain" />
             </div>
           ))}
