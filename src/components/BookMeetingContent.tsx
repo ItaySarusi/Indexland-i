@@ -101,9 +101,9 @@ export default function BookMeetingContent() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.1, ease: 'anticipate' }}
           className="w-full max-w-xl glass-card rounded-3xl shadow-2xl p-0 border-none overflow-visible relative animate-fade-in"
-          style={{ background: 'linear-gradient(120deg,rgba(255,255,255,0.82) 0%,rgba(255,236,221,0.85) 100%)', boxShadow: '0 8px 48px 0 #f26a3d33, 0 1.5px 12px 0 #fff3' }}
+          style={{ background: 'linear-gradient(120deg,rgba(255,176,102,0.97) 0%,rgba(255,224,194,0.93) 100%)', boxShadow: '0 8px 48px 0 #ff9800cc, 0 2px 24px 0 #fff8', border: '1.5px solid #ff980088' }}
         >
-          <div className="absolute -inset-1.5 rounded-[2rem] pointer-events-none border-4 border-orange-100/60 bg-gradient-to-br from-orange-100/30 to-white/10 blur-[2px] z-0" />
+          <div className="absolute -inset-1.5 rounded-[2rem] pointer-events-none border-4 border-orange-300/80 bg-gradient-to-br from-orange-200/70 to-white/10 blur-[2px] z-0" />
           <div className="relative z-10 p-8 md:p-12">
             {submitted ? (
               <motion.div
@@ -130,9 +130,9 @@ export default function BookMeetingContent() {
                     required
                     aria-required="true"
                     aria-invalid={!!errors.name}
-                    className="peer w-full rounded-2xl bg-white/70 border border-orange-100 focus:border-primary focus:ring-2 focus:ring-primary/20 px-5 py-4 text-base shadow-inner placeholder-transparent transition-all duration-200 outline-none"
+                    className="peer w-full rounded-2xl bg-white/90 border-2 border-orange-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-300 px-5 py-4 text-base shadow-inner placeholder-transparent transition-all duration-200 outline-none drop-shadow-md"
                   />
-                  <label htmlFor="name" className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 text-base font-medium pointer-events-none transition-all duration-200 peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-primary bg-white/70 px-1 rounded-md">Name <span className="text-red-500">*</span></label>
+                  <label htmlFor="name" className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 text-base font-medium pointer-events-none transition-all duration-200 peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-primary bg-white/80 px-1 rounded-md">Name <span className="text-red-500">*</span></label>
                   {errors.name && <span className="text-xs text-red-500 font-normal mt-1 block">{errors.name}</span>}
                 </div>
                 {/* Email */}
@@ -147,9 +147,9 @@ export default function BookMeetingContent() {
                     required
                     aria-required="true"
                     aria-invalid={!!errors.email}
-                    className="peer w-full rounded-2xl bg-white/70 border border-orange-100 focus:border-primary focus:ring-2 focus:ring-primary/20 px-5 py-4 text-base shadow-inner placeholder-transparent transition-all duration-200 outline-none"
+                    className="peer w-full rounded-2xl bg-white/90 border-2 border-orange-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-300 px-5 py-4 text-base shadow-inner placeholder-transparent transition-all duration-200 outline-none drop-shadow-md"
                   />
-                  <label htmlFor="email" className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 text-base font-medium pointer-events-none transition-all duration-200 peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-primary bg-white/70 px-1 rounded-md">Email <span className="text-red-500">*</span></label>
+                  <label htmlFor="email" className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 text-base font-medium pointer-events-none transition-all duration-200 peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-primary bg-white/80 px-1 rounded-md">Email <span className="text-red-500">*</span></label>
                   {errors.email && <span className="text-xs text-red-500 font-normal mt-1 block">{errors.email}</span>}
                 </div>
                 {/* Phone */}
@@ -164,14 +164,14 @@ export default function BookMeetingContent() {
                     required
                     aria-required="true"
                     aria-invalid={!!errors.phone}
-                    className="peer w-full rounded-2xl bg-white/70 border border-orange-100 focus:border-primary focus:ring-2 focus:ring-primary/20 px-5 py-4 text-base shadow-inner placeholder-transparent transition-all duration-200 outline-none"
+                    className="peer w-full rounded-2xl bg-white/90 border-2 border-orange-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-300 px-5 py-4 text-base shadow-inner placeholder-transparent transition-all duration-200 outline-none drop-shadow-md"
                   />
-                  <label htmlFor="phone" className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 text-base font-medium pointer-events-none transition-all duration-200 peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-primary bg-white/70 px-1 rounded-md">Phone <span className="text-red-500">*</span></label>
+                  <label htmlFor="phone" className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 text-base font-medium pointer-events-none transition-all duration-200 peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-primary bg-white/80 px-1 rounded-md">Phone <span className="text-red-500">*</span></label>
                   {errors.phone && <span className="text-xs text-red-500 font-normal mt-1 block">{errors.phone}</span>}
                 </div>
                 {/* Topic */}
                 <div className="relative flex flex-col gap-1">
-                  <label htmlFor="topic" className="mb-1 text-gray-500 text-base font-medium bg-white/70 px-1 rounded-md w-fit">Meeting Topic <span className="text-red-500">*</span></label>
+                  <label htmlFor="topic" className="mb-1 text-gray-500 text-base font-medium bg-white/80 px-1 rounded-md w-fit">Meeting Topic <span className="text-red-500">*</span></label>
                   <select
                     id="topic"
                     name="topic"
@@ -180,7 +180,7 @@ export default function BookMeetingContent() {
                     required
                     aria-required="true"
                     aria-invalid={!!errors.topic}
-                    className="peer w-full rounded-2xl bg-white/70 border border-orange-100 focus:border-primary focus:ring-2 focus:ring-primary/20 px-5 py-4 text-base shadow-inner transition-all duration-200 outline-none"
+                    className="peer w-full rounded-2xl bg-white/90 border-2 border-orange-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-300 px-5 py-4 text-base shadow-inner transition-all duration-200 outline-none drop-shadow-md"
                   >
                     {topics.map((t) => (
                       <option key={t.value} value={t.value}>{t.label}</option>
@@ -196,19 +196,19 @@ export default function BookMeetingContent() {
                     placeholder=" "
                     value={form.details}
                     onChange={handleChange}
-                    className="peer w-full rounded-2xl bg-white/70 border border-orange-100 focus:border-primary focus:ring-2 focus:ring-primary/20 px-5 py-4 text-base shadow-inner placeholder-transparent transition-all duration-200 outline-none min-h-[90px]"
+                    className="peer w-full rounded-2xl bg-white/90 border-2 border-orange-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-300 px-5 py-4 text-base shadow-inner placeholder-transparent transition-all duration-200 outline-none min-h-[90px] drop-shadow-md"
                     rows={3}
                   />
-                  <label htmlFor="details" className="absolute left-5 top-2 text-gray-500 text-base font-medium pointer-events-none transition-all duration-200 peer-focus:text-sm peer-focus:text-primary bg-white/70 px-1 rounded-md">Additional Details</label>
+                  <label htmlFor="details" className="absolute left-5 top-2 text-gray-500 text-base font-medium pointer-events-none transition-all duration-200 peer-focus:text-sm peer-focus:text-primary bg-white/80 px-1 rounded-md">Additional Details</label>
                 </div>
                 {/* Calendar Placeholder - moved up */}
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.7, ease: 'anticipate' }}
-                  className="mb-4 flex flex-col items-center justify-center"
+                  className="mb-4 flex flex-col items-center justify-center drop-shadow-lg"
                 >
-                  <div className="w-full max-w-xs bg-white/70 rounded-2xl shadow-inner border border-orange-100 p-6 flex flex-col items-center mb-2">
+                  <div className="w-full max-w-xs bg-white/90 rounded-2xl shadow-inner border border-orange-200 p-6 flex flex-col items-center mb-2">
                     <FaCalendarAlt className="text-3xl text-orange-400 mb-2" />
                     <span className="text-lg font-semibold text-primary mb-1">Book via Calendar (Coming Soon)</span>
                     <span className="text-sm text-gray-500">Soon you'll be able to pick a date directly from our calendar and book instantly via Calendly.</span>
@@ -219,7 +219,7 @@ export default function BookMeetingContent() {
                   type="submit"
                   whileHover={{ scale: 1.04, boxShadow: '0 0 32px 8px #fff, 0 2px 24px 0 #ff9800cc' }}
                   whileTap={{ scale: 0.97 }}
-                  className="w-full mt-2 text-lg font-bold py-3 rounded-2xl bg-gradient-to-r from-primary to-orange-400 text-white shadow-xl transition-all duration-200 tracking-wide flex items-center justify-center gap-2 luxury-cta-btn focus:outline-none focus:ring-4 focus:ring-primary/30"
+                  className="w-full mt-2 text-lg font-bold py-3 rounded-2xl bg-gradient-to-r from-primary to-orange-400 text-white shadow-xl transition-all duration-200 tracking-wide flex items-center justify-center gap-2 luxury-cta-btn focus:outline-none focus:ring-4 focus:ring-primary/30 drop-shadow-lg"
                   disabled={loading}
                   style={{ animationDelay: '1s', animationDuration: '0.7s' }}
                 >

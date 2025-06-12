@@ -339,7 +339,7 @@ export default function Services() {
         primaryActionHref="/book-meeting"
         secondaryActionLabel="Learn More"
         secondaryActionHref="/services"
-        imageUrl="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1500&q=80"
+        imageUrl={IMAGES.hero.home}
         variant="background-image"
       />
 
