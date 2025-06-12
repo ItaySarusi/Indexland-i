@@ -160,7 +160,7 @@ export default function InternationalInvestmentBrokerage() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.7, duration: 0.5, type: 'spring', stiffness: 200 }}
-              href="/contact?meeting=true"
+              href="/book-meeting"
               className="px-8 py-3 rounded-full bg-orange-500 text-white font-semibold shadow-lg hover:bg-orange-600 transition-all text-lg border-2 border-orange-500"
             >
               Book a Meeting
@@ -645,7 +645,7 @@ export default function InternationalInvestmentBrokerage() {
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.5, type: 'spring', stiffness: 200 }}
-              href="/contact?meeting=true"
+              href="/book-meeting"
               className="px-8 py-3 rounded-full bg-orange-500 text-white font-extrabold shadow-lg hover:bg-black hover:text-orange-400 transition-all text-lg border-2 border-orange-500 min-w-[180px] text-center w-full sm:w-auto"
               style={{ fontFamily: 'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif', letterSpacing: '0.01em' }}
             >

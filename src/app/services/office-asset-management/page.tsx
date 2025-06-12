@@ -137,7 +137,7 @@ export default function OfficeAssetManagement() {
               Download Dubai Guide
             </a>
             <a
-              href="#contact-agent"
+              href="/book-meeting"
               className="px-8 py-3 rounded-full bg-white text-orange-500 font-semibold shadow-lg hover:bg-orange-50 transition-all text-lg border-2 border-orange-500 min-w-[200px] text-center"
               style={{borderWidth:2, fontWeight:700}}
             >
@@ -370,7 +370,7 @@ export default function OfficeAssetManagement() {
               Download Dubai Guide
             </a>
             <a
-              href="#contact-agent"
+              href="/book-meeting"
               className="px-8 py-3 rounded-full bg-orange-600 text-white font-extrabold shadow-lg hover:bg-black hover:text-orange-400 transition-all text-lg border-2 border-white min-w-[200px] text-center w-full sm:w-auto"
               style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif', letterSpacing:'0.01em'}}
             >

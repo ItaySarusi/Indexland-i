@@ -336,7 +336,7 @@ export default function Services() {
         title="Seamless Workspaces & Asset Control"
         subtitle="Indexland handles every step of your office lifecycle and real-estate portfolio—so you can focus on business."
         primaryActionLabel="Book a Meeting"
-        primaryActionHref="/contact?meeting=true"
+        primaryActionHref="/book-meeting"
         secondaryActionLabel="Learn More"
         secondaryActionHref="#services-overview"
         imageUrl="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1500&q=80"
@@ -507,12 +507,12 @@ export default function Services() {
             he: "קבע פגישת ייעוץ",
             en: "Schedule a Consultation"
           }}
-          primaryButtonHref="/contact"
+          primaryButtonHref="/book-meeting"
           secondaryButtonText={{
             he: "צור קשר",
             en: "Contact Us"
           }}
-          secondaryButtonHref="/contact"
+          secondaryButtonHref="/book-meeting"
           variant="highlight"
           bgColor="primary"
         />
