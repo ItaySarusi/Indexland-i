@@ -13,6 +13,8 @@ import OurOfferSection from "@/components/sections/OurOfferSection";
 import CoreValuesSection from "@/components/sections/CoreValuesSection";
 import { useLanguage } from '@/lib/language-context';
 import { motion } from 'framer-motion';
+import AboutTabsSection from "@/components/sections/AboutTabsSection";
+import ClientsLogoCarousel from "@/components/sections/ClientsLogoCarousel";
 
 export default function AboutUs() {
   const { t, language, dir } = useLanguage();
@@ -329,34 +331,14 @@ export default function AboutUs() {
       </motion.div>
 
       {/* Our Story Section */}
-      <motion.section id="our-story" className="relative py-6 px-12 bg-transparent overflow-hidden" initial={{ opacity: 0, x: -60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}>
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <motion.div className="glass-card rounded-3xl shadow-2xl p-8 md:p-14 animate-fade-in animate-scale-in min-h-[320px] flex flex-col justify-center" style={{ animationDelay: '0.1s' }} initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }}>
-            <motion.h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-3 animate-fade-in animate-scale-in" style={{ animationDelay: '0.3s' }} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }}>Our Story</motion.h2>
-            <motion.div className="space-y-2 animate-fade-in animate-scale-in" style={{ animationDelay: '0.4s' }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.4 }}>
-              <p className="text-lg text-gray-700 dark:text-textSecondary">
-              Indexland | Commercial Real Estate Advisory.<br></br>
-              Established in 1994 and based in Tel Aviv, Indexland is a leading commercial real estate firm providing strategic consulting and brokerage services across Israel and abroad. Our core expertise spans tenant representation, investment sales, and project marketing.
-              With a client-first approach and a reputation for precision, we serve a diverse portfolio of local and international clients, from institutional investors to private stakeholders. Our consistent growth is fueled by a shared DNA—an unwavering commitment to professionalism, personal relationships, and results.
-              At Indexland, we don’t just follow market trends—we help shape them.              </p>
-            </motion.div>
-          </motion.div>
-          <motion.div className="relative animate-fade-in animate-scale-in min-h-[320px] flex items-center" style={{ animationDelay: '0.3s' }} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.3 }}>
-            <img
-              src="https://images.unsplash.com/photo-1464983953574-0892a716854b?q=80&w=800&auto=format"
-              alt="Indexland Team Office"
-              className="rounded-3xl shadow-2xl object-cover w-full h-[320px] md:h-[420px] glass-card"
-              style={{ minHeight: 220 }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent rounded-3xl pointer-events-none" />
-          </motion.div>
-        </div>
+      <motion.section id="our-story" className="relative py-6 px-2 bg-transparent overflow-hidden" initial={{ opacity: 0, x: -60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}>
+        <AboutTabsSection />
       </motion.section>
 
-      {/* Mission & Vision Section */}
-      <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }}>
-        <MissionVisionSection />
-      </motion.div>
+      {/* Our Clients Logo Carousel Section */}
+      <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }}>
+        <ClientsLogoCarousel />
+      </motion.section>
 
       {/* WhyChooseUs - pop in & scale */}
       <motion.div

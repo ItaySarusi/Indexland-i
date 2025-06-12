@@ -130,7 +130,8 @@ export default function OfficeAssetManagement() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="#download-dubai-guide"
+              href="/services/international-investment-brokerage/ONE%20PAGER.pdf"
+              download
               className="px-8 py-3 rounded-full bg-orange-500 text-white font-semibold shadow-lg hover:bg-orange-600 transition-all text-lg border-2 border-orange-500 min-w-[200px] text-center"
             >
               Download Dubai Guide
@@ -361,7 +362,8 @@ export default function OfficeAssetManagement() {
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center w-full">
             <a
-              href="#download-dubai-guide"
+              href="/services/international-investment-brokerage/ONE%20PAGER.pdf"
+              download
               className="px-8 py-3 rounded-full bg-white text-orange-600 font-extrabold shadow-lg hover:bg-orange-100 transition-all text-lg border-2 border-white min-w-[200px] text-center w-full sm:w-auto"
               style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif', letterSpacing:'0.01em'}}
             >

@@ -517,7 +517,7 @@ export default function InternationalInvestmentBrokerage() {
               transition={{ delay: 0.35, duration: 0.5 }}
               className="text-lg font-bold mb-2 text-white"
             >
-              Expert Local Commercial Portfolio Management
+              Expert Portfolio Management
             </motion.h3>
             <motion.p
               initial={{ opacity: 0, x: 30 }}
@@ -525,7 +525,7 @@ export default function InternationalInvestmentBrokerage() {
               transition={{ delay: 0.4, duration: 0.5 }}
               className="text-gray-200 text-base font-medium leading-snug"
             >
-              Save 30+ hours monthly with managed offices<br/>and streamlined support
+              Expert local commercial portfolio management specializing in commercial real estate
             </motion.p>
           </motion.div>
           {/* Card 2 */}

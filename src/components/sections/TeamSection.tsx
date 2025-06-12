@@ -28,14 +28,14 @@ const founders: TeamMember[] = [
     name: 'Noam',
     role: 'Founder',
     bio: 'Noam, Founder – Over 10 years in real estate, Noam led Indexland\'s vision from boutique agency to full-spectrum consultancy.',
-    image: '/partner1.webp',
+    image: '/partner2.webp',
     socialLinks: { linkedin: '#', email: 'noam@indexland.com' }
   },
   {
     name: 'Ori',
     role: 'Co-Founder',
     bio: 'Ori, Co-Founder – Expert in asset management and client operations, Ori is the operational heart behind every Indexland project.',
-    image: '/partner2.webp',
+    image: '/partner1.webp',
     socialLinks: { linkedin: '#', email: 'ori@indexland.com' }
   }
 ];
@@ -84,21 +84,22 @@ export default function TeamSection({
         <div className="text-center mb-14">
           <h2 className="mb-4 text-4xl md:text-5xl font-extrabold tracking-tight text-primary drop-shadow-xl animate-fade-in">{subtitleText}</h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-12">
+        <div className="flex flex-col sm:flex-row sm:justify-center gap-8">
           {visibleMembers.map((member, index) => (
             <div
               key={index}
-              className="glass-card glass-inner-shadow rounded-3xl overflow-hidden animate-fade-in animate-scale-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative p-0 group"
+              className="glass-card glass-inner-shadow rounded-2xl overflow-hidden animate-fade-in animate-scale-in transition-all duration-300 hover:scale-105 hover:shadow-glass relative p-0 group max-w-xs w-80 min-h-[420px] mx-auto flex flex-col"
               style={{ animationDelay: `${0.1 + index * 0.12}s` }}
             >
-              <div className="relative overflow-hidden aspect-square w-full h-72">
+              <div className="relative w-full h-64">
                 <img
                   src={member.image}
                   alt={getLocalizedText(member.name)}
-                  className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
+                  className="object-contain object-top md:object-center w-full h-full rounded-t-2xl"
+                  style={{ background: '#fff' }}
                 />
               </div>
-              <div className="px-8 py-8 flex flex-col items-center text-center bg-white/80 dark:bg-backgroundDark/80 transition-all duration-300">
+              <div className="px-6 py-6 flex flex-col items-center text-center bg-white/80 dark:bg-backgroundDark/80 transition-all duration-300 flex-1">
                 <h3 className="text-2xl font-bold mb-1 text-primary drop-shadow animate-fade-in delay-100">{getLocalizedText(member.name)}</h3>
                 <p className="text-primary dark:text-primary mb-3 font-semibold animate-fade-in delay-200">{getLocalizedText(member.role)}</p>
                 <p className="text-gray-600 dark:text-textSecondary mb-0 animate-fade-in delay-300 group-hover:opacity-100 opacity-80 transition-opacity duration-300">
