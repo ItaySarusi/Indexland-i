@@ -95,25 +95,15 @@ export default function OfficeAssetManagement() {
         dir={dir}
         style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}
       >
-        {/* Split background: Dubai left, Tel Aviv right */}
-        <div className="absolute inset-0 flex w-full h-full z-0">
-          {/* Dubai side */}
-          <div className="w-1/2 h-full">
-            <img
-              src="/dubai.jpg"
-              alt="Dubai Skyline"
-              className="object-cover w-full h-full"
-            />
-          </div>
-          {/* Tel Aviv side */}
-          <div className="w-1/2 h-full">
-            <img
-              src="/telaviv.jpg"
-              alt="Tel Aviv Skyline"
-              className="object-cover w-full h-full"
-            />
-          </div>
-          {/* Overlay for readability: split gradient */}
+        {/* Single office background image */}
+        <div className="absolute inset-0 w-full h-full z-0">
+          <img
+            src="/office.webp"
+            alt="Office Workspace"
+            className="object-cover w-full h-full"
+            style={{objectFit:'cover'}}
+          />
+          {/* Overlay for readability */}
           <div className="absolute inset-0 w-full h-full z-10 pointer-events-none"
             style={{
               background: "linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 50%, rgba(255,255,255,0.05) 100%)"

@@ -325,7 +325,7 @@ export default function AboutUs() {
             en: "Learn More About Our Vision"
           }}
           secondaryActionHref="/services"
-          imageUrl={IMAGES.hero.aboutUs}
+          imageUrl="/view.webp"
           variant="background-image"
         />
       </motion.div>

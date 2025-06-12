@@ -265,7 +265,7 @@ export default function Home() {
               primaryActionHref="/book-meeting"
               secondaryActionLabel="Explore Services"
               secondaryActionHref="/services"
-              imageUrl={IMAGES.hero.home}
+              imageUrl="/tlv.webp"
               enableTyping={false}
             />
           </motion.div>
