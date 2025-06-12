@@ -115,20 +115,20 @@ function HeroGeometric({
 
     const renderContent = () => (
         <div className="w-full max-w-2xl mx-auto flex flex-col items-center justify-center text-center">
-            <h1 className="mb-4 text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none bg-clip-text text-transparent bg-gradient-to-b from-primary to-secondary drop-shadow-neon">
+            <h1 className="mb-4 text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none bg-clip-text text-transparent bg-gradient-to-b from-primary to-secondary drop-shadow-neon text-white dark:text-white">
                 {titleText}
             </h1>
-            <p className="mb-8 text-xl md:text-2xl font-normal text-textSecondary drop-shadow-neon-soft">
+            <p className="mb-8 text-xl md:text-2xl font-normal text-white dark:text-white drop-shadow-neon-soft">
                 {subtitleText}
             </p>
             <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-6 rtl:space-x-reverse">
                 {primaryActionLabel && primaryActionHref && (
-                    <Button href={primaryActionHref} size="lg" className={neonButtonClass}>
+                    <Button href={primaryActionHref} size="lg" className={neonButtonClass + ' text-white dark:text-white border-white dark:border-white'}>
                         {primaryLabel}
                     </Button>
                 )}
                 {secondaryActionLabel && secondaryActionHref && (
-                    <Button href={secondaryActionHref} variant="outline" size="lg" className={neonOutlineButtonClass}>
+                    <Button href={secondaryActionHref} variant="outline" size="lg" className={neonOutlineButtonClass + ' text-white dark:text-white border-white dark:border-white'}>
                         {secondaryLabel}
                     </Button>
                 )}

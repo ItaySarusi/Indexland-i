@@ -6,10 +6,10 @@ export const SITE_DESCRIPTION = {
 };
 
 export const CONTACT_EMAIL = "info@indexland.com";
-export const CONTACT_PHONE = "+972-3-0000000";
+export const CONTACT_PHONE = "*8767";
 export const CONTACT_ADDRESS = {
-  he: "רוטשילד 100, תל אביב",
-  en: "100 Rothschild Blvd, Tel Aviv"
+  he: "רחוב הנחושת 10, תל אביב",
+  en: "Hanehoshet 10, Tel Aviv"
 };
 
 export const SOCIAL_LINKS = {

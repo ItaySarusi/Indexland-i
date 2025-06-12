@@ -34,11 +34,11 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300 mb-1 text-sm">
                 <FaPhone className="text-primary" />
-                <a href="tel:+972-3-0000000" className="hover:text-primary transition-colors">+972-3-0000000</a>
+                <a href={`tel:${CONTACT_PHONE}`} className="hover:text-primary transition-colors">{CONTACT_PHONE}</a>
               </div>
               <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300 mb-1 text-sm">
                 <FaMapMarkerAlt className="text-primary" />
-                <span>{language === 'he' ? 'רחוב הנחושת 10, תל אביב' : 'Hanehoshet 10, Tel Aviv'}</span>
+                <span>{language === 'he' ? CONTACT_ADDRESS.he : CONTACT_ADDRESS.en}</span>
               </div>
             </div>
           </div>

@@ -160,26 +160,24 @@ export default function SlackIntro({ onAnimationComplete }: SlackIntroProps) {
   const [animationEnd, setAnimationEnd] = useState(false);
   const [visible, setVisible] = useState(true);
 
+  // Start the exit animation after 1.5s
   useEffect(() => {
-    // תחילת האנימציה - הכל נכנס פנימה
     const animationStartTimer = setTimeout(() => {
       setAnimationEnd(true);
     }, 1500);
+    return () => clearTimeout(animationStartTimer);
+  }, []);
 
-    // אנימציית יציאה מסתיימת - נעלם לגמרי
+  // When animationEnd becomes true, hide the loader after 0.5s
+  useEffect(() => {
+    if (!animationEnd) return;
     const animationEndTimer = setTimeout(() => {
-      if (animationEnd) {
-        setVisible(false);
-        if (onAnimationComplete) {
-          onAnimationComplete();
-        }
+      setVisible(false);
+      if (onAnimationComplete) {
+        onAnimationComplete();
       }
-    }, 500); // מספיק זמן לאנימציית היציאה להסתיים (700ms) + רווח ביטחון קטן
-
-    return () => {
-      clearTimeout(animationStartTimer);
-      clearTimeout(animationEndTimer);
-    };
+    }, 500);
+    return () => clearTimeout(animationEndTimer);
   }, [animationEnd, onAnimationComplete]);
 
   const common = "flex gap-1 md:gap-3 items-center fill-mode-forwards";

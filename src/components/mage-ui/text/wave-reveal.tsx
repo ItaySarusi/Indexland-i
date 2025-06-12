@@ -50,7 +50,7 @@ export default function WaveReveal({
 
   // קובעים את הסגנון של הקונטיינר
   const containerClassName = cn(
-    "inline-flex overflow-hidden",
+    "inline-flex overflow-hidden text-black dark:text-white",
     blur && "filter transition-all",
     className
   );

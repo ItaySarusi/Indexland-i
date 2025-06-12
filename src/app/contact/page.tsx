@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { SEO, IMAGES } from "@/constants/site";
+import { SEO, IMAGES, CONTACT_PHONE, CONTACT_ADDRESS } from "@/constants/site";
 import PageContainer from "@/components/layout/PageContainer";
 import Hero from "@/components/sections/Hero";
 import ContactSection from "@/components/sections/ContactSection";
@@ -115,10 +115,10 @@ export default function Contact() {
         officeLocations={[
           {
             city: { he: "תל אביב", en: "Tel Aviv" },
-            address: { he: "רחוב רוטשילד 123, תל אביב", en: "123 Rothschild St, Tel Aviv" },
+            address: CONTACT_ADDRESS,
             email: "info@indexland.com",
-            phone: "+972-3-1234567",
-            hours: { he: "א&apos;-ה&apos;, 9:00-18:00", en: "Sun-Thu, 9:00-18:00" }
+            phone: CONTACT_PHONE,
+            hours: { he: "א׳-ה׳, 9:00-18:00", en: "Sun-Thu, 9:00-18:00" }
           },
           // ... existing code ...
         ]}
@@ -153,7 +153,7 @@ export default function Contact() {
                 <div className="mt-8 flex" dir="rtl">
                   <div className="inline-flex rounded-md shadow">
                     <a
-                      href="tel:+97231234567"
+                      href={`tel:${CONTACT_PHONE}`}
                       className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-primary-600 bg-white hover:bg-gray-50"
                     >
                       התקשר עכשיו
