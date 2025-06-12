@@ -387,7 +387,7 @@ export default function Home() {
             />
           </motion.div>
 
-          {/* StaticSlackElements (scattered) - fade in & scale */}
+          {/* StaticSlackElements (scattered) - fade in & scale*/}
           <motion.div
             initial={{ opacity: 0, scale: 0.92 }}
             whileInView={{ opacity: 1, scale: 1 }}
