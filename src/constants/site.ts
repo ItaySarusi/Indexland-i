@@ -380,32 +380,32 @@ export const PAGES = {
       services: [
         {
           title: {
-            he: "משרד מקיף A–Z",
+            he: "פתרונות משרד מוכנים לאכלוס",
             en: "Turn Key Office Solutions"
           },
           description: {
-            he: "Scouting → Lease → Fit-out → Concierge",
+            he: "שירותי קונסיירז' ← התאמת המשרד ← חכירה ← סיור וחיפוש",
             en: "Scouting → Lease → Fit-out → Concierge"
           },
           subServices: [
-            { he: "Scouting", en: "Scouting" },
-            { he: "Lease", en: "Lease" },
-            { he: "Fit-out", en: "Fit-out" },
-            { he: "Concierge", en: "Concierge" }
+            { he: "סיור וחיפוש", en: "Scouting" },
+            { he: "חכירה", en: "Lease" },
+            { he: "התאמת המשרד", en: "Fit-out" },
+            { he: "שירותי קונסיירז'", en: "Concierge" }
           ]
         },
         {
           title: {
-            he: "ניהול נכסים גדולים",
+            he: "ניהול נכסים",
             en: "Asset Management"
           },
           description: {
-            he: "Portfolio oversight & reporting",
+            he: "פיקוח על תיק השקעות ודיווח",
             en: "Portfolio oversight & reporting"
           },
           subServices: [
-            { he: "Portfolio oversight", en: "Portfolio oversight" },
-            { he: "Reporting", en: "Reporting" }
+            { he: "פיקוח על תיק השקעות", en: "Portfolio oversight" },
+            { he: "דיווח", en: "Reporting" }
           ]
         },
         {
@@ -414,13 +414,13 @@ export const PAGES = {
             en: "Dubai Investment"
           },
           description: {
-            he: "Market entry → Sourcing → Compliance",
+            he: "כניסה לשוק ← איתור הזדמנויות ← עמידה ברגולציה",
             en: "Market entry → Sourcing → Compliance"
           },
           subServices: [
-            { he: "Market entry", en: "Market entry" },
-            { he: "Sourcing", en: "Sourcing" },
-            { he: "Compliance", en: "Compliance" }
+            { he: "כניסה לשוק", en: "Market entry" },
+            { he: "איתור הזדמנויות", en: "Sourcing" },
+            { he: "עמידה ברגולציה", en: "Compliance" }
           ]
         },
         {
@@ -429,13 +429,13 @@ export const PAGES = {
             en: "Local Brokerage"
           },
           description: {
-            he: "Sales, Leasing, Valuations",
+            he: "מכירות, השכרה, הערכות שווי",
             en: "Sales, Leasing, Valuations"
           },
           subServices: [
-            { he: "Sales", en: "Sales" },
-            { he: "Leasing", en: "Leasing" },
-            { he: "Valuations", en: "Valuations" }
+            { he: "מכירות", en: "Sales" },
+            { he: "השכרה", en: "Leasing" },
+            { he: "הערכות שווי", en: "Valuations" }
           ]
         }
       ]

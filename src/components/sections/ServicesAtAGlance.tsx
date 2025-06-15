@@ -31,10 +31,19 @@ export default function ServicesAtAGlance({
   subtitle,
   services
 }: ServicesAtAGlanceProps) {
-  const { t, dir } = useLanguage();
+  const { t, dir, language } = useLanguage();
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [userSelected, setUserSelected] = useState<boolean>(false);
   const sectionRef = useRef(null);
+
+  // Helper function to get localized text
+  const getLocalizedText = (text: string | Record<Language, string> | undefined): string => {
+    if (!text) return '';
+    if (typeof text === 'string') {
+      return text;
+    }
+    return t(text);
+  };
 
   // שירותים ברירת מחדל עם צבעי הדגשה אפשריים
   const defaultServices: ServiceItem[] = [
@@ -88,8 +97,8 @@ export default function ServicesAtAGlance({
   };
 
   // הגדרת תוכן סופי ע"י שימוש בברירות מחדל במידת הצורך
-  const titleText = t(title || PAGES.HOME.servicesAtAGlance.title);
-  const subtitleText = t(subtitle || PAGES.HOME.servicesAtAGlance.subtitle);
+  const titleText = getLocalizedText(title) || t(PAGES.HOME.servicesAtAGlance.title);
+  const subtitleText = getLocalizedText(subtitle) || t(PAGES.HOME.servicesAtAGlance.subtitle);
   const serviceItems = services || defaultServices;
 
   // Auto-rotate logic
@@ -124,6 +133,7 @@ export default function ServicesAtAGlance({
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
         className="px-4 py-16 md:py-24 bg-gray-50 dark:bg-backgroundDark transition-colors duration-200"
+        dir={dir}
       >
         <div className="container mx-auto px-4">
           {/* כותרת וסאבטייטל */} 
@@ -143,7 +153,10 @@ export default function ServicesAtAGlance({
           </motion.div>
 
           {/* Horizontal tabs above main card */}
-          <div className="flex overflow-x-auto pb-4 snap-x snap-mandatory md:justify-center md:flex-wrap gap-4 md:gap-6 mb-10">
+          <div className={cn(
+            "flex overflow-x-auto pb-4 snap-x snap-mandatory md:justify-center md:flex-wrap gap-4 md:gap-6 mb-10",
+            dir === 'rtl' && "md:flex-row-reverse"
+          )}>
             {serviceItems.map((service, index) => (
               <button
                 key={index}
@@ -188,22 +201,37 @@ export default function ServicesAtAGlance({
                         {service.icon}
                       </span>
                     </div>
-                    <div className="flex-grow text-center sm:text-left">
-                      <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-2 tracking-tight flex items-center gap-2 justify-center sm:justify-start">
+                    <div className={cn(
+                      "flex-grow text-center sm:text-left",
+                      dir === 'rtl' && "sm:text-right"
+                    )}>
+                      <h3 className={cn(
+                        "text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-2 tracking-tight flex items-center gap-2 justify-center sm:justify-start",
+                        dir === 'rtl' && "sm:justify-end sm:flex-row-reverse"
+                      )}>
                         {t(service.title)}
                       </h3>
-                      <div className="h-1 w-20 bg-gradient-to-r from-primary to-secondary rounded-full mb-4 mx-auto sm:mx-0" />
+                      <div className={cn(
+                        "h-1 w-20 rounded-full mb-4 mx-auto sm:mx-0",
+                        dir === 'ltr' 
+                          ? "bg-gradient-to-l from-primary to-secondary sm:mr-auto sm:ml-0" 
+                          : "bg-gradient-to-r from-primary to-secondary",
+                      )} />
                       <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-5 font-medium">
                         {t(service.description)}
                       </p>
                       <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
-                        {dir === 'rtl' ? "כולל בין היתר:" : "Including Services Like:"}
+                        {language === 'he' ? "כולל בין היתר:" : "Including Services Like:"}
                       </h4>
                       <ul className="list-none space-y-1 text-lg text-gray-700 dark:text-gray-200">
                         {service.subServices.map((sub, subIndex) => (
-                          <li key={subIndex} className="flex items-center gap-2 justify-center sm:justify-start">
-                            <span className="text-primary text-lg">»</span>
-                            {t(sub)}
+                          <li key={subIndex} className={cn(
+                            "flex items-center gap-2 justify-center sm:justify-start sm:justify-end sm:flex-row-reverse"
+                          )}>
+                            <span>{t(sub)}</span>
+                            <span className="text-primary text-lg">
+                              »
+                            </span>
                           </li>
                         ))}
                       </ul>
