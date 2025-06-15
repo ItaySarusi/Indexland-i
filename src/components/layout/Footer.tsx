@@ -6,7 +6,7 @@ import { useLanguage } from '@/lib/language-context';
 import { FaFacebook, FaLinkedin, FaInstagram, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
 export default function Footer() {
-  const { language, t } = useLanguage();
+  const { language, t, dir } = useLanguage();
   
   return (
     <footer className="relative transition-colors duration-200">
@@ -45,7 +45,7 @@ export default function Footer() {
           {/* About/Brand */}
           <div className="flex flex-col gap-2 max-w-xs items-center md:items-start">
             <h3 className="text-lg font-bold text-primary mb-1">Indexland</h3>
-            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed text-center md:text-left">
+            <p className={`text-gray-600 dark:text-gray-300 text-sm leading-relaxed text-center ${dir === 'ltr' ? 'md:text-left' : 'md:text-right'}`}>
               {t(PAGES.HOME.hero.subtitle)}
             </p>
             <div className="flex gap-4 mt-2 justify-center md:justify-start">
