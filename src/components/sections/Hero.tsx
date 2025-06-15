@@ -112,7 +112,7 @@ export default function Hero({
         <div className="container mx-auto h-full flex justify-center items-center relative z-10">
           <div className="max-w-2xl w-full bg-black/20 backdrop-blur-sm py-6 px-8 rounded-lg border border-white/10 flex flex-col items-center text-center min-h-fit">
             <h1 className="mb-1 text-5xl font-extrabold tracking-tight leading-none md:text-6xl lg:text-7xl text-white drop-shadow-lg" style={{letterSpacing: '-0.02em'}}>
-              <span className="block whitespace-pre-line min-h-[2.5em]">
+              <span className="block whitespace-pre-line pb-[1.5rem]">
                 <span className="block">
                   {typed}
                   {enableTyping && <span className="inline-block animate-pulse">|</span>}

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import BlogPostsList from '@/components/sections/BlogPostsList';
 import { useLanguage } from '@/lib/language-context';
 import { BlogPost } from '@/types/blog';
+import { PAGES } from '@/constants/site';
 
 // Mock data for fallback - עם תמיכה רב-לשונית
 const mockPosts: BlogPost[] = [
@@ -191,139 +192,47 @@ export default function BlogContent() {
     fetchPosts();
   }, []);
 
-  // טקסטים רב-לשוניים
-  const texts = {
-    title: {
-      he: 'ניוזלטר חודשי של Indexland',
-      en: 'Indexland Monthly News letter'
-    },
-    subtitle: {
-      he: 'מאמרים, עדכונים וטיפים בתחום הנדלן, ההשקעות והמשרדים',
-      en: 'Articles, updates and tips in real estate, investments and offices'
-    },
-    postsTitle: {
-      he: 'המאמרים שלנו',
-      en: 'Our Articles'
-    },
-    postsSubtitle: {
-      he: 'תובנות ועדכונים מעולם הנדלן והמשרדים',
-      en: 'Insights and updates from the world of real estate and offices'
-    },
-    fallbackMessage: {
-      he: 'מציג נתונים לדוגמה - מנסה להתחבר לשרת...',
-      en: 'Showing sample data - trying to connect to server...'
-    },
-    errorMessage: {
-      he: 'שגיאה בטעינת המאמרים:',
-      en: 'Error loading articles:'
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-backgroundLight dark:bg-backgroundDark transition-colors duration-200">
-      <div className="container relative z-10">
-        {/* Hero Section */}
-        <section className="w-full bg-gradient-to-b from-white via-orange-50/30 to-white pb-10 mb-2">
-          <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-10 py-20 md:py-28">
-            {/* Left: Title, Subtitle, Buttons */}
-            <div className="flex-1 flex flex-col items-start justify-center max-w-xl w-full md:pr-8">
-              <h1 className="text-5xl md:text-6xl font-extrabold mb-6 text-gray-900 dark:text-white leading-tight">
-                Indexland Monthly<br className="hidden md:block" /> News letter
-              </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-lg">
-                Articles, analysis and insights in the field of office real estate<br />
-                and international investments
+    <div className="min-h-screen bg-white dark:bg-backgroundDark">
+      {/* Hero Section */}
+      <section className="relative py-20 px-4 bg-gradient-to-br from-primary/10 to-secondary/5">
+        <div className="container mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
+            {t(PAGES.BLOG.hero.title)}
+          </h1>
+          <p className="text-lg text-gray-600 dark:text-textSecondary max-w-2xl mx-auto">
+            {t(PAGES.BLOG.hero.subtitle)}
+          </p>
+        </div>
+      </section>
+
+      {/* Blog Posts Section */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto">
+          {loading ? (
+            <div className="text-center">
+              <p className="text-lg text-gray-600 dark:text-textSecondary">
+                {t(PAGES.BLOG.labels.loading)}
               </p>
-              <div className="flex gap-4">
-                <a href="#posts" className="px-7 py-3 rounded-lg bg-orange-500 text-white font-semibold shadow hover:bg-orange-600 transition text-lg">Read More</a>
-                <a href="#posts" className="px-7 py-3 rounded-lg border-2 border-gray-300 text-gray-800 dark:text-white font-semibold bg-white dark:bg-transparent hover:bg-gray-50 dark:hover:bg-gray-900 transition text-lg">Read More</a>
-              </div>
+              <BlogPostsLoader />
             </div>
-            {/* Right: Image */}
-            <div className="flex-1 flex items-center justify-center w-full max-w-lg">
-              <img
-                src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=800&auto=format"
-                alt="Office desk with coffee and papers"
-                className="rounded-2xl shadow-2xl object-cover w-full h-72 md:h-96 border border-gray-200"
-                style={{ minWidth: '320px', maxWidth: '440px' }}
-              />
+          ) : error ? (
+            <div className="text-center">
+              <p className="text-lg text-red-600 dark:text-red-400">
+                {t(PAGES.BLOG.labels.error)}
+              </p>
             </div>
-          </div>
-          <div className="h-2 w-full bg-gradient-to-r from-orange-100/0 via-orange-200/60 to-orange-100/0 rounded-full mt-2 mb-2" />
-        </section>
-
-        {/* Loading State */}
-        {loading && (
-          <div className="mb-8">
-            <BlogPostsLoader />
-          </div>
-        )}
-
-        {/* Posts List */}
-        {!loading && (
-          <BlogPostsList 
-            posts={posts}
-            title={t(texts.postsTitle)}
-            subtitle={t(texts.postsSubtitle)}
-          />
-        )}
-
-        {/* Error Message */}
-        {error && !usingFallback && (
-          <div className="text-center py-8">
-            <p className="text-red-600 dark:text-red-400">
-              {t(texts.errorMessage)} {error}
-            </p>
-          </div>
-        )}
-
-        {/* FAQ Section */}
-        <section className="w-full max-w-3xl mx-auto mt-24 mb-16">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-10">Frequently Asked Questions</h2>
-          <div className="space-y-4">
-            {/* FAQ 1 */}
-            <details className="group border border-orange-200 rounded-xl bg-white shadow-sm p-6 transition-all">
-              <summary className="font-semibold text-lg cursor-pointer flex items-center justify-between group-open:text-orange-600">
-                What is Indexland Monthly Newsletter about?
-                <span className="ml-2 text-orange-500 group-open:rotate-90 transition-transform">▶</span>
-              </summary>
-              <div className="mt-3 text-gray-700">
-                Our newsletter brings you the latest insights, trends, and tips in office real estate and international investments, curated by our experts.
-              </div>
-            </details>
-            {/* FAQ 2 */}
-            <details className="group border border-orange-200 rounded-xl bg-white shadow-sm p-6 transition-all">
-              <summary className="font-semibold text-lg cursor-pointer flex items-center justify-between group-open:text-orange-600">
-                How often is the newsletter published?
-                <span className="ml-2 text-orange-500 group-open:rotate-90 transition-transform">▶</span>
-              </summary>
-              <div className="mt-3 text-gray-700">
-                The Indexland Monthly Newsletter is published once a month and includes exclusive articles, market analysis, and company updates.
-              </div>
-            </details>
-            {/* FAQ 3 */}
-            <details className="group border border-orange-200 rounded-xl bg-white shadow-sm p-6 transition-all">
-              <summary className="font-semibold text-lg cursor-pointer flex items-center justify-between group-open:text-orange-600">
-                Can I contribute or suggest topics for the newsletter?
-                <span className="ml-2 text-orange-500 group-open:rotate-90 transition-transform">▶</span>
-              </summary>
-              <div className="mt-3 text-gray-700">
-                Absolutely! We welcome suggestions and contributions. Please contact our editorial team via the contact form.
-              </div>
-            </details>
-            {/* FAQ 4 */}
-            <details className="group border border-orange-200 rounded-xl bg-white shadow-sm p-6 transition-all">
-              <summary className="font-semibold text-lg cursor-pointer flex items-center justify-between group-open:text-orange-600">
-                How do I subscribe to the newsletter?
-                <span className="ml-2 text-orange-500 group-open:rotate-90 transition-transform">▶</span>
-              </summary>
-              <div className="mt-3 text-gray-700">
-                Simply enter your email in the subscription box at the top of the page or contact us directly to be added to our mailing list.
-              </div>
-            </details>
-          </div>
-        </section>
-      </div>
+          ) : posts.length === 0 ? (
+            <div className="text-center">
+              <p className="text-lg text-gray-600 dark:text-textSecondary">
+                {t(PAGES.BLOG.labels.noArticles)}
+              </p>
+            </div>
+          ) : (
+            <BlogPostsList posts={posts} />
+          )}
+        </div>
+      </section>
     </div>
   );
 } 

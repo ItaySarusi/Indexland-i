@@ -23,7 +23,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
   return (
     <div className={`${fullWidth ? 'w-full' : ''} ${containerClassName}`}>
       {label && (
-        <label htmlFor={inputId} className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor={inputId} className="block text-sm font-medium text-gray-700 dark:text-textPrimary mb-1 text-start rtl:text-right">
           {label}
         </label>
       )}
@@ -31,9 +31,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
         ref={ref}
         id={inputId}
         className={`
-          block rounded-md border-gray-300 shadow-sm 
+          block rounded-md border-gray-300 dark:border-gray-600 shadow-sm 
           focus:border-primary-500 focus:ring-primary-500 
-          ${error ? 'border-red-300 text-red-900 placeholder-red-300' : ''} 
+          bg-white dark:bg-backgroundDark text-gray-900 dark:text-textPrimary
+          placeholder-gray-400 dark:placeholder-gray-500
+          text-start rtl:text-right
+          ${error ? 'border-red-300 text-red-900 placeholder-red-300 dark:border-red-500 dark:text-red-400' : ''} 
           ${fullWidth ? 'w-full' : ''} 
           ${className}
         `}
@@ -42,12 +45,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
         {...props}
       />
       {error && (
-        <p className="mt-1 text-sm text-red-600" id={`${inputId}-error`}>
+        <p className="mt-1 text-sm text-red-600 dark:text-red-400 text-start rtl:text-right" id={`${inputId}-error`}>
           {error}
         </p>
       )}
       {helperText && !error && (
-        <p className="mt-1 text-sm text-gray-500" id={`${inputId}-helper`}>
+        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400 text-start rtl:text-right" id={`${inputId}-helper`}>
           {helperText}
         </p>
       )}

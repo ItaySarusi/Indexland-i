@@ -36,6 +36,19 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    /* Smooth easing functions */
+    --ease-out-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out-soft: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    
+    /* Animation durations */
+    --duration-fast: 0.3s;
+    --duration-normal: 0.5s;
+    --duration-slow: 0.8s;
+    --duration-slower: 1.2s;
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -72,6 +85,72 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* RTL Support */
+  html[dir="rtl"] {
+    direction: rtl;
+  }
+  
+  html[dir="ltr"] {
+    direction: ltr;
+  }
+  
+  /* RTL-specific adjustments */
+  [dir="rtl"] .text-left {
+    text-align: right;
+  }
+  
+  [dir="rtl"] .text-right {
+    text-align: left;
+  }
+  
+  [dir="rtl"] .ml-auto {
+    margin-left: 0;
+    margin-right: auto;
+  }
+  
+  [dir="rtl"] .mr-auto {
+    margin-right: 0;
+    margin-left: auto;
+  }
+  
+  /* RTL Grid and Flex adjustments */
+  [dir="rtl"] .flex-row {
+    flex-direction: row-reverse;
+  }
+  
+  [dir="rtl"] .justify-start {
+    justify-content: flex-end;
+  }
+  
+  [dir="rtl"] .justify-end {
+    justify-content: flex-start;
+  }
+  
+  /* RTL Lists */
+  [dir="rtl"] ul,
+  [dir="rtl"] ol {
+    padding-right: 1rem;
+    padding-left: 0;
+  }
+  
+  [dir="rtl"] li {
+    text-align: right;
+  }
+  
+  /* RTL Typography */
+  [dir="rtl"] {
+    font-family: 'Segoe UI', 'Arial', 'Helvetica', sans-serif;
+  }
+  
+  /* RTL Animations - reverse transforms for RTL */
+  [dir="rtl"] .transform {
+    transform: scaleX(-1);
+  }
+  
+  [dir="rtl"] .transform-none {
+    transform: none;
+  }
 }
 
 /* Neon shadow styles for HeroGeometric buttons and text */
@@ -98,4 +177,33 @@
 }
 .focus\:ring-primary:focus {
   --tw-ring-color: theme('colors.primary');
+}
+
+/* Smooth motion utilities */
+.motion-smooth {
+  transition-timing-function: var(--ease-out-smooth);
+}
+
+.motion-soft {
+  transition-timing-function: var(--ease-out-soft);
+}
+
+.motion-back {
+  transition-timing-function: var(--ease-out-back);
+}
+
+.motion-expo {
+  transition-timing-function: var(--ease-out-expo);
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

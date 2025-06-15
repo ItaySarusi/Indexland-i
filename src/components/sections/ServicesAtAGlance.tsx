@@ -5,6 +5,7 @@ import { useLanguage, Language } from '@/lib/language-context';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageContainer from '@/components/layout/PageContainer';
 import { cn } from '@/lib/utils';
+import { PAGES } from '@/constants/site';
 // Import Lucide icons
 import { BriefcaseBusiness, AreaChart, Globe, MapPin } from 'lucide-react';
 
@@ -35,88 +36,36 @@ export default function ServicesAtAGlance({
   const [userSelected, setUserSelected] = useState<boolean>(false);
   const sectionRef = useRef(null);
 
-  // כותרת ברירת מחדל
-  const defaultTitle = {
-    he: "מבט מהיר על השירותים שלנו",
-    en: "Services at a Glance"
-  };
-
-  // תיאור ברירת מחדל
-  const defaultSubtitle = {
-    he: "פתרונות מותאמים אישית לניהול נכסים והשקעות בתל אביב ודובאי",
-    en: "Tailored solutions for asset management and investments in Tel Aviv and Dubai"
-  };
-
   // שירותים ברירת מחדל עם צבעי הדגשה אפשריים
   const defaultServices: ServiceItem[] = [
     {
-      title: {
-        he: "משרד מקיף A–Z",
-        en: "Turn Key Office Solutions"
-      },
-      description: {
-        he: "Scouting → Lease → Fit-out → Concierge",
-        en: "Scouting → Lease → Fit-out → Concierge"
-      },
+      title: PAGES.HOME.servicesAtAGlance.services[0].title,
+      description: PAGES.HOME.servicesAtAGlance.services[0].description,
       icon: <BriefcaseBusiness />,
       svg: "/files/svg/Building-permit-amico.svg",
-      subServices: [
-        { he: "Scouting", en: "Scouting" },
-        { he: "Lease", en: "Lease" },
-        { he: "Fit-out", en: "Fit-out" },
-        { he: "Concierge", en: "Concierge" }
-      ],
+      subServices: PAGES.HOME.servicesAtAGlance.services[0].subServices,
       accentColor: "text-orange-500"
     },
     {
-      title: {
-        he: "ניהול נכסים גדולים",
-        en: "Asset Management"
-      },
-      description: {
-        he: "Portfolio oversight & reporting",
-        en: "Portfolio oversight & reporting"
-      },
+      title: PAGES.HOME.servicesAtAGlance.services[1].title,
+      description: PAGES.HOME.servicesAtAGlance.services[1].description,
       icon: <AreaChart />,
       svg: "/files/svg/Building-permit-amico.svg",
-      subServices: [
-        { he: "Portfolio oversight", en: "Portfolio oversight" },
-        { he: "Reporting", en: "Reporting" }
-      ],
+      subServices: PAGES.HOME.servicesAtAGlance.services[1].subServices,
       accentColor: "text-blue-500"
     },
     {
-      title: {
-        he: "השקעות בדובאי",
-        en: "Dubai Investment"
-      },
-      description: {
-        he: "Market entry → Sourcing → Compliance",
-        en: "Market entry → Sourcing → Compliance"
-      },
+      title: PAGES.HOME.servicesAtAGlance.services[2].title,
+      description: PAGES.HOME.servicesAtAGlance.services[2].description,
       icon: <Globe />,
-      subServices: [
-        { he: "Market entry", en: "Market entry" },
-        { he: "Sourcing", en: "Sourcing" },
-        { he: "Compliance", en: "Compliance" }
-      ],
+      subServices: PAGES.HOME.servicesAtAGlance.services[2].subServices,
       accentColor: "text-green-500"
     },
     {
-      title: {
-        he: "תיווך מקומי",
-        en: "Local Brokerage"
-      },
-      description: {
-        he: "Sales, Leasing, Valuations",
-        en: "Sales, Leasing, Valuations"
-      },
+      title: PAGES.HOME.servicesAtAGlance.services[3].title,
+      description: PAGES.HOME.servicesAtAGlance.services[3].description,
       icon: <MapPin />,
-      subServices: [
-        { he: "Sales", en: "Sales" },
-        { he: "Leasing", en: "Leasing" },
-        { he: "Valuations", en: "Valuations" }
-      ],
+      subServices: PAGES.HOME.servicesAtAGlance.services[3].subServices,
       accentColor: "text-purple-500"
     }
   ];
@@ -139,8 +88,8 @@ export default function ServicesAtAGlance({
   };
 
   // הגדרת תוכן סופי ע"י שימוש בברירות מחדל במידת הצורך
-  const titleText = t(title || defaultTitle);
-  const subtitleText = t(subtitle || defaultSubtitle);
+  const titleText = t(title || PAGES.HOME.servicesAtAGlance.title);
+  const subtitleText = t(subtitle || PAGES.HOME.servicesAtAGlance.subtitle);
   const serviceItems = services || defaultServices;
 
   // Auto-rotate logic

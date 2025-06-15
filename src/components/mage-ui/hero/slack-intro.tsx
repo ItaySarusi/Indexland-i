@@ -187,7 +187,7 @@ export default function SlackIntro({ onAnimationComplete }: SlackIntroProps) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-backgroundDark">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-backgroundDark h-100% w-100%">
       <div
         className={cn(
           "flex flex-col items-center justify-center gap-1 overflow-hidden py-4 md:gap-3",

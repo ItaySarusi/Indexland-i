@@ -1,43 +1,46 @@
 import React, { useState } from 'react';
 import Button from '../ui/Button';
-
-const TABS = [
-  {
-    key: 'story',
-    label: 'Our Story',
-    content: (
-      <>
-        <h3 className="text-2xl md:text-3xl font-extrabold text-primary text-center mb-4">Indexland | Commercial Real Estate Advisory.</h3>
-        <p>
-          Established in 1994 and based in Tel Aviv, Indexland is a leading commercial real estate firm providing strategic consulting and brokerage services across Israel and abroad. Our core expertise spans tenant representation, investment sales, and project marketing. With a client-first approach and a reputation for precision, we serve a diverse portfolio of local and international clients, from institutional investors to private stakeholders. Our consistent growth is fueled by a shared DNA—an unwavering commitment to professionalism, personal relationships, and results. At Indexland, we don't just follow market trends—we help shape them.
-        </p>
-      </>
-    ),
-  },
-  {
-    key: 'vision',
-    label: 'Our Vision',
-    content: (
-      <>
-        <h3 className="text-2xl md:text-3xl font-extrabold text-primary text-center mb-4">Our Vision</h3>
-        <p>Equip businesses with end-to-end real estate and workspace solutions that drive efficiency, satisfaction, and scale.</p>
-      </>
-    ),
-  },
-  {
-    key: 'mission',
-    label: 'Our Mission',
-    content: (
-      <>
-        <h3 className="text-2xl md:text-3xl font-extrabold text-primary text-center mb-4">Our Mission</h3>
-        <p>Redefine how companies build, manage, and grow their physical footprint—making every square meter work harder.</p>
-      </>
-    ),
-  },
-];
+import { useLanguage } from '@/lib/language-context';
+import { PAGES } from '@/constants/site';
 
 export default function AboutTabsSection() {
+  const { t } = useLanguage();
   const [selected, setSelected] = useState('story');
+
+  const TABS = [
+    {
+      key: 'story',
+      label: t(PAGES.ABOUT_US.tabs.story.label),
+      content: (
+        <>
+          <h3 className="text-2xl md:text-3xl font-extrabold text-primary text-center mb-4">{t(PAGES.ABOUT_US.tabs.story.title)}</h3>
+          <p>
+            {t(PAGES.ABOUT_US.tabs.story.content)}
+          </p>
+        </>
+      ),
+    },
+    {
+      key: 'vision',
+      label: t(PAGES.ABOUT_US.tabs.vision.label),
+      content: (
+        <>
+          <h3 className="text-2xl md:text-3xl font-extrabold text-primary text-center mb-4">{t(PAGES.ABOUT_US.tabs.vision.title)}</h3>
+          <p>{t(PAGES.ABOUT_US.tabs.vision.content)}</p>
+        </>
+      ),
+    },
+    {
+      key: 'mission',
+      label: t(PAGES.ABOUT_US.tabs.mission.label),
+      content: (
+        <>
+          <h3 className="text-2xl md:text-3xl font-extrabold text-primary text-center mb-4">{t(PAGES.ABOUT_US.tabs.mission.title)}</h3>
+          <p>{t(PAGES.ABOUT_US.tabs.mission.content)}</p>
+        </>
+      ),
+    },
+  ];
 
   const selectedTab = TABS.find(tab => tab.key === selected) || TABS[0];
 

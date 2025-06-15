@@ -5,7 +5,8 @@ import Link from "next/link";
 import { BlogPostDetail, BlogPost } from "@/types/blog";
 import { notFound } from "next/navigation";
 import { Language } from "@/lib/language-context";
-import BlogPostClient from "./BlogPostClient";
+import BlogPostClient from './BlogPostClient';
+import { PAGES } from "@/constants/site";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -36,31 +37,24 @@ async function getBlogPost(slug: string): Promise<BlogPostDetail | null> {
 export async function generateMetadata(
   { params }: BlogPostPageProps
 ): Promise<Metadata> {
-  const { slug } = await params;
-  const post = await getBlogPost(slug);
-  
-  if (!post) {
-    return {
-      title: "פוסט לא נמצא | Indexland",
-      description: "הפוסט המבוקש לא נמצא",
-    };
+  // Try to fetch the post to get its title
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/blog/${params.slug}`);
+    if (response.ok) {
+      const post = await response.json();
+      return {
+        title: `${post.title?.he || post.title} | Indexland`,
+        description: post.description?.he || post.description,
+      };
+    }
+  } catch (error) {
+    console.error('Error fetching post metadata:', error);
   }
-  
-  const title = typeof post.title === 'object' ? post.title.he : post.title;
-  const description = typeof post.description === 'object' ? post.description.he : post.description;
-  const authorName = typeof post.author?.name === 'object' ? post.author.name.he : (post.author?.name || '');
-  
+
+  // Fallback metadata
   return {
-    title: `${title} | Indexland`,
-    description,
-    openGraph: {
-      title: `${title} | Indexland`,
-      description,
-      type: 'article',
-      publishedTime: post.publishedAt,
-      authors: [authorName],
-      images: [post.coverImage],
-    },
+    title: PAGES.BLOG.postNotFound.title.he,
+    description: PAGES.BLOG.postNotFound.message.he,
   };
 }
 
@@ -86,22 +80,8 @@ function getLocalizedText(text: string | Record<Language, string> | undefined, l
   return text[language] || '';
 }
 
-export default async function BlogPostPage(
-  { params }: BlogPostPageProps
-) {
-  const { slug } = await params;
-  const post = await getBlogPost(slug);
-  
-  // אם הפוסט לא נמצא, נחזיר דף 404
-  if (!post) {
-    notFound();
-  }
-  
-  return (
-    <PageContainer>
-      <BlogPostClient post={post} />
-    </PageContainer>
-  );
+export default function BlogPost({ params }: BlogPostPageProps) {
+  return <BlogPostClient slug={params.slug} />;
 }
 
 export async function generateStaticParams() {

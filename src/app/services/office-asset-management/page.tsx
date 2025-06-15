@@ -87,6 +87,112 @@ export default function OfficeAssetManagement() {
     en: "Contact Us Now"
   };
 
+  // Main hero section
+  const mainHeroTitle = {
+    he: "הישג גלובלי, מומחיות מקומית",
+    en: "Global Reach, Local Mastery"
+  };
+  const mainHeroDesc = {
+    he: "בין אם אתם נכנסים לשוק הפורח של דובאי או מייעלים את החזקות בתל אביב, אינדקסלנד מחברת אתכם להזדמנויות הנכונות ולמומחיות המתאימה.",
+    en: "Whether you're entering Dubai's boom market or optimizing Tel Aviv holdings, Indexland connects you to the right opportunities and expertise."
+  };
+  const downloadBtn = {
+    he: "הורד מדריך דובאי",
+    en: "Download Dubai Guide"
+  };
+  const contactBtn = {
+    he: "צור קשר עם סוכן מקומי",
+    en: "Contact a Local Agent"
+  };
+
+  // Dubai section
+  const dubaiSectionTitle = {
+    he: "השקעות נדל\"ן בינלאומיות (דובאי)",
+    en: "International Real Estate Investment (Dubai)"
+  };
+  const dubaiSectionDesc = {
+    he: "נצלו את אחד השווקים הצומחים הכי מהר בעולם.",
+    en: "Tap into one of the world's fastest-growing markets."
+  };
+
+  // Dubai cards
+  const dubaiCards = [
+    {
+      title: { he: "מחקר שוק", en: "Market Research" },
+      description: { he: "ניתוח מגזרים, תחזיות תשואה, סקירה רגולטורית", en: "Sector analysis, yield projections, regulatory overview" }
+    },
+    {
+      title: { he: "איתור נכסים", en: "Property Sourcing" },
+      description: { he: "נכסים למגורים, מסחריים ושימוש מעורב", en: "Residential, commercial, and mixed-use assets" }
+    },
+    {
+      title: { he: "משפטי ותאימות", en: "Legal & Compliance" },
+      description: { he: "יועץ משפטי מקומי, סיוע בויזה, מבנה עסקאות", en: "Local counsel, visa facilitation, transaction structuring" }
+    },
+    {
+      title: { he: "פיקוח שוטף", en: "Ongoing Oversight" },
+      description: { he: "ניהול נכסים בשטח ומעקב ביצועים", en: "On-ground asset management and performance tracking" }
+    }
+  ];
+
+  // Tel Aviv section
+  const telAvivSectionTitle = {
+    he: "סוכני נדל\"ן מסחרי מקומיים (תל אביב)",
+    en: "Local Commercial Real Estate Agents (Tel Aviv)"
+  };
+  const telAvivSectionDesc = {
+    he: "מומחי תל אביב במכירה, קנייה והשכרה.",
+    en: "Tel Aviv specialists in selling, buying, and leasing."
+  };
+
+  // Tel Aviv cards
+  const telAvivCards = [
+    {
+      title: { he: "ייצוג מכירות", en: "Sales Representation" },
+      description: { he: "הבטחת תנאים מיטביים לקונים ומוכרים", en: "Secure top terms for buyers and sellers" }
+    },
+    {
+      title: { he: "שירותי השכרה", en: "Leasing Services" },
+      description: { he: "שיווק, צפיות, חידושים ומשא ומתן", en: "Marketing, viewings, renewals, and negotiations" }
+    },
+    {
+      title: { he: "הערכה וייעוץ", en: "Valuation & Advisory" },
+      description: { he: "השוואות בזמן אמת, שיעורי תשואה והערכות סיכון", en: "Real-time comps, cap rates, and risk assessments" }
+    },
+    {
+      title: { he: "תמיכה לאחר העסקה", en: "After-Deal Support" },
+      description: { he: "בדיקות מסירה, חידושים והדרכה שוטפת", en: "Handover inspections, renewals, and ongoing guidance" }
+    }
+  ];
+
+  // Why work with us section
+  const whyWorkTitle = {
+    he: "למה לעבוד איתנו?",
+    en: "Why Work with Us?"
+  };
+  const whyWorkDesc = {
+    he: "נצלו את האסטרטגיות הגלובליות והרשתות המקומיות שלנו להשקעות בטוחות ומושכלות.",
+    en: "Leverage our global strategies and local networks for confident, informed investments."
+  };
+
+  const whyWorkCards = [
+    {
+      title: { he: "גישה אסטרטגית לאזורי הביצועים המובילים של דובאי", en: "Strategic access to Dubai's top-performing zones" }
+    },
+    {
+      title: { he: "תובנות הערכה בזמן אמת בתל אביב", en: "Real-time valuation insights in Tel Aviv" }
+    },
+    {
+      title: { he: "ביטחון עסקאות מקצה לקצה חוצה גבולות", en: "End-to-end transaction confidence across borders" }
+    }
+  ];
+
+  // CTA section
+  const ctaTitle = {
+    he: "מוכנים לפעול על הזדמנויות נדל\"ן חכמות יותר?",
+    en: "Ready to act on smarter real estate opportunities?"
+  };
+
   return (
     <PageContainer>
       {/* Hero Section - Full-width split city background */}
@@ -121,12 +227,12 @@ export default function OfficeAssetManagement() {
           />
         </div>
         {/* Centered content */}
-        <div className="relative py-28 z-20 w-full flex flex-col items-center justify-center text-center px-4">
+        <div className="relative py-28 z-20 w-full flex flex-col items-center justify-center text-center px-4" dir={dir}>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-white drop-shadow-2xl tracking-tight" style={{lineHeight:1.1, letterSpacing:'-0.01em'}}>
-            Global Reach, Local Mastery
-            </h1>
+            {mainHeroTitle[language]}
+          </h1>
           <p className="text-lg md:text-2xl text-white/90 font-light mb-10 max-w-2xl mx-auto">
-            Whether you're entering Dubai's boom market or optimizing Tel Aviv holdings, Indexland connects you to the right opportunities and expertise.
+            {mainHeroDesc[language]}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -134,21 +240,21 @@ export default function OfficeAssetManagement() {
               download
               className="px-8 py-3 rounded-full bg-orange-500 text-white font-semibold shadow-lg hover:bg-orange-600 transition-all text-lg border-2 border-orange-500 min-w-[200px] text-center"
             >
-              Download Dubai Guide
+              {downloadBtn[language]}
             </a>
             <a
               href="/book-meeting"
               className="px-8 py-3 rounded-full bg-white text-orange-500 font-semibold shadow-lg hover:bg-orange-50 transition-all text-lg border-2 border-orange-500 min-w-[200px] text-center"
               style={{borderWidth:2, fontWeight:700}}
             >
-              Contact a Local Agent
+              {contactBtn[language]}
             </a>
           </div>
         </div>
       </section>
 
       {/* Divider */}
-      <div className="container mx-auto my-12">
+      <div className="container mx-auto my-12" dir={dir}>
         <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30" />
       </div>
 
@@ -156,10 +262,10 @@ export default function OfficeAssetManagement() {
       <section className="relative py-20 px-4 bg-r" dir={dir}>
         <div className="container mx-auto max-w-6xl flex flex-col items-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-3" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
-            International Real Estate Investment (Dubai)
+            {dubaiSectionTitle[language]}
           </h2>
           <p className="text-lg text-gray-700 dark:text-textSecondary text-center mb-12 max-w-2xl" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
-            Tap into one of the world's fastest-growing markets.
+            {dubaiSectionDesc[language]}
           </p>
           {/* Optional Dubai map visual */}
           <div className="w-full flex justify-center mb-10">
@@ -167,65 +273,27 @@ export default function OfficeAssetManagement() {
           </div>
           {/* Premium Grid of 4 Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 w-full">
-            {/* Card 1 */}
-            <div className="group relative bg-white border-2 border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer min-h-[260px] sparkle-card">
-              <div className="mb-4 text-orange-500 group-hover:text-black transition-colors duration-300">
-                {/* Icon: Market Research Video */}
-                <video autoPlay loop muted playsInline width="80" height="80">
-                  <source src="/files/webm/research.webm" type="video/webm" />
-                  Your browser does not support the video tag.
-                </video>
+            {dubaiCards.map((card, index) => (
+              <div key={index} className="group relative bg-white border-2 border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer min-h-[260px] sparkle-card">
+                <div className="mb-4 text-orange-500 group-hover:text-black transition-colors duration-300">
+                  {/* Icon: Video based on index */}
+                  <video autoPlay loop muted playsInline width="80" height="80">
+                    <source src={`/files/webm/${index === 0 ? 'research' : index === 1 ? 'source' : index === 2 ? 'legal' : 'tracking'}.webm`} type="video/webm" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <h3 className="text-lg font-bold mb-2 text-black">{card.title[language]}</h3>
+                <p className="text-gray-700 text-base font-medium">{card.description[language]}</p>
+                {/* Sparkle animation */}
+                <span className="absolute top-3 right-3 w-4 h-4 bg-gradient-to-tr from-orange-300 to-white rounded-full opacity-60 animate-pulse pointer-events-none" style={{filter:'blur(2px)'}} />
               </div>
-              <h3 className="text-lg font-bold mb-2 text-black">Market Research</h3>
-              <p className="text-gray-700 text-base font-medium">Sector analysis, yield projections, regulatory overview</p>
-              {/* Sparkle animation */}
-              <span className="absolute top-3 right-3 w-4 h-4 bg-gradient-to-tr from-orange-300 to-white rounded-full opacity-60 animate-pulse pointer-events-none" style={{filter:'blur(2px)'}} />
-            </div>
-            {/* Card 2 */}
-            <div className="group relative bg-white border-2 border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer min-h-[260px] sparkle-card">
-              <div className="mb-4 text-orange-500 group-hover:text-black transition-colors duration-300">
-                {/* Icon: Property Sourcing Video */}
-                <video autoPlay loop muted playsInline width="80" height="80">
-                  <source src="/files/webm/source.webm" type="video/webm" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              <h3 className="text-lg font-bold mb-2 text-black">Property Sourcing</h3>
-              <p className="text-gray-700 text-base font-medium">Residential, commercial, and mixed-use assets</p>
-              <span className="absolute top-3 right-3 w-4 h-4 bg-gradient-to-tr from-orange-300 to-white rounded-full opacity-60 animate-pulse pointer-events-none" style={{filter:'blur(2px)'}} />
-            </div>
-            {/* Card 3 */}
-            <div className="group relative bg-white border-2 border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer min-h-[260px] sparkle-card">
-              <div className="mb-4 text-orange-500 group-hover:text-black transition-colors duration-300">
-                {/* Icon: Legal & Compliance Video */}
-                <video autoPlay loop muted playsInline width="80" height="80">
-                  <source src="/files/webm/legal.webm" type="video/webm" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              <h3 className="text-lg font-bold mb-2 text-black">Legal & Compliance</h3>
-              <p className="text-gray-700 text-base font-medium">Local counsel, visa facilitation, transaction structuring</p>
-              <span className="absolute top-3 right-3 w-4 h-4 bg-gradient-to-tr from-orange-300 to-white rounded-full opacity-60 animate-pulse pointer-events-none" style={{filter:'blur(2px)'}} />
-            </div>
-            {/* Card 4 */}
-            <div className="group relative bg-white border-2 border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer min-h-[260px] sparkle-card">
-              <div className="mb-4 text-orange-500 group-hover:text-black transition-colors duration-300">
-                {/* Icon: Ongoing Oversight Video */}
-                <video autoPlay loop muted playsInline width="80" height="80">
-                  <source src="/files/webm/tracking.webm" type="video/webm" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              <h3 className="text-lg font-bold mb-2 text-black">Ongoing Oversight</h3>
-              <p className="text-gray-700 text-base font-medium">On-ground asset management and performance tracking</p>
-              <span className="absolute top-3 right-3 w-4 h-4 bg-gradient-to-tr from-orange-300 to-white rounded-full opacity-60 animate-pulse pointer-events-none" style={{filter:'blur(2px)'}} />
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Divider */}
-      <div className="container mx-auto my-12">
+      <div className="container mx-auto my-12" dir={dir}>
         <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30" />
       </div>
 
@@ -233,10 +301,10 @@ export default function OfficeAssetManagement() {
       <section className="relative py-20 px-4 bg-gray-50" dir={dir}>
         <div className="container mx-auto max-w-6xl flex flex-col items-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-3" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
-            Local Commercial Real Estate Agents (Tel Aviv)
+            {telAvivSectionTitle[language]}
           </h2>
           <p className="text-lg text-gray-700 dark:text-textSecondary text-center mb-12 max-w-2xl" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
-            Tel Aviv specialists in selling, buying, and leasing.
+            {telAvivSectionDesc[language]}
           </p>
           {/* Tel Aviv visual */}
           <div className="w-full flex justify-center mb-10">
@@ -249,116 +317,74 @@ export default function OfficeAssetManagement() {
           </div>
           {/* Light Premium Grid of 4 Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 w-full">
-            {/* Card 1 */}
-            <div className="group relative bg-white border-2 border-orange-100 rounded-2xl shadow-md p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-orange-400 cursor-pointer min-h-[220px] sparkle-card">
-              <div className="mb-4 text-orange-400 group-hover:text-black transition-colors duration-300">
-                {/* Icon: Sales Representation Video */}
-                <video autoPlay loop muted playsInline width="80" height="80">
-                  <source src="/files/webm/sales.webm" type="video/webm" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              <h3 className="text-lg font-bold mb-2 text-black">Sales Representation</h3>
-              <p className="text-gray-700 text-base font-medium">Secure top terms for buyers and sellers</p>
-            </div>
-            {/* Card 2 */}
-            <div className="group relative bg-white border-2 border-orange-100 rounded-2xl shadow-md p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-orange-400 cursor-pointer min-h-[220px] sparkle-card">
-              <div className="mb-4 text-orange-400 group-hover:text-black transition-colors duration-300">
-                {/* Icon: Leasing Services Video */}
-                <video autoPlay loop muted playsInline width="80" height="80">
-                  <source src="/files/webm/marketing.webm" type="video/webm" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              <h3 className="text-lg font-bold mb-2 text-black">Leasing Services</h3>
-              <p className="text-gray-700 text-base font-medium">Marketing, viewings, renewals, and negotiations</p>
-            </div>
-            {/* Card 3 */}
-            <div className="group relative bg-white border-2 border-orange-100 rounded-2xl shadow-md p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-orange-400 cursor-pointer min-h-[220px] sparkle-card">
-              <div className="mb-4 text-orange-400 group-hover:text-black transition-colors duration-300">
-                {/* Icon: Valuation & Advisory Video */}
-                <video autoPlay loop muted playsInline width="80" height="80">
-                  <source src="/files/webm/risk.webm" type="video/webm" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              <h3 className="text-lg font-bold mb-2 text-black">Valuation & Advisory</h3>
-              <p className="text-gray-700 text-base font-medium">Real-time comps, cap rates, and risk assessments</p>
-            </div>
-            {/* Card 4 */}
-            <div className="group relative bg-white border-2 border-orange-100 rounded-2xl shadow-md p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-orange-400 cursor-pointer min-h-[220px] sparkle-card">
-              <div className="mb-4 text-orange-400 group-hover:text-black transition-colors duration-300">
-                {/* Icon: After-Deal Support Video */}
-                <video autoPlay loop muted playsInline width="80" height="80">
-                  <source src="/files/webm/support.webm" type="video/webm" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              <h3 className="text-lg font-bold mb-2 text-black">After-Deal Support</h3>
-              <p className="text-gray-700 text-base font-medium">Handover inspections, renewals, and ongoing guidance</p>
-            </div>
-          </div>
+            {telAvivCards.map((card, index) => (
+              <div key={index} className="group relative bg-white border-2 border-orange-100 rounded-2xl shadow-md p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-orange-400 cursor-pointer min-h-[220px] sparkle-card">
+                <div className="mb-4 text-orange-400 group-hover:text-black transition-colors duration-300">
+                  {/* Icon: Video based on index */}
+                  <video autoPlay loop muted playsInline width="80" height="80">
+                    <source src={`/files/webm/${index === 0 ? 'sales' : index === 1 ? 'marketing' : index === 2 ? 'risk' : 'support'}.webm`} type="video/webm" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
+                <h3 className="text-lg font-bold mb-2 text-black">{card.title[language]}</h3>
+                <p className="text-gray-700 text-base font-medium">{card.description[language]}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Why Work with Us? Section */}
       <section className="relative py-20 px-4 bg-gradient-to-br from-orange-50 via-orange-100 to-orange-200" dir={dir}>
         {/* Divider */}
-        <div className="container mx-auto mb-12">
+        <div className="container mx-auto mb-12" dir={dir}>
           <div className="h-1 w-24 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-30" />
         </div>
         <div className="container mx-auto max-w-5xl flex flex-col items-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-orange-700 text-center mb-3" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
-            Why Work with Us?
+            {whyWorkTitle[language]}
           </h2>
           <p className="text-lg text-orange-900 text-center mb-12 max-w-2xl" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif'}}>
-            Leverage our global strategies and local networks for confident, informed investments.
+            {whyWorkDesc[language]}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-            {/* Card 1 */}
-            <div className="group bg-white/90 border border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-400 cursor-pointer min-h-[180px]">
-              <div className="mb-4 text-orange-500 group-hover:text-orange-700 transition-colors duration-300">
-                {/* Icon: Target (Business style) */}
-                <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="9" stroke="currentColor"/>
-                  <circle cx="12" cy="12" r="5" stroke="currentColor"/>
-                  <circle cx="12" cy="12" r="2" fill="currentColor"/>
-                </svg>
+            {whyWorkCards.map((card, index) => (
+              <div key={index} className="group bg-white/90 border border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-400 cursor-pointer min-h-[180px]">
+                <div className="mb-4 text-orange-500 group-hover:text-orange-700 transition-colors duration-300">
+                  {/* Icon based on index */}
+                  {index === 0 && (
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="9" stroke="currentColor"/>
+                      <circle cx="12" cy="12" r="5" stroke="currentColor"/>
+                      <circle cx="12" cy="12" r="2" fill="currentColor"/>
+                    </svg>
+                  )}
+                  {index === 1 && (
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                      <rect x="3" y="12" width="4" height="8" rx="1" stroke="currentColor"/>
+                      <rect x="10" y="8" width="4" height="12" rx="1" stroke="currentColor"/>
+                      <rect x="17" y="4" width="4" height="16" rx="1" stroke="currentColor"/>
+                    </svg>
+                  )}
+                  {index === 2 && (
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                      <path d="M8 13l-4 4m0 0l4 4m-4-4h18" stroke="currentColor" strokeLinecap="round"/>
+                      <rect x="14" y="4" width="6" height="6" rx="2" stroke="currentColor"/>
+                    </svg>
+                  )}
+                </div>
+                <h3 className="text-lg font-bold mb-2 text-orange-900">{card.title[language]}</h3>
               </div>
-              <h3 className="text-lg font-bold mb-2 text-orange-900">Strategic access to Dubai's top-performing zones</h3>
-            </div>
-            {/* Card 2 */}
-            <div className="group bg-white/90 border border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-400 cursor-pointer min-h-[180px]">
-              <div className="mb-4 text-orange-500 group-hover:text-orange-700 transition-colors duration-300">
-                {/* Icon: Bar Chart (Business style) */}
-                <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                  <rect x="3" y="12" width="4" height="8" rx="1" stroke="currentColor"/>
-                  <rect x="10" y="8" width="4" height="12" rx="1" stroke="currentColor"/>
-                  <rect x="17" y="4" width="4" height="16" rx="1" stroke="currentColor"/>
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold mb-2 text-orange-900">Real-time valuation insights in Tel Aviv</h3>
-            </div>
-            {/* Card 3 */}
-            <div className="group bg-white/90 border border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-400 cursor-pointer min-h-[180px]">
-              <div className="mb-4 text-orange-500 group-hover:text-orange-700 transition-colors duration-300">
-                {/* Icon: Handshake (Business style) */}
-                <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                  <path d="M8 13l-4 4m0 0l4 4m-4-4h18" stroke="currentColor" strokeLinecap="round"/>
-                  <rect x="14" y="4" width="6" height="6" rx="2" stroke="currentColor"/>
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold mb-2 text-orange-900">End-to-end transaction confidence across borders</h3>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="relative py-16 px-4 bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 flex flex-col items-center justify-center" dir={dir}>
-        <div className="container mx-auto max-w-2xl flex flex-col items-center text-center">
+        <div className="container mx-auto max-w-2xl flex flex-col items-center text-center" dir={dir}>
           <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-8" style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif', letterSpacing:'-0.01em'}}>
-            Ready to act on smarter real estate opportunities?
+            {ctaTitle[language]}
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center w-full">
             <a
@@ -367,14 +393,14 @@ export default function OfficeAssetManagement() {
               className="px-8 py-3 rounded-full bg-white text-orange-600 font-extrabold shadow-lg hover:bg-orange-100 transition-all text-lg border-2 border-white min-w-[200px] text-center w-full sm:w-auto"
               style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif', letterSpacing:'0.01em'}}
             >
-              Download Dubai Guide
+              {downloadBtn[language]}
             </a>
             <a
               href="/book-meeting"
               className="px-8 py-3 rounded-full bg-orange-600 text-white font-extrabold shadow-lg hover:bg-black hover:text-orange-400 transition-all text-lg border-2 border-white min-w-[200px] text-center w-full sm:w-auto"
               style={{fontFamily:'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif', letterSpacing:'0.01em'}}
             >
-              Contact a Local Agent
+              {contactBtn[language]}
             </a>
           </div>
         </div>

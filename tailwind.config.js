@@ -94,7 +94,19 @@ module.exports = {
           950: "#121212",
         },
       },
+      // RTL Support
+      spacing: {
+        'rtl-safe': '0.5rem',
+      },
+      fontFamily: {
+        'hebrew': ['Segoe UI', 'Arial', 'Helvetica', 'sans-serif'],
+        'english': ['Inter', 'Urbanist', 'Helvetica Now', 'Helvetica', 'Arial', 'sans-serif'],
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    // RTL Plugin would go here if available
+    // require('tailwindcss-rtl'),
+  ],
 } 

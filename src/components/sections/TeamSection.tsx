@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useLanguage, Language } from '@/lib/language-context';
+import { PAGES } from '@/constants/site';
 
 interface TeamMember {
   name: string | Record<Language, string>;
@@ -23,29 +24,6 @@ interface TeamSectionProps {
   bgColor?: string;
 }
 
-const founders: TeamMember[] = [
-  {
-    name: 'Noam',
-    role: 'Founder',
-    bio: 'Noam, Founder – Over 10 years in real estate, Noam led Indexland\'s vision from boutique agency to full-spectrum consultancy.',
-    image: '/partner2.webp',
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/noam-brender?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
-      email: 'noam@indexland.co.il'
-    }
-  },
-  {
-    name: 'Ori',
-    role: 'Co-Founder',
-    bio: 'Ori, Co-Founder – Expert in asset management and client operations, Ori is the operational heart behind every Indexland project.',
-    image: '/partner1.webp',
-    socialLinks: {
-      linkedin: 'https://www.linkedin.com/in/ori-brender-177534199?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
-      email: 'ori@indexland.co.il'
-    }
-  }
-];
-
 export default function TeamSection({
   title,
   subtitle,
@@ -63,21 +41,11 @@ export default function TeamSection({
     return t(text);
   };
   
-  const defaultTitle = {
-    he: "הצוות שלנו",
-    en: "Meet the Team"
-  };
-  
-  const defaultSubtitle = {
-    he: "הכירו את המומחים שמאחורי Indexland",
-    en: "Meet The Experts Behind Indexland"
-  };
-  
-  const titleText = getLocalizedText(title) || t(defaultTitle);
-  const subtitleText = getLocalizedText(subtitle) || t(defaultSubtitle);
+  const titleText = getLocalizedText(title) || t(PAGES.ABOUT_US.team.title);
+  const subtitleText = getLocalizedText(subtitle) || t(PAGES.ABOUT_US.team.subtitle);
 
   // Always use only Noam and Ori
-  const visibleMembers = founders;
+  const visibleMembers = PAGES.ABOUT_US.team.members;
 
   return (
     <section className="relative py-24 px-4 md:px-16 bg-transparent transition-colors duration-200 overflow-hidden">

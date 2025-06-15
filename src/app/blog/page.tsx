@@ -1,16 +1,12 @@
 import { Metadata } from "next";
-import { SEO } from "@/constants/site";
+import { SEO, PAGES } from "@/constants/site";
 import BlogContent from './BlogContent';
 
 // הכנת ערכי מטה-דאטה
-const metadataTitle = "בלוג Indexland | מאמרים וחדשות";
-const metadataDescription = "מאמרים, עדכונים וטיפים בתחום הנדל\"ן, ההשקעות והמשרדים";
-const metadataKeywords = "בלוג, מאמרים, נדל\"ן, השקעות, טיפים";
-
 export const metadata: Metadata = {
-  title: metadataTitle,
-  description: metadataDescription,
-  keywords: metadataKeywords,
+  title: PAGES.BLOG.metadata.title.he,
+  description: PAGES.BLOG.metadata.description.he,
+  keywords: PAGES.BLOG.metadata.keywords.he,
   openGraph: {
     images: [SEO.blog.ogImage],
   },

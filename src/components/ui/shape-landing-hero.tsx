@@ -28,8 +28,8 @@ function ElegantShape({
         <motion.div
             initial={{
                 opacity: 0,
-                y: -150,
-                rotate: rotate - 15,
+                y: -100,
+                rotate: rotate - 10,
             }}
             animate={{
                 opacity: 1,
@@ -37,21 +37,21 @@ function ElegantShape({
                 rotate: rotate,
             }}
             transition={{
-                duration: 2.4,
+                duration: 3.0,
                 delay,
-                ease: [0.23, 0.86, 0.39, 0.96],
-                opacity: { duration: 1.2 },
+                ease: [0.25, 0.46, 0.45, 0.94],
+                opacity: { duration: 1.8 },
             }}
             className={cn("absolute", className)}
         >
             <motion.div
                 animate={{
-                    y: [0, 15, 0],
+                    y: [0, 10, 0],
                 }}
                 transition={{
-                    duration: 12,
+                    duration: 16,
                     repeat: Number.POSITIVE_INFINITY,
-                    ease: "easeInOut",
+                    ease: [0.25, 0.46, 0.45, 0.94],
                 }}
                 style={{
                     width,

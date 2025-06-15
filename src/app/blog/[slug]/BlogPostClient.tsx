@@ -1,13 +1,14 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BlogPostDetail } from '@/types/blog';
 import { useLanguage, Language } from '@/lib/language-context';
+import { PAGES } from '@/constants/site';
 
 interface BlogPostClientProps {
-  post: BlogPostDetail;
+  slug: string;
 }
 
 // פונקציה לפרמוט תאריך
@@ -74,9 +75,60 @@ function formatContent(content: string): string {
   }).join('');
 }
 
-export default function BlogPostClient({ post }: BlogPostClientProps) {
+export default function BlogPostClient({ slug }: BlogPostClientProps) {
   const { language, t } = useLanguage();
-  
+  const [post, setPost] = useState<BlogPostDetail | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`/api/blog/${slug}`);
+        if (!response.ok) {
+          throw new Error('Post not found');
+        }
+        const postData = await response.json();
+        setPost(postData);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An error occurred');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPost();
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-xl text-gray-600 dark:text-gray-400">{t(PAGES.BLOG.labels.loading)}</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !post) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{t(PAGES.BLOG.postNotFound.title)}</h1>
+          <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">{t(PAGES.BLOG.postNotFound.message)}</p>
+          <Link 
+            href="/blog"
+            className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+          >
+            {t(PAGES.BLOG.postNotFound.backToBlog)}
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   const title = getLocalizedText(post.title, language);
   const content = getLocalizedText(post.content, language);
   const authorName = getLocalizedText(post.author?.name, language);
@@ -87,29 +139,6 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
   // תמונות דיפולטיביות
   const defaultCoverImage = 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop';
   const defaultAuthorImage = 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3';
-  
-  const texts = {
-    readingTime: {
-      he: 'דקות קריאה',
-      en: 'min read'
-    },
-    relatedPosts: {
-      he: 'מאמרים נוספים שעשויים לעניין אותך',
-      en: 'Related articles you might find interesting'
-    },
-    backToBlog: {
-      he: 'חזרה לבלוג',
-      en: 'Back to Blog'
-    },
-    publishedOn: {
-      he: 'פורסם ב',
-      en: 'Published on'
-    },
-    by: {
-      he: 'מאת',
-      en: 'By'
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
@@ -123,7 +152,7 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            {t(texts.backToBlog)}
+            {t(PAGES.BLOG.postNotFound.backToBlog)}
           </Link>
         </div>
 
@@ -167,9 +196,9 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
               <div className="flex flex-wrap items-center gap-6 text-gray-600 dark:text-gray-400 mb-8 p-6 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
                 <div className="flex items-center gap-2">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 002 2z" />
                   </svg>
-                  <span className="font-medium">{t(texts.publishedOn)}</span>
+                  <span className="font-medium">{t(PAGES.BLOG.labels.publishedOn)}</span>
                   <time dateTime={post.publishedAt} className="font-semibold">
                     {publishedDate}
                   </time>
@@ -179,7 +208,7 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span>{post.readingTime} {t(texts.readingTime)}</span>
+                  <span>{post.readingTime} {t(PAGES.BLOG.labels.minRead)}</span>
                 </div>
               </div>
               
@@ -194,7 +223,7 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
                 />
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-sm text-gray-600 dark:text-gray-400">{t(texts.by)}</span>
+                    <span className="text-sm text-gray-600 dark:text-gray-400">{t(PAGES.BLOG.labels.by)}</span>
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">{authorName}</h3>
                   </div>
                   <p className="text-primary font-medium mb-2">{authorTitle}</p>
@@ -217,7 +246,7 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
           {/* מאמרים קשורים */}
           {post.relatedPosts && post.relatedPosts.length > 0 && (
             <div className="mt-16 p-8 md:p-12 bg-gray-50 dark:bg-gray-700/30">
-              <h2 className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white">{t(texts.relatedPosts)}</h2>
+              <h2 className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white">{t(PAGES.BLOG.labels.relatedPosts)}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {post.relatedPosts.slice(0, 2).map((relatedPost) => (
                   <div key={relatedPost.id} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">

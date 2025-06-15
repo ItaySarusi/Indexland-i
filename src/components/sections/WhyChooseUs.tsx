@@ -133,7 +133,7 @@ export default function WhyChooseUs({
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true, amount: 0.4 }}
-                    transition={{ duration: 0.7, delay: rowDelay }}
+                    transition={{ duration: 1.0, delay: rowDelay, ease: [0.25, 0.46, 0.45, 0.94] }}
                   >
                     {/* Glass reflection overlay */}
                     <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent opacity-30 rounded-t-3xl pointer-events-none" />
