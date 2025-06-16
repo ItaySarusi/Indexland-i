@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { NAV_LINKS } from '@/constants/site';
 import { useLanguage } from '@/lib/language-context';
 
@@ -9,6 +10,7 @@ export default function Header() {
   const { language, setLanguage } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const pathname = usePathname();
 
   // בדיקת מצב Dark Mode בטעינת הדף
   useEffect(() => {
@@ -51,6 +53,22 @@ export default function Header() {
     }
   };
 
+  // Check if a link is active
+  const isLinkActive = (href: string) => {
+    if (href === '/') {
+      return pathname === '/';
+    }
+    return pathname.startsWith(href);
+  };
+
+  // Check if a parent link with children is active
+  const isParentActive = (link: any) => {
+    if (link.children) {
+      return link.children.some((child: any) => isLinkActive(child.href));
+    }
+    return isLinkActive(link.href);
+  };
+
   return (
     <header className="navbar-glass top-0 left-0 w-full z-50 transition-colors duration-200 py-2 px-4 bg-white/0 backdrop-blur-xl sticky">
       <div className="container flex items-center justify-between flex-row-reverse">
@@ -60,16 +78,22 @@ export default function Header() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={link.isButton
+                className={`${link.isButton
                   ? "snake-border-btn bg-primary text-white dark:text-textPrimary"
-                  : "snake-border-btn"
-                }
+                  : isLinkActive(link.href)
+                    ? "snake-border-btn bg-primary/10 text-primary border-primary/30 font-semibold"
+                    : "snake-border-btn"
+                }`}
               >
                 <span>{link.name}</span>
               </Link>
             ) : (
               <div key={link.name} className="relative group">
-                <button className="snake-border-btn flex items-center gap-1">
+                <button className={`snake-border-btn flex items-center gap-1 ${
+                  isParentActive(link) 
+                    ? "bg-primary/10 text-primary border-primary/30 font-semibold" 
+                    : ""
+                }`}>
                   <span>{link.name}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -80,7 +104,11 @@ export default function Header() {
                     <Link
                       key={child.name}
                       href={child.href}
-                      className="block px-4 py-3 text-gray-700 dark:text-textPrimary hover:bg-gray-50 dark:hover:bg-backgroundDark dark:hover:bg-opacity-50"
+                      className={`block px-4 py-3 hover:bg-gray-50 dark:hover:bg-backgroundDark dark:hover:bg-opacity-50 ${
+                        isLinkActive(child.href)
+                          ? "bg-primary/10 text-primary font-semibold border-r-2 border-primary"
+                          : "text-gray-700 dark:text-textPrimary"
+                      }`}
                     >
                       <span className="block font-medium">{child.name}</span>
                       <span className="block text-sm text-gray-500 dark:text-textSecondary">{child.description}</span>
@@ -169,22 +197,34 @@ export default function Header() {
                   <Link 
                     key={link.name}
                     href={link.href}
-                    className={link.isButton
-                      ? "py-2 bg-primary text-white dark:text-textPrimary px-4 rounded-md text-center"
-                      : "py-2 text-gray-700 dark:text-textPrimary hover:text-primary transition-colors"}
+                    className={`py-2 px-4 rounded-md text-center transition-colors ${
+                      link.isButton
+                        ? "bg-primary text-white dark:text-textPrimary"
+                        : isLinkActive(link.href)
+                          ? "bg-primary/10 text-primary font-semibold border border-primary/30"
+                          : "text-gray-700 dark:text-textPrimary hover:text-primary"
+                    }`}
                     onClick={toggleMenu}
                   >
                     {link.name}
                   </Link>
                 ) : (
                   <div key={link.name} className="py-2">
-                    <div className="font-medium text-gray-700 dark:text-textPrimary mb-2">{link.name}</div>
+                    <div className={`font-medium mb-2 ${
+                      isParentActive(link) 
+                        ? "text-primary font-semibold" 
+                        : "text-gray-700 dark:text-textPrimary"
+                    }`}>{link.name}</div>
                     <div className="px-4 space-y-2">
                       {link.children.map((child) => (
                         <Link
                           key={child.name}
                           href={child.href}
-                          className="block py-1 text-gray-600 dark:text-textSecondary hover:text-primary"
+                          className={`block py-1 transition-colors ${
+                            isLinkActive(child.href)
+                              ? "text-primary font-semibold"
+                              : "text-gray-600 dark:text-textSecondary hover:text-primary"
+                          }`}
                           onClick={toggleMenu}
                         >
                           {child.name}

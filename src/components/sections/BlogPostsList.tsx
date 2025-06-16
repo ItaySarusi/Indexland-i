@@ -19,7 +19,7 @@ export default function BlogPostsList({
   posts = [],
   showViewAllLink = true
 }: BlogPostsListProps) {
-  const { language, t } = useLanguage();
+  const { language, t, dir } = useLanguage();
   
   // תמונות דיפולטיביות
   const defaultCoverImage = 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop';
@@ -148,8 +148,17 @@ export default function BlogPostsList({
               <div className="text-center mt-12">
                 <Link href="/blog" className="inline-flex items-center text-primary hover:opacity-90 font-medium">
                   {t(viewAllText)}
-                  <svg className="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
+                  <svg 
+                    className={`w-4 h-4 ${dir === 'rtl' ? 'mr-2' : 'ml-2'}`} 
+                    fill="currentColor" 
+                    viewBox="0 0 20 20" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    {dir === 'rtl' ? (
+                      <path fillRule="evenodd" d="M9.707 3.293a1 1 0 00-1.414 0l-6 6a1 1 0 000 1.414l6 6a1 1 0 001.414-1.414L5.414 11H17a1 1 0 100-2H5.414l4.293-4.293a1 1 0 000-1.414z" clipRule="evenodd"></path>
+                    ) : (
+                      <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
+                    )}
                   </svg>
                 </Link>
               </div>
