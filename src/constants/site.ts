@@ -766,7 +766,7 @@ export const PAGES = {
           en: "Professional management of office assets with focus on maximizing returns and increasing property value"
         },
         href: "/services/office-management",
-        svg: "/icons/office-management.svg",
+        svg: "/files/webm/support.webm",
         icon: React.createElement('svg', {
           className: "w-8 h-8",
           fill: "none",
@@ -789,7 +789,7 @@ export const PAGES = {
           en: "Professional brokerage services for international market investments with close guidance"
         },
         href: "/services/international-investment",
-        svg: "/icons/international-investment.svg",
+        svg: "/files/webm/sales.webm",
         icon: React.createElement('svg', {
           className: "w-8 h-8",
           fill: "none",
@@ -812,7 +812,7 @@ export const PAGES = {
           en: "Personalized financial consulting focusing on commercial real estate investment strategies and building a balanced investment portfolio"
         },
         href: "/services/investment-consulting",
-        svg: "/icons/investment-consulting.svg",
+        svg: "/files/svg/investing.svg",
         icon: React.createElement('svg', {
           className: "w-8 h-8",
           fill: "none",
@@ -835,7 +835,7 @@ export const PAGES = {
           en: "Project guidance from concept to completion, including feasibility studies, planning, licensing, and construction management"
         },
         href: "/services/project-development",
-        svg: "/icons/project-development.svg",
+        svg: "/files/svg/construction.svg",
         icon: React.createElement('svg', {
           className: "w-8 h-8",
           fill: "none",

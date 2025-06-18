@@ -79,16 +79,27 @@ export default function ServicesOverview({
               <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/60 to-transparent opacity-50 rounded-t-[2.5rem] pointer-events-none animate-glass-reflection" />
               <div className="absolute inset-0 rounded-[2.5rem] border-4 border-white/20 group-hover:border-primary/40 pointer-events-none" style={{boxShadow:'0 0 32px 0 rgba(255,180,80,0.10), 0 1.5px 12px 0 rgba(255,255,255,0.10)'}} />
               <div className="flex justify-center items-center mb-6 animate-scale-in">
-                {service?.svg ? (
-                    <Image 
-                      width={104}
-                      height={104}
-                      src={service.svg} 
-                      alt={typeof service.title === 'string' ? service.title : ''} 
-                      className="w-28 h-28"
-                      unoptimized={service.svg?.endsWith('.gif')}
-                    />
-                  ) : service?.icon}
+                {service?.svg?.endsWith('.webm') ? (
+                  <video 
+                    width={104}
+                    height={104}
+                    src={service.svg}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-28 h-28"
+                  />
+                ) : service?.svg ? (
+                  <Image 
+                    width={104}
+                    height={104}
+                    src={service.svg} 
+                    alt={typeof service.title === 'string' ? service.title : ''} 
+                    className="w-28 h-28"
+                    unoptimized={service.svg?.endsWith('.gif')}
+                  />
+                ) : service?.icon}
               </div>
               <h3 className="text-2xl md:text-3xl font-extrabold mb-3 text-primary drop-shadow-xl animate-fade-in delay-100 text-center tracking-tight leading-tight">
                 {getLocalizedText(service.title)}
