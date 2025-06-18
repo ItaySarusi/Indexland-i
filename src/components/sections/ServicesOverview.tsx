@@ -70,8 +70,8 @@ export default function ServicesOverview({
             <motion.div
               key={index}
               className="glass-card glass-inner-shadow p-12 rounded-[2.5rem] flex flex-col items-center text-center transition-all duration-300 group relative overflow-hidden shadow-2xl border-2 border-white/30 hover:scale-105 hover:shadow-2xl hover:border-primary/60 hover:bg-gradient-to-br hover:from-white/60 hover:to-primary/10 dark:hover:from-backgroundDark/60 dark:hover:to-secondary/10"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.05 * index, ease: "easeOut" }}
             >

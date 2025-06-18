@@ -55,15 +55,6 @@ export default function Services() {
         secondaryButtonHref="/contact"
         variant="centered"
       />
-
-      {/* Contact Section */}
-      <ContactSection 
-        title={PAGES.SERVICES.contact.title}
-        subtitle={PAGES.SERVICES.contact.subtitle}
-        email={CONTACT_EMAIL}
-        phone={CONTACT_PHONE}
-        address={CONTACT_ADDRESS}
-      />
     </PageContainer>
   );
 } 

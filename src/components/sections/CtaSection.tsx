@@ -3,7 +3,7 @@
 import React, { useRef } from 'react';
 import Button from '@/components/ui/Button';
 import { useLanguage, Language } from '@/lib/language-context';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { FaEnvelope, FaPhoneAlt, FaRegComments, FaHandshake } from 'react-icons/fa';
 
 interface CtaSectionProps {
@@ -55,54 +55,26 @@ export default function CtaSection({
   };
 
   if (variant === 'centered') {
-    const cardRef = useRef(null);
-    const { scrollYProgress } = useScroll({ target: cardRef, offset: ['start end', 'end start'] });
-    const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
-    const scale = useTransform(scrollYProgress, [0, 1], [1, 0.97]);
-    const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
-    // Floating animation (gentle up/down/left/right loop)
-    const floatAnim = {
-      y: [0, -10, 0, 10, 0],
-      x: [0, 8, 0, -8, 0],
-      transition: {
-        duration: 7,
-        repeat: Infinity,
-        ease: 'easeInOut',
-      },
-    };
     return (
       <section className="py-8 sm:py-12 md:py-16 bg-[#fff9f6] transition-colors duration-200 flex justify-center items-center min-h-[340px]" dir={language === 'he' ? 'rtl' : 'ltr'}>
         <div className="container flex justify-center items-center px-2 sm:px-4">
-          <motion.div
-            ref={cardRef}
-            style={{ y, scale, opacity }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.0, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="relative"
-          >
-            <motion.div
-              className="cta-orange-card rounded-3xl shadow-2xl border-none p-4 sm:p-8 md:p-12 max-w-2xl w-full mx-auto flex flex-col items-center text-center overflow-visible animate-fade-in animate-scale-in"
-              animate={floatAnim}
-            >
+          <div className="relative">
+            <div className="cta-orange-card rounded-3xl shadow-2xl border-none p-4 sm:p-8 md:p-12 max-w-2xl w-full mx-auto flex flex-col items-center text-center overflow-visible">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-white drop-shadow-xl leading-tight break-words">{titleText}</h2>
               {subtitleText && (
-                <p className="text-base sm:text-lg mb-8 text-white/90 drop-shadow animate-fade-in leading-relaxed">{subtitleText}</p>
+                <p className="text-base sm:text-lg mb-8 text-white/90 drop-shadow leading-relaxed">{subtitleText}</p>
               )}
-              <motion.a
+              <a
                 href={primaryButtonHref}
-                whileHover={{ scale: 1.05, boxShadow: '0 0 32px 8px #fff, 0 2px 24px 0 #ff9800cc' }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="cta-animated-btn group font-extrabold text-lg sm:text-xl px-6 sm:px-10 py-3 sm:py-4 rounded-2xl shadow-xl bg-white text-primary border-2 border-white relative overflow-hidden transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary/30"
               >
                 <span className="relative z-10">{primaryBtnText}</span>
                 <span className="shine-effect absolute inset-0 pointer-events-none" />
-              </motion.a>
+              </a>
               {/* Floating effect */}
               <div className="absolute -z-10 inset-0 rounded-3xl bg-[#f26a3d] blur-[2px] opacity-90 shadow-2xl" />
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
         <style jsx>{`
           .cta-orange-card {
@@ -142,70 +114,50 @@ export default function CtaSection({
   }
   
   if (variant === 'highlight') {
-    // Animated floating icons config
+    // Simplified floating icons config (removed motion animations)
     const floatingIcons = [
-      { icon: <FaEnvelope />, style: 'top-8 left-12', delay: 0 },
-      { icon: <FaPhoneAlt />, style: 'bottom-10 right-16', delay: 0.3 },
-      { icon: <FaRegComments />, style: 'top-20 right-24', delay: 0.6 },
-      { icon: <FaHandshake />, style: 'bottom-8 left-24', delay: 0.9 },
+      { icon: <FaEnvelope />, style: 'top-8 left-12' },
+      { icon: <FaPhoneAlt />, style: 'bottom-10 right-16' },
+      { icon: <FaRegComments />, style: 'top-20 right-24' },
+      { icon: <FaHandshake />, style: 'bottom-8 left-24' },
     ];
-    // Detect direction for animation
-    const { dir } = useLanguage();
+    
     return (
       <section className="relative py-20 bg-gradient-to-br from-[#ffb199] via-[#ff512f] to-[#ff512f]/90 transition-colors duration-200 overflow-hidden">
-        {/* Animated floating white icons in background */}
+        {/* Static floating white icons in background */}
         <div className="pointer-events-none absolute inset-0 z-0">
           {floatingIcons.map((item, i) => (
-            <motion.div
+            <div
               key={i}
               className={`absolute text-white/20 opacity-60 text-6xl md:text-7xl lg:text-8xl drop-shadow-xl ${item.style}`}
-              initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
-              animate={{ opacity: 0.6, scale: 1.05, rotate: 180 }}
-              transition={{ duration: 12, repeat: Infinity, repeatType: 'reverse', delay: item.delay, ease: [0.25, 0.46, 0.45, 0.94] }}
               aria-hidden="true"
             >
               {item.icon}
-            </motion.div>
+            </div>
           ))}
         </div>
         <div className="container flex justify-center items-center">
-          <motion.div
+          <div
             className="relative w-full max-w-5xl mx-auto glass-card rounded-3xl p-12 md:p-16 shadow-2xl border border-white/40 backdrop-blur-2xl overflow-hidden flex flex-col md:flex-row md:items-center md:justify-between"
             style={{ background: 'linear-gradient(120deg,rgba(255,255,255,0.38) 0%,rgba(255,255,255,0.18) 100%)', boxShadow: '0 8px 48px 0 rgba(255, 152, 0, 0.13), 0 1.5px 12px 0 rgba(255,255,255,0.13)' }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.0, ease: [0.25, 0.46, 0.45, 0.94] }}
             aria-label="Call to Action Section"
           >
             {/* Glass reflection overlay */}
             <div className="absolute inset-0 rounded-3xl pointer-events-none" style={{background:'linear-gradient(120deg,rgba(255,255,255,0.22) 0%,rgba(255,255,255,0.10) 100%)'}} />
             {/* Glow border */}
-            <div className="absolute inset-0 rounded-3xl pointer-events-none border-4 border-white/40 animate-glow" style={{boxShadow:'0 0 32px 0 #fff7, 0 1.5px 12px 0 #fff3'}} />
+            <div className="absolute inset-0 rounded-3xl pointer-events-none border-4 border-white/40" style={{boxShadow:'0 0 32px 0 #fff7, 0 1.5px 12px 0 #fff3'}} />
             <div className="flex flex-col md:flex-row w-full md:items-center md:justify-between gap-8">
-              <motion.div
-                className="flex-1 mb-8 md:mb-0 md:mr-8 flex flex-col justify-center"
-                initial={{ opacity: 0, x: dir === 'rtl' ? 60 : -60 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 1.0, ease: [0.25, 0.46, 0.45, 0.94] }}
-              >
-                <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-white drop-shadow-xl animate-scale-in tracking-tight leading-tight whitespace-pre-line">
+              <div className="flex-1 mb-8 md:mb-0 md:mr-8 flex flex-col justify-center">
+                <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-white drop-shadow-xl tracking-tight leading-tight whitespace-pre-line">
                   {typeof titleText === 'string' ? titleText.replace(/ ([^ ]*)$/, '\n$1') : titleText}
                 </h2>
                 {subtitleText && (
-                  <p className="text-lg text-white/80 mb-0 animate-fade-in delay-100 max-w-xl whitespace-pre-line">
+                  <p className="text-lg text-white/80 mb-0 max-w-xl whitespace-pre-line">
                     {typeof subtitleText === 'string' ? subtitleText.replace(/ ([^ ]*)$/, '\n$1') : subtitleText}
                   </p>
                 )}
-              </motion.div>
-              <motion.div
-                className="flex flex-col gap-6 md:gap-6 flex-shrink-0 items-center md:items-end w-full max-w-xs"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 1.0, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-              >
+              </div>
+              <div className="flex flex-col gap-6 md:gap-6 flex-shrink-0 items-center md:items-end w-full max-w-xs">
                 <a
                   href={primaryButtonHref}
                   className="luxury-cta-btn group"
@@ -230,7 +182,7 @@ export default function CtaSection({
                     </span>
                   </a>
                 )}
-              </motion.div>
+              </div>
             </div>
             <style jsx>{`
               .luxury-cta-btn {
@@ -258,26 +210,8 @@ export default function CtaSection({
                 border-color: #ff9800;
                 z-index: 2;
               }
-              .luxury-cta-btn:after {
-                content: '';
-                position: absolute;
-                inset: 0;
-                border-radius: 1.5rem;
-                pointer-events: none;
-                box-shadow: 0 0 0 0 #ff9800;
-                transition: box-shadow 0.25s;
-              }
-              .luxury-cta-btn:hover:after, .luxury-cta-btn:focus:after, .luxury-cta-btn:active:after {
-                box-shadow: 0 0 32px 8px #ff9800cc, 0 0 64px 16px #fff8;
-                animation: luxury-shine 0.5s linear;
-              }
-              @keyframes luxury-shine {
-                0% { box-shadow: 0 0 0 0 #ff9800cc, 0 0 0 0 #fff8; }
-                50% { box-shadow: 0 0 32px 8px #ff9800cc, 0 0 64px 16px #fff8; }
-                100% { box-shadow: 0 0 0 0 #ff9800cc, 0 0 0 0 #fff8; }
-              }
             `}</style>
-          </motion.div>
+          </div>
         </div>
       </section>
     );

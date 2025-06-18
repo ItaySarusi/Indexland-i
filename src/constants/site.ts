@@ -927,7 +927,7 @@ export const PAGES = {
         }
       },
       {
-        value: "+25%",
+        value: "%+25",
         label: {
           he: "תשואה משופרת",
           en: "Improved Yield"

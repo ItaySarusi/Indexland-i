@@ -70,7 +70,6 @@ export default function AboutUs() {
       </motion.div>
 
       {/* CTA Section */}
-      <motion.div initial={{ opacity: 0, scale: 0.96 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 1.0, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}>
         <CtaSection 
           title={PAGES.ABOUT_US.cta.title}
           subtitle={PAGES.ABOUT_US.cta.subtitle}
@@ -80,7 +79,6 @@ export default function AboutUs() {
           secondaryButtonHref="/services"
           variant="centered"
         />
-      </motion.div>
 
       {/* FAQ Section */}
       <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1.0, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}>

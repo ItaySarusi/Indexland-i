@@ -136,13 +136,7 @@ export default function Home() {
           </motion.div>
           
           {/* StaticSlackElements (full) - scaleX pop */}
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0.8 }}
-            whileInView={{ opacity: 1, scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="relative w-full overflow-hidden"
-          >
+          
             <StaticSlackElements 
               type="full" 
               direction="horizontal"
@@ -150,7 +144,6 @@ export default function Home() {
               scrollEffect="parallax"
               className="opacity-95 py-6" 
             />
-          </motion.div>
           
           {/* Metrics - flip in */}
           <motion.div
@@ -178,22 +171,17 @@ export default function Home() {
           </motion.div>
           
           {/* ClientsSuccessSection - fade in & scale */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 1.0, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <ClientsSuccessSection />
-          </motion.div>
+          </motion.div> */}
           
           {/* CtaSection - smooth slide up */}
-          <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.98 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 1.0, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
+          
             <CtaSection 
               title={t(PAGES.HOME.cta.title)}
               subtitle={t(PAGES.HOME.cta.subtitle)}
@@ -203,23 +191,6 @@ export default function Home() {
               secondaryButtonHref="/services"
               variant="centered"
             />
-          </motion.div>
-
-          {/* StaticSlackElements (scattered) - fade in & scale*/}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 1.0, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="relative w-full overflow-hidden"
-          >
-            <StaticSlackElements 
-              type="scattered" 
-              variant="mixed" 
-              scrollEffect="parallax"
-              className="opacity-95 py-6" 
-            />
-          </motion.div>
         </PageContainer>
       </div>
     </>

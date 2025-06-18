@@ -91,7 +91,7 @@ export default function BookMeetingContent() {
         <motion.section
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
+          transition={{ duration: 0.1, ease: 'easeOut' }}
           className="relative flex flex-col items-center justify-center min-h-[260px] py-8 md:py-16 bg-transparent border-b border-gray-100 overflow-visible"
           style={{ animationDelay: '0.1s', animationDuration: '0.7s' }}
         >
