@@ -18,7 +18,7 @@ import { useLanguage } from '@/lib/language-context';
 
 export default function Home() {
   const { t } = useLanguage();
-  const [showLoader, setShowLoader] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
   const [loadedContent, setLoadedContent] = useState(false);
 
   // Load content only after loader finishes
