@@ -261,11 +261,11 @@ export default function Header() {
         </div>
         
         {/* Mobile menu */}
-        <div className={`md:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-backgroundDark/95 shadow-lg z-[999999] border-t border-gray-200 dark:border-gray-700 backdrop-blur-xl transition-all duration-300 ease-in-out overflow-hidden ${
+        <div className={`md:hidden absolute left-0 right-0 bg-white/95 dark:bg-backgroundDark/95 shadow-lg z-[999999] border-t border-gray-200 dark:border-gray-700 backdrop-blur-xl transition-all duration-300 ease-in-out overflow-hidden ${
           menuOpen 
             ? 'max-h-96 opacity-100 transform translate-y-0 visible' 
             : 'max-h-0 opacity-0 transform -translate-y-2 pointer-events-none invisible'
-        }`}>
+        }`} style={{ top: 'calc(100% + 8px)' }}>
           <div ref={menuRef} className="p-4">
             <nav className="flex flex-col space-y-3">
               {NAV_LINKS[language].map((link, index) => 

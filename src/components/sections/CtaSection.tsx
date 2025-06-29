@@ -1,9 +1,8 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React from 'react';
 import Button from '@/components/ui/Button';
 import { useLanguage, Language } from '@/lib/language-context';
-import { motion } from 'framer-motion';
 import { FaEnvelope, FaPhoneAlt, FaRegComments, FaHandshake } from 'react-icons/fa';
 
 interface CtaSectionProps {

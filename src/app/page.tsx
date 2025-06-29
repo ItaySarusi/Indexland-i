@@ -62,86 +62,88 @@ export default function Home() {
       ),
       href: "/services/international-investment-brokerage",
       svg: "/files/svg/investing.svg"
+    },
+    {
+      title: t(PAGES.HOME.services[3].title),
+      description: t(PAGES.HOME.services[3].description),
+      icon: (
+        <svg className="w-12 h-12 text-purple-600 animate-pulse" fill="none" viewBox="0 0 48 48" stroke="currentColor"><path d="M24 4l-8 8h6v12h4V12h6l-8-8z" fill="#9C27B0"/><rect x="8" y="32" width="32" height="8" rx="2" fill="#9C27B0"/><circle cx="16" cy="28" r="2" fill="#9C27B0"/><circle cx="32" cy="28" r="2" fill="#9C27B0"/></svg>
+      ),
+      href: "/services/local-brokerage",
+      svg: "/files/svg/House-searching-rafiki.svg"
     }
   ];
   
   // Metrics data
   const metrics = [
     {
-      number: "50+",
+      value: "500+",
       label: {
-        he: "פרויקטים שהושלמו",
-        en: "Projects Completed"
+        he: "לקוחות מרוצים",
+        en: "Satisfied Clients"
       },
-      icon: (
-        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-        </svg>
-      )
+      description: {
+        he: "לקוחות שבחרו בנו כשותפים",
+        en: "Clients who chose us as partners"
+      }
     },
     {
-      number: "₪500M+",
+      value: "200M+",
       label: {
-        he: "שווי נכסים בניהול",
+        he: "נכסים בניהול",
         en: "Assets Under Management"
       },
-      icon: (
-        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      )
+      description: {
+        he: "שווי נכסים המנוהלים על ידי הצוות שלנו",
+        en: "Value of assets managed by our team"
+      }
     },
     {
-      number: "95%",
+      value: "15",
       label: {
-        he: "שביעות רצון לקוחות",
-        en: "Client Satisfaction"
+        he: "שנות ניסיון",
+        en: "Years of Experience"
       },
-      icon: (
-        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-        </svg>
-      )
+      description: {
+        he: "ניסיון מצטבר בתחום הנדל\"ן וההשקעות",
+        en: "Cumulative experience in real estate and investments"
+      }
     },
     {
-      number: "24/7",
+      value: "98%",
       label: {
-        he: "זמינות ותמיכה",
-        en: "Availability & Support"
+        he: "שיעור שביעות רצון",
+        en: "Satisfaction Rate"
       },
-      icon: (
-        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      )
+      description: {
+        he: "אחוז הלקוחות שממליצים על שירותינו",
+        en: "Percentage of clients who recommend our services"
+      }
     }
   ];
   
   // Testimonials data
   const testimonials = [
     {
-      id: 1,
-      name: "David Chen",
-      role: "CEO, TechCorp",
-      content: "Indexland transformed our office space beyond our expectations. Their attention to detail and professional approach made the entire process seamless.",
-      rating: 5,
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+      quote: "Indexland transformed our office space beyond our expectations. Their attention to detail and professional approach made the entire process seamless.",
+      author: "David Chen",
+      position: "CEO",
+      company: "TechCorp",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
     },
     {
-      id: 2,
-      name: "Sarah Williams", 
-      role: "Operations Director, StartupHub",
-      content: "The international investment guidance we received was invaluable. Indexland's expertise helped us make informed decisions in foreign markets.",
-      rating: 5,
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
+      quote: "The international investment guidance we received was invaluable. Indexland's expertise helped us make informed decisions in foreign markets.",
+      author: "Sarah Williams",
+      position: "Operations Director",
+      company: "StartupHub",
+      avatar: "/images/placeholder-avatar.png"
     },
     {
-      id: 3,
-      name: "Michael Rodriguez",
-      role: "Property Manager, GlobalRealty",
-      content: "Asset management services exceeded our ROI expectations. The team's strategic approach delivered outstanding results.",
-      rating: 5,
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+      quote: "Asset management services exceeded our ROI expectations. The team's strategic approach delivered outstanding results.",
+      author: "Michael Rodriguez",
+      position: "Property Manager",
+      company: "GlobalRealty",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
     }
   ];
   
