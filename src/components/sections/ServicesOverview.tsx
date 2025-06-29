@@ -25,7 +25,36 @@ export default function ServicesOverview({
   subtitle,
   services = []
 }: ServicesOverviewProps) {
-  const { language, t } = useLanguage();
+  const { t } = useLanguage();
+  
+  // Animation variants for staggered card animations (matching OurOfferSection)
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  };
+  
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      scale: 0.95 // Subtle scale instead of sliding
+    },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12,
+        duration: 0.6
+      }
+    }
+  };
   
   // קבלת הטקסט בשפה הנכונה
   const getLocalizedText = (text: string | Record<Language, string> | undefined): string => {
@@ -65,15 +94,25 @@ export default function ServicesOverview({
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center items-stretch gap-12 md:gap-6 max-w-7xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="glass-card glass-inner-shadow p-12 rounded-[2.5rem] flex flex-col items-center text-center transition-all duration-300 group relative overflow-hidden shadow-2xl border-2 border-white/30 hover:scale-105 hover:shadow-2xl hover:border-primary/60 hover:bg-gradient-to-br hover:from-white/60 hover:to-primary/10 dark:hover:from-backgroundDark/60 dark:hover:to-secondary/10"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: 0.05 * index, ease: "easeOut" }}
+              className="glass-card glass-inner-shadow p-12 rounded-[2.5rem] flex flex-col items-center text-center transition-all duration-300 group relative overflow-hidden shadow-2xl border-2 border-white/30 hover:scale-105 hover:shadow-2xl hover:border-primary/60 hover:bg-gradient-to-br hover:from-white/60 hover:to-primary/10 dark:hover:from-backgroundDark/60 dark:hover:to-secondary/10 max-w-sm mx-auto w-full cursor-pointer"
+              variants={cardVariants}
+              whileHover={{ 
+                scale: 1.05,
+                y: -5,
+                rotateY: -5, // Opposite rotation from Our Approach
+                transition: { type: "spring", stiffness: 300, damping: 20 }
+              }}
+              whileTap={{ scale: 0.98 }}
             >
               {/* Glass reflection overlay + glow border */}
               <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/60 to-transparent opacity-50 rounded-t-[2.5rem] pointer-events-none animate-glass-reflection" />
@@ -110,7 +149,7 @@ export default function ServicesOverview({
               <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-40 rounded-[2.5rem]" />
             </motion.div>
           ))}
-        </div>
+        </motion.div>
         <style jsx>{`
           @keyframes slide-up {
             from { opacity: 0; transform: translateY(32px); }

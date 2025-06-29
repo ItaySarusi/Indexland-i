@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/lib/language-context';
 import { Language } from '@/lib/language-context'; // Assuming Language type is exported from here
 
@@ -32,6 +33,7 @@ export default function TestimonialsSection({
 }: TestimonialsSectionProps) {
   const { t, language } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0); // Track animation direction
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -55,6 +57,7 @@ export default function TestimonialsSection({
     if (!autoPlay || testimonials.length <= 1) return;
     stopAutoPlay(); // Clear existing interval
     autoPlayRef.current = setInterval(() => {
+      setDirection(1); // Auto-rotation always moves forward (right)
       setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
     }, autoPlayInterval);
   }, [autoPlay, autoPlayInterval, testimonials.length]);
@@ -69,6 +72,7 @@ export default function TestimonialsSection({
 
   const nextSlide = () => {
     stopAutoPlay();
+    setDirection(1); // Moving forward
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
     // Optionally restart autoplay
     // setTimeout(startAutoPlay, 5000);
@@ -76,6 +80,7 @@ export default function TestimonialsSection({
 
   const prevSlide = () => {
     stopAutoPlay();
+    setDirection(-1); // Moving backward
     setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
      // Optionally restart autoplay
     // setTimeout(startAutoPlay, 5000);
@@ -113,6 +118,27 @@ export default function TestimonialsSection({
 
   const currentTestimonial = testimonials[currentIndex];
 
+  // Animation variants for directional sliding
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.9
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      scale: 1
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.9
+    })
+  };
+
   return (
     <section className={`px-8 relative py-16 md:py-24 overflow-hidden ${
       bgColor === 'white' ? 'bg-white' : bgColor === 'gray' ? 'bg-gray-50' : 'bg-blue-50'
@@ -128,41 +154,53 @@ export default function TestimonialsSection({
         )}
 
         <div className="relative max-w-3xl mx-auto">
-          {/* Testimonial Card */}
-          <div 
-            className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-500 ease-in-out p-8 md:p-10 min-h-[250px] flex flex-col justify-center"
-            key={currentIndex} // Add key to trigger re-render animation on change
-            style={{animation: 'fadeIn 0.7s ease-in-out'}}
-          >
-             <svg className="w-10 h-10 text-primary dark:text-secondary mb-4 opacity-80" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9.983 3v7.391c0 2.749-2.05 5.749-5.983 7.609l2.454 1.992c3.759-1.992 4.546-5.992 4.546-8.601h3v-9h-7.017zm11.017 0v7.391c0 2.749-2.05 5.749-5.983 7.609l2.454 1.992c3.759-1.992 4.546-5.992 4.546-8.601h3v-9h-7.017z"/>
-            </svg>
+          {/* Testimonial Card with Animation */}
+          <div className="relative overflow-hidden min-h-[300px] md:min-h-[250px]">
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={currentIndex}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  x: { type: "spring", stiffness: 300, damping: 30 },
+                  opacity: { duration: 0.2 }
+                }}
+                className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 md:p-10 min-h-[300px] md:min-h-[250px] flex flex-col justify-center absolute inset-0 w-full"
+              >
+                <svg className="w-10 h-10 text-primary dark:text-secondary mb-4 opacity-80" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.983 3v7.391c0 2.749-2.05 5.749-5.983 7.609l2.454 1.992c3.759-1.992 4.546-5.992 4.546-8.601h3v-9h-7.017zm11.017 0v7.391c0 2.749-2.05 5.749-5.983 7.609l2.454 1.992c3.759-1.992 4.546-5.992 4.546-8.601h3v-9h-7.017z"/>
+                </svg>
 
-            <blockquote className="text-gray-700 dark:text-gray-300 text-lg md:text-xl italic mb-6 flex-grow">
-              &ldquo;{getLocalizedText(currentTestimonial.quote)}&rdquo;
-            </blockquote>
-            
-            <div className="flex items-center">
-              <Image
-                className="w-12 h-12 object-cover rounded-full mr-4 border-2 border-primary/50"
-                src={currentTestimonial.avatar || '/images/placeholder-avatar.png'} // Provide fallback
-                alt={getLocalizedText(currentTestimonial.author)}
-                width={48}
-                height={48}
-                onError={(e) => (e.currentTarget.src = '/images/placeholder-avatar.png')} // Handle image load error
-              />
-              <div>
-                <p className="font-semibold text-primary dark:text-secondary">
-                  {getLocalizedText(currentTestimonial.author)}
-                </p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  {getLocalizedText(currentTestimonial.position)}
-                  {currentTestimonial.company && (
-                    <span>, {getLocalizedText(currentTestimonial.company)}</span>
-                  )}
-                </p>
-              </div>
-            </div>
+                <blockquote className="text-gray-700 dark:text-gray-300 text-base md:text-lg lg:text-xl italic mb-4 md:mb-6 flex-grow leading-relaxed">
+                  &ldquo;{getLocalizedText(currentTestimonial.quote)}&rdquo;
+                </blockquote>
+                
+                <div className="flex items-center mt-auto">
+                  <Image
+                    className="w-10 h-10 md:w-12 md:h-12 object-cover rounded-full mr-3 md:mr-4 border-2 border-primary/50 flex-shrink-0"
+                    src={currentTestimonial.avatar || '/images/placeholder-avatar.png'} // Provide fallback
+                    alt={getLocalizedText(currentTestimonial.author)}
+                    width={48}
+                    height={48}
+                    onError={(e) => (e.currentTarget.src = '/images/placeholder-avatar.png')} // Handle image load error
+                  />
+                  <div className="min-w-0 flex-1">
+                    <p className="font-semibold text-primary dark:text-secondary text-sm md:text-base truncate">
+                      {getLocalizedText(currentTestimonial.author)}
+                    </p>
+                    <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 leading-tight">
+                      {getLocalizedText(currentTestimonial.position)}
+                      {currentTestimonial.company && (
+                        <span>, {getLocalizedText(currentTestimonial.company)}</span>
+                      )}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
 
           {/* Navigation Arrows */}
@@ -171,14 +209,14 @@ export default function TestimonialsSection({
               <button
                 onClick={prevSlide}
                 aria-label={language === 'he' ? 'המלצה קודמת' : 'Previous testimonial'}
-                className="absolute top-1/2 -left-4 md:-left-10 transform -translate-y-1/2 bg-white dark:bg-gray-700 rounded-full p-2 shadow-md hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 z-20"
+                className="absolute top-1/2 -left-4 md:-left-10 transform -translate-y-1/2 bg-white dark:bg-gray-700 rounded-full p-2 shadow-md hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 z-20 cursor-pointer"
               >
                 <svg className="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
               </button>
               <button
                 onClick={nextSlide}
                 aria-label={language === 'he' ? 'המלצה הבאה' : 'Next testimonial'}
-                className="absolute top-1/2 -right-4 md:-right-10 transform -translate-y-1/2 bg-white dark:bg-gray-700 rounded-full p-2 shadow-md hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 z-20"
+                className="absolute top-1/2 -right-4 md:-right-10 transform -translate-y-1/2 bg-white dark:bg-gray-700 rounded-full p-2 shadow-md hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 z-20 cursor-pointer"
               >
                 <svg className="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
               </button>
@@ -194,7 +232,7 @@ export default function TestimonialsSection({
                 key={index}
                 onClick={() => goToSlide(index)}
                 aria-label={`${language === 'he' ? 'עבור להמלצה' : 'Go to testimonial'} ${index + 1}`}
-                className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                className={`w-3 h-3 rounded-full transition-colors duration-300 cursor-pointer ${
                   currentIndex === index ? 'bg-primary dark:bg-secondary' : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
                 }`}
               />

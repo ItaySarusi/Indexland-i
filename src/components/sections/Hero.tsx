@@ -47,6 +47,27 @@ export default function Hero({
   const primaryLabel = primaryActionLabel ? getLocalizedText(primaryActionLabel) : '';
   const secondaryLabel = secondaryActionLabel ? getLocalizedText(secondaryActionLabel) : '';
 
+  // Typing animation state (moved to top level to avoid conditional hooks)
+  const headline = titleText.split(':')[0];
+  const subheadline = titleText.split(':')[1]?.trim() || '';
+  const [typed, setTyped] = useState('');
+  
+  useEffect(() => {
+    if (variant !== 'background-image' || !enableTyping) {
+      setTyped(headline);
+      return;
+    }
+    
+    let i = 0;
+    setTyped('');
+    const interval = setInterval(() => {
+      setTyped(headline.slice(0, i + 1));
+      i++;
+      if (i === headline.length) clearInterval(interval);
+    }, 40);
+    return () => clearInterval(interval);
+  }, [headline, enableTyping, variant]);
+
   const renderContent = () => (
     <div className="max-w-xl">
       <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl">
@@ -72,30 +93,9 @@ export default function Hero({
 
   // וריאנט חדש עם התמונה כרקע מלא
   if (variant === 'background-image') {
-    // Typing animation for the first line (remove colon)
-    const headline = titleText.split(':')[0];
-    const subheadline = titleText.split(':')[1]?.trim() || '';
-    const [typed, setTyped] = useState('');
-    
-    
-    useEffect(() => {
-      if (!enableTyping) {
-        setTyped(headline);
-        return;
-      }
-      
-      let i = 0;
-      setTyped('');
-      const interval = setInterval(() => {
-        setTyped(headline.slice(0, i + 1));
-        i++;
-        if (i === headline.length) clearInterval(interval);
-      }, 40);
-      return () => clearInterval(interval);
-    }, [headline, enableTyping]);
     
     return (
-      <section className="relative overflow-hidden min-h-screen flex items-center" style={{ minHeight: '100vh' }}>
+      <section className="relative overflow-hidden min-h-screen flex items-center -mt-20" style={{ minHeight: '100vh', paddingTop: '5rem' }}>
         {imageUrl && (
           <div className="absolute inset-0 w-full h-full">
             <Image 
@@ -195,7 +195,7 @@ export default function Hero({
           <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-gradient-to-tr from-secondary/30 to-primary/10 rounded-full blur-2xl opacity-40 animate-float-medium" />
           <div className="absolute bottom-0 left-1/3 w-96 h-40 bg-white/20 dark:bg-backgroundDark/30 backdrop-blur-xl rounded-3xl shadow-glass border border-white/20 dark:border-white/10 opacity-60 animate-float-fast" />
         </div>
-        <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-20 z-10 relative">
+        <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-20 z-1 relative">
           <div className="mx-auto max-w-3xl glass-card animate-fade-in shadow-2xl rounded-3xl p-10 md:p-16 border border-white/30 dark:border-white/10 backdrop-blur-2xl relative overflow-hidden">
             {/* Glass reflection overlay */}
             <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent opacity-30 rounded-t-3xl pointer-events-none" />
@@ -231,7 +231,7 @@ export default function Hero({
         <div className="pointer-events-none absolute inset-0 z-0">
           <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[600px] h-[240px] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl opacity-40 animate-float-slow" />
         </div>
-        <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 relative z-10">
+        <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 relative z-1">
           <div className="mr-auto place-self-center lg:col-span-7">
             {renderContent()}
           </div>
@@ -259,7 +259,7 @@ export default function Hero({
       <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[600px] h-[240px] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl opacity-40 animate-float-slow" />
       </div>
-      <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 relative z-10">
+      <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 relative z-1">
         <div className="mr-auto place-self-center lg:col-span-7">
           {renderContent()}
         </div>

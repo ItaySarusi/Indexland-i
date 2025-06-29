@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import "@/styles/theme.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 import { SITE_NAME, SITE_DESCRIPTION } from "@/constants/site";
 import { LanguageProvider } from "@/lib/language-context";
 
@@ -32,6 +33,7 @@ export default function RootLayout({
             {children}
           </div>
           <Footer />
+          <ScrollToTop />
         </LanguageProvider>
       </body>
     </html>

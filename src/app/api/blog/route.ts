@@ -1,75 +1,51 @@
-import { NextResponse } from 'next/server';
-import { BlogListResponse, BlogPost } from '@/types/blog';
-import { fetchBlogsFromNotion, getBlogBySlug } from '@/lib/notion';
+import { NextRequest, NextResponse } from 'next/server';
+import { mockBlogPosts } from './mockData';
 
 // זה API דוגמה - בהמשך יתחבר ל-DB וכו'
 export const dynamic = 'force-dynamic';
 
-export async function GET(request: Request) {
-  try {
-    const { searchParams } = new URL(request.url);
-    const slug = searchParams.get('slug');
-    
-    if (slug) {
-      // Search for specific post by slug
-      const post = await getBlogBySlug(slug);
-      
-      if (!post) {
-        return NextResponse.json(null, { status: 404 });
-      }
-      
-      // Fetch all posts to get related posts
-      const allPosts = await fetchBlogsFromNotion();
-      
-      // Add related posts
-      const relatedPosts = allPosts
-        .filter(p => p.id !== post.id)
-        .slice(0, 2)
-        .map(p => ({
-          id: p.id,
-          slug: p.slug,
-          title: p.title,
-          description: p.description,
-          coverImage: p.coverImage
-        }));
-      
-      const postWithRelated = {
-        ...post,
-        relatedPosts
-      };
-      
-      return NextResponse.json(postWithRelated);
-    } else {
-      // Fetch all posts from Notion
-      const allPosts = await fetchBlogsFromNotion();
-      
-      // Return all posts with pagination
-      const pageSize = parseInt(searchParams.get('pageSize') || '10', 10);
-      const page = parseInt(searchParams.get('page') || '1', 10);
-      const startIndex = (page - 1) * pageSize;
-      const endIndex = startIndex + pageSize;
-      
-      const paginatedPosts = allPosts.slice(startIndex, endIndex);
-      const total = allPosts.length;
-      const totalPages = Math.ceil(total / pageSize);
-      
-      const response: BlogListResponse = {
-        posts: paginatedPosts,
-        total,
-        page,
-        pageSize,
-        totalPages
-      };
-      
-      return NextResponse.json(response);
-    }
-  } catch (error) {
-    console.error('Error in blog API:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch blog posts' },
-      { status: 500 }
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url);
+  const page = parseInt(searchParams.get('page') || '1');
+  const pageSize = parseInt(searchParams.get('pageSize') || '10');
+  const category = searchParams.get('category');
+  const tag = searchParams.get('tag');
+  const search = searchParams.get('search');
+
+  let filteredPosts = [...mockBlogPosts];
+
+  // Apply filters
+  if (category) {
+    // Filter by category if needed
+  }
+
+  if (tag) {
+    filteredPosts = filteredPosts.filter(post => 
+      Array.isArray(post.tags) ? post.tags.includes(tag) : false
     );
   }
+
+  if (search) {
+    filteredPosts = filteredPosts.filter(post => {
+      const title = typeof post.title === 'string' ? post.title : post.title.en;
+      const description = typeof post.description === 'string' ? post.description : post.description.en;
+      return title.toLowerCase().includes(search.toLowerCase()) ||
+             description.toLowerCase().includes(search.toLowerCase());
+    });
+  }
+
+  // Pagination
+  const startIndex = (page - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
+
+  return NextResponse.json({
+    posts: paginatedPosts,
+    total: filteredPosts.length,
+    page,
+    pageSize,
+    totalPages: Math.ceil(filteredPosts.length / pageSize)
+  });
 }
 
 // בהמשך יתווספו כאן פונקציות נוספות 

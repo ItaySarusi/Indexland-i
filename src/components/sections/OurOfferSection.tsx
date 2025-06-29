@@ -1,9 +1,39 @@
 "use client";
 import { useLanguage } from '@/lib/language-context';
 import { LucideClipboardList, LucideRocket, LucideSettings, LucideTrendingUp } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function OurOfferSection() {
   const { t } = useLanguage();
+  
+  // Animation variants for staggered card animations
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  };
+  
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      scale: 0.95 // Subtle scale instead of sliding
+    },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12,
+        duration: 0.6
+      }
+    }
+  };
   const steps = [
     {
       number: 1,
@@ -61,12 +91,26 @@ export default function OurOfferSection() {
             })}
           </p>
         </div>
-        <div className="flex flex-col md:flex-row justify-center items-stretch gap-10 md:gap-8 max-w-7xl mx-auto">
-          {steps.map((step, idx) => (
-            <div
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center items-stretch gap-12 md:gap-6 max-w-7xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {steps.map((step) => (
+            <motion.div
               key={step.number}
-              className="flex-1 glass-card rounded-[2.5rem] shadow-2xl p-10 flex flex-col items-center text-center animate-fade-in animate-scale-in transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-gold-400 hover:bg-gradient-to-br hover:from-white/60 hover:to-primary/10 dark:hover:from-backgroundDark/60 dark:hover:to-secondary/10 border-4 border-gradient-to-br from-yellow-300/40 via-primary/20 to-secondary/20 bg-white/70 dark:bg-backgroundDark/80 relative overflow-hidden group"
-              style={{ animationDelay: `${0.1 + idx * 0.13}s`, boxShadow: '0 8px 48px 0 rgba(255, 180, 80, 0.13), 0 1.5px 12px 0 rgba(255,255,255,0.13)' }}
+              className="glass-card rounded-[2.5rem] shadow-2xl p-10 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-gold-400 hover:bg-gradient-to-br hover:from-white/60 hover:to-primary/10 dark:hover:from-backgroundDark/60 dark:hover:to-secondary/10 border-4 border-gradient-to-br from-yellow-300/40 via-primary/20 to-secondary/20 bg-white/70 dark:bg-backgroundDark/80 relative overflow-hidden group max-w-sm mx-auto w-full cursor-pointer"
+              style={{ boxShadow: '0 8px 48px 0 rgba(255, 180, 80, 0.13), 0 1.5px 12px 0 rgba(255,255,255,0.13)' }}
+              variants={cardVariants}
+              whileHover={{ 
+                scale: 1.05,
+                y: -5,
+                rotateY: 5,
+                transition: { type: "spring", stiffness: 300, damping: 20 }
+              }}
+              whileTap={{ scale: 0.98 }}
             >
               {/* Glass reflection overlay + glow border */}
               <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/60 to-transparent opacity-50 rounded-t-[2.5rem] pointer-events-none animate-glass-reflection" />
@@ -86,9 +130,9 @@ export default function OurOfferSection() {
                 {t(step.description)}
               </p>
               <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-20 rounded-[2.5rem]" />
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

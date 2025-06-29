@@ -81,9 +81,18 @@
 @layer base {
   * {
     @apply border-border;
+    margin: 0;
+    padding: 0;
   }
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  html {
+    overflow-x: hidden;
+    overscroll-behavior: none;
   }
   
   /* RTL Support */
@@ -155,28 +164,28 @@
 
 /* Neon shadow styles for HeroGeometric buttons and text */
 .shadow-neon {
-  box-shadow: 0 0 16px 2px theme('colors.primary'), 0 0 32px 4px theme('colors.primary');
+  box-shadow: 0 0 16px 2px theme('colors.primary.DEFAULT'), 0 0 32px 4px theme('colors.primary.DEFAULT');
 }
 .shadow-neon-hover {
-  box-shadow: 0 0 32px 8px theme('colors.primary'), 0 0 64px 16px theme('colors.primary');
+  box-shadow: 0 0 32px 8px theme('colors.primary.DEFAULT'), 0 0 64px 16px theme('colors.primary.DEFAULT');
 }
 .shadow-neon-outline {
-  box-shadow: 0 0 8px 2px theme('colors.secondary');
+  box-shadow: 0 0 8px 2px theme('colors.secondary.DEFAULT');
 }
 .shadow-neon-outline-hover {
-  box-shadow: 0 0 24px 8px theme('colors.secondary');
+  box-shadow: 0 0 24px 8px theme('colors.secondary.DEFAULT');
 }
 .drop-shadow-neon {
-  filter: drop-shadow(0 0 8px theme('colors.primary'));
+  filter: drop-shadow(0 0 8px theme('colors.primary.DEFAULT'));
 }
 .drop-shadow-neon-soft {
-  filter: drop-shadow(0 0 4px theme('colors.primary'));
+  filter: drop-shadow(0 0 4px theme('colors.primary.DEFAULT'));
 }
 .border-primary {
-  border-color: theme('colors.primary');
+  border-color: theme('colors.primary.DEFAULT');
 }
 .focus\:ring-primary:focus {
-  --tw-ring-color: theme('colors.primary');
+  --tw-ring-color: theme('colors.primary.DEFAULT');
 }
 
 /* Smooth motion utilities */
