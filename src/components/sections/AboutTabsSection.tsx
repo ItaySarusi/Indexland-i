@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Button from '../ui/Button';
+"use client";
+import { useState } from 'react';
 import { useLanguage } from '@/lib/language-context';
 import { PAGES } from '@/constants/site';
 

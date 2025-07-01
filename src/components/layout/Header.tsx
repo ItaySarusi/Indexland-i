@@ -96,7 +96,7 @@ export default function Header() {
   return (
     <header className={`fixed top-0 left-0 w-full z-[99999] transition-all duration-300 py-2 px-2 sm:px-4 max-w-full mx-auto ${
       isAtTop 
-        ? 'bg-black/90 backdrop-blur-sm shadow-lg' 
+        ? (isDarkMode ? 'bg-black/90' : 'bg-white/90')
         : 'navbar-glass bg-white/0 backdrop-blur-xl'
     }`}>
       <div className="container flex items-center justify-between flex-row-reverse flex-shrink-0" style={{ zIndex: '999999', position: 'relative' }}>
@@ -107,10 +107,10 @@ export default function Header() {
                 key={link.name}
                 href={link.href}
                 className={`${link.isButton
-                  ? "snake-border-btn bg-primary text-white dark:text-textPrimary"
+                  ? `snake-border-btn bg-primary text-white dark:text-textPrimary`
                   : isLinkActive(link.href)
-                    ? `snake-border-btn bg-primary/10 border-primary/30 font-semibold ${isAtTop ? 'text-white hover:text-gray-300' : 'text-primary hover:text-black'}`
-                    : `snake-border-btn ${isAtTop ? 'text-white hover:text-gray-300' : 'hover:text-black'}`
+                    ? `snake-border-btn bg-primary/10 border-primary/30 font-semibold ${isAtTop ? (isDarkMode ? 'text-white hover:text-gray-300' : 'text-black hover:text-gray-700') : 'text-primary hover:text-black'}`
+                    : `snake-border-btn ${isAtTop ? (isDarkMode ? 'text-white hover:text-gray-300' : 'text-black hover:text-gray-700') : 'hover:text-black'}`
                 }`}
               >
                 <span>{link.name}</span>
@@ -119,8 +119,8 @@ export default function Header() {
               <div key={link.name} className="relative group/dropdown">
                 <button className={`snake-border-btn flex items-center gap-1 cursor-pointer ${
                   isParentActive(link) 
-                    ? `bg-primary/10 border-primary/30 font-semibold ${isAtTop ? 'text-white hover:text-gray-300' : 'text-primary hover:text-black'}`
-                    : `${isAtTop ? 'text-white hover:text-gray-300' : 'hover:text-black'}`
+                    ? `bg-primary/10 border-primary/30 font-semibold ${isAtTop ? (isDarkMode ? 'text-white hover:text-gray-300' : 'text-black hover:text-gray-700') : 'text-primary hover:text-black'}`
+                    : `${isAtTop ? (isDarkMode ? 'text-white hover:text-gray-300' : 'text-black hover:text-gray-700') : 'hover:text-black'}`
                 }`}>
                   <span>{link.name}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 transition-transform duration-200 group-hover/dropdown:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -154,7 +154,7 @@ export default function Header() {
           )}
           <button
             onClick={toggleDarkMode}
-            className="snake-border-btn ml-2 p-2 flex items-center justify-center no-hover-effect"
+            className={`snake-border-btn ml-2 p-2 flex items-center justify-center no-hover-effect ${isAtTop ? (isDarkMode ? 'text-white' : 'text-black') : ''}`}
             aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
           >
             {isDarkMode ? (
@@ -169,7 +169,7 @@ export default function Header() {
           </button>
           <button
             onClick={toggleLanguage}
-            className="snake-border-btn px-3 py-1 flex items-center gap-1 no-hover-effect"
+            className={`snake-border-btn px-3 py-1 flex items-center gap-1 no-hover-effect ${isAtTop ? (isDarkMode ? 'text-white' : 'text-black') : ''}`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
