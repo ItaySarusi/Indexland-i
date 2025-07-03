@@ -92,7 +92,6 @@ export default function ServicesAtAGlance({
       scale: 1,
       transition: { 
         duration: 0.5, 
-        ease: [0.16, 1, 0.3, 1],
         staggerChildren: 0.1
       }
     },
@@ -101,8 +100,7 @@ export default function ServicesAtAGlance({
       y: -20,
       scale: 0.95,
       transition: { 
-        duration: 0.3, 
-        ease: "easeOut" 
+        duration: 0.3
       }
     }
   };
@@ -127,15 +125,13 @@ export default function ServicesAtAGlance({
       scale: 1,
       transition: { 
         duration: 0.5, 
-        ease: [0.16, 1, 0.3, 1] // Match content animation timing and easing
       }
     },
     exit: {
       opacity: 0,
       scale: 0.95,
       transition: { 
-        duration: 0.3, 
-        ease: "easeOut" 
+        duration: 0.3
       }
     }
   };
@@ -288,57 +284,42 @@ export default function ServicesAtAGlance({
                   animate="visible"
                   exit="exit"
                   className={cn(
-                    "glass-card glass-inner-shadow p-10 md:p-16 rounded-3xl shadow-2xl border-2 border-gradient-to-br from-primary/20 to-secondary/20 bg-white/90 dark:bg-backgroundDark/90 relative overflow-hidden",
-                    "flex flex-col sm:flex-row items-center gap-10",
+                    "p-8 md:p-10 rounded-3xl shadow-xl border border-primary/20 bg-white/70 dark:bg-backgroundDark/80 relative overflow-hidden flex flex-col items-center gap-4 transition-all duration-300",
+                    "hover:shadow-2xl hover:border-primary/40",
                     serviceItems[activeIndex].accentColor || 'text-orange-500'
                   )}
                 >
-                  <motion.div 
+                  <motion.div
                     variants={itemVariants}
-                    className="flex-shrink-0 p-6 rounded-full bg-gradient-to-br from-primary/10 to-secondary/10 shadow-lg mb-6 sm:mb-0 flex items-center justify-center"
+                    className="flex-shrink-0 flex flex-col items-center justify-center mb-2"
                   >
-                    <span className="h-16 w-16 md:h-20 md:w-20 flex items-center justify-center text-5xl">
+                    <span className="h-20 w-20 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-secondary/10 shadow-lg text-5xl mb-3">
                       {serviceItems[activeIndex].icon}
                     </span>
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     variants={itemVariants}
-                    className={cn(
-                      "flex-grow text-center sm:text-left",
-                      dir === 'rtl' && "sm:text-right"
-                    )}
+                    className="flex flex-col items-center text-center w-full"
                   >
-                    <h3 className={cn(
-                      "text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-2 tracking-tight flex items-center gap-2 justify-center sm:justify-start",
-                      dir === 'rtl' && "sm:justify-end sm:flex-row-reverse"
-                    )}>
+                    <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white mb-1 tracking-tight">
                       {t(serviceItems[activeIndex].title)}
                     </h3>
-                    <div className={cn(
-                      "h-1 w-20 rounded-full mb-4 mx-auto sm:mx-0",
-                      dir === 'ltr' 
-                        ? "bg-gradient-to-l from-primary to-secondary sm:mr-auto sm:ml-0" 
-                        : "bg-gradient-to-r from-primary to-secondary",
-                    )} />
-                    <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-5 font-medium">
+                    <div className="h-1 w-16 rounded-full mb-4 mx-auto bg-gradient-to-r from-primary to-secondary opacity-70" />
+                    <p className="text-lg md:text-xl text-gray-700 dark:text-gray-200 mb-4 font-medium">
                       {t(serviceItems[activeIndex].description)}
                     </p>
                     <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
                       {language === 'he' ? "כולל בין היתר:" : "Including Services Like:"}
                     </h4>
-                    <ul className="list-none space-y-1 text-lg text-gray-700 dark:text-gray-200">
+                    <ul className="list-none space-y-1 text-base text-gray-700 dark:text-gray-200 w-full max-w-xs mx-auto">
                       {serviceItems[activeIndex].subServices.map((sub, subIndex) => (
-                        <motion.li 
-                          key={subIndex} 
+                        <motion.li
+                          key={subIndex}
                           variants={itemVariants}
-                          className={cn(
-                            "flex items-center gap-2 justify-center sm:justify-start sm:justify-end sm:flex-row-reverse"
-                          )}
+                          className="flex items-center gap-2 justify-center"
                         >
                           <span>{t(sub)}</span>
-                          <span className="text-primary text-lg">
-                            »
-                          </span>
+                          <span className="text-primary text-lg">»</span>
                         </motion.li>
                       ))}
                     </ul>
