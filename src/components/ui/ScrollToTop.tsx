@@ -38,7 +38,7 @@ export default function ScrollToTop() {
       onClick={scrollToTop}
       aria-label="Scroll to top"
       style={{
-        background: '#FF9800',
+        background: 'rgb(255 87 34 / var(--tw-text-opacity))',
         boxShadow: '0 4px 20px rgba(255, 152, 0, 0.4)',
         display: 'flex',
         alignItems: 'center',
