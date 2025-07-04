@@ -68,7 +68,7 @@ export default function CtaSection({
                 className="cta-animated-btn group font-extrabold text-lg sm:text-xl px-6 sm:px-10 py-3 sm:py-4 rounded-2xl shadow-xl bg-white text-primary border-2 border-white relative overflow-hidden transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary/30"
               >
                 <span className="relative z-10">{primaryBtnText}</span>
-                <span className="shine-effect absolute inset-0 pointer-events-none" />
+                <span className="pulse-effect absolute inset-0 pointer-events-none" />
               </a>
               {/* Floating effect */}
               <div className="absolute -z-10 inset-0 rounded-3xl bg-[#f26a3d] blur-[2px] opacity-90 shadow-2xl" />
@@ -95,17 +95,20 @@ export default function CtaSection({
             border-color: #ff9800;
             z-index: 2;
           }
-          .shine-effect {
-            content: '';
-            display: block;
-            background: linear-gradient(120deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.15) 100%);
-            opacity: 0.7;
-            pointer-events: none;
-            animation: shine-move 2.2s linear infinite;
+          .pulse-effect {
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            opacity: 0;
+            animation: pulse-glow 3s ease-in-out infinite;
           }
-          @keyframes shine-move {
-            0% { left: -60%; }
-            100% { left: 120%; }
+          @keyframes pulse-glow {
+            0%, 100% { 
+              opacity: 0;
+              transform: scale(0.8);
+            }
+            50% { 
+              opacity: 0.6;
+              transform: scale(1.2);
+            }
           }
         `}</style>
       </section>

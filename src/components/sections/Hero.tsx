@@ -33,7 +33,7 @@ export default function Hero({
   enableTyping = true,
 }: HeroProps) {
   const { language, t } = useLanguage();
-  
+
   // קבלת הטקסט בשפה הנכונה
   const getLocalizedText = (text: string | Record<Language, string>): string => {
     if (typeof text === 'string') {
@@ -41,32 +41,11 @@ export default function Hero({
     }
     return t(text);
   };
-  
+
   const titleText = getLocalizedText(title);
   const subtitleText = getLocalizedText(subtitle);
   const primaryLabel = primaryActionLabel ? getLocalizedText(primaryActionLabel) : '';
   const secondaryLabel = secondaryActionLabel ? getLocalizedText(secondaryActionLabel) : '';
-
-  // Typing animation state (moved to top level to avoid conditional hooks)
-  const headline = titleText.split(':')[0];
-  const subheadline = titleText.split(':')[1]?.trim() || '';
-  const [typed, setTyped] = useState('');
-  
-  useEffect(() => {
-    if (variant !== 'background-image' || !enableTyping) {
-      setTyped(headline);
-      return;
-    }
-    
-    let i = 0;
-    setTyped('');
-    const interval = setInterval(() => {
-      setTyped(headline.slice(0, i + 1));
-      i++;
-      if (i === headline.length) clearInterval(interval);
-    }, 40);
-    return () => clearInterval(interval);
-  }, [headline, enableTyping, variant]);
 
   const renderContent = () => (
     <div className="max-w-xl">
@@ -93,14 +72,35 @@ export default function Hero({
 
   // וריאנט חדש עם התמונה כרקע מלא
   if (variant === 'background-image') {
-    
+    // Typing animation for the first line (remove colon)
+    const headline = titleText.split(':')[0];
+    const subheadline = titleText.split(':')[1]?.trim() || '';
+    const [typed, setTyped] = useState('');
+
+
+    useEffect(() => {
+      if (!enableTyping) {
+        setTyped(headline);
+        return;
+      }
+
+      let i = 0;
+      setTyped('');
+      const interval = setInterval(() => {
+        setTyped(headline.slice(0, i + 1));
+        i++;
+        if (i === headline.length) clearInterval(interval);
+      }, 40);
+      return () => clearInterval(interval);
+    }, [headline, enableTyping]);
+
     return (
-      <section className="relative overflow-hidden min-h-screen flex items-center -mt-20" style={{ minHeight: '100vh', paddingTop: '5rem' }}>
+      <section className="relative overflow-hidden min-h-screen flex items-center" style={{ minHeight: '100vh' }}>
         {imageUrl && (
           <div className="absolute inset-0 w-full h-full">
-            <Image 
-              src={imageUrl} 
-              alt={typeof title === 'string' ? title : title[language]} 
+            <Image
+              src={imageUrl}
+              alt={typeof title === 'string' ? title : title[language]}
               fill
               style={{ objectFit: 'cover' }}
               priority
@@ -111,7 +111,7 @@ export default function Hero({
         )}
         <div className="container mx-auto h-full flex justify-center items-center relative z-10">
           <div className="max-w-2xl w-full bg-black/20 backdrop-blur-sm py-6 px-8 rounded-lg border border-white/10 flex flex-col items-center text-center min-h-fit">
-            <h1 className="mb-1 text-5xl font-extrabold tracking-tight leading-none md:text-6xl lg:text-7xl text-white drop-shadow-lg" style={{letterSpacing: '-0.02em'}}>
+            <h1 className="mb-1 text-5xl font-extrabold tracking-tight leading-none md:text-6xl lg:text-7xl text-white drop-shadow-lg" style={{ letterSpacing: '-0.02em' }}>
               <span className="block whitespace-pre-line pb-[1.5rem]">
                 <span className="block">
                   {typed}
@@ -195,11 +195,11 @@ export default function Hero({
           <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-gradient-to-tr from-secondary/30 to-primary/10 rounded-full blur-2xl opacity-40 animate-float-medium" />
           <div className="absolute bottom-0 left-1/3 w-96 h-40 bg-white/20 dark:bg-backgroundDark/30 backdrop-blur-xl rounded-3xl shadow-glass border border-white/20 dark:border-white/10 opacity-60 animate-float-fast" />
         </div>
-        <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-20 z-1 relative">
+        <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-20 z-10 relative">
           <div className="mx-auto max-w-3xl glass-card animate-fade-in shadow-2xl rounded-3xl p-10 md:p-16 border border-white/30 dark:border-white/10 backdrop-blur-2xl relative overflow-hidden">
             {/* Glass reflection overlay */}
             <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent opacity-30 rounded-t-3xl pointer-events-none" />
-            <h1 className="mb-6 text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-primary drop-shadow-xl animate-scale-in" style={{letterSpacing: '-0.02em'}}>
+            <h1 className="mb-6 text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-primary drop-shadow-xl animate-scale-in" style={{ letterSpacing: '-0.02em' }}>
               {titleText}
             </h1>
             <p className="mb-10 text-xl font-light text-gray-700 dark:text-textSecondary animate-fade-in delay-100 sm:px-16 lg:px-32">
@@ -231,15 +231,15 @@ export default function Hero({
         <div className="pointer-events-none absolute inset-0 z-0">
           <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[600px] h-[240px] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl opacity-40 animate-float-slow" />
         </div>
-        <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 relative z-1">
+        <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 relative z-10">
           <div className="mr-auto place-self-center lg:col-span-7">
             {renderContent()}
           </div>
           <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
             {imageUrl && (
-              <Image 
-                src={imageUrl} 
-                alt={typeof title === 'string' ? title : title[language]} 
+              <Image
+                src={imageUrl}
+                alt={typeof title === 'string' ? title : title[language]}
                 className="rounded-lg shadow-xl object-cover"
                 width={500}
                 height={350}
@@ -259,15 +259,15 @@ export default function Hero({
       <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[600px] h-[240px] bg-gradient-to-br from-primary/20 to-secondary/10 rounded-full blur-3xl opacity-40 animate-float-slow" />
       </div>
-      <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 relative z-1">
+      <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 relative z-10">
         <div className="mr-auto place-self-center lg:col-span-7">
           {renderContent()}
         </div>
         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
           {imageUrl && (
-            <Image 
-              src={imageUrl} 
-              alt={typeof title === 'string' ? title : title[language]} 
+            <Image
+              src={imageUrl}
+              alt={typeof title === 'string' ? title : title[language]}
               className="rounded-lg shadow-xl object-cover"
               width={500}
               height={350}

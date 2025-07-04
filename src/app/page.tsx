@@ -312,12 +312,12 @@ export default function Home() {
           </motion.div>
           
           
-          {/* CtaSection - pop in from bottom */}
+          {/* CtaSection - simple fade up */}
           <motion.div
-            initial={{ opacity: 0, y: 80, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, type: 'spring', bounce: 0.2 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             <CtaSection 
               title={{

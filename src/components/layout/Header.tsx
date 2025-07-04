@@ -190,9 +190,9 @@ export default function Header() {
           <button 
             onClick={toggleDarkMode}
             className={`mr-2 p-2 rounded-md no-hover-effect cursor-pointer transition-colors ${
-              isAtTop 
-                ? 'text-white hover:bg-white/20' 
-                : 'text-gray-700 dark:text-textPrimary hover:bg-gray-100 dark:hover:bg-gray-800'
+              isDarkMode 
+                ? (isAtTop ? 'text-white hover:bg-white/20' : 'text-gray-700 dark:text-textPrimary hover:bg-gray-100 dark:hover:bg-gray-800')
+                : 'text-black hover:bg-black/10'
             }`}
             aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
           >
@@ -210,9 +210,9 @@ export default function Header() {
           <button 
             onClick={toggleLanguage}
             className={`mr-4 px-2 py-1 rounded-md border flex items-center gap-1 no-hover-effect cursor-pointer transition-colors ${
-              isAtTop 
-                ? 'border-white/30 text-white hover:bg-white/20' 
-                : 'border-gray-300 dark:border-gray-700 text-gray-700 dark:text-textPrimary hover:bg-gray-100 dark:hover:bg-gray-800'
+              isDarkMode 
+                ? (isAtTop ? 'border-white/30 text-white hover:bg-white/20' : 'border-gray-300 dark:border-gray-700 text-gray-700 dark:text-textPrimary hover:bg-gray-100 dark:hover:bg-gray-800')
+                : 'border-gray-300 text-black hover:bg-black/10'
             }`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -225,9 +225,9 @@ export default function Header() {
             className={`cursor-pointer transition-all duration-300 p-2 rounded-md ${
               menuOpen 
                 ? 'bg-black text-white hover:bg-gray-800' 
-                : isAtTop 
-                  ? 'text-white hover:bg-white/20' 
-                  : 'text-gray-700 dark:text-textPrimary hover:bg-gray-100 dark:hover:bg-gray-800'
+                : isDarkMode 
+                  ? (isAtTop ? 'text-white hover:bg-white/20' : 'text-gray-700 dark:text-textPrimary hover:bg-gray-100 dark:hover:bg-gray-800')
+                  : 'text-black hover:bg-black/10'
             }`}
             aria-label="Toggle mobile menu"
           >

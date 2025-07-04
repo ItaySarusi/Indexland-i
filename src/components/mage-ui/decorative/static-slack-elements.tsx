@@ -190,7 +190,7 @@ function LineFive({ className, style }: LineProps) {
 }
 
 // מחזירה דוגמא של 1-2 שורות בלבד
-function MinimalView({ className, scrollOffset = 0 }: { className?: string, scrollOffset?: number }) {
+function MinimalView({ scrollOffset = 0 }: { scrollOffset?: number }) {
   const common = "flex gap-3 md:gap-5 items-center w-full justify-between";
   
   return (
@@ -208,7 +208,7 @@ function MinimalView({ className, scrollOffset = 0 }: { className?: string, scro
 }
 
 // מחזירה דוגמא של 3 שורות צפופות
-function CompactView({ className, scrollOffset = 0 }: { className?: string, scrollOffset?: number }) {
+function CompactView({ scrollOffset = 0 }: { scrollOffset?: number }) {
   const common = "flex gap-3 md:gap-5 items-center w-full justify-between";
   
   return (
@@ -230,7 +230,7 @@ function CompactView({ className, scrollOffset = 0 }: { className?: string, scro
 }
 
 // מחזירה שורה אחת ארוכה עם כל האלמנטים
-function HorizontalScatteredView({ className, scrollOffset = 0 }: { className?: string, scrollOffset?: number }) {
+function HorizontalScatteredView({ scrollOffset = 0 }: { scrollOffset?: number }) {
   return (
     <div 
       className="flex items-center gap-3 md:gap-5 w-full justify-between" 
@@ -252,7 +252,6 @@ function HorizontalScatteredView({ className, scrollOffset = 0 }: { className?: 
 
 export default function StaticSlackElements({ 
   className,
-  variant = "mixed",
   type = "full",
   direction = "horizontal",
   scrollEffect = "parallax",
@@ -261,6 +260,7 @@ export default function StaticSlackElements({
   const [isVisible, setIsVisible] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout>();
   
   useEffect(() => {
     setIsVisible(true);
@@ -270,19 +270,30 @@ export default function StaticSlackElements({
         const container = containerRef.current;
         const rect = container.getBoundingClientRect();
         
-        // קובעים את ה offset לפי מיקום האלמנט על המסך
-        if (rect.top >= -rect.height && rect.top <= window.innerHeight) {
-          const relativeScrollPos = window.scrollY - (rect.top + window.scrollY - window.innerHeight / 2);
-          setScrollY(relativeScrollPos);
+        // Simplified scroll calculation to prevent getting stuck
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          const scrollProgress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
+          setScrollY(scrollProgress * 100);
         }
       }
     };
     
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // בדיקה ראשונית
+    // Throttle scroll events to improve performance
+    const throttledHandleScroll = () => {
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+      scrollTimeoutRef.current = setTimeout(() => handleScroll(), 16); // ~60fps
+    };
+    
+    window.addEventListener("scroll", throttledHandleScroll, { passive: true });
+    handleScroll(); // Initial check
     
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", throttledHandleScroll);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
     };
   }, [scrollEffect]);
 
@@ -372,4 +383,4 @@ export default function StaticSlackElements({
         </div>
       );
   }
-} 
+}
