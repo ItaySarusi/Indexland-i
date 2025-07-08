@@ -215,7 +215,7 @@ export default function ServicesAtAGlance({
                 className="w-12 h-12 rounded-full bg-white/80 dark:bg-backgroundDark/80 shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-backgroundDark transition-all duration-200 hover:scale-110 active:scale-95"
                 aria-label="Previous service"
               >
-                <ChevronLeft className="w-6 h-6 text-primary" />
+                <ChevronLeft className={`w-6 h-6 text-primary ${language === 'he' ? 'transform scale-x-[-1]' : ''}`} />
               </button>
 
               {/* Current Button */}
@@ -242,7 +242,7 @@ export default function ServicesAtAGlance({
                 className="w-12 h-12 rounded-full bg-white/80 dark:bg-backgroundDark/80 shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-backgroundDark transition-all duration-200 hover:scale-110 active:scale-95"
                 aria-label="Next service"
               >
-                <ChevronRight className="w-6 h-6 text-primary" />
+                <ChevronRight className={`w-6 h-6 text-primary ${language === 'he' ? 'transform scale-x-[-1]' : ''}`} />
               </button>
             </div>
 

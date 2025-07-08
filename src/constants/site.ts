@@ -194,19 +194,19 @@ export const PAGES = {
   HOME: {
     hero: {
       title: {
-        he: "Indexland: פתרונות מפתח בידיים לצרכי המשרד שלכם",
-        en: "Indexland: Turn Key Solutions For Your Office Needs"
+        he: "Indexland: השותף שלכם מא' עד ת' בתחום המשרדים והנדל\"ן",
+        en: "Indexland: Your A–Z Office & Real Estate Partner"
       },
       subtitle: {
-        he: "פתרונות משרדים מפתח בידיים, ניהול נכסים ושירותי השקעה גלובליים - מקומיים וגלובליים.",
-        en: "Turnkey office solutions, asset management, and global investment services — local and global."
+        he: "אנחנו כאן כדי לעזור לכם למצוא את מרחב העבודה המושלם, לנהל את הנכסים שלכם ולהשקיע בחכמה - בישראל ובעולם.",
+        en: "Turnkey workspace solutions, asset management, and investment services—local and global."
       },
       primaryActionLabel: {
         he: "קביעת פגישה",
         en: "Book a Meeting"
       },
       secondaryActionLabel: {
-        he: "חקור שירותים",
+        he: "השירותים שלנו",
         en: "Explore Services"
       }
     },
@@ -1725,6 +1725,254 @@ export const PAGES = {
       message: {
         he: "תודה שפנית אלינו. נחזור אליך בהקדם לאישור הפגישה.",
         en: "Thank you for contacting us. We'll get back to you soon to confirm the meeting."
+      }
+    }
+  },
+
+  INTERNATIONAL_INVESTMENT_BROKERAGE: {
+    hero: {
+      title: {
+        he: "תיווך השקעות בינלאומי",
+        en: "International Investment Brokerage"
+      },
+      subtitle: {
+        he: "פתרונות השקעה מתקדמים בשווקים בינלאומיים עם מיקוד על תשואה מקסימלית ופיזור סיכונים",
+        en: "Advanced investment solutions in international markets with a focus on maximum returns and risk diversification"
+      },
+      cta1: {
+        he: "צור קשר עכשיו",
+        en: "Contact Us Now"
+      },
+      cta2: {
+        he: "הורד מדריך השקעות",
+        en: "Download Investment Guide"
+      }
+    },
+    features: [
+      {
+        title: {
+          he: "ניסיון רב שנים",
+          en: "Years of Experience"
+        },
+        description: {
+          he: "צוות מנוסה עם מומחיות עמוקה בתחום הנדל\"ן והשקעות",
+          en: "Experienced team with deep expertise in real estate and investments"
+        },
+        icon: React.createElement('svg', {
+          className: "w-8 h-8",
+          fill: "none",
+          stroke: "currentColor",
+          viewBox: "0 0 24 24"
+        }, React.createElement('path', {
+          strokeLinecap: "round",
+          strokeLinejoin: "round",
+          strokeWidth: 2,
+          d: "M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+        }))
+      },
+      {
+        title: {
+          he: "גישה אישית",
+          en: "Personal Approach"
+        },
+        description: {
+          he: "התאמה אישית לכל לקוח ופתרונות מותאמים לצרכים הספציפיים",
+          en: "Personal adaptation for each client and solutions tailored to specific needs"
+        },
+        icon: React.createElement('svg', {
+          className: "w-8 h-8",
+          fill: "none",
+          stroke: "currentColor",
+          viewBox: "0 0 24 24"
+        }, React.createElement('path', {
+          strokeLinecap: "round",
+          strokeLinejoin: "round",
+          strokeWidth: 2,
+          d: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+        }))
+      },
+      {
+        title: {
+          he: "רשת בינלאומית",
+          en: "International Network"
+        },
+        description: {
+          he: "קשרים עסקיים ברחבי העולם לזיהוי הזדמנויות השקעה מיוחדות",
+          en: "Business connections worldwide for identifying special investment opportunities"
+        },
+        icon: React.createElement('svg', {
+          className: "w-8 h-8",
+          fill: "none",
+          stroke: "currentColor",
+          viewBox: "0 0 24 24"
+        }, React.createElement('path', {
+          strokeLinecap: "round",
+          strokeLinejoin: "round",
+          strokeWidth: 2,
+          d: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        }))
+      }
+    ],
+    team: {
+      title: {
+        he: "הצוות שלנו",
+        en: "Meet the Team"
+      },
+      subtitle: {
+        he: "הכירו את המומחים שמאחורי Indexland",
+        en: "Meet The Experts Behind Indexland"
+      },
+      members: [
+        {
+          name: {
+            he: "נועם",
+            en: "Noam"
+          },
+          role: {
+            he: "מייסד",
+            en: "Founder"
+          },
+          bio: {
+            he: "נועם, מייסד - מעל 10 שנות ניסיון בנדל\"ן, נועם הוביל את החזון של Indexland מסוכנות בוטיק לייעוץ מקיף.",
+            en: "Noam, Founder – Over 10 years in real estate, Noam led Indexland's vision from boutique agency to full-spectrum consultancy."
+          },
+          image: "/partner2.webp",
+          socialLinks: {
+            linkedin: "https://www.linkedin.com/in/noam-brender?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+            email: "noam@indexland.co.il"
+          }
+        },
+        {
+          name: {
+            he: "אורי",
+            en: "Ori"
+          },
+          role: {
+            he: "שותף מייסד",
+            en: "Co-Founder"
+          },
+          bio: {
+            he: "אורי, שותף מייסד - מומחה בניהול נכסים ותפעול לקוחות, אורי הוא הלב התפעולי מאחורי כל פרויקט של Indexland.",
+            en: "Ori, Co-Founder – Expert in asset management and client operations, Ori is the operational heart behind every Indexland project."
+          },
+          image: "/partner1.webp",
+          socialLinks: {
+            linkedin: "https://www.linkedin.com/in/ori-brender-177534199?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+            email: "ori@indexland.co.il"
+          }
+        }
+      ]
+    },
+    clients: {
+      title: {
+        he: "לקוחות מרוצים",
+        en: "Satisfied Clients"
+      }
+    },
+    coreValues: {
+      title: {
+        he: "ערכים מרכזיים",
+        en: "Core Values"
+      },
+      values: [
+        {
+          title: {
+            he: "מצוינות",
+            en: "Excellence"
+          },
+          description: {
+            he: "שום פרט אינו קטן מדי.",
+            en: "No detail too small."
+          },
+          icon: "star"
+        },
+        {
+          title: {
+            he: "יושרה",
+            en: "Integrity"
+          },
+          description: {
+            he: "תנאים ודיווח שקופים.",
+            en: "Transparent terms and reporting."
+          },
+          icon: "balance"
+        },
+        {
+          title: {
+            he: "מקצועיות",
+            en: "Professionalism"
+          },
+          description: {
+            he: "תהליכים חכמים מונעי דאטה.",
+            en: "Smarter processes powered by data."
+          },
+          icon: "lightbulb"
+        },
+        {
+          title: {
+            he: "קשר",
+            en: "Connection"
+          },
+          description: {
+            he: "קשרים מקומיים עמוקים ורשתות גלובליות.",
+            en: "Deep local ties and global networks."
+          },
+          icon: "link"
+        }
+      ]
+    },
+    faqs: [
+      {
+        question: {
+          he: "מה מייחד את Indexland מחברות אחרות?",
+          en: "What makes Indexland different from other companies?"
+        },
+        answer: {
+          he: "אנו מתמחים בגישה אישית ומקצועית, עם דגש על יצירת קשרים ארוכי טווח עם הלקוחות שלנו. הצוות שלנו בעל ניסיון רב בשווקים בינלאומיים ומציע פתרונות מותאמים אישית.",
+          en: "We specialize in a personal and professional approach, focusing on creating long-term relationships with our clients. Our team has extensive experience in international markets and offers customized solutions."
+        }
+      },
+      {
+        question: {
+          he: "איך אתם בוחרים את הנכסים להשקעה?",
+          en: "How do you select properties for investment?"
+        },
+        answer: {
+          he: "אנו מבצעים מחקר מעמיק של השוק, ניתוח פיננסי מקיף, ובדיקת מיקום אסטרטגי. כל נכס נבחן לפי קריטריונים קפדניים של תשואה פוטנציאלית, סיכון, ופוטנציאל צמיחה.",
+          en: "We conduct thorough market research, comprehensive financial analysis, and strategic location assessment. Each property is evaluated according to strict criteria of potential return, risk, and growth potential."
+        }
+      },
+      {
+        question: {
+          he: "האם אתם מציעים שירותי ניהול שוטף?",
+          en: "Do you offer ongoing management services?"
+        },
+        answer: {
+          he: "כן, אנו מציעים שירותי ניהול מקיפים הכוללים ניהול דיירים, תחזוקה, גביית שכירות, ודיווח כספי שוטף. המטרה שלנו היא לספק ללקוחות שירות מלא ומקצועי.",
+          en: "Yes, we offer comprehensive management services including tenant management, maintenance, rent collection, and ongoing financial reporting. Our goal is to provide clients with complete and professional service."
+        }
+      }
+    ],
+    faqTitle: {
+      he: "שאלות נפוצות על החברה",
+      en: "Frequently Asked Questions About the Company"
+    },
+    cta: {
+      title: {
+        he: "מוכנים להכיר אותנו יותר?",
+        en: "Ready to Get to Know Us Better?"
+      },
+      subtitle: {
+        he: "בואו נפגש ונדבר על איך נוכל לעזור לכם להשיג את המטרות שלכם",
+        en: "Let's meet and discuss how we can help you achieve your goals"
+      },
+      primaryButtonText: {
+        he: "קבע פגישה",
+        en: "Book a Meeting"
+      },
+      secondaryButtonText: {
+        he: "השירותים שלנו",
+        en: "Our Services"
       }
     }
   }

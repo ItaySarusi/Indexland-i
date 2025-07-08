@@ -1,27 +1,17 @@
 "use client";
 import { useLanguage } from "@/lib/language-context";
+import { PAGES } from "@/constants/site";
 import PageContainer from "@/components/layout/PageContainer";
 import { motion } from 'framer-motion';
 
 export default function InternationalInvestmentBrokerage() {
   const { language, dir } = useLanguage();
 
-  const heroTitle = {
-    he: "פתרונות עבודה חלקים ושליטה בנכסים",
-    en: "Seamless Workspaces & Asset Control"
-  };
-  const heroDesc = {
-    he: "אינדקסלנד מטפלת בכל שלב במחזור החיים של המשרד ותיק הנדל\"ן שלכם - כך שתוכלו להתמקד בצמיחת העסק.",
-    en: "Indexland handles every stage of your office lifecycle and real-estate portfolio—so you can focus on business growth."
-  };
-  const heroBtn1 = {
-    he: "לתיאום פגישה",
-    en: "Book a Meeting"
-  };
-  const heroBtn2 = {
-    he: "למידע נוסף",
-    en: "Learn More"
-  };
+  // Use translations from constants
+  const heroTitle = PAGES.INTERNATIONAL_INVESTMENT_BROKERAGE.hero.title;
+  const heroDesc = PAGES.INTERNATIONAL_INVESTMENT_BROKERAGE.hero.subtitle;
+  const heroBtn1 = PAGES.INTERNATIONAL_INVESTMENT_BROKERAGE.hero.cta1;
+  const heroBtn2 = PAGES.INTERNATIONAL_INVESTMENT_BROKERAGE.hero.cta2;
 
   // Turnkey Office Solutions section
   const turnkeyTitle = {
@@ -111,10 +101,17 @@ export default function InternationalInvestmentBrokerage() {
     }
   ];
 
-  // Testimonial section
+  // Testimonial section with person data
   const testimonialText = {
     he: "התחלנו לעבוד עם אינדקסלנד לפני 8 שנים עם תיק נכסים ומעולם לא הסתכלנו אחורה, זו הייתה הבחירה הטובה ביותר שיכולנו לעשות",
-    en: "We interested Indexland 8 years ago with a asset portfolio and never looked back, the best choice we could have made"
+    en: "We started working with Indexland 8 years ago with an asset portfolio and never looked back, the best choice we could have made"
+  };
+
+  const testimonialPerson = {
+    name: { he: "רחל כהן", en: "Rachel Cohen" },
+    position: { he: "מנכ\"לית", en: "CEO" },
+    company: { he: "טק פרו בע\"מ", en: "Tech Pro Ltd" },
+    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=400&auto=format&fit=crop&crop=face"
   };
 
   // CTA buttons
@@ -156,7 +153,7 @@ export default function InternationalInvestmentBrokerage() {
             {heroTitle[language]}
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: language === 'he' ? -40 : 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.7, ease: 'anticipate' }}
             className="text-lg md:text-2xl text-white/90 font-light mb-10 max-w-2xl"
@@ -331,14 +328,14 @@ export default function InternationalInvestmentBrokerage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8, type: 'spring', bounce: 0.4 }}
-        className="w-full py-20 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 font-sans"
+        className="w-full py-20 px-4 bg-gradient-to-br from-white via-orange-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 font-sans border-t border-b border-gray-100 dark:border-none"
         dir={dir}
       >
         <motion.h2
           initial={{ opacity: 0, scale: 0.8, rotate: 2 }}
           whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ delay: 0.1, duration: 0.7, type: 'spring', bounce: 0.3 }}
-          className="text-4xl md:text-5xl font-extrabold text-white text-center mb-14 drop-shadow-lg font-sans"
+          className="text-4xl md:text-5xl font-extrabold text-primary dark:text-white text-center mb-14 drop-shadow-lg font-sans"
           style={{ fontFamily: 'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif' }}
         >
           {whyTrustTitle[language]}
@@ -351,14 +348,14 @@ export default function InternationalInvestmentBrokerage() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 + index * 0.1, duration: 0.7, type: 'spring', bounce: 0.3 }}
-              className="group bg-gray-800/90 border border-gray-700 shadow-2xl rounded-xl p-6 md:p-8 flex flex-col items-center text-center transition-all duration-300 hover:bg-black hover:border-orange-500 hover:scale-[1.04] relative overflow-hidden min-h-[210px] w-full font-sans"
+              className="group bg-white/90 dark:bg-gray-800/90 border border-orange-100 dark:border-gray-700 shadow-2xl rounded-xl p-6 md:p-8 flex flex-col items-center text-center transition-all duration-300 hover:bg-orange-50 dark:hover:bg-black hover:border-orange-400 hover:scale-[1.04] relative overflow-hidden min-h-[210px] w-full font-sans"
               style={{ fontFamily: 'Inter, Urbanist, Helvetica Now, Helvetica, Arial, sans-serif' }}
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.7, rotate: index % 2 === 0 ? -8 : 8 }}
                 whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                 transition={{ delay: 0.3 + index * 0.1, duration: 0.5, type: 'spring', bounce: 0.4 }}
-                className="mb-5 text-orange-500 group-hover:text-white transition-colors duration-300"
+                className="mb-5 text-orange-500 group-hover:text-primary dark:group-hover:text-white transition-colors duration-300"
               >
                 {/* Icons based on index */}
                 {index === 0 && (
@@ -375,7 +372,7 @@ export default function InternationalInvestmentBrokerage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35 + index * 0.1, duration: 0.5 }}
-                className="text-lg font-bold mb-2 text-white"
+                className="text-lg font-bold mb-2 text-primary dark:text-white"
               >
                 {card.title[language]}
               </motion.h3>
@@ -383,7 +380,7 @@ export default function InternationalInvestmentBrokerage() {
                 initial={{ opacity: 0, x: index % 2 === 0 ? 30 : -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
-                className="text-gray-200 text-base font-medium leading-snug"
+                className="text-gray-700 dark:text-gray-200 text-base font-medium leading-snug"
               >
                 {card.description[language]}
               </motion.p>
@@ -401,7 +398,18 @@ export default function InternationalInvestmentBrokerage() {
         className="w-full py-16 md:py-20 px-2 md:px-4 bg-gradient-to-br from-white via-gray-50 to-white border-t border-b border-gray-200 font-sans"
         dir={dir}
       >
-        <div className="max-w-3xl mx-auto flex flex-col items-center text-center" dir={dir}>
+        <div className="max-w-4xl mx-auto flex flex-col items-center text-center" dir={dir}>
+          {/* Testimonial with person info */}
+          <div className="mb-8">
+            <img
+              src={testimonialPerson.image}
+              alt={testimonialPerson.name[language]}
+              className="mx-auto w-20 h-20 rounded-full object-cover border-4 border-orange-200 shadow-lg mb-4"
+            />
+            <p className="text-lg font-semibold text-gray-900 mb-1">{testimonialPerson.name[language]}</p>
+            <p className="text-sm text-gray-600">{testimonialPerson.position[language]}, {testimonialPerson.company[language]}</p>
+          </div>
+          
           <div className="relative mb-10 w-full">
             {/* Quote Icon */}
             <motion.span
@@ -412,7 +420,7 @@ export default function InternationalInvestmentBrokerage() {
               className="absolute -top-8 left-1/2 -translate-x-1/2 text-orange-500 text-7xl font-serif select-none"
               aria-hidden="true"
             >
-              "
+              &ldquo;
             </motion.span>
             <motion.blockquote
               initial={{ opacity: 0, y: 30 }}

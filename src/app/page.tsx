@@ -136,7 +136,7 @@ export default function Home() {
       author: "Sarah Williams",
       position: "Operations Director",
       company: "StartupHub",
-      avatar: "/images/placeholder-avatar.png"
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b5fd?w=150&h=150&fit=crop&crop=face"
     },
     {
       quote: "Asset management services exceeded our ROI expectations. The team's strategic approach delivered outstanding results.",
@@ -224,11 +224,11 @@ export default function Home() {
           >
             <Hero
               variant="background-image"
-              title="Indexland: Your A–Z Office & Real Estate Partner"
-              subtitle="Turnkey workspace solutions, asset management, and investment services—local and global."
-              primaryActionLabel="Book a Meeting"
+              title={PAGES.HOME.hero.title}
+              subtitle={PAGES.HOME.hero.subtitle}
+              primaryActionLabel={PAGES.HOME.hero.primaryActionLabel}
               primaryActionHref="/book-meeting"
-              secondaryActionLabel="Explore Services"
+              secondaryActionLabel={PAGES.HOME.hero.secondaryActionLabel}
               secondaryActionHref="/services"
               imageUrl="/tlv.webp"
               enableTyping={false}
