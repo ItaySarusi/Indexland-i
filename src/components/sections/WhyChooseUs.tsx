@@ -46,8 +46,8 @@ export default function WhyChooseUs({
   };
   
   const defaultSubtitle = {
-    he: "השותף האולטימטיבי שלך לניהול נכסים והשקעות בתל אביב ודובאי",
-    en: "Your ultimate partner for asset management and investments in Tel Aviv and Dubai"
+    he: "השותפים האולטימטיביים שלך לניהול נכסים והשקעות בתל אביב ודובאי",
+    en: "Your ultimate partners for asset management and investments in Tel Aviv and Dubai"
   };
   
   const titleText = getLocalizedText(title) || t(defaultTitle);
