@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { useLanguage, Language } from '@/lib/language-context';
 import { motion } from 'framer-motion';
 import PageContainer from '@/components/layout/PageContainer';
@@ -33,7 +33,7 @@ export default function ServicesAtAGlance({
 }: ServicesAtAGlanceProps) {
   const { t, dir, language } = useLanguage();
   const [activeIndex, setActiveIndex] = useState<number>(0);
-  const [userSelected, setUserSelected] = useState<boolean>(false);
+
   const sectionRef = useRef(null);
 
   // Helper function to get localized text
@@ -86,43 +86,25 @@ export default function ServicesAtAGlance({
   const subtitleText = getLocalizedText(subtitle) || t(PAGES.HOME.servicesAtAGlance.subtitle);
   const serviceItems = services || defaultServices;
 
-  // Auto-rotate logic
-  useEffect(() => {
-    if (userSelected) return; // Pause auto-rotation if user selected
-    const timer = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % serviceItems.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, [userSelected, serviceItems.length]);
 
 
 
-  // When user clicks a card, set as selected and pause auto-rotation
+
+  // When user clicks a card, set as selected
   const handleCardClick = (index: number) => {
     setActiveIndex(index);
-    setUserSelected(true);
   };
 
   // Navigation functions for mobile carousel
   const handlePrevious = () => {
     const newIndex = activeIndex === 0 ? serviceItems.length - 1 : activeIndex - 1;
     setActiveIndex(newIndex);
-    setUserSelected(true);
   };
 
   const handleNext = () => {
     const newIndex = activeIndex === serviceItems.length - 1 ? 0 : activeIndex + 1;
     setActiveIndex(newIndex);
-    setUserSelected(true);
   };
-
-  // If user clicks another card, resume auto-rotation from there
-  useEffect(() => {
-    if (!userSelected) return;
-    // Resume auto-rotation after 30 seconds of inactivity
-    const timeout = setTimeout(() => setUserSelected(false), 30000);
-    return () => clearTimeout(timeout);
-  }, [userSelected]);
 
   return (
     <PageContainer>
@@ -167,12 +149,16 @@ export default function ServicesAtAGlance({
 
               {/* Current Button */}
               <div className="flex-1 max-w-xs">
-                <button
+                <motion.button
+                  key={activeIndex}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
                   onClick={() => handleCardClick(activeIndex)}
                   className="w-full px-5 md:px-8 h-14 md:h-16 rounded-2xl font-medium md:font-semibold text-base md:text-lg transition-all duration-200 ease-in-out flex items-center justify-center backdrop-blur-xl border-2 border-primary/30 bg-white/60 dark:bg-backgroundDark/60 shadow-lg text-primary dark:text-primary hover:scale-105 active:scale-95"
                 >
                   {t(serviceItems[activeIndex].title)}
-                </button>
+                </motion.button>
               </div>
 
               {/* Right Arrow */}
