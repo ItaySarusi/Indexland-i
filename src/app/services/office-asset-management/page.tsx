@@ -276,7 +276,7 @@ export default function OfficeAssetManagement() {
             {dubaiCards.map((card, index) => (
               <div key={index} className="group relative bg-white border-2 border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer min-h-[260px] sparkle-card">
                 <div className="mb-4 text-orange-500 group-hover:text-black transition-colors duration-300">
-                  {/* Icon: Video with proper background for iOS fix */}
+                  {/* Icon: Video with iOS Safari appearance fix */}
                   <div className="w-20 h-20 rounded-xl shadow-md border-2 border-orange-100 bg-white flex items-center justify-center p-2">
                     <video 
                       autoPlay 
@@ -285,8 +285,11 @@ export default function OfficeAssetManagement() {
                       playsInline 
                       width="64" 
                       height="64"
-                      className="rounded-lg"
-                      style={{ backgroundColor: 'transparent' }}
+                      className="rounded-lg video-ios-fix"
+                      style={{ 
+                        backgroundColor: 'transparent',
+                        mixBlendMode: 'normal'
+                      }}
                     >
                       <source src={`/files/webm/${index === 0 ? 'research' : index === 1 ? 'source' : index === 2 ? 'legal' : 'tracking'}.webm`} type="video/webm" />
                       Your browser does not support the video tag.
@@ -331,7 +334,7 @@ export default function OfficeAssetManagement() {
             {telAvivCards.map((card, index) => (
               <div key={index} className="group relative bg-white border-2 border-orange-100 rounded-2xl shadow-md p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-orange-400 cursor-pointer min-h-[220px] sparkle-card">
                 <div className="mb-4 text-orange-400 group-hover:text-black transition-colors duration-300">
-                  {/* Icon: Video with proper background for iOS fix */}
+                  {/* Icon: Video with iOS Safari appearance fix */}
                   <div className="w-20 h-20 rounded-xl shadow-md border-2 border-orange-100 bg-white flex items-center justify-center p-2">
                     <video 
                       autoPlay 
@@ -340,8 +343,11 @@ export default function OfficeAssetManagement() {
                       playsInline 
                       width="64" 
                       height="64"
-                      className="rounded-lg"
-                      style={{ backgroundColor: 'transparent' }}
+                      className="rounded-lg video-ios-fix"
+                      style={{ 
+                        backgroundColor: 'transparent',
+                        mixBlendMode: 'normal'
+                      }}
                     >
                       <source src={`/files/webm/${index === 0 ? 'sales' : index === 1 ? 'marketing' : index === 2 ? 'risk' : 'support'}.webm`} type="video/webm" />
                       Your browser does not support the video tag.
