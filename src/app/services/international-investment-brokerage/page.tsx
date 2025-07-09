@@ -227,16 +227,21 @@ export default function InternationalInvestmentBrokerage() {
               transition={{ delay: 0.2 + index * 0.1, duration: 0.7, type: 'spring', stiffness: 120 }}
               className="group flex flex-col items-center text-center bg-white border-2 border-orange-200 rounded-3xl shadow-2xl p-10 min-h-[340px] transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer"
             >
-              <motion.video
+              <motion.img
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1.1, opacity: 1 }}
                 transition={{ delay: 0.3 + index * 0.1, duration: 0.5, type: 'spring', stiffness: 200 }}
-                autoPlay loop muted playsInline width="110" height="110"
-                className="mb-6 rounded-2xl shadow-lg border-4 border-orange-100"
-              >
-                <source src={`/files/webm/${index === 0 ? 'scout' : index === 1 ? 'handshake' : index === 2 ? 'track build' : 'service man'}.webm`} type="video/webm" />
-                Your browser does not support the video tag.
-              </motion.video>
+                src={`/files/svg/${
+                  index === 0 ? 'House-searching-rafiki.svg' :
+                  index === 1 ? 'Investor-presentation-bro.svg' :
+                  index === 2 ? 'construction.svg' :
+                  'Building-permit-amico.svg'
+                }`}
+                alt={step.title[language]}
+                width="110"
+                height="110"
+                className="mb-6 rounded-2xl shadow-lg border-4 border-orange-100 object-contain bg-white p-2"
+              />
               <h3 className="text-2xl font-extrabold mb-4 text-orange-500">{step.title[language]}</h3>
               <ul className={`text-gray-700 text-lg font-medium space-y-2 mx-auto max-w-xs ${dir === 'rtl' ? 'text-right' : 'text-left'}`}>
                 {step.items.map((item, itemIndex) => (

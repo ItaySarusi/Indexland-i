@@ -33,7 +33,8 @@ export default function ServicesAtAGlance({
 }: ServicesAtAGlanceProps) {
   const { t, dir, language } = useLanguage();
   const [activeIndex, setActiveIndex] = useState<number>(0);
-
+  const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
+  
   const sectionRef = useRef(null);
 
   // Helper function to get localized text
@@ -92,18 +93,27 @@ export default function ServicesAtAGlance({
 
   // When user clicks a card, set as selected
   const handleCardClick = (index: number) => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
     setActiveIndex(index);
+    setTimeout(() => setIsTransitioning(false), 300);
   };
 
   // Navigation functions for mobile carousel
   const handlePrevious = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
     const newIndex = activeIndex === 0 ? serviceItems.length - 1 : activeIndex - 1;
     setActiveIndex(newIndex);
+    setTimeout(() => setIsTransitioning(false), 300);
   };
 
   const handleNext = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
     const newIndex = activeIndex === serviceItems.length - 1 ? 0 : activeIndex + 1;
     setActiveIndex(newIndex);
+    setTimeout(() => setIsTransitioning(false), 300);
   };
 
   return (
@@ -149,16 +159,14 @@ export default function ServicesAtAGlance({
 
               {/* Current Button */}
               <div className="flex-1 max-w-xs">
-                <motion.button
-                  key={`header-${activeIndex}`}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.2, ease: "easeOut", delay: 0.1 }}
+                <button
                   onClick={() => handleCardClick(activeIndex)}
-                  className="w-full px-5 md:px-8 h-14 md:h-16 rounded-2xl font-medium md:font-semibold text-base md:text-lg transition-all duration-200 ease-in-out flex items-center justify-center backdrop-blur-xl border-2 border-primary/30 bg-white/60 dark:bg-backgroundDark/60 shadow-lg text-primary dark:text-primary hover:scale-105 active:scale-95"
+                  className={`w-full px-5 md:px-8 h-14 md:h-16 rounded-2xl font-medium md:font-semibold text-base md:text-lg transition-all duration-300 ease-in-out flex items-center justify-center backdrop-blur-xl border-2 border-primary/30 bg-white/60 dark:bg-backgroundDark/60 shadow-lg text-primary dark:text-primary hover:scale-105 active:scale-95 ${isTransitioning ? 'opacity-70 scale-95' : 'opacity-100 scale-100'}`}
                 >
-                  {t(serviceItems[activeIndex].title)}
-                </motion.button>
+                  <span className="transition-opacity duration-300">
+                    {t(serviceItems[activeIndex].title)}
+                  </span>
+                </button>
               </div>
 
               {/* Right Arrow */}
@@ -198,34 +206,31 @@ export default function ServicesAtAGlance({
           {/* Main card below tabs */}
           <div className="flex justify-center">
             <div className="relative w-full max-w-3xl">
-              <motion.div
-                key={activeIndex}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
+              <div
                 className={cn(
-                  "p-8 md:p-10 rounded-3xl shadow-xl border border-primary/20 bg-white/70 dark:bg-backgroundDark/80 flex flex-col items-center gap-4 transition-all duration-300",
+                  "p-8 md:p-10 rounded-3xl shadow-xl border border-primary/20 bg-white/70 dark:bg-backgroundDark/80 flex flex-col items-center gap-4 transition-all duration-300 ease-in-out",
                   "hover:shadow-2xl hover:border-primary/40",
-                  serviceItems[activeIndex].accentColor || 'text-orange-500'
+                  serviceItems[activeIndex].accentColor || 'text-orange-500',
+                  isTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
                 )}
               >
                 <div className="flex-shrink-0 flex flex-col items-center justify-center mb-2">
-                  <span className="h-20 w-20 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-secondary/10 shadow-lg text-5xl mb-3">
+                  <span className={`h-20 w-20 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-secondary/10 shadow-lg text-5xl mb-3 transition-all duration-300 ${isTransitioning ? 'scale-90 opacity-70' : 'scale-100 opacity-100'}`}>
                     {serviceItems[activeIndex].icon}
                   </span>
                 </div>
                 <div className="flex flex-col items-center text-center w-full">
-                  <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white mb-1 tracking-tight">
+                  <h3 className={`text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white mb-1 tracking-tight transition-all duration-300 ${isTransitioning ? 'opacity-70' : 'opacity-100'}`}>
                     {t(serviceItems[activeIndex].title)}
                   </h3>
                   <div className="h-1 w-16 rounded-full mb-4 mx-auto bg-gradient-to-r from-primary to-secondary opacity-70" />
-                  <p className="text-lg md:text-xl text-gray-700 dark:text-gray-200 mb-4 font-medium">
+                  <p className={`text-lg md:text-xl text-gray-700 dark:text-gray-200 mb-4 font-medium transition-all duration-300 ${isTransitioning ? 'opacity-70' : 'opacity-100'}`}>
                     {t(serviceItems[activeIndex].description)}
                   </p>
                   <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
                     {language === 'he' ? "כولל בין היתר:" : "Including Services Like:"}
                   </h4>
-                  <ul className="list-none space-y-1 text-base text-gray-700 dark:text-gray-200 w-full max-w-xs mx-auto">
+                  <ul className={`list-none space-y-1 text-base text-gray-700 dark:text-gray-200 w-full max-w-xs mx-auto transition-all duration-300 ${isTransitioning ? 'opacity-70' : 'opacity-100'}`}>
                     {serviceItems[activeIndex].subServices.map((sub, subIndex) => (
                       <li
                         key={subIndex}
@@ -237,7 +242,7 @@ export default function ServicesAtAGlance({
                     ))}
                   </ul>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
