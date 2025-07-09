@@ -8,7 +8,7 @@ interface PageContainerProps {
 
 export default function PageContainer({ children, className = '', glass = false }: PageContainerProps) {
   return (
-    <main className={`min-h-screen bg-backgroundLight dark:bg-backgroundDark transition-colors duration-200 overflow-x-hidden overflow-y-hidden ${className} ${glass ? 'relative' : ''}`}>
+    <main className={`min-h-screen bg-backgroundLight dark:bg-backgroundDark transition-colors duration-200 overflow-x-hidden md:overflow-y-hidden ${className} ${glass ? 'relative' : ''}`}>
       {glass && (
         <>
           {/* Glassmorphic, animated, layered background */}
