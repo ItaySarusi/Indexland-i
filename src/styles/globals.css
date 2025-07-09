@@ -12,12 +12,22 @@
     overflow-x: hidden;
     overscroll-behavior: none;
   }
+  html[dir="rtl"] {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overscroll-behavior: none;
+  }
   body {
     @apply bg-backgroundLight text-black transition-colors duration-200;
     overflow-x: hidden;
     overscroll-behavior: none;
     -webkit-overflow-scrolling: touch;
     padding-top: 5rem; /* Account for fixed header */
+  }
+  body[dir="rtl"] {
+    overflow-x: hidden;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
   }
   .dark body {
     @apply bg-backgroundDark text-textPrimary;
@@ -117,6 +127,70 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  
+  /* RTL scroll fixes */
+  html[dir="rtl"] {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  html[dir="rtl"] * {
+    scroll-behavior: smooth;
+  }
+  
+  [dir="rtl"] {
+    direction: rtl;
+  }
+  
+  [dir="ltr"] {
+    direction: ltr;
+  }
+  
+  /* Force scroll behavior to work in RTL */
+  [dir="rtl"] body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Ensure scroll containers work in RTL */
+  [dir="rtl"] .overflow-x-hidden {
+    overflow-x: hidden;
+  }
+  
+  [dir="rtl"] .overflow-y-auto {
+    overflow-y: auto;
+  }
+  
+  /* Fix for main container in RTL */
+  [dir="rtl"] main {
+    overflow-x: hidden;
+  }
+  
+  /* Prevent layout shifts when changing direction */
+  html {
+    overflow-anchor: none;
+  }
+  
+  body {
+    overflow-anchor: none;
+  }
+  
+  /* Ensure consistent overflow behavior during direction changes */
+  html[dir="rtl"],
+  html[dir="ltr"] {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+  
+  body[dir="rtl"],
+  body[dir="ltr"] {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    scroll-behavior: smooth;
   }
   @keyframes fade-in {
     from { opacity: 0; transform: translateY(24px); }

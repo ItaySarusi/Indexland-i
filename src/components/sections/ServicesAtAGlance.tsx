@@ -79,29 +79,22 @@ export default function ServicesAtAGlance({
     }
   ];
 
-  // אנימציות של Framer Motion
+  // Optimized animations for mobile devices
   const contentVariants = {
     hidden: { 
       opacity: 0, 
-      y: 20,
-      scale: 0.95
+      y: 15,
+      scale: 0.98
     },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
-      transition: { 
-        duration: 0.5, 
-        staggerChildren: 0.1
-      }
+      scale: 1
     },
     exit: {
       opacity: 0,
-      y: -20,
-      scale: 0.95,
-      transition: { 
-        duration: 0.3
-      }
+      y: -10,
+      scale: 0.98
     }
   };
 
@@ -114,25 +107,22 @@ export default function ServicesAtAGlance({
     }
   };
 
-  // Animation variants for mobile carousel buttons (subtle fade matching content timing)
+  // Simplified animation variants for mobile carousel buttons
   const buttonVariants = {
     enter: {
       opacity: 0,
-      scale: 0.95
+      scale: 0.98,
+      x: 20
     },
     center: {
       opacity: 1,
       scale: 1,
-      transition: { 
-        duration: 0.5, 
-      }
+      x: 0
     },
     exit: {
       opacity: 0,
-      scale: 0.95,
-      transition: { 
-        duration: 0.3
-      }
+      scale: 0.98,
+      x: -20
     }
   };
 
@@ -227,6 +217,10 @@ export default function ServicesAtAGlance({
                     initial="enter"
                     animate="center"
                     exit="exit"
+                    transition={{
+                      duration: 0.3,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }}
                     onClick={() => handleCardClick(activeIndex)}
                     className="w-full px-5 md:px-8 h-14 md:h-16 rounded-2xl font-medium md:font-semibold text-base md:text-lg transition-all duration-300 ease-in-out flex items-center justify-center relative overflow-hidden backdrop-blur-xl border-2 border-transparent bg-white/60 dark:bg-backgroundDark/60 shadow-lg text-primary dark:text-primary"
                   >
@@ -283,6 +277,11 @@ export default function ServicesAtAGlance({
                   initial="hidden"
                   animate="visible"
                   exit="exit"
+                  transition={{
+                    duration: 0.4,
+                    staggerChildren: 0.08,
+                    ease: [0.25, 0.46, 0.45, 0.94]
+                  }}
                   className={cn(
                     "p-8 md:p-10 rounded-3xl shadow-xl border border-primary/20 bg-white/70 dark:bg-backgroundDark/80 relative overflow-hidden flex flex-col items-center gap-4 transition-all duration-300",
                     "hover:shadow-2xl hover:border-primary/40",

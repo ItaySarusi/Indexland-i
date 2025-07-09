@@ -136,7 +136,7 @@ export default function Home() {
       author: "Sarah Williams",
       position: "Operations Director",
       company: "StartupHub",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b5fd?w=150&h=150&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop&crop=face"
     },
     {
       quote: "Asset management services exceeded our ROI expectations. The team's strategic approach delivered outstanding results.",

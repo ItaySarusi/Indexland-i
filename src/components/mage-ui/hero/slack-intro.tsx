@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
  
 import { cn } from "@/lib/utils";
 import WaveReveal from "@/components/mage-ui/text/wave-reveal";
+import { useLanguage } from "@/lib/language-context";
  
 export interface CircleProps {
   height?: string;
@@ -84,6 +85,10 @@ function LineOne({ className, animationEnd }: LineProps) {
 }
  
 function LineTwo({ className, animationEnd }: LineProps) {
+  const { language } = useLanguage();
+  const text = language === 'he' ? "כל עולם הנדל״ן" : "The World";
+  const width = language === 'he' ? "w-80 md:w-[500px]" : "w-64 md:w-[400px]";
+  
   return (
     <div
       className={cn(
@@ -94,7 +99,7 @@ function LineTwo({ className, animationEnd }: LineProps) {
       )}
     >
       <Circle bgColor="bg-primary-300" />
-      <Cylinder text="The World" width="w-64 md:w-[400px]" />
+      <Cylinder text={text} width={width} />
       <Circle bgColor="bg-primary-500" borderRadius="rounded-t-full rounded-bl-full" />
       <Circle bgColor="bg-primary-600" />
       <Cylinder bgColor="bg-secondary-300" />
@@ -103,6 +108,13 @@ function LineTwo({ className, animationEnd }: LineProps) {
 }
  
 function LineThree({ className, animationEnd }: LineProps) {
+  const { language } = useLanguage();
+  
+  // In Hebrew, this line is hidden since we combined the text in LineTwo
+  if (language === 'he') {
+    return null;
+  }
+  
   return (
     <div
       className={cn(
@@ -122,6 +134,9 @@ function LineThree({ className, animationEnd }: LineProps) {
 }
  
 function LineFour({ className, animationEnd }: LineProps) {
+  const { language } = useLanguage();
+  const text = language === 'he' ? "במקום אחד" : "In One Place";
+  
   return (
     <div
       className={cn(
@@ -132,13 +147,20 @@ function LineFour({ className, animationEnd }: LineProps) {
       )}
     >
       <Circle bgColor="bg-secondary-500" />
-      <Cylinder text="In One Place" width="w-96 md:w-[700px]" />
+      <Cylinder text={text} width="w-96 md:w-[700px]" />
       <Circle bgColor="bg-primary-600" borderRadius="rounded-t-full rounded-br-full" />
     </div>
   );
 }
  
 function LineFive({ className, animationEnd }: LineProps) {
+  const { language } = useLanguage();
+  
+  // In Hebrew, this line is hidden since we only want 2 lines
+  if (language === 'he') {
+    return null;
+  }
+  
   return (
     <div
       className={cn(

@@ -38,9 +38,52 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   // עדכן את כיוון הטקסט כאשר השפה משתנה
   useEffect(() => {
-    setDir(language === 'he' ? 'rtl' : 'ltr');
+    const newDir = language === 'he' ? 'rtl' : 'ltr';
+    setDir(newDir);
+    
+    // Save scroll position before changing direction
+    const scrollY = window.scrollY;
+    const scrollX = window.scrollX;
+    
+    // Temporarily disable scroll restoration to prevent conflicts
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    
+    // Update document direction
     document.documentElement.lang = language;
-    document.documentElement.dir = language === 'he' ? 'rtl' : 'ltr';
+    document.documentElement.dir = newDir;
+    
+    // Add CSS to ensure smooth transition
+    document.body.style.transition = 'direction 0.1s ease-in-out';
+    document.documentElement.style.scrollBehavior = 'auto';
+    
+    // Multiple restoration attempts to ensure scroll position is maintained
+    const restoreScroll = () => {
+      window.scrollTo({
+        top: scrollY,
+        left: scrollX,
+        behavior: 'auto'
+      });
+    };
+    
+    // Immediate restoration
+    restoreScroll();
+    
+    // Backup restorations with different timing
+    setTimeout(restoreScroll, 10);
+    setTimeout(restoreScroll, 50);
+    setTimeout(() => {
+      restoreScroll();
+      // Clean up styles after direction change is complete
+      document.body.style.transition = '';
+      document.documentElement.style.scrollBehavior = 'smooth';
+      
+      // Re-enable scroll restoration
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'auto';
+      }
+    }, 100);
     
     // שמור את העדפת השפה של המשתמש
     localStorage.setItem('language', language);
