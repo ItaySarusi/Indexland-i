@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage, Language } from '@/lib/language-context';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import PageContainer from '@/components/layout/PageContainer';
 import { cn } from '@/lib/utils';
 import { PAGES } from '@/constants/site';
@@ -95,43 +95,7 @@ export default function ServicesAtAGlance({
     return () => clearInterval(timer);
   }, [userSelected, serviceItems.length]);
 
-  // Simple smooth animations - no complex transforms
-  const contentVariants = {
-    hidden: { 
-      opacity: 0
-    },
-    visible: {
-      opacity: 1
-    },
-    exit: {
-      opacity: 0
-    }
-  };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.3 }
-    }
-  };
-
-  // Simplified button animations for mobile
-  const buttonVariants = {
-    enter: {
-      opacity: 0,
-      scale: 0.98
-    },
-    center: {
-      opacity: 1,
-      scale: 1
-    },
-    exit: {
-      opacity: 0,
-      scale: 0.98
-    }
-  };
 
   // When user clicks a card, set as selected and pause auto-rotation
   const handleCardClick = (index: number) => {
@@ -202,24 +166,13 @@ export default function ServicesAtAGlance({
               </button>
 
               {/* Current Button */}
-              <div className="flex-1 max-w-xs relative overflow-hidden">
-                <AnimatePresence mode="wait">
-                  <motion.button
-                    key={activeIndex}
-                    variants={buttonVariants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{
-                      duration: 0.15,
-                      ease: "easeInOut"
-                    }}
-                    onClick={() => handleCardClick(activeIndex)}
-                    className="w-full px-5 md:px-8 h-14 md:h-16 rounded-2xl font-medium md:font-semibold text-base md:text-lg transition-all duration-300 ease-in-out flex items-center justify-center relative overflow-hidden backdrop-blur-xl border-2 border-transparent bg-white/60 dark:bg-backgroundDark/60 shadow-lg text-primary dark:text-primary"
-                  >
-                    <span className="relative z-20">{t(serviceItems[activeIndex].title)}</span>
-                  </motion.button>
-                </AnimatePresence>
+              <div className="flex-1 max-w-xs">
+                <button
+                  onClick={() => handleCardClick(activeIndex)}
+                  className="w-full px-5 md:px-8 h-14 md:h-16 rounded-2xl font-medium md:font-semibold text-base md:text-lg transition-all duration-200 ease-in-out flex items-center justify-center backdrop-blur-xl border-2 border-primary/30 bg-white/60 dark:bg-backgroundDark/60 shadow-lg text-primary dark:text-primary hover:scale-105 active:scale-95"
+                >
+                  {t(serviceItems[activeIndex].title)}
+                </button>
               </div>
 
               {/* Right Arrow */}
@@ -259,60 +212,46 @@ export default function ServicesAtAGlance({
           {/* Main card below tabs */}
           <div className="flex justify-center">
             <div className="relative w-full max-w-3xl">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeIndex}
-                  variants={contentVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  transition={{
-                    duration: 0.2,
-                    ease: "easeInOut"
-                  }}
-                  className={cn(
-                    "p-8 md:p-10 rounded-3xl shadow-xl border border-primary/20 bg-white/70 dark:bg-backgroundDark/80 relative overflow-hidden flex flex-col items-center gap-4 transition-all duration-300",
-                    "hover:shadow-2xl hover:border-primary/40",
-                    serviceItems[activeIndex].accentColor || 'text-orange-500'
-                  )}
-                >
-                  <motion.div
-                    variants={itemVariants}
-                    className="flex-shrink-0 flex flex-col items-center justify-center mb-2"
-                  >
-                    <span className="h-20 w-20 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-secondary/10 shadow-lg text-5xl mb-3">
-                      {serviceItems[activeIndex].icon}
-                    </span>
-                  </motion.div>
-                  <motion.div
-                    variants={itemVariants}
-                    className="flex flex-col items-center text-center w-full"
-                  >
-                    <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white mb-1 tracking-tight">
-                      {t(serviceItems[activeIndex].title)}
-                    </h3>
-                    <div className="h-1 w-16 rounded-full mb-4 mx-auto bg-gradient-to-r from-primary to-secondary opacity-70" />
-                    <p className="text-lg md:text-xl text-gray-700 dark:text-gray-200 mb-4 font-medium">
-                      {t(serviceItems[activeIndex].description)}
-                    </p>
-                    <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
-                      {language === 'he' ? "כולל בין היתר:" : "Including Services Like:"}
-                    </h4>
-                    <ul className="list-none space-y-1 text-base text-gray-700 dark:text-gray-200 w-full max-w-xs mx-auto">
-                      {serviceItems[activeIndex].subServices.map((sub, subIndex) => (
-                        <motion.li
-                          key={subIndex}
-                          variants={itemVariants}
-                          className="flex items-center gap-2 justify-center"
-                        >
-                          <span>{t(sub)}</span>
-                          <span className="text-primary text-lg">»</span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                </motion.div>
-              </AnimatePresence>
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className={cn(
+                  "p-8 md:p-10 rounded-3xl shadow-xl border border-primary/20 bg-white/70 dark:bg-backgroundDark/80 flex flex-col items-center gap-4 transition-all duration-300",
+                  "hover:shadow-2xl hover:border-primary/40",
+                  serviceItems[activeIndex].accentColor || 'text-orange-500'
+                )}
+              >
+                <div className="flex-shrink-0 flex flex-col items-center justify-center mb-2">
+                  <span className="h-20 w-20 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-secondary/10 shadow-lg text-5xl mb-3">
+                    {serviceItems[activeIndex].icon}
+                  </span>
+                </div>
+                <div className="flex flex-col items-center text-center w-full">
+                  <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white mb-1 tracking-tight">
+                    {t(serviceItems[activeIndex].title)}
+                  </h3>
+                  <div className="h-1 w-16 rounded-full mb-4 mx-auto bg-gradient-to-r from-primary to-secondary opacity-70" />
+                  <p className="text-lg md:text-xl text-gray-700 dark:text-gray-200 mb-4 font-medium">
+                    {t(serviceItems[activeIndex].description)}
+                  </p>
+                  <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
+                    {language === 'he' ? "כولל בין היתר:" : "Including Services Like:"}
+                  </h4>
+                  <ul className="list-none space-y-1 text-base text-gray-700 dark:text-gray-200 w-full max-w-xs mx-auto">
+                    {serviceItems[activeIndex].subServices.map((sub, subIndex) => (
+                      <li
+                        key={subIndex}
+                        className="flex items-center gap-2 justify-center"
+                      >
+                        <span>{t(sub)}</span>
+                        <span className="text-primary text-lg">»</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
             </div>
           </div>
         </div>
