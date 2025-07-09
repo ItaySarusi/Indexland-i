@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "vercel": "vercel",
+    "vercel:dev": "vercel dev",
+    "vercel:deploy": "vercel --prod"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.2",
@@ -42,6 +45,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
     "postcss": "^8.5.3",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vercel": "^44.2.13"
   }
 }
