@@ -78,7 +78,7 @@ export default function ServicesOverview({
         </div>
         
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center items-stretch gap-12 md:gap-6 max-w-7xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center items-stretch gap-12 md:gap-6 relative z-10"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -87,7 +87,7 @@ export default function ServicesOverview({
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="glass-card glass-inner-shadow p-12 rounded-[2.5rem] flex flex-col items-center text-center transition-all duration-300 group relative overflow-hidden shadow-2xl border-2 border-white/30 hover:scale-105 hover:shadow-2xl hover:border-primary/60 hover:bg-gradient-to-br hover:from-white/60 hover:to-primary/10 dark:hover:from-backgroundDark/60 dark:hover:to-secondary/10 max-w-sm mx-auto w-full cursor-pointer"
+              className="relative p-8 text-center z-10 rounded-3xl border-2 border-yellow-200 shadow-xl bg-white/10 dark:bg-backgroundDark/10 backdrop-blur-md max-w-xs w-full mx-auto lg:max-w-none"
               initial={{ 
                 opacity: 0, 
                 y: 50,
@@ -109,31 +109,30 @@ export default function ServicesOverview({
                 transition: { duration: 0.3 }
               }}
             >
-              {/* Glass reflection overlay + glow border */}
-              <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/60 to-transparent opacity-50 rounded-t-[2.5rem] pointer-events-none animate-glass-reflection" />
-              <div className="absolute inset-0 rounded-[2.5rem] border-4 border-white/20 group-hover:border-primary/40 pointer-events-none" style={{boxShadow:'0 0 32px 0 rgba(255,180,80,0.10), 0 1.5px 12px 0 rgba(255,255,255,0.10)'}} />
-              <div className="flex justify-center items-center mb-6 animate-scale-in">
-                {service?.svg?.endsWith('.webm') ? (
-                  <video 
-                    width={104}
-                    height={104}
-                    src={service.svg}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-28 h-28"
-                  />
-                ) : service?.svg ? (
-                  <Image 
-                    width={104}
-                    height={104}
-                    src={service.svg} 
-                    alt={typeof service.title === 'string' ? service.title : ''} 
-                    className="w-28 h-28"
-                    unoptimized={service.svg?.endsWith('.gif')}
-                  />
-                ) : service?.icon}
+              <div className="flex flex-col items-center mb-6 animate-scale-in">
+                <div className="flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary/10 to-yellow-100/40 shadow-lg mb-2 group-hover:scale-110 group-hover:shadow-gold-400 transition-all duration-300">
+                  {service?.svg?.endsWith('.webm') ? (
+                    <video 
+                      width={64}
+                      height={64}
+                      src={service.svg}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-16 h-16"
+                    />
+                  ) : service?.svg ? (
+                    <Image 
+                      width={64}
+                      height={64}
+                      src={service.svg} 
+                      alt={typeof service.title === 'string' ? service.title : ''} 
+                      className="w-16 h-16"
+                      unoptimized={service.svg?.endsWith('.gif')}
+                    />
+                  ) : service?.icon}
+                </div>
               </div>
               <h3 className="text-2xl md:text-3xl font-extrabold mb-3 text-primary drop-shadow-xl animate-fade-in delay-100 text-center tracking-tight leading-tight">
                 {getLocalizedText(service.title)}
@@ -141,7 +140,6 @@ export default function ServicesOverview({
               <p className="text-base md:text-lg text-gray-700 dark:text-textSecondary mb-0 animate-fade-in delay-200 text-center font-medium tracking-wide">
                 {getLocalizedText(service.description)}
               </p>
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/30 to-transparent opacity-40 rounded-[2.5rem]" />
             </motion.div>
           ))}
         </motion.div>
