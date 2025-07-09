@@ -276,11 +276,19 @@ export default function OfficeAssetManagement() {
             {dubaiCards.map((card, index) => (
               <div key={index} className="group relative bg-white border-2 border-orange-200 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer min-h-[260px] sparkle-card">
                 <div className="mb-4 text-orange-500 group-hover:text-black transition-colors duration-300">
-                  {/* Icon: Video based on index */}
-                  <video autoPlay loop muted playsInline width="80" height="80">
-                    <source src={`/files/webm/${index === 0 ? 'research' : index === 1 ? 'source' : index === 2 ? 'legal' : 'tracking'}.webm`} type="video/webm" />
-                    Your browser does not support the video tag.
-                  </video>
+                  {/* Icon: SVG for iOS compatibility */}
+                  <img
+                    src={`/files/svg/${
+                      index === 0 ? 'metrics.svg' :
+                      index === 1 ? 'House-searching-rafiki.svg' :
+                      index === 2 ? 'Investor-presentation-bro.svg' :
+                      'construction.svg'
+                    }`}
+                    alt={dubaiCards[index].title[language]}
+                    width="80"
+                    height="80"
+                    className="rounded-xl shadow-md border-2 border-orange-100 object-contain bg-white p-2"
+                  />
                 </div>
                 <h3 className="text-lg font-bold mb-2 text-black">{card.title[language]}</h3>
                 <p className="text-gray-700 text-base font-medium">{card.description[language]}</p>
@@ -320,11 +328,19 @@ export default function OfficeAssetManagement() {
             {telAvivCards.map((card, index) => (
               <div key={index} className="group relative bg-white border-2 border-orange-100 rounded-2xl shadow-md p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-orange-400 cursor-pointer min-h-[220px] sparkle-card">
                 <div className="mb-4 text-orange-400 group-hover:text-black transition-colors duration-300">
-                  {/* Icon: Video based on index */}
-                  <video autoPlay loop muted playsInline width="80" height="80">
-                    <source src={`/files/webm/${index === 0 ? 'sales' : index === 1 ? 'marketing' : index === 2 ? 'risk' : 'support'}.webm`} type="video/webm" />
-                    Your browser does not support the video tag.
-                  </video>
+                  {/* Icon: SVG for iOS compatibility */}
+                  <img
+                    src={`/files/svg/${
+                      index === 0 ? 'Investor-presentation-bro.svg' :
+                      index === 1 ? 'House-searching-rafiki.svg' :
+                      index === 2 ? 'metrics.svg' :
+                      'construction.svg'
+                    }`}
+                    alt={telAvivCards[index].title[language]}
+                    width="80"
+                    height="80"
+                    className="rounded-xl shadow-md border-2 border-orange-100 object-contain bg-white p-2"
+                  />
                 </div>
                 <h3 className="text-lg font-bold mb-2 text-black">{card.title[language]}</h3>
                 <p className="text-gray-700 text-base font-medium">{card.description[language]}</p>
