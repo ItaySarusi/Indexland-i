@@ -221,7 +221,7 @@ export default function InternationalInvestmentBrokerage() {
         >
           {turnkeyTitle[language]}
         </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 w-full max-w-6xl" dir={dir}>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 w-full max-w-6xl turnkey-cards-container" dir={dir}>
           {officeSteps.map((step, index) => (
             <motion.div
               key={index}
@@ -229,8 +229,9 @@ export default function InternationalInvestmentBrokerage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1, margin: "-50px" }}
               transition={{ delay: 0.1 + index * 0.1, duration: 0.5, ease: 'easeOut' }}
-              className="group flex flex-col items-center text-center bg-white border-2 border-orange-200 rounded-3xl shadow-2xl p-10 min-h-[340px] transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer"
+              className="group flex flex-col items-center text-center bg-white border-2 border-orange-200 rounded-3xl shadow-2xl p-10 min-h-[340px] transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer turnkey-card"
               style={{ opacity: 1 }} // Fallback for mobile
+              data-index={index}
             >
               <motion.img
                 initial={{ scale: 0.95, opacity: 0 }}

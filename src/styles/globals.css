@@ -355,10 +355,161 @@
       display: block !important;
     }
 
-    [data-section="turnkey-solutions"] * {
-      opacity: 1 !important;
-      transform: none !important;
-      visibility: visible !important;
+    /* Mobile-specific animations for turnkey cards - only on mobile */
+    .turnkey-cards-container {
+      /* Trigger animations when container is in view */
+      animation: trigger-cards 0.1s ease-out forwards;
+    }
+
+    .turnkey-card {
+      animation: mobile-fade-up 0.6s ease-out forwards;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    @keyframes trigger-cards {
+      to {
+        /* This just ensures animations start */
+        opacity: 1;
+      }
+    }
+
+    /* Reset for elements inside cards - they start hidden on mobile */
+    .turnkey-card img {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+
+    .turnkey-card h3 {
+      opacity: 0;
+    }
+
+    .turnkey-card ul {
+      opacity: 0;
+    }
+
+    .turnkey-card[data-index="0"] {
+      animation-delay: 0.2s;
+    }
+
+    .turnkey-card[data-index="1"] {
+      animation-delay: 0.4s;
+    }
+
+    .turnkey-card[data-index="2"] {
+      animation-delay: 0.6s;
+    }
+
+    .turnkey-card[data-index="3"] {
+      animation-delay: 0.8s;
+    }
+
+    @keyframes mobile-fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Ensure images and content within cards also animate */
+    .turnkey-card[data-index="0"] img {
+      animation: mobile-scale-in 0.5s ease-out forwards;
+      animation-delay: 0.4s;
+      opacity: 0;
+      transform: scale(0.9);
+    }
+
+    .turnkey-card[data-index="1"] img {
+      animation: mobile-scale-in 0.5s ease-out forwards;
+      animation-delay: 0.6s;
+      opacity: 0;
+      transform: scale(0.9);
+    }
+
+    .turnkey-card[data-index="2"] img {
+      animation: mobile-scale-in 0.5s ease-out forwards;
+      animation-delay: 0.8s;
+      opacity: 0;
+      transform: scale(0.9);
+    }
+
+    .turnkey-card[data-index="3"] img {
+      animation: mobile-scale-in 0.5s ease-out forwards;
+      animation-delay: 1.0s;
+      opacity: 0;
+      transform: scale(0.9);
+    }
+
+    .turnkey-card[data-index="0"] h3 {
+      animation: mobile-fade-in 0.4s ease-out forwards;
+      animation-delay: 0.5s;
+      opacity: 0;
+    }
+
+    .turnkey-card[data-index="1"] h3 {
+      animation: mobile-fade-in 0.4s ease-out forwards;
+      animation-delay: 0.7s;
+      opacity: 0;
+    }
+
+    .turnkey-card[data-index="2"] h3 {
+      animation: mobile-fade-in 0.4s ease-out forwards;
+      animation-delay: 0.9s;
+      opacity: 0;
+    }
+
+    .turnkey-card[data-index="3"] h3 {
+      animation: mobile-fade-in 0.4s ease-out forwards;
+      animation-delay: 1.1s;
+      opacity: 0;
+    }
+
+    .turnkey-card[data-index="0"] ul {
+      animation: mobile-fade-in 0.4s ease-out forwards;
+      animation-delay: 0.6s;
+      opacity: 0;
+    }
+
+    .turnkey-card[data-index="1"] ul {
+      animation: mobile-fade-in 0.4s ease-out forwards;
+      animation-delay: 0.8s;
+      opacity: 0;
+    }
+
+    .turnkey-card[data-index="2"] ul {
+      animation: mobile-fade-in 0.4s ease-out forwards;
+      animation-delay: 1.0s;
+      opacity: 0;
+    }
+
+    .turnkey-card[data-index="3"] ul {
+      animation: mobile-fade-in 0.4s ease-out forwards;
+      animation-delay: 1.2s;
+      opacity: 0;
+    }
+
+    @keyframes mobile-scale-in {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes mobile-fade-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
   }
 
@@ -371,5 +522,130 @@
       drop-shadow(0 0 1px rgba(255,255,255,0.5));
     mix-blend-mode: screen;
     background: transparent !important;
+  }
+
+  /* Debug video styling - red border to see exact video bounds */
+  .video-debug {
+    /* Force transparent background in all possible ways */
+    background: transparent !important;
+    background-color: transparent !important;
+    -webkit-background-color: transparent !important;
+    
+    /* Remove any possible dark styling */
+    box-shadow: none !important;
+    border-radius: 8px;
+    
+    /* iOS Safari specific fixes */
+    -webkit-appearance: none;
+    appearance: none;
+    
+    /* Force video to not inherit any dark styling */
+    color-scheme: light;
+    
+    /* Debug info */
+    position: relative;
+  }
+
+  /* Add debug info overlay */
+  .video-debug::after {
+    content: 'WebM';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    font-size: 8px;
+    color: red;
+    background: rgba(255,255,255,0.8);
+    padding: 1px 3px;
+    border-radius: 2px;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* iOS specific debugging */
+  @supports (-webkit-touch-callout: none) {
+    .video-debug {
+      /* iOS Safari specific overrides */
+      background: #ffffff !important;
+      outline: 2px solid blue; /* Blue outline for iOS */
+    }
+    
+    .video-debug::before {
+      content: 'iOS';
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      font-size: 8px;
+      color: blue;
+      background: rgba(255,255,255,0.8);
+      padding: 1px 3px;
+      border-radius: 2px;
+      pointer-events: none;
+      z-index: 10;
+    }
+  }
+
+  /* Mobile-specific video fixes */
+  @media (max-width: 768px) {
+    .video-debug {
+      /* Try to remove black backgrounds on mobile */
+      filter: brightness(1.2) contrast(1.1) saturate(1.1);
+      mix-blend-mode: multiply;
+      background: #ffffff !important;
+      outline: 3px solid green; /* Green outline for mobile */
+    }
+
+    .video-debug::after {
+      content: 'Mobile WebM - Check black bg';
+      width: auto;
+      white-space: nowrap;
+      font-size: 7px;
+      background: rgba(255,0,0,0.9);
+      color: white;
+    }
+
+    /* Try different rendering approaches for mobile */
+    .video-container-fix {
+      background: #ffffff !important;
+      border: 2px solid orange;
+      /* Force white background more aggressively */
+      background-image: none !important;
+      background-color: #ffffff !important;
+    }
+
+    /* Alternative: Try to filter out blacks */
+    .video-debug {
+      /* Experimental: try to make black colors transparent */
+      filter: 
+        brightness(1.3) 
+        contrast(1.2) 
+        hue-rotate(0deg) 
+        saturate(1.1)
+        drop-shadow(0 0 2px rgba(255,255,255,0.8));
+      
+      /* Try screen blend mode to eliminate blacks */
+      mix-blend-mode: screen;
+      
+      /* Force explicit dimensions */
+      width: 64px !important;
+      height: 64px !important;
+      object-fit: contain;
+    }
+  }
+
+  /* Desktop: Ensure turnkey cards and content are visible (let Framer Motion handle animations) */
+  @media (min-width: 769px) {
+    .turnkey-card {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+
+    .turnkey-card img,
+    .turnkey-card h3,
+    .turnkey-card ul {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
   }
 } 
