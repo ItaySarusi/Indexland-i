@@ -2,12 +2,12 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage, Language } from '@/lib/language-context';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import PageContainer from '@/components/layout/PageContainer';
 import { cn } from '@/lib/utils';
 import { PAGES } from '@/constants/site';
 // Import Lucide icons
-import { BriefcaseBusiness, AreaChart, Globe, MapPin } from 'lucide-react';
+import { BriefcaseBusiness, AreaChart, Globe, MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // הגדרת סוג השירות
 interface ServiceItem {
@@ -95,9 +95,60 @@ export default function ServicesAtAGlance({
     return () => clearInterval(timer);
   }, [userSelected, serviceItems.length]);
 
+  // Simple smooth animations - no complex transforms
+  const contentVariants = {
+    hidden: { 
+      opacity: 0
+    },
+    visible: {
+      opacity: 1
+    },
+    exit: {
+      opacity: 0
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.3 }
+    }
+  };
+
+  // Simplified button animations for mobile
+  const buttonVariants = {
+    enter: {
+      opacity: 0,
+      scale: 0.98
+    },
+    center: {
+      opacity: 1,
+      scale: 1
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.98
+    }
+  };
+
   // When user clicks a card, set as selected and pause auto-rotation
   const handleCardClick = (index: number) => {
     setActiveIndex(index);
+    setUserSelected(true);
+  };
+
+  // Navigation functions for mobile carousel
+  const handlePrevious = () => {
+    const newIndex = activeIndex === 0 ? serviceItems.length - 1 : activeIndex - 1;
+    setActiveIndex(newIndex);
+    setUserSelected(true);
+  };
+
+  const handleNext = () => {
+    const newIndex = activeIndex === serviceItems.length - 1 ? 0 : activeIndex + 1;
+    setActiveIndex(newIndex);
     setUserSelected(true);
   };
 
@@ -137,109 +188,136 @@ export default function ServicesAtAGlance({
             </p>
           </motion.div>
 
-          {/* Simple Navigation Dots */}
-          <div className="flex justify-center mb-12">
-            <div className="flex gap-3">
-              {serviceItems.map((_, index) => (
+          {/* Mobile carousel and desktop tabs */}
+          <div className="mb-10">
+            {/* Mobile Carousel */}
+            <div className="md:hidden relative flex items-center justify-center gap-4">
+              {/* Left Arrow */}
+              <button
+                onClick={handlePrevious}
+                className="w-12 h-12 rounded-full bg-white/80 dark:bg-backgroundDark/80 shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-backgroundDark transition-all duration-200 hover:scale-110 active:scale-95"
+                aria-label="Previous service"
+              >
+                <ChevronLeft className={`w-6 h-6 text-primary ${language === 'he' ? 'transform scale-x-[-1]' : ''}`} />
+              </button>
+
+              {/* Current Button */}
+              <div className="flex-1 max-w-xs relative overflow-hidden">
+                <AnimatePresence mode="wait">
+                  <motion.button
+                    key={activeIndex}
+                    variants={buttonVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{
+                      duration: 0.15,
+                      ease: "easeInOut"
+                    }}
+                    onClick={() => handleCardClick(activeIndex)}
+                    className="w-full px-5 md:px-8 h-14 md:h-16 rounded-2xl font-medium md:font-semibold text-base md:text-lg transition-all duration-300 ease-in-out flex items-center justify-center relative overflow-hidden backdrop-blur-xl border-2 border-transparent bg-white/60 dark:bg-backgroundDark/60 shadow-lg text-primary dark:text-primary"
+                  >
+                    <span className="relative z-20">{t(serviceItems[activeIndex].title)}</span>
+                  </motion.button>
+                </AnimatePresence>
+              </div>
+
+              {/* Right Arrow */}
+              <button
+                onClick={handleNext}
+                className="w-12 h-12 rounded-full bg-white/80 dark:bg-backgroundDark/80 shadow-lg flex items-center justify-center hover:bg-white dark:hover:bg-backgroundDark transition-all duration-200 hover:scale-110 active:scale-95"
+                aria-label="Next service"
+              >
+                <ChevronRight className={`w-6 h-6 text-primary ${language === 'he' ? 'transform scale-x-[-1]' : ''}`} />
+              </button>
+            </div>
+
+            {/* Desktop Tabs */}
+            <div className={cn(
+              "hidden md:flex justify-center flex-wrap gap-4 md:gap-6",
+              dir === 'rtl' && "md:flex-row-reverse"
+            )}>
+              {serviceItems.map((service, index) => (
                 <button
                   key={index}
                   onClick={() => handleCardClick(index)}
                   className={cn(
-                    "w-3 h-3 rounded-full transition-all duration-300",
+                    "px-5 md:px-8 h-14 md:h-16 min-w-[180px] md:min-w-[220px] rounded-2xl font-medium md:font-semibold text-base md:text-lg transition-all duration-300 ease-in-out flex items-center justify-center relative overflow-hidden",
+                    "backdrop-blur-xl border-2 border-transparent bg-white/60 dark:bg-backgroundDark/60 shadow-lg",
+                    "hover:bg-gradient-to-br hover:from-white/80 hover:to-primary/10 dark:hover:from-backgroundDark/80 dark:hover:to-secondary/10",
                     activeIndex === index
-                      ? "bg-primary scale-125"
-                      : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
+                      ? "text-primary dark:text-primary border-primary/30"
+                      : "text-gray-600 dark:text-gray-300 border-white/30"
                   )}
-                  aria-label={`${language === 'he' ? 'עבור לשירות' : 'Go to service'} ${index + 1}`}
-                />
+                >
+                  <span className="relative z-20">{t(service.title)}</span>
+                </button>
               ))}
             </div>
           </div>
 
-          {/* Service Cards Grid - Simple Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {serviceItems.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-                onClick={() => handleCardClick(index)}
-                className={cn(
-                  "relative p-6 rounded-2xl border-2 shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 bg-white/80 dark:bg-backgroundDark/80 backdrop-blur-sm",
-                  activeIndex === index
-                    ? "border-primary bg-primary/5 shadow-xl"
-                    : "border-gray-200 dark:border-gray-700 hover:border-primary/50"
-                )}
-              >
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-secondary/10 shadow-lg mb-4 text-2xl">
-                    {service.icon}
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
-                    {t(service.title)}
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                    {t(service.description)}
-                  </p>
-                </div>
-                {activeIndex === index && (
-                  <div className="absolute inset-0 rounded-2xl border-2 border-primary shadow-lg pointer-events-none" />
-                )}
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Active Service Details */}
+          {/* Main card below tabs */}
           <div className="flex justify-center">
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="w-full max-w-2xl p-8 rounded-3xl shadow-xl border border-primary/20 bg-white/70 dark:bg-backgroundDark/80 text-center"
-            >
-              <div className="flex justify-center mb-6">
-                <div className="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-secondary/10 shadow-lg text-4xl">
-                  {serviceItems[activeIndex].icon}
-                </div>
-              </div>
-              <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white mb-4">
-                {t(serviceItems[activeIndex].title)}
-              </h3>
-              <div className="h-1 w-16 rounded-full mb-6 mx-auto bg-gradient-to-r from-primary to-secondary" />
-              <p className="text-lg text-gray-700 dark:text-gray-200 mb-6 font-medium">
-                {t(serviceItems[activeIndex].description)}
-              </p>
-              <h4 className="text-sm font-bold text-gray-500 dark:text-gray-400 mb-4 uppercase tracking-wider">
-                {language === 'he' ? "כולל בין היתר:" : "Including Services Like:"}
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-md mx-auto">
-                {serviceItems[activeIndex].subServices.map((sub, subIndex) => (
-                  <div
-                    key={subIndex}
-                    className="flex items-center gap-2 justify-center py-1"
+            <div className="relative w-full max-w-3xl">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  variants={contentVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  transition={{
+                    duration: 0.2,
+                    ease: "easeInOut"
+                  }}
+                  className={cn(
+                    "p-8 md:p-10 rounded-3xl shadow-xl border border-primary/20 bg-white/70 dark:bg-backgroundDark/80 relative overflow-hidden flex flex-col items-center gap-4 transition-all duration-300",
+                    "hover:shadow-2xl hover:border-primary/40",
+                    serviceItems[activeIndex].accentColor || 'text-orange-500'
+                  )}
+                >
+                  <motion.div
+                    variants={itemVariants}
+                    className="flex-shrink-0 flex flex-col items-center justify-center mb-2"
                   >
-                    <span className="text-primary text-lg">»</span>
-                    <span className="text-base text-gray-700 dark:text-gray-200">{t(sub)}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+                    <span className="h-20 w-20 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-secondary/10 shadow-lg text-5xl mb-3">
+                      {serviceItems[activeIndex].icon}
+                    </span>
+                  </motion.div>
+                  <motion.div
+                    variants={itemVariants}
+                    className="flex flex-col items-center text-center w-full"
+                  >
+                    <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white mb-1 tracking-tight">
+                      {t(serviceItems[activeIndex].title)}
+                    </h3>
+                    <div className="h-1 w-16 rounded-full mb-4 mx-auto bg-gradient-to-r from-primary to-secondary opacity-70" />
+                    <p className="text-lg md:text-xl text-gray-700 dark:text-gray-200 mb-4 font-medium">
+                      {t(serviceItems[activeIndex].description)}
+                    </p>
+                    <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">
+                      {language === 'he' ? "כולל בין היתר:" : "Including Services Like:"}
+                    </h4>
+                    <ul className="list-none space-y-1 text-base text-gray-700 dark:text-gray-200 w-full max-w-xs mx-auto">
+                      {serviceItems[activeIndex].subServices.map((sub, subIndex) => (
+                        <motion.li
+                          key={subIndex}
+                          variants={itemVariants}
+                          className="flex items-center gap-2 justify-center"
+                        >
+                          <span>{t(sub)}</span>
+                          <span className="text-primary text-lg">»</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </motion.section>
-      <style jsx>{`
-        @keyframes neon-border {
-          0% { box-shadow: 0 0 8px 2px #ff9800, 0 0 16px 4px #ff9800; }
-          50% { box-shadow: 0 0 24px 8px #ff9800, 0 0 48px 16px #ff9800; }
-          100% { box-shadow: 0 0 8px 2px #ff9800, 0 0 16px 4px #ff9800; }
-        }
-        .animate-neon-border {
-          animation: neon-border 1.6s linear infinite;
-        }
-      `}</style>
+
     </PageContainer>
   );
 } 
