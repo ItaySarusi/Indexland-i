@@ -111,7 +111,7 @@ export default function InternationalInvestmentBrokerage() {
     name: { he: "רחל כהן", en: "Rachel Cohen" },
     position: { he: "מנכ\"לית", en: "CEO" },
     company: { he: "טק פרו בע\"מ", en: "Tech Pro Ltd" },
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=400&auto=format&fit=crop&crop=face"
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop&crop=face"
   };
 
   // CTA buttons
@@ -131,7 +131,7 @@ export default function InternationalInvestmentBrokerage() {
         initial={{ opacity: 0, y: 60, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.9, ease: 'easeOut' }}
-        className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-36"
+        className="relative min-h-screen flex items-center justify-center pt-20"
         dir={dir}
       >
         {/* Modern Office background */}
@@ -142,7 +142,7 @@ export default function InternationalInvestmentBrokerage() {
         />
         {/* Dark overlay for readability */}
         <div className="absolute inset-0 bg-black/70 z-10" />
-        <div className="relative z-20 w-full flex flex-col items-center justify-center text-center px-4 py-24" dir={dir}>
+        <div className="container mx-auto relative z-20 w-full flex flex-col items-center justify-center text-center px-4 py-12" dir={dir}>
           <motion.h1
             initial={{ opacity: 0, scale: 0.92, rotate: -2 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -206,7 +206,7 @@ export default function InternationalInvestmentBrokerage() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="w-full flex flex-col items-center py-20 px-4"
+        className="container mx-auto flex flex-col items-center py-16 px-4"
         dir={dir}
       >
         <motion.h2
@@ -254,7 +254,7 @@ export default function InternationalInvestmentBrokerage() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8, ease: 'anticipate' }}
-        className="w-full py-20 px-4 bg-transparent"
+        className="container mx-auto py-16 px-4 bg-transparent"
         dir={dir}
       >
         <motion.h2
@@ -328,9 +328,10 @@ export default function InternationalInvestmentBrokerage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8, type: 'spring', bounce: 0.4 }}
-        className="w-full py-20 px-4 bg-gradient-to-br from-white via-orange-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 font-sans border-t border-b border-gray-100 dark:border-none"
+        className="bg-gradient-to-br from-white via-orange-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 font-sans border-t border-b border-gray-100 dark:border-none"
         dir={dir}
       >
+        <div className="container mx-auto py-16 px-4">
         <motion.h2
           initial={{ opacity: 0, scale: 0.8, rotate: 2 }}
           whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -387,6 +388,7 @@ export default function InternationalInvestmentBrokerage() {
             </motion.div>
           ))}
         </div>
+        </div>
       </motion.section>
 
       {/* Testimonial + CTA Section - fade in & pop */}
@@ -395,9 +397,10 @@ export default function InternationalInvestmentBrokerage() {
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8, ease: 'backOut' }}
-        className="w-full py-16 md:py-20 px-2 md:px-4 bg-gradient-to-br from-white via-gray-50 to-white border-t border-b border-gray-200 font-sans"
+        className="bg-gradient-to-br from-white via-gray-50 to-white border-t border-b border-gray-200 font-sans"
         dir={dir}
       >
+        <div className="container mx-auto py-16 px-4">
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center" dir={dir}>
           {/* Testimonial with person info */}
           <div className="mb-8">
@@ -461,6 +464,7 @@ export default function InternationalInvestmentBrokerage() {
               {ctaBtn2[language]}
             </motion.a>
           </motion.div>
+        </div>
         </div>
       </motion.section>
     </PageContainer>
