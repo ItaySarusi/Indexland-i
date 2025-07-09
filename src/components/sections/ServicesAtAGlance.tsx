@@ -150,10 +150,10 @@ export default function ServicesAtAGlance({
               {/* Current Button */}
               <div className="flex-1 max-w-xs">
                 <motion.button
-                  key={activeIndex}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  key={`header-${activeIndex}`}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.2, ease: "easeOut", delay: 0.1 }}
                   onClick={() => handleCardClick(activeIndex)}
                   className="w-full px-5 md:px-8 h-14 md:h-16 rounded-2xl font-medium md:font-semibold text-base md:text-lg transition-all duration-200 ease-in-out flex items-center justify-center backdrop-blur-xl border-2 border-primary/30 bg-white/60 dark:bg-backgroundDark/60 shadow-lg text-primary dark:text-primary hover:scale-105 active:scale-95"
                 >
