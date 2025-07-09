@@ -325,39 +325,20 @@
     border-color: inherit !important;
   }
 
-  /* iOS Safari Video Fix - Handle system appearance vs app theme conflicts */
+  /* Video container fix - ensure consistent white background for videos */
+  .video-container-fix {
+    background-color: #ffffff !important;
+  }
+  
+  /* Override dark mode for video containers specifically */
+  .dark .video-container-fix {
+    background-color: #ffffff !important; /* Force white background even in dark mode */
+  }
+
+  /* Video element styling */
   .video-ios-fix {
-    /* Force transparent background regardless of system appearance */
+    /* Remove any background styling from video element itself */
+    background: none !important;
     background-color: transparent !important;
-    /* Prevent iOS Safari from applying automatic color schemes */
-    color-scheme: light;
-    /* Ensure video renders with proper blending */
-    mix-blend-mode: normal;
-    /* Webkit specific fixes for iOS */
-    -webkit-appearance: none;
-    /* Force video to respect container background */
-    isolation: isolate;
-  }
-
-  /* Override for dark system preference */
-  @media (prefers-color-scheme: dark) {
-    .video-ios-fix {
-      background-color: transparent !important;
-      color-scheme: light; /* Keep videos in light mode to prevent black background */
-    }
-  }
-
-  /* Override for light system preference */
-  @media (prefers-color-scheme: light) {
-    .video-ios-fix {
-      background-color: transparent !important;
-      color-scheme: light;
-    }
-  }
-
-  /* Ensure videos work in both app theme modes */
-  .dark .video-ios-fix {
-    background-color: transparent !important;
-    color-scheme: light; /* Prevent dark theme from affecting video rendering */
   }
 } 
