@@ -251,7 +251,7 @@ export default function Home() {
             />
           </motion.div>
 
-          {/* ServicesOverview (core offering) - NO ANIMATION */}
+          {/* ServicesOverview (core offering) - Clean animations matching Our Approach */}
           <ServicesOverview services={services} />
 
           {/* Our Offer Section */}

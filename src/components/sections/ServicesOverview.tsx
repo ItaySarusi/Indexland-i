@@ -27,7 +27,7 @@ export default function ServicesOverview({
 }: ServicesOverviewProps) {
   const { t } = useLanguage();
   
-  // Animation variants for staggered card animations (matching OurOfferSection)
+  // Animation variants matching OurOfferSection exactly
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -35,23 +35,6 @@ export default function ServicesOverview({
       transition: {
         staggerChildren: 0.2,
         delayChildren: 0.1
-      }
-    }
-  };
-  
-  const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      scale: 0.95 // Subtle scale instead of sliding
-    },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 12,
-        duration: 0.6
       }
     }
   };
@@ -105,14 +88,26 @@ export default function ServicesOverview({
             <motion.div
               key={index}
               className="glass-card glass-inner-shadow p-12 rounded-[2.5rem] flex flex-col items-center text-center transition-all duration-300 group relative overflow-hidden shadow-2xl border-2 border-white/30 hover:scale-105 hover:shadow-2xl hover:border-primary/60 hover:bg-gradient-to-br hover:from-white/60 hover:to-primary/10 dark:hover:from-backgroundDark/60 dark:hover:to-secondary/10 max-w-sm mx-auto w-full cursor-pointer"
-              variants={cardVariants}
+              initial={{ 
+                opacity: 0, 
+                y: 50,
+                x: 0
+              }}
+              whileInView={{ 
+                opacity: 1, 
+                y: 0,
+                x: 0
+              }}
+              transition={{ 
+                duration: 0.6, 
+                delay: index * 0.2,
+                ease: "easeOut"
+              }}
+              viewport={{ once: true, margin: "-100px" }}
               whileHover={{ 
                 scale: 1.05,
-                y: -5,
-                rotateY: -5, // Opposite rotation from Our Approach
-                transition: { type: "spring", stiffness: 300, damping: 20 }
+                transition: { duration: 0.3 }
               }}
-              whileTap={{ scale: 0.98 }}
             >
               {/* Glass reflection overlay + glow border */}
               <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white/60 to-transparent opacity-50 rounded-t-[2.5rem] pointer-events-none animate-glass-reflection" />
