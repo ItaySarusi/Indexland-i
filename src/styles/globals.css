@@ -335,10 +335,41 @@
     background-color: #ffffff !important; /* Force white background even in dark mode */
   }
 
-  /* Video element styling */
+  /* Video element styling - remove black colors */
   .video-ios-fix {
     /* Remove any background styling from video element itself */
     background: none !important;
     background-color: transparent !important;
+    /* Filter to remove black/dark colors and make them transparent */
+    filter: contrast(1.2) brightness(1.1);
+    /* Mix blend mode to help with transparency */
+    mix-blend-mode: multiply;
+  }
+
+  /* Mobile iOS fix for sections that don't appear - force visibility */
+  @media (max-width: 768px) {
+    [data-section="turnkey-solutions"] {
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
+      display: block !important;
+    }
+
+    [data-section="turnkey-solutions"] * {
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
+    }
+  }
+
+  /* Alternative approach - make blacks transparent */
+  .video-black-to-transparent {
+    filter: 
+      contrast(1.5) 
+      brightness(1.2) 
+      saturate(1.1)
+      drop-shadow(0 0 1px rgba(255,255,255,0.5));
+    mix-blend-mode: screen;
+    background: transparent !important;
   }
 } 

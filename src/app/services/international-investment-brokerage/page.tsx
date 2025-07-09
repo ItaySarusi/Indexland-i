@@ -200,20 +200,24 @@ export default function InternationalInvestmentBrokerage() {
         <div className="h-1 w-32 mx-auto bg-gradient-to-r from-primary to-secondary rounded-full opacity-40" />
       </motion.div>
 
-      {/* Turnkey Office Solutions Flow Line Section - slide in from left */}
+      {/* Turnkey Office Solutions Flow Line Section - mobile-friendly animations */}
       <motion.section
-        initial={{ opacity: 0, x: -80 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
         className="container mx-auto flex flex-col items-center py-16 px-4"
         dir={dir}
+        style={{ opacity: 1 }} // Fallback for mobile
+        data-section="turnkey-solutions"
       >
         <motion.h2
-          initial={{ opacity: 0, y: -30 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.7, ease: 'easeOut' }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ delay: 0.1, duration: 0.5, ease: 'easeOut' }}
           className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-10"
+          style={{ opacity: 1 }} // Fallback for mobile
         >
           {turnkeyTitle[language]}
         </motion.h2>
@@ -221,16 +225,18 @@ export default function InternationalInvestmentBrokerage() {
           {officeSteps.map((step, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 60, rotate: index % 2 === 0 ? -3 : 3 }}
-              whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 + index * 0.1, duration: 0.7, type: 'spring', stiffness: 120 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1, margin: "-50px" }}
+              transition={{ delay: 0.1 + index * 0.1, duration: 0.5, ease: 'easeOut' }}
               className="group flex flex-col items-center text-center bg-white border-2 border-orange-200 rounded-3xl shadow-2xl p-10 min-h-[340px] transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-orange-500 cursor-pointer"
+              style={{ opacity: 1 }} // Fallback for mobile
             >
               <motion.img
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileInView={{ scale: 1.1, opacity: 1 }}
-                transition={{ delay: 0.3 + index * 0.1, duration: 0.5, type: 'spring', stiffness: 200 }}
+                initial={{ scale: 0.95, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ delay: 0.2 + index * 0.1, duration: 0.4, ease: 'easeOut' }}
                 src={`/files/svg/${
                   index === 0 ? 'House-searching-rafiki.svg' :
                   index === 1 ? 'Investor-presentation-bro.svg' :
@@ -241,6 +247,7 @@ export default function InternationalInvestmentBrokerage() {
                 width="110"
                 height="110"
                 className="mb-6 rounded-2xl shadow-lg border-4 border-orange-100 object-contain bg-white p-2"
+                style={{ opacity: 1 }} // Fallback for mobile
               />
               <h3 className="text-2xl font-extrabold mb-4 text-orange-500">{step.title[language]}</h3>
               <ul className={`text-gray-700 text-lg font-medium space-y-2 mx-auto max-w-xs ${dir === 'rtl' ? 'text-right' : 'text-left'}`}>
