@@ -285,10 +285,9 @@ export default function OfficeAssetManagement() {
                       playsInline 
                       width="64" 
                       height="64"
-                      className="rounded-lg video-debug"
+                      className="rounded-lg"
                       style={{ 
-                        backgroundColor: 'transparent',
-                        border: '1px solid red' /* Debug border to see video bounds */
+                        backgroundColor: 'transparent'
                       }}
                     >
                       <source src={`/files/webm/${index === 0 ? 'research' : index === 1 ? 'source' : index === 2 ? 'legal' : 'tracking'}.webm`} type="video/webm" />
@@ -343,10 +342,9 @@ export default function OfficeAssetManagement() {
                       playsInline 
                       width="64" 
                       height="64"
-                      className="rounded-lg video-debug"
+                      className="rounded-lg"
                       style={{ 
-                        backgroundColor: 'transparent',
-                        border: '1px solid red' /* Debug border to see video bounds */
+                        backgroundColor: 'transparent'
                       }}
                     >
                       <source src={`/files/webm/${index === 0 ? 'sales' : index === 1 ? 'marketing' : index === 2 ? 'risk' : 'support'}.webm`} type="video/webm" />

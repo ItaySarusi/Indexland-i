@@ -525,8 +525,8 @@
     background: transparent !important;
   }
 
-  /* Debug video styling - red border to see exact video bounds */
-  .video-debug {
+  /* Debug video styling - red border to see exact video bounds - DISABLED */
+  .video-debug-disabled {
     /* Force transparent background in all possible ways */
     background: transparent !important;
     background-color: transparent !important;
@@ -548,7 +548,7 @@
   }
 
   /* Add debug info overlay */
-  .video-debug::after {
+  .video-debug-disabled::after {
     content: 'WebM';
     position: absolute;
     top: 2px;
@@ -564,13 +564,13 @@
 
   /* iOS specific debugging */
   @supports (-webkit-touch-callout: none) {
-    .video-debug {
+    .video-debug-disabled {
       /* iOS Safari specific overrides */
       background: #ffffff !important;
       outline: 2px solid blue; /* Blue outline for iOS */
     }
     
-    .video-debug::before {
+    .video-debug-disabled::before {
       content: 'iOS';
       position: absolute;
       top: 2px;
@@ -587,7 +587,7 @@
 
   /* Mobile-specific video fixes */
   @media (max-width: 768px) {
-    .video-debug {
+    .video-debug-disabled {
       /* Try to remove black backgrounds on mobile */
       filter: brightness(1.2) contrast(1.1) saturate(1.1);
       mix-blend-mode: multiply;
@@ -595,7 +595,7 @@
       outline: 3px solid green; /* Green outline for mobile */
     }
 
-    .video-debug::after {
+    .video-debug-disabled::after {
       content: 'Mobile WebM - Check black bg';
       width: auto;
       white-space: nowrap;
@@ -614,7 +614,7 @@
     }
 
     /* Alternative: Try to filter out blacks */
-    .video-debug {
+    .video-debug-disabled {
       /* Experimental: try to make black colors transparent */
       filter: 
         brightness(1.3) 
