@@ -287,8 +287,12 @@ export default function OfficeAssetManagement() {
                       height="64"
                       className="rounded-lg"
                       style={{ 
-                        backgroundColor: 'transparent'
+                        backgroundColor: 'transparent',
+                        background: 'transparent'
                       }}
+                      preload="metadata"
+                      webkit-playsinline="true"
+                      x5-playsinline="true"
                     >
                       <source src={`/files/webm/${index === 0 ? 'research' : index === 1 ? 'source' : index === 2 ? 'legal' : 'tracking'}.webm`} type="video/webm" />
                       Your browser does not support the video tag.
@@ -344,8 +348,12 @@ export default function OfficeAssetManagement() {
                       height="64"
                       className="rounded-lg"
                       style={{ 
-                        backgroundColor: 'transparent'
+                        backgroundColor: 'transparent',
+                        background: 'transparent'
                       }}
+                      preload="metadata"
+                      webkit-playsinline="true"
+                      x5-playsinline="true"
                     >
                       <source src={`/files/webm/${index === 0 ? 'sales' : index === 1 ? 'marketing' : index === 2 ? 'risk' : 'support'}.webm`} type="video/webm" />
                       Your browser does not support the video tag.

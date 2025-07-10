@@ -687,3 +687,53 @@
     object-position: center !important;
   }
 }
+
+/* iOS Safari video black background fix */
+@supports (-webkit-touch-callout: none) {
+  /* Target iOS Safari specifically */
+  video {
+    background-color: transparent !important;
+    background: transparent !important;
+    /* Force no background in all possible ways */
+    -webkit-background-color: transparent !important;
+  }
+  
+  .video-container-fix video {
+    background-color: transparent !important;
+    background: none !important;
+    /* Override any system-applied backgrounds */
+    -webkit-background-color: transparent !important;
+    /* Force container to maintain white background */
+  }
+  
+  .video-container-fix {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    /* Ensure container stays white */
+    -webkit-background-color: #ffffff !important;
+  }
+}
+
+/* Universal video background fix for all mobile devices */
+@media (max-width: 768px) {
+  video {
+    background-color: transparent !important;
+    background: transparent !important;
+    /* Remove any default browser backgrounds */
+    outline: none !important;
+    border: none !important;
+  }
+  
+  .video-container-fix {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    /* Force white container background */
+    border: 1px solid rgba(255, 165, 0, 0.2) !important;
+  }
+  
+  /* Specific fix for iOS - use important and multiple declarations */
+  video[style*="background-color: black"] {
+    background-color: transparent !important;
+    background: transparent !important;
+  }
+}
