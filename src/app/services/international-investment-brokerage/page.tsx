@@ -131,18 +131,25 @@ export default function InternationalInvestmentBrokerage() {
         initial={{ opacity: 0, y: 60, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.9, ease: 'easeOut' }}
-        className="relative min-h-screen flex items-center justify-center pt-20"
+        className="relative h-screen flex items-center justify-center hero-section-fix"
         dir={dir}
+        style={{ 
+          height: '100vh', 
+          maxHeight: '100vh', 
+          overflow: 'hidden',
+          position: 'relative'
+        }}
       >
         {/* Modern Office background */}
         <img
           src="/office.webp"
           alt="Modern Office"
           className="absolute inset-0 w-full h-full object-cover object-center z-0 brightness-60"
+          style={{ height: '100vh', objectFit: 'cover' }}
         />
         {/* Dark overlay for readability */}
         <div className="absolute inset-0 bg-black/70 z-10" />
-        <div className="container mx-auto relative z-20 w-full flex flex-col items-center justify-center text-center px-4 py-12" dir={dir}>
+        <div className="container mx-auto relative z-20 w-full flex flex-col items-center justify-center text-center px-4" dir={dir} style={{ marginTop: '5rem' }}>
           <motion.h1
             initial={{ opacity: 0, scale: 0.92, rotate: -2 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}

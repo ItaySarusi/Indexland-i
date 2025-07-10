@@ -324,6 +324,7 @@
     color: inherit !important;
     border-color: inherit !important;
   }
+}
 
   /* Video container fix - ensure consistent white background for videos */
   .video-container-fix {
@@ -648,4 +649,41 @@
       animation: none !important;
     }
   }
-} 
+
+/* Hero section mobile fix to prevent double scrolling */
+.hero-section-fix {
+  /* Ensure exact viewport height on mobile */
+  height: 100vh !important;
+  height: 100dvh !important; /* Dynamic viewport height for mobile browsers */
+  max-height: 100vh !important;
+  max-height: 100dvh !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+@media (max-width: 768px) {
+  .hero-section-fix {
+    /* Prevent any scroll within hero on mobile */
+    min-height: unset !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    /* Use safe area for notched devices */
+    height: calc(100vh - env(safe-area-inset-top, 0px)) !important;
+    height: calc(100dvh - env(safe-area-inset-top, 0px)) !important;
+  }
+  
+  /* Ensure content doesn't overflow */
+  .hero-section-fix .container {
+    max-height: calc(100vh - env(safe-area-inset-top, 0px)) !important;
+    overflow: hidden !important;
+    padding-bottom: 2rem !important; /* Add some breathing room */
+  }
+  
+  /* Ensure hero image fits perfectly */
+  .hero-section-fix img {
+    height: 100vh !important;
+    height: 100dvh !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+}
